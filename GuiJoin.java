@@ -22,6 +22,10 @@ public class GuiJoin extends JFrame {
 	
 	
 	
+	
+	
+	
+	
 	public GuiJoin() {
 		joinLbl = new JLabel("회원가입");
 		idLbl = new JLabel("* 아 이 디");
