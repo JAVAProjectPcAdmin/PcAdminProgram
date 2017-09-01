@@ -34,7 +34,7 @@ public class AdminLogin extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(600, 300);
-		setTitle("Admin Login");asdsadsad
+		setTitle("Admin Login");
 
 		try {
 			adminLoginImg = ImageIO.read(new File("adminlogin.png"));
