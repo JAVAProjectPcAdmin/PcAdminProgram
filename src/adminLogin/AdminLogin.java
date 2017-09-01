@@ -67,7 +67,7 @@ public class AdminLogin extends JFrame {
 		setButton.setFocusPainted(false);
 
 		panel.setBounds(0, 0, 600, 300);
-		idTf.setBounds(320, 150, 250, 30);gjdfosgjsodfgodj
+		idTf.setBounds(320, 150, 250, 30);
 		pwTf.setBounds(320, 180, 250, 30);
 		idLabel.setBounds(200, 140, 50, 50);
 		pwLabel.setBounds(200, 170, 200, 50);
