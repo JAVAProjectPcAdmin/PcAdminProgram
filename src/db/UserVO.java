@@ -11,7 +11,6 @@ public class UserVO {
 	private String emailAddress;
 	private String Address;
 	private String registerDate;	
-	private int useableTime;
 	private String Memo;
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	public int getUserNumber() {
@@ -80,13 +79,6 @@ public class UserVO {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
-	public int getUseableTime() {
-		return useableTime;
-	}
-	public void setUseableTime(int useableTime) {
-		this.useableTime = useableTime;
-	}
-	
 	
 	
 }
