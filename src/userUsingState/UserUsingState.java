@@ -3,6 +3,7 @@ package userUsingState;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,18 +31,19 @@ public class UserUsingState extends JFrame {
 		setAlwaysOnTop(true);
 		getContentPane().setBackground(Color.WHITE);
 
+		panel = null;
 		try {
-			panelImg = ImageIO.read(new File("graypanel.png"));
-
-		} catch (IOException e) {
+			panel = new JPanelWithBackground("graypanel.png");
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
 
-		grayPanel = new grayPanel();
-		grayPanel.setLayout(null);
+		panel.setLayout(null);
+		panel.setBounds(0, 0, 600, 400);
 
 		customerNumberLb = new JLabel("001");
+		customerNumberLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
 		moneyLb = new JLabel("0¿ø");
 		talkLb = new JLabel("¹®ÀÇ");
@@ -55,23 +57,35 @@ public class UserUsingState extends JFrame {
 		orderBt = new JButton(new ImageIcon("order.png"));
 		informationBt = new JButton(new ImageIcon("information.png"));
 
-		grayPanel.setBounds(10, 80, 283, 84);
-		customerNumberLb.setBounds(50, 10, 50, 50);
+		panel.setBounds(10, 80, 283, 84);
+		customerNumberLb.setBounds(40, 0, 100, 100);
+		talkBt.setBounds(20, 100, 30, 30);
 
-		grayPanel.add(timeLb);
-		grayPanel.add(moneyLb);
+		panel.add(timeLb);
+		panel.add(moneyLb);
 
-		timeLb.setBounds(40, 20, 30, 30);
-		moneyLb.setBounds(40, 50, 30, 30);
-		add(grayPanel);
+		timeLb.setBounds(90, 10, 70, 30);
+		moneyLb.setBounds(90, 45, 700, 30);
+		add(talkBt);
+		add(customerNumberLb);
+		add(panel);
 
 		setVisible(true);
 
 	}
 
-	class grayPanel extends JPanel {
-		public void paint(Graphics g) {
-			g.drawImage(panelImg, 0, 0, null);
+	class JPanelWithBackground extends JPanel {
+
+		private Image backgroundImage;
+
+		public JPanelWithBackground(String fileName) throws IOException {
+			backgroundImage = ImageIO.read(new File("graypanel.png"));
+		}
+
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+
+			g.drawImage(backgroundImage, 0, 0, null);
 		}
 	}
 
