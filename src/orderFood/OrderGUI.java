@@ -17,7 +17,8 @@ public class OrderGUI extends JFrame {
 	private JButton orderBtn, cancleBtn;
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
-	
+
+	private MenuPnlGui ramen[], drink[], snack[];
 
 	public OrderGUI() {
 		wholePnl = new JPanel();
@@ -34,7 +35,6 @@ public class OrderGUI extends JFrame {
 		menuTab.addTab("   ¶ó   ¸é   ·ù   ", ramenPnl);
 		menuTab.addTab("   À½   ·á   ¼ö   ", drinkPnl);
 		menuTab.addTab("   ½º   ³¼   ·ù   ", snackPnl);
-		
 
 		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		menuTab.setTabPlacement(JTabbedPane.LEFT);
@@ -76,7 +76,7 @@ public class OrderGUI extends JFrame {
 		add(wholePnl);
 
 		//
-		
+
 		// setLayout(null);
 		setSize(1000, 800);
 		setResizable(false);
