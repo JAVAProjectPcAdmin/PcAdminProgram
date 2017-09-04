@@ -10,7 +10,8 @@ public class UserVO {
 	private String phone2;
 	private String emailAddress;
 	private String Address;
-	private String residentDate;	
+	private String registerDate;	
+	private int useableTime;
 	private String Memo;
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	public int getUserNumber() {
@@ -67,17 +68,23 @@ public class UserVO {
 	public void setAddress(String address) {
 		Address = address;
 	}
-	public String getResidentDate() {
-		return residentDate;
-	}
-	public void setResidentDate(String residentDate) {
-		this.residentDate = residentDate;
-	}
 	public String getMemo() {
 		return Memo;
 	}
 	public void setMemo(String memo) {
 		Memo = memo;
+	}
+	public String getRegisterDate() {
+		return registerDate;
+	}
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+	public int getUseableTime() {
+		return useableTime;
+	}
+	public void setUseableTime(int useableTime) {
+		this.useableTime = useableTime;
 	}
 	
 	
