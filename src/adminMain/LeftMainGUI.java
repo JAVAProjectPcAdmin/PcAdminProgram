@@ -33,16 +33,16 @@ public class LeftMainGUI extends JPanel {
 	// 폰트
 	private Font f1, f2;
 
-	// 이미지 사이즈 조절
+	// 버튼이미지 사이즈 조절
 	ImageIcon findButtonIcon = new ImageIcon("findbutton.jpg");
 	Image findButton = findButtonIcon.getImage();
 	Image newFindButtonImg = findButton.getScaledInstance(50, 30, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
 
-	//
+	// 로고이미지 사이즈 조절
 	ImageIcon javaLogoIcon = new ImageIcon("JavaLogo.png");
 	Image javaLogo = javaLogoIcon.getImage();
-	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 60, java.awt.Image.SCALE_SMOOTH);
+	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 
 	////////////////////////////////////////////////////////////////////////////////////////
@@ -59,7 +59,7 @@ public class LeftMainGUI extends JPanel {
 		JButton logoBtn = new JButton();
 		logoBtn.setIcon(new ImageIcon(newJavaLogoImg));
 
-		logoBtn.setPreferredSize(new Dimension(170, 60));
+		logoBtn.setPreferredSize(new Dimension(170, 70));
 		logo_Panel.setPreferredSize(new Dimension(200, -10));
 		logo_Panel.add(logoBtn);
 		logo_Panel.setBackground(Color.WHITE);
@@ -134,7 +134,7 @@ public class LeftMainGUI extends JPanel {
 
 		infoSp1.setPreferredSize(new Dimension(0, -10));
 		infoSp2.setPreferredSize(new Dimension(0, -10));
-		infoSp3.setPreferredSize(new Dimension(0, 0));
+		infoSp3.setPreferredSize(new Dimension(0, -10));
 
 		infoGuest_Panel.setLayout(new BoxLayout(infoGuest_Panel, BoxLayout.Y_AXIS));
 		infoGuest_Panel.add(infoSp1, BorderLayout.PAGE_START);
