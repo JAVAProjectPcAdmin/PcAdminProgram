@@ -1,6 +1,8 @@
 package orderFood;
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -11,11 +13,14 @@ import javax.swing.JTabbedPane;
 
 public class OrderGUI extends JFrame {
 	private JPanel ramenPnl, drinkPnl, snackPnl, selectPnl, menuPnl, labelPnl;
+	private JPanel wholePnl;
 	private JButton orderBtn, cancleBtn;
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
 
 	public OrderGUI() {
+		wholePnl = new JPanel();
+
 		ramenPnl = new JPanel();
 		drinkPnl = new JPanel();
 		snackPnl = new JPanel();
@@ -28,37 +33,27 @@ public class OrderGUI extends JFrame {
 		menuTab.addTab("   ¶ó   ¸é   ·ù   ", ramenPnl);
 		menuTab.addTab("   À½   ·á   ¼ö   ", drinkPnl);
 		menuTab.addTab("   ½º   ³¼   ·ù   ", snackPnl);
-		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
-		 menuTab.setTabPlacement(JTabbedPane.LEFT);
+		
 
-	
+		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
+		menuTab.setTabPlacement(JTabbedPane.LEFT);
+
+		menuPnl.setLayout(new BorderLayout());
 		menuPnl.add(menuTab);
-<<<<<<< HEAD
-//		menuPnl.setBounds(0, 0, 1000, 600);
-//		menuPnl.setBackground(Color.WHITE);
-//		menuPnl.setLayout(new FlowLayout());
-=======
-		// menuPnl.setBounds(0, 0, 1000, 600);
 		menuPnl.setBackground(Color.WHITE);
-		menuPnl.setLayout(new FlowLayout());
->>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
-
-		// menuPnl.setPreferredSize(new Dimension(400, 300));
 
 		/// ÃÑ »ç¿ë±Ý¾×
-		priceLabel = new JLabel("ÃÑ ±Ý¾× : ");
+		priceLabel = new JLabel("<html><br>ÃÑ ±Ý¾× : ¿ø<br><br></html>");
 		priceLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 
 		labelPnl.add(priceLabel);
-		labelPnl.setBackground(Color.yellow);
-		labelPnl.setPreferredSize(new Dimension(0, -400));
-		// labelPnl.setBounds(0, 400, 1000, 100);
+		labelPnl.setBackground(Color.WHITE);
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// °áÁ¦, Ãë¼Ò
-		orderBtn = new JButton(" ÁÖ ¹® ");
-		cancleBtn = new JButton(" Ãë ¼Ò ");
+		orderBtn = new JButton("    ÁÖ  ¹®    ");
+		cancleBtn = new JButton("    Ãë  ¼Ò    ");
 		orderBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		cancleBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		orderBtn.setBackground(Color.WHITE);
@@ -66,45 +61,25 @@ public class OrderGUI extends JFrame {
 		orderBtn.setFocusPainted(false);
 		cancleBtn.setFocusPainted(false);
 
-		selectPnl.setPreferredSize(new Dimension(0, -350));
-		selectPnl.setBackground(Color.RED);
-		// selectPnl.add(priceLabel);
+		selectPnl.setBackground(Color.WHITE);
 		selectPnl.add(orderBtn);
 		selectPnl.add(cancleBtn);
-<<<<<<< HEAD
-		//selectPnl.setBounds(0, 500, 1000, 400);
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		/// ÃÑ »ç¿ë±Ý¾×
-		labelPnl = new JPanel();
-		priceLabel = new JLabel("ÃÑ ±Ý¾× : ");
-		
-		labelPnl.add(priceLabel);
-		//labelPnl.setBounds(0, 400, 1000, 100);
-		
-=======
-		// selectPnl.setBounds(0, 500, 1000, 400);
-
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
->>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		add(menuPnl);
-		//add(labelPnl);
-		//add(selectPnl);
+		wholePnl.setLayout(new BoxLayout(wholePnl, BoxLayout.Y_AXIS));
 
-<<<<<<< HEAD
-		// setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		setLayout(null);
-=======
-		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+		wholePnl.add(menuPnl);
+		wholePnl.add(labelPnl);
+		wholePnl.add(selectPnl);
+		add(wholePnl);
+
 		// setLayout(null);
->>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
 		setSize(1000, 800);
-		// setResizable(false);
+		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setBackground(Color.WHITE);
-		// setUndecorated(true);
+		setUndecorated(true);
 		setLocation(150, 100);
 		setVisible(true);
 	}
