@@ -32,12 +32,28 @@ public class OrderGUI extends JFrame {
 		menuTab.addTab("   À½   ·á   ¼ö   ", drinkPnl);
 		menuTab.addTab("   ½º   ³¼   ·ù   ", snackPnl);
 
+<<<<<<< HEAD
 		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		menuTab.setTabPlacement(JTabbedPane.LEFT);
 
 		menuPnl.setLayout(new BorderLayout());
 		menuPnl.add(menuTab);
 		menuPnl.setBackground(Color.WHITE);
+=======
+	
+		menuPnl.add(menuTab);
+<<<<<<< HEAD
+//		menuPnl.setBounds(0, 0, 1000, 600);
+//		menuPnl.setBackground(Color.WHITE);
+//		menuPnl.setLayout(new FlowLayout());
+=======
+		// menuPnl.setBounds(0, 0, 1000, 600);
+		menuPnl.setBackground(Color.WHITE);
+		menuPnl.setLayout(new FlowLayout());
+>>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
+
+		// menuPnl.setPreferredSize(new Dimension(400, 300));
+>>>>>>> 43d6c9269062db89bf1db66cc9ff36ab7a43f125
 
 		/// ÃÑ »ç¿ë±Ý¾×
 		priceLabel = new JLabel("<html><br>ÃÑ ±Ý¾× : ¿ø<br><br></html>");
@@ -61,6 +77,7 @@ public class OrderGUI extends JFrame {
 		selectPnl.setBackground(Color.WHITE);
 		selectPnl.add(orderBtn);
 		selectPnl.add(cancleBtn);
+<<<<<<< HEAD
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -71,7 +88,37 @@ public class OrderGUI extends JFrame {
 		wholePnl.add(selectPnl);
 		add(wholePnl);
 
+=======
+<<<<<<< HEAD
+		//selectPnl.setBounds(0, 500, 1000, 400);
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		/// ÃÑ »ç¿ë±Ý¾×
+		labelPnl = new JPanel();
+		priceLabel = new JLabel("ÃÑ ±Ý¾× : ");
+		
+		labelPnl.add(priceLabel);
+		//labelPnl.setBounds(0, 400, 1000, 100);
+		
+=======
+		// selectPnl.setBounds(0, 500, 1000, 400);
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+>>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		add(menuPnl);
+		//add(labelPnl);
+		//add(selectPnl);
+
+<<<<<<< HEAD
+		// setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+		setLayout(null);
+=======
+		setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
+>>>>>>> 43d6c9269062db89bf1db66cc9ff36ab7a43f125
 		// setLayout(null);
+>>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
 		setSize(1000, 800);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
