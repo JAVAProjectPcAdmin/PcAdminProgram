@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -55,6 +57,15 @@ public class UserUsingStateGUI extends JFrame {
 
 		talkBt = new JButton(new ImageIcon("talk.png"));
 		talkBt.setBorderPainted(false);
+
+		talkBt.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				TalkGUI talk = new TalkGUI();
+			}
+		});
 		orderBt = new JButton(new ImageIcon("order.png"));
 		orderBt.setBorderPainted(false);
 		informationBt = new JButton(new ImageIcon("information.png"));
@@ -88,7 +99,7 @@ public class UserUsingStateGUI extends JFrame {
 
 	}
 
-	class JPanelWithBackground extends JPanel { //패널에 이미지 채우기가 아닌 이미지를 백그라운드로 쓰기위한 클래스
+	class JPanelWithBackground extends JPanel { // 패널에 이미지 채우기가 아닌 이미지를 백그라운드로 쓰기위한 클래스
 
 		private Image backgroundImage;
 
