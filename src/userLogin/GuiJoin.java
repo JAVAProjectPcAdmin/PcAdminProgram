@@ -146,6 +146,7 @@ public class GuiJoin extends JFrame {
 		setTitle("회원가입");
 		setSize(400, 560);
 		setResizable(false);
+		setLocation(400, 300);
 		setVisible(true);
 	}
 }
