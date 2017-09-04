@@ -8,12 +8,12 @@ import javax.swing.*;
 
 //size 200, 250
 
-public class MenuPnlGuI extends JFrame {
+public class MenuPnlGui extends JPanel {
 	private JButton upBtn, downBtn;
 	private JLabel countLbl, menuImgLbl;
 	public int count = 0;
 	
-	public MenuPnlGuI(String menuImg) {
+	public MenuPnlGui(String menuImg) {
 		Icon upBtnImg = new ImageIcon("plus.png");
 		Icon downbtnImg = new ImageIcon("minus.png");
 		Icon menuLblImg = new ImageIcon(menuImg);
@@ -33,7 +33,7 @@ public class MenuPnlGuI extends JFrame {
 		countLbl.setBounds(85, 175, 30, 30);
 		upBtn.setBounds(110, 180, 20, 20);
 		
-		getContentPane().setBackground(Color.WHITE);
+		setBackground(Color.WHITE);
 		
 		add(menuImgLbl);
 		add(downBtn);

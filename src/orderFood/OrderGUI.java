@@ -2,7 +2,9 @@ package orderFood;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,8 +19,10 @@ public class OrderGUI extends JFrame {
 	private JButton orderBtn, cancleBtn;
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
-
+	private MenuPnlGui ramen[], drink[], snack[];
+	
 	public OrderGUI() {
+		
 		wholePnl = new JPanel();
 
 		ramenPnl = new JPanel();
@@ -49,6 +53,39 @@ public class OrderGUI extends JFrame {
 		labelPnl.add(priceLabel);
 		labelPnl.setBackground(Color.WHITE);
 
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		ramenPnl.setLayout(new GridLayout(2, 4));
+		
+		ramen = new MenuPnlGui[8];
+		for(int i=0; i<ramen.length; i++) {
+			ramen[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i+1) + ".png");
+			ramen[i].setSize(200, 250);
+			ramenPnl.add(ramen[i]);
+		}
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+		
+		drinkPnl.setLayout(new GridLayout(2, 4));
+
+		drink = new MenuPnlGui[8];
+		for (int i = 0; i < drink.length; i++) {
+			drink[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
+			drink[i].setSize(200, 250);
+			drinkPnl.add(drink[i]);
+		}
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////
+
+		snackPnl.setLayout(new GridLayout(2, 4));
+
+		snack = new MenuPnlGui[8];
+		for (int i = 0; i < snack.length; i++) {
+			snack[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
+			snack[i].setSize(200, 250);
+			snackPnl.add(snack[i]);
+		}
+
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// 결제, 취소
@@ -74,7 +111,6 @@ public class OrderGUI extends JFrame {
 		wholePnl.add(selectPnl);
 		add(wholePnl);
 
-		// setLayout(null);
 		setSize(1000, 800);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
