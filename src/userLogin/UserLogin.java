@@ -31,7 +31,7 @@ public class UserLogin extends JFrame {
 	BufferedImage userLoginImg = null;
 
 	public UserLogin() {
-
+		setSize(1280, 1024);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// setDefaultCloseOperation(DISPOSE_ON_CLOSE);종료시 이벤트 사용하는 코드
@@ -45,11 +45,7 @@ public class UserLogin extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gd = ge.getDefaultScreenDevice();
-		setUndecorated(true);
-		gd.setFullScreenWindow(this);
-		
+
 		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "User Login");
 		panel.setBorder(tb);
@@ -94,15 +90,22 @@ public class UserLogin extends JFrame {
 
 		loginButton.setBounds(250, 230, 100, 27);
 		signInButton.setBounds(360, 230, 100, 27);
+		signInButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				GuiJoin join = new GuiJoin();
+			}
+		});
 		searchButton.setBounds(470, 230, 100, 27);
-		
+
 		searchButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Search search = new Search();
-				
 
 			}
 
