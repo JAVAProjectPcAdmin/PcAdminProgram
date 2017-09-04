@@ -7,10 +7,10 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class administer_MainFrame extends JFrame {
-	public administer_MainFrame() {
-		Left_MainPanel lmp = new Left_MainPanel();
-		UserPanel[] rightUserPanel=new UserPanel[25];
+public class AdminMainGUI extends JFrame {
+	public AdminMainGUI() {
+		LeftMainGUI lmp = new LeftMainGUI();
+		RightMainGUI[] rightUserPanel=new RightMainGUI[25];
 		JPanel rightPanel= new JPanel();
 
 		lmp.setBounds(0, 80, 220, 850);
@@ -18,7 +18,7 @@ public class administer_MainFrame extends JFrame {
 		rightPanel.setLayout(new GridLayout(5, 5));
 
 		for (int i = 0; i < 25; i++) {
-			rightUserPanel[i] = new UserPanel();
+			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210,170);
 			rightPanel.add(rightUserPanel[i]);
 		}
@@ -38,7 +38,7 @@ public class administer_MainFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		administer_MainFrame admin = new administer_MainFrame();
+		AdminMainGUI admin = new AdminMainGUI();
 
 	}
 

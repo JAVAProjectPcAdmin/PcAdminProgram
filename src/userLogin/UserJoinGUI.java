@@ -5,7 +5,7 @@ import java.awt.Font;
 
 import javax.swing.*;
 
-public class GuiJoin extends JFrame {
+public class UserJoinGUI extends JFrame {
 
 	private JLabel joinLbl, idLbl, nameLbl, pwLbl, pwConfirmLbl, regiNumLbl, phLbl, mailLbl, addLbl, atLbl, minusLbl1,
 			minusLbl2, minusLbl3, pwNoticeLbl;
@@ -17,7 +17,7 @@ public class GuiJoin extends JFrame {
 	private String[] phNum = { "010", "02", "031", "032", "033", "041", "043", "042", "044", "051", "052", "053", "054",
 			"055", "061", "062", "063", "064", "070" };
 
-	public GuiJoin() {
+	public UserJoinGUI() {
 		joinLbl = new JLabel("회원가입");
 		idLbl = new JLabel("* 아 이 디");
 		nameLbl = new JLabel("* 이  름");
