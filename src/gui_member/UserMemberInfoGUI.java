@@ -9,7 +9,7 @@ import java.awt.ScrollPane;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class GuiMemberInfo extends JFrame {
+public class UserMemberInfoGUI extends JFrame {
 
 	private JLabel infoLbl, joinNumLbl, nameLbl, idLbl, pwLbl,
 				   birthLbl, phLbl, mailLbl, addLbl, memoLbl; 
@@ -20,7 +20,7 @@ public class GuiMemberInfo extends JFrame {
 	private JPanel infoPnl, tablePnl;
 	private JTable memberTbl;
 	
-	public GuiMemberInfo() {
+	public UserMemberInfoGUI() {
 		////////////////////////////////////////////////////// infoPnl
 		infoLbl = new JLabel("회원정보");
 		joinNumLbl = new JLabel("회원번호");
@@ -154,6 +154,6 @@ public class GuiMemberInfo extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		GuiMemberInfo g = new GuiMemberInfo();
+		UserMemberInfoGUI g = new UserMemberInfoGUI();
 	}
 }

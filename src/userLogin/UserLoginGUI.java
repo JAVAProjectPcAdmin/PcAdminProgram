@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class UserLogin extends JFrame {
+public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
 	private JLabel idLabel, pcNumLabel, pwLabel, nonMembersLabel;
 	private JButton loginButton, signInButton, searchButton;
@@ -30,7 +30,7 @@ public class UserLogin extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
 
-	public UserLogin() {
+	public UserLoginGUI() {
 		setSize(1280, 1024);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -95,7 +95,7 @@ public class UserLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				GuiJoin join = new GuiJoin();
+				UserJoinGUI join = new UserJoinGUI();
 			}
 		});
 		searchButton.setBounds(470, 230, 100, 27);
@@ -105,7 +105,7 @@ public class UserLogin extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				Search search = new Search();
+				ID_PW_SearchGUI search = new ID_PW_SearchGUI();
 
 			}
 
@@ -137,7 +137,7 @@ public class UserLogin extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		UserLogin a = new UserLogin();
+		UserLoginGUI a = new UserLoginGUI();
 
 	}
 }

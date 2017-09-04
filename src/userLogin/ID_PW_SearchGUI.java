@@ -17,14 +17,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Search extends JFrame implements ActionListener {
+public class ID_PW_SearchGUI extends JFrame implements ActionListener {
 	private JTextField nameTf, p_NumberTf, emailTf;
 	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel;
 	private JPanel panel, searchIcon;
 	private JButton cancleButton, checkButton;
 	BufferedImage searchImg = null;
 
-	public Search() {
+	public ID_PW_SearchGUI() {
 		setTitle("ID/PW Search");
 		setLayout(null);
 		setLocation(400, 300);

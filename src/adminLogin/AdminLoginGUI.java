@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-public class AdminLogin extends JFrame {
+public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;
 	private JLabel idLabel, pwLabel;
 	private JButton loginButton, setButton;
@@ -28,7 +28,7 @@ public class AdminLogin extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
 
-	public AdminLogin() {
+	public AdminLoginGUI() {
 		setLocation(400,400);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -106,7 +106,7 @@ public class AdminLogin extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new AdminLogin();
+		new AdminLoginGUI();
 
 	}
 }

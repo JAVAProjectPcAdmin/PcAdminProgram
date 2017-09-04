@@ -1,6 +1,6 @@
 package db;
 
-public class ManagerVO {
+public class AdminVO {
 	private String id;
 	private String password;
 	private String name;
