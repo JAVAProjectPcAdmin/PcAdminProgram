@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -16,8 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
-import com.sun.prism.Image;
 
 public class Left_MainPanel extends JPanel {
 	// 손님 정보 테인블
@@ -32,24 +31,43 @@ public class Left_MainPanel extends JPanel {
 	private String[][] finishedData = new String[20][20];
 
 	// 폰트
-	private Font f1, f2, f3, f4, f5;
+	private Font f1, f2;
 
+	// 이미지 사이즈 조절
+	ImageIcon findButtonIcon = new ImageIcon("findbutton.jpg");
+	Image findButton = findButtonIcon.getImage();
+	Image newFindButtonImg = findButton.getScaledInstance(50, 30, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
+	
+	//
+	ImageIcon javaLogoIcon = new ImageIcon("javaLogo.jpg");
+	Image javaLogo = javaLogoIcon.getImage();
+	Image newJavaLogoImg = javaLogo.getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
+
+	////////////////////////////////////////////////////////////////////////////////////////
+	
 	public Left_MainPanel() {
 		JPanel countGuest_Panel = new JPanel();
 		JPanel findGuest_Panel = new JPanel();
 		JPanel infoGuest_Panel = new JPanel();
 		JPanel fee_Panel = new JPanel();
-		// JPanel finishedGuest_Panel = new JPanel(); // 필요없음
+		JPanel logo_Panel = new JPanel();
 
+		///////////////////////////////////////////////////////////////////////////////////////
+		// 로고
+		JButton logoBtn = new JButton();
+		logoBtn.setIcon(new ImageIcon(newJavaLogoImg));
+		
+		logo_Panel.setPreferredSize(new Dimension(200, -10));
+		logo_Panel.add(logoBtn);
+		
 		///////////////////////////////////////////////////////////////////////////////////////
 		// 손님 수
 		JLabel countGuest_Label1 = new JLabel();
 
 		countGuest_Label1.setText("12 / 25");
 		f1 = new Font("맑은 고딕", Font.BOLD, 50);
-
-		// countGuest_Label1.setForeground(Color.WHITE);
-		// countGuest_Panel.setBackground(Color.BLACK);
 
 		countGuest_Label1.setFont(f1);
 
@@ -61,27 +79,19 @@ public class Left_MainPanel extends JPanel {
 		// 손님 검색
 		JLabel inputCode_Label = new JLabel("이름 입력 : ");
 		JTextField inputCode_Text = new JTextField(5);
-		JButton findBtn = new JButton("검색");
-		
-		ImageIcon originIcon = new ImageIcon("findbutton.JPG");
-//		Image originImg = originIcon.getImage(); 
-//		
-//		Image changedImg = originImg.getScanlineStride(30,30,Image.);
-		
+		JButton findBtn = new JButton();
+		findBtn.setIcon(new ImageIcon(newFindButtonImg));
 
-		findBtn.setSize(30, 30);
+		findBtn.setPreferredSize(new Dimension(50, 30));
 //		findBtn.setBorderPainted(false);
-//		findBtn.setContentAreaFilled(false);
+		// findBtn.setContentAreaFilled(false);
 		findBtn.setFocusPainted(false);
-//		findBtn.setOpaque(false);
+		// findBtn.setOpaque(false);
 
 		f2 = new Font("맑은 고딕", Font.BOLD, 14);
 		inputCode_Label.setFont(f2);
+		findBtn.setFont(f2);
 
-		f3 = new Font("맑은 고딕", Font.BOLD, 14);
-		findBtn.setFont(f3);
-
-		// inputCode_Label.setForeground(Color.WHITE);
 		findBtn.setBackground(Color.WHITE);
 		findGuest_Panel.add(inputCode_Label);
 		findGuest_Panel.add(inputCode_Text);
@@ -89,7 +99,6 @@ public class Left_MainPanel extends JPanel {
 
 		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
 
-		// findGuest_Panel.setBackground(Color.BLACK);
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		findGuest_Panel.setBackground(Color.WHITE);
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -148,12 +157,12 @@ public class Left_MainPanel extends JPanel {
 		/////////////////////////////////////////////////////////////////////////////////////
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+		add(logo_Panel);
 		add(countGuest_Panel);
 		add(findGuest_Panel);
 		add(infoGuest_Panel);
 		add(fee_Panel);
 
-		// add(finishedGuest_Panel); // 필요없음
 	}
 
 	@Override
