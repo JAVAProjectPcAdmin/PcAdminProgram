@@ -19,11 +19,11 @@ public class UserJoinGUI extends JFrame {
 
 	public UserJoinGUI() {
 		joinLbl = new JLabel("회원가입");
-		idLbl = new JLabel("* 아 이 디");
-		nameLbl = new JLabel("* 이  름");
-		pwLbl = new JLabel("* 비밀번호");
-		pwConfirmLbl = new JLabel("* 비밀번호 확인");
-		regiNumLbl = new JLabel("* 주민번호");
+		idLbl = new JLabel("*  아 이 디");
+		nameLbl = new JLabel("*  이  름");
+		pwLbl = new JLabel("*  비밀번호");
+		pwConfirmLbl = new JLabel("*  비밀번호 확인");
+		regiNumLbl = new JLabel("*  주민번호");
 		phLbl = new JLabel("   전화번호");
 		mailLbl = new JLabel("   E-Mail");
 		addLbl = new JLabel("   주 소");
@@ -57,7 +57,7 @@ public class UserJoinGUI extends JFrame {
 
 		setLayout(null);
 
-		joinLbl.setFont(new Font("SanSerif", Font.BOLD, 30));
+		joinLbl.setFont(new Font("맑은고딕", Font.BOLD, 30));
 		add(joinLbl);
 
 		minusLbl1.setFont(new Font("Serif", Font.BOLD, 20));
@@ -142,11 +142,11 @@ public class UserJoinGUI extends JFrame {
 		add(cancelBtn);
 		cancelBtn.setBounds(200, 450, 90, 30);
 
+		getContentPane().setBackground(Color.WHITE);
 		setTitle("회원가입");
-		setLocation(400, 300);
 		setSize(400, 560);
 		setResizable(false);
+		setLocation(400, 300);
 		setVisible(true);
 	}
-
 }
