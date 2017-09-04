@@ -1,5 +1,6 @@
 package adminMain;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
@@ -34,6 +35,7 @@ public class AdminMainGUI extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
+		getContentPane().setBackground(Color.WHITE);
 
 	}
 
