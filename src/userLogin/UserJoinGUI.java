@@ -24,8 +24,8 @@ public class UserJoinGUI extends JFrame {
 		pwLbl = new JLabel("*  비밀번호");
 		pwConfirmLbl = new JLabel("*  비밀번호 확인");
 		regiNumLbl = new JLabel("*  주민번호");
-		phLbl = new JLabel("   전화번호");
-		mailLbl = new JLabel("   E-Mail");
+		phLbl = new JLabel("*  전화번호");
+		mailLbl = new JLabel("*  E-Mail");
 		addLbl = new JLabel("   주 소");
 		atLbl = new JLabel("@");
 		pwNoticeLbl = new JLabel("(최대 12자)");
