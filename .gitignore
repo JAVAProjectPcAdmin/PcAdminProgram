@@ -20,4 +20,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
+src/orderFood/OrderGUI.java
+src/orderFood/test.java
+src/orderFood/OrderGUI.java
+src/orderFood/OrderGUI.java
+src/orderFood/OrderGUI.java
+src/orderFood/OrderGUI.java
+src/orderFood/OrderGUI.java
+src/orderFood/OrderGUI.java
+=======
 src/userUsingState/asdasdasdasd.java
+>>>>>>> 2142f8e8b69e8925ad4691522f0a22d49b9eceb0
