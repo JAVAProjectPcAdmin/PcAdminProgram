@@ -1,4 +1,4 @@
-package project;
+package adminMain;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -30,13 +30,11 @@ public class UserPanel extends JPanel {
 		addAmountL=new JLabel("3000¿ø Ãß°¡");
 		
 		setLayout(null);
-//		setSize(150,150);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
 		
 		userNumberL.setSize(50,50);
 		userNumberL.setLocation(10,10);
 		userNumberL.setHorizontalAlignment(JLabel.CENTER);
-//		userNumberL.setBackground(new ImageIcon("icon-157349_1280.png"));
 		userNumberL.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,30));
 		
 		userNameL.setSize(80,30);
