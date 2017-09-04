@@ -27,6 +27,7 @@ public class MenuPnlGuI extends JFrame {
 		menuImgLbl = new JLabel(menuLblImg, SwingConstants.CENTER); 
 		
 		setLayout(null);
+		
 		menuImgLbl.setBounds(13, 10, 160, 160);
 		downBtn.setBounds(50, 180, 20, 20);
 		countLbl.setBounds(85, 175, 30, 30);
@@ -38,17 +39,5 @@ public class MenuPnlGuI extends JFrame {
 		add(downBtn);
 		add(countLbl);
 		add(upBtn);
-	
-		//test
-//		JButton ex = new JButton("ggg");
-//		ex.setBounds(13, 10, 160, 160);
-//		add(ex);
-		setSize(200, 250); 
-		setVisible(true); 
-		setDefaultCloseOperation(EXIT_ON_CLOSE); 
-	}
-	
-	public static void main(String[] args) {
-		MenuPnlGuI m = new MenuPnlGuI("plus.png");
 	}
 }
