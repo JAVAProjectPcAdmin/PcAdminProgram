@@ -15,13 +15,13 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class UserUsingState extends JFrame {
+public class UserUsingStateGUI extends JFrame {
 	private JLabel timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
 
-	public UserUsingState() {
+	public UserUsingStateGUI() {
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
@@ -104,7 +104,7 @@ public class UserUsingState extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new UserUsingState();
+		new UserUsingStateGUI();
 	}
 
 }

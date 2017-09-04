@@ -18,7 +18,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class Left_MainPanel extends JPanel {
+public class LeftMainGUI extends JPanel {
 	// 손님 정보 테인블
 	private String[] infoTitle1 = { "이름", "회원번호", "사용PC" };
 	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
@@ -45,9 +45,13 @@ public class Left_MainPanel extends JPanel {
 	Image newJavaLogoImg = javaLogo.getScaledInstance(100, 50, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 
+<<<<<<< HEAD:src/adminMain/Left_MainPanel.java
 	////////////////////////////////////////////////////////////////////////////////////////
 	
 	public Left_MainPanel() {
+=======
+	public LeftMainGUI() {
+>>>>>>> 731776b22dac2ad2e4e40dde80108dedf9b8d626:src/adminMain/LeftMainGUI.java
 		JPanel countGuest_Panel = new JPanel();
 		JPanel findGuest_Panel = new JPanel();
 		JPanel infoGuest_Panel = new JPanel();

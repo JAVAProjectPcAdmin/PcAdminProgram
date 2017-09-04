@@ -12,14 +12,14 @@ import javax.swing.border.TitledBorder;
 
 //ÀÌ¸§L :Label
 //Tf : TextField
-public class UserPanel extends JPanel {
+public class RightMainGUI extends JPanel {
 	private JLabel userNumberL;
 	private JLabel userNameL;
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
 		
-	public UserPanel() {
+	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
 		
