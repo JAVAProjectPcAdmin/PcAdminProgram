@@ -130,6 +130,7 @@ public class GuiMemberInfo extends JFrame {
 		scrollpane.setPreferredSize(new Dimension(400, 500));
 		tablePnl.add(scrollpane, BorderLayout.CENTER);
 		
+		memberTbl.setRowHeight(23);
 		memberTbl.getColumnModel().getColumn(0).setPreferredWidth(50);
 		memberTbl.getColumnModel().getColumn(1).setPreferredWidth(60);
 		memberTbl.getColumnModel().getColumn(2).setPreferredWidth(70);
