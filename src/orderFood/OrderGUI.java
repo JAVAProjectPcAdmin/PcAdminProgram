@@ -35,10 +35,11 @@ public class OrderGUI extends JFrame {
 		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 		// menuTab.setTabPlacement(JTabbedPane.LEFT);
 
+	
 		menuPnl.add(menuTab);
-		menuPnl.setBounds(0, 0, 1000, 600);
-		menuPnl.setBackground(Color.WHITE);
-		menuPnl.setLayout(new FlowLayout());
+//		menuPnl.setBounds(0, 0, 1000, 600);
+//		menuPnl.setBackground(Color.WHITE);
+//		menuPnl.setLayout(new FlowLayout());
 
 		// menuPnl.setPreferredSize(new Dimension(400, 300));
 
@@ -57,24 +58,24 @@ public class OrderGUI extends JFrame {
 		// selectPnl.add(priceLabel);
 		selectPnl.add(orderBtn);
 		selectPnl.add(cancleBtn);
-		selectPnl.setBounds(0, 500, 1000, 400);
+		//selectPnl.setBounds(0, 500, 1000, 400);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/// ÃÑ »ç¿ë±Ý¾×
 		labelPnl = new JPanel();
 		priceLabel = new JLabel("ÃÑ ±Ý¾× : ");
 		
 		labelPnl.add(priceLabel);
-		labelPnl.setBounds(0, 400, 1000, 100);
+		//labelPnl.setBounds(0, 400, 1000, 100);
 		
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		add(menuPnl);
-		add(labelPnl);
-		add(selectPnl);
+		//add(labelPnl);
+		//add(selectPnl);
 
 		// setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		// setLayout(null);
+		setLayout(null);
 		setSize(1000, 800);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
