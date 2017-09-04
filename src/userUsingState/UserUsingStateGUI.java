@@ -70,6 +70,14 @@ public class UserUsingStateGUI extends JFrame {
 		orderBt.setBorderPainted(false);
 		informationBt = new JButton(new ImageIcon("information.png"));
 		informationBt.setBorderPainted(false);
+		informationBt.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				ChargeInformationGUI ci = new ChargeInformationGUI();
+			}
+		});
 
 		panel.setBounds(10, 80, 283, 84);
 		customerNumberLb.setBounds(40, 0, 100, 100);
