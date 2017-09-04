@@ -1,5 +1,7 @@
 package db;
-
+/*
+ * by.jaein
+ */
 public class UserVO {
 	private int userNumber;
 	private String id;

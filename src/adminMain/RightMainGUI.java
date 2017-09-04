@@ -9,7 +9,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-
+/*
+ * by.jaein
+ */
 //ÀÌ¸§L :Label
 //Tf : TextField
 public class RightMainGUI extends JPanel {

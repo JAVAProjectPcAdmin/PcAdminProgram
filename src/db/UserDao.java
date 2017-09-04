@@ -1,8 +1,12 @@
 package db;
-
+/*
+ * by.jaein
+ */
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDao {
 	PreparedStatement pstnt = null;
@@ -24,6 +28,21 @@ public class UserDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	public void UserJoinInsert(UserVO user) {
+		
+		sql= "INSERT INTO USER(ID,PASSWORD,NAME,REGISTER_NUMBER,PHONE,EMAIL_ADDRESS) "
+				+ " VALUES(?,?,?,?,?,?)";
+		
+		try {
+			con = DriverManager.getConnection(DB_URL,DB_ID ,DB_PW);
+			pstnt = con.prepareStatement(sql);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
