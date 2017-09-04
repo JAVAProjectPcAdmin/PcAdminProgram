@@ -52,7 +52,7 @@ public class GuiMemberInfo extends JFrame {
 		
 		infoPnl.setLayout(null);
 		
-		infoLbl.setFont(new Font("Serif", Font.BOLD, 30));
+		infoLbl.setFont(new Font("¸¼Àº°íµñ", Font.BOLD, 30));
 		add(infoLbl);
 		
 		infoLbl.setBounds(125, 30, 150, 50);
@@ -139,9 +139,9 @@ public class GuiMemberInfo extends JFrame {
 		setLayout(null);
 		add(infoPnl);
 		add(tablePnl);
-		
-//		infoPnl.setBackground(Color.orange);
-//		tablePnl.setBackground(Color.BLUE);
+		infoPnl.setBackground(Color.WHITE);
+		tablePnl.setBackground(Color.WHITE);
+		getContentPane().setBackground(Color.WHITE);
 		
 		infoPnl.setBounds(0, 0, 370, 560);
 		tablePnl.setBounds(370, 15, 400, 560);
