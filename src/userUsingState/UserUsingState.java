@@ -88,7 +88,7 @@ public class UserUsingState extends JFrame {
 
 	}
 
-	class JPanelWithBackground extends JPanel {
+	class JPanelWithBackground extends JPanel { //패널에 이미지 채우기가 아닌 이미지를 백그라운드로 쓰기위한 클래스
 
 		private Image backgroundImage;
 
