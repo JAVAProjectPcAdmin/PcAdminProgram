@@ -75,7 +75,8 @@ public class AdminLogin extends JFrame {
 		computerIcon.setBounds(70, 50, 97, 70);
 		loginButton.setBounds(320, 230, 118, 27);
 		setButton.setBounds(450, 230, 123, 27);
-
+		
+		
 		panel.add(loginButton);
 		panel.add(setButton);
 		panel.add(idTf);
