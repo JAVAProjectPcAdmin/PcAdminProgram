@@ -14,8 +14,8 @@ public class MenuPnlGuI extends JFrame {
 	public int count = 0;
 	
 	public MenuPnlGuI(String menuImg) {
-		Icon upBtnImg = new ImageIcon("plus.png");
-		Icon downbtnImg = new ImageIcon("minus.png");
+		Icon upBtnImg = new ImageIcon("upbutton.jpg");
+		Icon downbtnImg = new ImageIcon("downbutton.jpg");
 		Icon menuLblImg = new ImageIcon(menuImg);
 		
 		upBtn = new JButton(upBtnImg);

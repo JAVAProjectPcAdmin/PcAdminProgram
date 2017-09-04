@@ -17,6 +17,7 @@ public class OrderGUI extends JFrame {
 	private JButton orderBtn, cancleBtn;
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
+	
 
 	public OrderGUI() {
 		wholePnl = new JPanel();
@@ -74,6 +75,8 @@ public class OrderGUI extends JFrame {
 		wholePnl.add(selectPnl);
 		add(wholePnl);
 
+
+		
 		// setLayout(null);
 		setSize(1000, 800);
 		setResizable(false);
