@@ -23,7 +23,7 @@ public class UserUsingState extends JFrame {
 
 	public UserUsingState() {
 		setLayout(null);
-		setLocation(900, 50); // 시작위치 설정 메소드
+		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
 		setResizable(false);
 		setUndecorated(true); // 윈도우창 윗부분 제거 메소드
