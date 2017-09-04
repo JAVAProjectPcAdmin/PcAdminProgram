@@ -1,4 +1,4 @@
-package gui;
+package gui_member;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,12 +20,6 @@ public class GuiJoin extends JFrame {
 			"051", "052", "053", "054", "055", "061", "062", "063", "064", "070"}; 
 									
 	
-	
-	
-	
-	
-	
-	
 	public GuiJoin() {
 		joinLbl = new JLabel("회원가입");
 		idLbl = new JLabel("* 아 이 디");
@@ -37,7 +31,8 @@ public class GuiJoin extends JFrame {
 		mailLbl = new JLabel("   E-Mail");
 		addLbl = new JLabel("   주 소");
 		atLbl = new JLabel("@");
-		pwNoticeLbl = new JLabel("최대 12자");
+		pwNoticeLbl = new JLabel("(최대 12자)");
+		
 		minusLbl1 = new JLabel("-");
 		minusLbl2 = new JLabel("-");
 		minusLbl3 = new JLabel("-");
@@ -65,12 +60,14 @@ public class GuiJoin extends JFrame {
 		
 		setLayout(null);
 		
-		joinLbl.setFont(new Font("Serif", Font.BOLD, 30));
+		joinLbl.setFont(new Font("SanSerif", Font.BOLD, 30));
 		add(joinLbl);
 		
 		minusLbl1.setFont(new Font("Serif", Font.BOLD, 20));
 		minusLbl2.setFont(new Font("Serif", Font.BOLD, 20));
 		minusLbl3.setFont(new Font("Serif", Font.BOLD, 20));
+		
+		pwNoticeLbl.setEnabled(false);
 		
 		joinLbl.setBounds(125, 30, 150, 50);
 		
