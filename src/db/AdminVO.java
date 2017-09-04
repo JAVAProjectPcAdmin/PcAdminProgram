@@ -1,5 +1,7 @@
 package db;
-
+/*
+ * by.jaein
+ */
 public class AdminVO {
 	private String id;
 	private String password;
