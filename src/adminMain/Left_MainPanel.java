@@ -4,10 +4,11 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
+
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +16,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+
+import com.sun.prism.Image;
 
 public class Left_MainPanel extends JPanel {
 	// ¼Õ´Ô Á¤º¸ Å×ÀÎºí
@@ -29,8 +32,7 @@ public class Left_MainPanel extends JPanel {
 	private String[][] finishedData = new String[20][20];
 
 	// ÆùÆ®
-	private Font f1;
-	
+	private Font f1, f2, f3, f4, f5;
 
 	public Left_MainPanel() {
 		JPanel countGuest_Panel = new JPanel();
@@ -41,24 +43,19 @@ public class Left_MainPanel extends JPanel {
 
 		///////////////////////////////////////////////////////////////////////////////////////
 		// ¼Õ´Ô ¼ö
-		f1 = new Font("±¼¸²", Font.BOLD, 50);
 		JLabel countGuest_Label1 = new JLabel();
-	
-		countGuest_Label1.setText("12 / 25");
-		
-		
-//		countGuest_Label1.setForeground(Color.WHITE);
-//		countGuest_Panel.setBackground(Color.BLACK);
-		
-		
 
-		
-		
+		countGuest_Label1.setText("12 / 25");
+		f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 50);
+
+		// countGuest_Label1.setForeground(Color.WHITE);
+		// countGuest_Panel.setBackground(Color.BLACK);
+
 		countGuest_Label1.setFont(f1);
-		
+
 		countGuest_Panel.setPreferredSize(new Dimension(200, -10));
 		countGuest_Panel.add(countGuest_Label1);
-		
+		countGuest_Panel.setBackground(Color.WHITE);
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		// ¼Õ´Ô °Ë»ö
@@ -66,19 +63,35 @@ public class Left_MainPanel extends JPanel {
 		JTextField inputCode_Text = new JTextField(5);
 		JButton findBtn = new JButton("°Ë»ö");
 		
+		ImageIcon originIcon = new ImageIcon("findbutton.JPG");
+//		Image originImg = originIcon.getImage(); 
+//		
+//		Image changedImg = originImg.getScanlineStride(30,30,Image.);
 		
-		
-//		inputCode_Label.setForeground(Color.WHITE);
-		findBtn.setBackground(Color.RED);
+
+		findBtn.setSize(30, 30);
+//		findBtn.setBorderPainted(false);
+//		findBtn.setContentAreaFilled(false);
+		findBtn.setFocusPainted(false);
+//		findBtn.setOpaque(false);
+
+		f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 14);
+		inputCode_Label.setFont(f2);
+
+		f3 = new Font("¸¼Àº °íµñ", Font.BOLD, 14);
+		findBtn.setFont(f3);
+
+		// inputCode_Label.setForeground(Color.WHITE);
+		findBtn.setBackground(Color.WHITE);
 		findGuest_Panel.add(inputCode_Label);
 		findGuest_Panel.add(inputCode_Text);
 		findGuest_Panel.add(findBtn);
-		
-		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
-		
-//		findGuest_Panel.setBackground(Color.BLACK);
-		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
+		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
+
+		// findGuest_Panel.setBackground(Color.BLACK);
+		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		findGuest_Panel.setBackground(Color.WHITE);
 		/////////////////////////////////////////////////////////////////////////////////////
 		// ¼Õ´Ô Á¤º¸ Å×ÀÌºí
 		DefaultTableModel infoModel1 = new DefaultTableModel(infoData1, infoTitle1);
@@ -99,11 +112,10 @@ public class Left_MainPanel extends JPanel {
 		infoTable2.setColumnSelectionAllowed(false);
 		infoTable3.setColumnSelectionAllowed(false);
 
-		//¼¿ ³ôÀÌ
+		// ¼¿ ³ôÀÌ
 		infoTable1.setRowHeight(50);
 		infoTable2.setRowHeight(50);
 		infoTable3.setRowHeight(50);
-		
 
 		JScrollPane infoSp1 = new JScrollPane(infoTable1);
 		JScrollPane infoSp2 = new JScrollPane(infoTable2);
@@ -117,6 +129,7 @@ public class Left_MainPanel extends JPanel {
 		infoGuest_Panel.add(infoSp1, BorderLayout.PAGE_START);
 		infoGuest_Panel.add(infoSp2, BorderLayout.CENTER);
 		infoGuest_Panel.add(infoSp3, BorderLayout.PAGE_END);
+		infoGuest_Panel.setBackground(Color.WHITE);
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		// ÇÏ·çµ¿¾È »ç¿ëÀÚ
@@ -127,6 +140,9 @@ public class Left_MainPanel extends JPanel {
 
 		finishedSp.setPreferredSize(new Dimension(200, 200));
 
+		finishedSp.setBackground(Color.WHITE);
+		finishedTable.setBackground(Color.WHITE);
+		infoGuest_Panel.setBackground(Color.WHITE);
 		infoGuest_Panel.add(finishedSp);
 
 		/////////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +152,7 @@ public class Left_MainPanel extends JPanel {
 		add(findGuest_Panel);
 		add(infoGuest_Panel);
 		add(fee_Panel);
-		
+
 		// add(finishedGuest_Panel); // ÇÊ¿ä¾øÀ½
 	}
 
