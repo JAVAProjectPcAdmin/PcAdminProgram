@@ -19,13 +19,8 @@ public class OrderGUI extends JFrame {
 	private JButton orderBtn, cancleBtn;
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
-<<<<<<< HEAD
 	private MenuPnlGui ramen[], drink[], snack[];
 	
-=======
-	
-
->>>>>>> f1b39694a8a3c0ed43b689eb9ec5e75ac2b533ba
 	public OrderGUI() {
 		
 		wholePnl = new JPanel();
@@ -116,12 +111,6 @@ public class OrderGUI extends JFrame {
 		wholePnl.add(selectPnl);
 		add(wholePnl);
 
-<<<<<<< HEAD
-=======
-
-		
-		// setLayout(null);
->>>>>>> f1b39694a8a3c0ed43b689eb9ec5e75ac2b533ba
 		setSize(1000, 800);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
