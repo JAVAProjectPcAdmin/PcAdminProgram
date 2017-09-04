@@ -1,15 +1,4 @@
-/adminLogin/
-/adminMain/
 /db/
-/gui_member/
 /userLogin/
-/userUsingState/
-<<<<<<< HEAD
-/mission01/
-/adminMain/
->>>>>>> 1bb2175e4035f929277d909fe559f920d0b6350f
-/project/
-/db/
 /orderFood/
-=======
->>>>>>> 8513712bf62aa541920c22b1718e9565fc0936ff
+/userUsingState/
