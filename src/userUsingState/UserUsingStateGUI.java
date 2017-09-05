@@ -17,6 +17,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import orderFood.OrderGUI;
+
 public class UserUsingStateGUI extends JFrame {
 	private JLabel timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
 	private JButton talkBt, orderBt, informationBt;
@@ -83,6 +85,14 @@ public class UserUsingStateGUI extends JFrame {
 		customerNumberLb.setBounds(40, 0, 100, 100);
 		talkBt.setBounds(50, 180, 44, 32);
 		orderBt.setBounds(130, 180, 38, 29);
+		orderBt.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				OrderGUI order = new OrderGUI();
+			}
+		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);

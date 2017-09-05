@@ -149,7 +149,7 @@ public class OrderGUI extends JFrame {
 
 		setSize(1000, 800);
 		setResizable(false);
-
+		setAlwaysOnTop(true);
 		setBackground(Color.WHITE);
 		setUndecorated(true);
 		setLocation(150, 100);
