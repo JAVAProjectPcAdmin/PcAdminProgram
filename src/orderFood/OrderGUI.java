@@ -66,7 +66,7 @@ public class OrderGUI extends JFrame {
 		UpDownListener upDown;
 		for ( i= 0; i < ramen.length; i++) {
 			ramen[i] = new MenuPnlGui(
-					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i + 1) + ".png");
+					"food\\ramen" + (i + 1) + ".png");
 			ramen[i].setSize(200, 250);
 			ramenPnl.add(ramen[i]);
 			upDown = new UpDownListener(ramen[i], i);
@@ -81,7 +81,7 @@ public class OrderGUI extends JFrame {
 		drink = new MenuPnlGui[8];
 		for ( i = 0; i < drink.length; i++) {
 			drink[i] = new MenuPnlGui(
-					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
+					"food\\drink" + (i + 1) + ".png");
 			drink[i].setSize(200, 250);
 			drinkPnl.add(drink[i]);
 			upDown = new UpDownListener(drink[i], i);
@@ -96,7 +96,7 @@ public class OrderGUI extends JFrame {
 		snack = new MenuPnlGui[8];
 		for ( i = 0; i < snack.length; i++) {
 			snack[i] = new MenuPnlGui(
-					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
+					"food\\snack" + (i + 1) + ".png");
 			snack[i].setSize(200, 260);
 			snackPnl.add(snack[i]);
 			upDown = new UpDownListener(snack[i], i);
