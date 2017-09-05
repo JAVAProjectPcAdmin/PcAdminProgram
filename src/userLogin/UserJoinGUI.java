@@ -23,9 +23,9 @@ public class UserJoinGUI extends JFrame {
 	private String[] phNum = { "010", "02", "031", "032", "033", "041", "043", "042", "044", "051", "052", "053", "054",
 			"055", "061", "062", "063", "064", "070" };
 
-	private boolean idCheckFlag = false; //false이면 아이디 중복확인을 안했거나 중복된 아이디//true 면 회원가입 됨
+	private boolean idCheckFlag = false; // false이면 아이디 중복확인을 안했거나 중복된 아이디//true 면 회원가입 됨
 	private boolean pwCheckFlag = false;
-	
+
 	public UserJoinGUI() {
 		joinLbl = new JLabel("회원가입");
 		idLbl = new JLabel("*  아 이 디");
@@ -107,10 +107,12 @@ public class UserJoinGUI extends JFrame {
 		pwConfirmLbl.setBounds(15, 230, 100, 15);
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
-		
-		if(pwTx.getPassword()==pwConfirmTx.getPassword()) {
-			pwCheckFlag=true;
+
+
+		if (pwTx.getPassword() == pwConfirmTx.getPassword()) {
+			pwCheckFlag = true;
 		}
+
 
 		// 주민번호
 		add(regiNumLbl);
@@ -175,9 +177,25 @@ public class UserJoinGUI extends JFrame {
 			UserDao dao = new UserDao();
 			int result = -1;
 			if (arg0.getSource() == joinBtn) {
+				if(new String(pwTx.getPassword())==new String(pwConfirmTx.getPassword())) {
+					pwCheckFlag=true;
+				}
 				if (!idCheckFlag) {
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
-				} else{
+				}
+
+					else if(!pwCheckFlag) {
+					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				}
+				// else if(!pwCheckFlag) {
+				// JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류",
+				// JOptionPane.OK_OPTION);
+				// }
+
+//					else if(!pwCheckFlag) {
+//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+//				}
+				 else{
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
 					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
@@ -196,11 +214,11 @@ public class UserJoinGUI extends JFrame {
 				if (result <= 0) {
 					System.out.println("쓸수있는 아이디");
 					JOptionPane.showMessageDialog(null, "사용가능한 아이디 입니다.");
-					idCheckFlag=true;
+					idCheckFlag = true;
 				} else if (result > 0) {
 					System.out.println("중복된 아이디");
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.", "중복확인", JOptionPane.OK_OPTION);
-					idCheckFlag=false;
+					idCheckFlag = false;
 				}
 			}
 		}

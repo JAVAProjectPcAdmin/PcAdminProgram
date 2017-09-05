@@ -23,8 +23,12 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+<<<<<<< HEAD
 import db.UserDao;
 import db.UserVO;
+=======
+import AdminServer.User;
+>>>>>>> d64a940bd56c7230199efdf20066912a1148b9b6
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
@@ -114,6 +118,16 @@ public class UserLoginGUI extends JFrame {
 
 			}
 
+		});
+		
+		loginButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				User user = new User("¿Ã∏ß");
+				new UserClient(user);
+			}
 		});
 
 		panel.add(loginButton);

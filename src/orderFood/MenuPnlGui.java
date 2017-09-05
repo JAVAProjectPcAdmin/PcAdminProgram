@@ -9,9 +9,10 @@ import javax.swing.*;
 //size 200, 260
 
 public class MenuPnlGui extends JPanel {
-	private JButton upBtn, downBtn;
-	private JLabel countLbl, menuImgLbl;
+	public JButton upBtn, downBtn;
+	public JLabel countLbl, menuImgLbl;
 	public int count = 0;
+	
 	
 	public MenuPnlGui(String menuImg) {
 		Icon upBtnImg = new ImageIcon("up.png");
