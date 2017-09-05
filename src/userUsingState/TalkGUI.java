@@ -43,7 +43,7 @@ public class TalkGUI extends JFrame {
 		// 네트워크 초기화 메소드 실행.
 		server();
 		// 연결되고 나면
-		new ReveiveThread().start();
+		new ReviveThread().start();
 
 	}
 
@@ -90,7 +90,7 @@ public class TalkGUI extends JFrame {
 		}
 	}
 
-	class ReveiveThread extends Thread {
+	class ReviveThread extends Thread {
 		@Override
 		public void run() {
 			try {
