@@ -202,7 +202,7 @@ public class LeftMainGUI extends JPanel {
 			JButton selected = (JButton) e.getSource();
 			if (selected == findSeatBtn) {
 				RightMainGUI RM_GUI = new RightMainGUI();
-				// if(inputCode_Text.getText()==RM_GUI.get)
+//				 if(inputCode_Text.getText()==RM_GUI.)
 				{
 
 				}
