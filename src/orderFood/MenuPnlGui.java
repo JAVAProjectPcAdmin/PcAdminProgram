@@ -6,7 +6,7 @@ import java.awt.Image;
 
 import javax.swing.*;
 
-//size 200, 250
+//size 200, 260
 
 public class MenuPnlGui extends JPanel {
 	private JButton upBtn, downBtn;
@@ -28,10 +28,10 @@ public class MenuPnlGui extends JPanel {
 		
 		setLayout(null);
 		
-		menuImgLbl.setBounds(13, 10, 160, 160);
-		downBtn.setBounds(50, 180, 20, 20);
-		countLbl.setBounds(85, 175, 30, 30);
-		upBtn.setBounds(110, 180, 20, 20);
+		menuImgLbl.setBounds(13, 10, 160, 170);
+		downBtn.setBounds(50, 190, 20, 20);
+		countLbl.setBounds(85, 185, 30, 30);
+		upBtn.setBounds(110, 190, 20, 20);
 		
 		setBackground(Color.WHITE);
 		

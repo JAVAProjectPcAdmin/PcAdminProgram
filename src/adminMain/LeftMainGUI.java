@@ -36,6 +36,7 @@ public class LeftMainGUI extends JPanel implements ActionListener {
 	private Font f1, f2;
 	
 	// 회원 자리찾기 버튼
+	JButton findMemberBtn = new JButton();
 	JButton findBtn = new JButton();
 
 	// 버튼이미지 사이즈 조절
@@ -44,11 +45,11 @@ public class LeftMainGUI extends JPanel implements ActionListener {
 	Image newFindButtonImg = findButton.getScaledInstance(50, 30, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
 
-	// 로고이미지 사이즈 조절
-	ImageIcon javaLogoIcon = new ImageIcon("JavaLogo.png");
-	Image javaLogo = javaLogoIcon.getImage();
-	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
+//	// 로고이미지 사이즈 조절
+//	ImageIcon javaLogoIcon = new ImageIcon("JavaLogo.png");
+//	Image javaLogo = javaLogoIcon.getImage();
+//	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
+//	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 
 	////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,24 +71,24 @@ public class LeftMainGUI extends JPanel implements ActionListener {
 //		logo_Panel.setBackground(Color.WHITE);
 ///////////////////////////////////////////////////////////////////////////////////////
 		// 회원 검색
-		JLabel inputCode_Label = new JLabel("이름 입력 : ");
-		JTextField inputCode_Text = new JTextField(5);
-		findBtn.setIcon(new ImageIcon(newFindButtonImg));
+		JLabel inputFindmember_Label = new JLabel("이름 입력 : ");
+		JTextField inputFindmember_Text = new JTextField(5);
+		findMemberBtn.setIcon(new ImageIcon(newFindButtonImg));
 
-		findBtn.setPreferredSize(new Dimension(50, 30));
+		findMemberBtn.setPreferredSize(new Dimension(50, 30));
 		// findBtn.setBorderPainted(false);
 		// findBtn.setContentAreaFilled(false);
-		findBtn.setFocusPainted(false);
+		findMemberBtn.setFocusPainted(false);
 		// findBtn.setOpaque(false);
 
 		f2 = new Font("맑은 고딕", Font.BOLD, 14);
-		inputCode_Label.setFont(f2);
-		findBtn.setFont(f2);
+		inputFindmember_Label.setFont(f2);
+		findMemberBtn.setFont(f2);
 
-		findBtn.setBackground(Color.WHITE);
-		findGuest_Panel.add(inputCode_Label);
-		findGuest_Panel.add(inputCode_Text);
-		findGuest_Panel.add(findBtn);
+		findMemberBtn.setBackground(Color.WHITE);
+		findGuest_Panel.add(inputFindmember_Label);
+		findGuest_Panel.add(inputFindmember_Text);
+		findGuest_Panel.add(findMemberBtn);
 
 		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
 
