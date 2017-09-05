@@ -108,9 +108,7 @@ public class UserJoinGUI extends JFrame {
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
 		
-		if(pwTx.getPassword()==pwConfirmTx.getPassword()) {
-			pwCheckFlag=true;
-		}
+		
 
 		// 주민번호
 		add(regiNumLbl);
@@ -175,13 +173,16 @@ public class UserJoinGUI extends JFrame {
 			UserDao dao = new UserDao();
 			int result = -1;
 			if (arg0.getSource() == joinBtn) {
+				if(new String(pwTx.getPassword())==new String(pwConfirmTx.getPassword())) {
+					pwCheckFlag=true;
+				}
 				if (!idCheckFlag) {
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
 
 				}
-//					else if(!pwCheckFlag) {
-//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
-//				}
+					else if(!pwCheckFlag) {
+					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				}
 				 else{
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());

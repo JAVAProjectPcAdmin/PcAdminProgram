@@ -24,14 +24,12 @@ public class RightMainGUI extends JPanel {
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
-<<<<<<< HEAD
 		
 	public JLabel getUserNameL() {
 		return userNameL;
 	}
-=======
 
->>>>>>> 18b5658055e74cce1a35a3c5a978b53e17000c13
+
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
