@@ -1,6 +1,7 @@
 package AdminServer;
 
 import java.io.BufferedWriter;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -36,6 +37,7 @@ public class AdminServer {
 						Thread.sleep(10000);
 						// user2=null;
 						// oos=null;
+					
 					}
 				} else {
 					ois = new ObjectInputStream(socket.getInputStream());
@@ -56,7 +58,5 @@ public class AdminServer {
 		}
 	}
 
-	public static void main(String[] args) {
-		new AdminServer();
-	}
+	
 }
