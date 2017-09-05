@@ -109,8 +109,8 @@ public class LeftMainGUI extends JPanel implements ActionListener {
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		// 손님 검색
-		JLabel inputCode_Label = new JLabel("이름 입력 : ");
-		JTextField inputCode_Text = new JTextField(5);
+		JLabel inputCode_Label2 = new JLabel("이름 입력 : ");
+		JTextField inputCode_Text2 = new JTextField(5);
 		findBtn.setIcon(new ImageIcon(newFindButtonImg));
 
 		findBtn.setPreferredSize(new Dimension(50, 30));
@@ -120,12 +120,12 @@ public class LeftMainGUI extends JPanel implements ActionListener {
 		// findBtn.setOpaque(false);
 
 		f2 = new Font("맑은 고딕", Font.BOLD, 14);
-		inputCode_Label.setFont(f2);
+		inputCode_Label2.setFont(f2);
 		findBtn.setFont(f2);
 
 		findBtn.setBackground(Color.WHITE);
-		findGuest_Panel.add(inputCode_Label);
-		findGuest_Panel.add(inputCode_Text);
+		findGuest_Panel.add(inputCode_Label2);
+		findGuest_Panel.add(inputCode_Text2);
 		findGuest_Panel.add(findBtn);
 
 		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
