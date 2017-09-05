@@ -149,11 +149,6 @@ public class UserMemberInfoGUI extends JFrame {
 		setTitle("회원정보");
 		setSize(800,570);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-	}
-	
-	public static void main(String[] args) {
-		UserMemberInfoGUI g = new UserMemberInfoGUI();
 	}
 }
