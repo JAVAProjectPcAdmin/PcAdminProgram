@@ -118,12 +118,17 @@ public class UserMemberInfoGUI extends JFrame {
 		searchBtn.setBounds(150, 480, 70, 30);
 		add(resetBtn);
 		resetBtn.setBounds(230, 480, 80, 30);
+		
 		//////////////////////////////////////////////////// tablePnl
 		
 		String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
 		
 		// *나중에 DB에서 값 받아와야 함*
-		String contents[][] = {{"1", "이유희", "hello", "2017-09-01", "930227"}};
+		//{{"1", "이유희", "hello", "2017-09-01", "930227"}};
+		String contents[][] = new String[100][0];
+		
+		
+		
 		DefaultTableModel model = new DefaultTableModel(contents, header);
 		memberTbl = new JTable(model);
 		JScrollPane scrollpane = new JScrollPane(memberTbl);
@@ -136,6 +141,7 @@ public class UserMemberInfoGUI extends JFrame {
 		memberTbl.getColumnModel().getColumn(2).setPreferredWidth(70);
 		
 		//////////////////////////////////////////////////// frame
+		
 		setLayout(null);
 		add(infoPnl);
 		add(tablePnl);
