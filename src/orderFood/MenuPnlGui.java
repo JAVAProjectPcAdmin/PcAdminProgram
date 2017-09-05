@@ -14,8 +14,8 @@ public class MenuPnlGui extends JPanel {
 	public int count = 0;
 	
 	public MenuPnlGui(String menuImg) {
-		Icon upBtnImg = new ImageIcon("upbutton.jpg");
-		Icon downbtnImg = new ImageIcon("downbutton.jpg");
+		Icon upBtnImg = new ImageIcon("up.png");
+		Icon downbtnImg = new ImageIcon("down.png");
 		Icon menuLblImg = new ImageIcon(menuImg);
 		
 		upBtn = new JButton(upBtnImg);
