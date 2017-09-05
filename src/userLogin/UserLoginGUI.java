@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.function.LongToIntFunction;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -21,6 +22,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
+
+import db.UserDao;
+import db.UserVO;
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
@@ -45,7 +49,7 @@ public class UserLoginGUI extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		LoginListener listener = new LoginListener();
 		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "User Login");
 		panel.setBorder(tb);
@@ -71,6 +75,7 @@ public class UserLoginGUI extends JFrame {
 
 		loginButton = new JButton(new ImageIcon("loginbt.png"));
 		loginButton.setFocusPainted(false);
+		loginButton.addActionListener(listener);
 		signInButton = new JButton(new ImageIcon("sign.png"));
 		signInButton.setFocusPainted(false);
 
@@ -126,7 +131,25 @@ public class UserLoginGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
+	}
 
+	class LoginListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+
+			UserDao dao = new UserDao();
+
+			int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
+			if (result == 1) {
+				System.out.println("로그인 성공");
+			} else if (result == 0) {
+				System.out.println("비밀번호가 틀렸습니다.");
+			} else {
+				System.out.println("아이디가 없습니다.");
+			}
+		}
 	}
 
 	class PlzLogin extends JPanel {
