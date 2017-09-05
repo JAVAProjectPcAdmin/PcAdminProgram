@@ -183,7 +183,10 @@ public class UserJoinGUI extends JFrame {
 				// JOptionPane.OK_OPTION);
 				// }
 
-				else {
+//					else if(!pwCheckFlag) {
+//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+//				}
+				 else{
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
 					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
