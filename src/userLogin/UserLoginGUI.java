@@ -22,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.User;
+
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
 	private JLabel idLabel, pcNumLabel, pwLabel, nonMembersLabel;
@@ -109,6 +111,16 @@ public class UserLoginGUI extends JFrame {
 
 			}
 
+		});
+		
+		loginButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				User user = new User("¿Ã∏ß");
+				new UserClient(user);
+			}
 		});
 
 		panel.add(loginButton);
