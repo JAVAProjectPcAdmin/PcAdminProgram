@@ -133,6 +133,7 @@ public class OrderGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		OrderGUI oderGui = new OrderGUI();
+		OrderGUI orderGui = new OrderGUI();
 	}
+	
 }

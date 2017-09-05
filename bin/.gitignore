@@ -1,8 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/db/
 /userLogin/
 /orderFood/
+<<<<<<< HEAD
+=======
 /userUsingState/
 =======
 /orderFood/
@@ -13,4 +12,8 @@
 /adminMain/
 /orderFood/
 /userUsingState/
+<<<<<<< HEAD
 /chatServer/
+=======
+>>>>>>> f87b7ecdb7ba2eeb20c838eaf98f09ad6f4d4795
+>>>>>>> d6fd451aae30d00b70e649af005620b9fac32a39
