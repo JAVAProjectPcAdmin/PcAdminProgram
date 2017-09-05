@@ -37,7 +37,6 @@ public class OrderGUI extends JFrame {
 		menuTab.addTab("   ¶ó   ¸é   ·ù   ", ramenPnl);
 		menuTab.addTab("   À½   ·á   ¼ö   ", drinkPnl);
 		menuTab.addTab("   ½º   ³¼   ·ù   ", snackPnl);
-		
 
 		menuTab.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		menuTab.setTabPlacement(JTabbedPane.LEFT);
@@ -82,7 +81,7 @@ public class OrderGUI extends JFrame {
 		snack = new MenuPnlGui[8];
 		for (int i = 0; i < snack.length; i++) {
 			snack[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
-			snack[i].setSize(200, 250);
+			snack[i].setSize(200, 260);
 			snackPnl.add(snack[i]);
 		}
 
