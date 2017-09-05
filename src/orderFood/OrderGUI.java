@@ -22,7 +22,11 @@ public class OrderGUI extends JFrame {
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
 	private MenuPnlGui ramen[], drink[], snack[];
-
+	private int total = 0;
+	private int ramenPrice[] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
+	private int drinkPrice[] = {700, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
+	private int snackPrice[] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1200};
+	
 	public OrderGUI() {
 
 		wholePnl = new JPanel();
@@ -48,7 +52,7 @@ public class OrderGUI extends JFrame {
 		menuPnl.setBackground(Color.WHITE);
 
 		/// ÃÑ »ç¿ë±Ý¾×
-		priceLabel = new JLabel("<html><br>ÃÑ ±Ý¾× : ¿ø<br><br></html>");
+		priceLabel = new JLabel("<html><br>ÃÑ ±Ý¾× : " + total + " ¿ø<br><br></html>");
 		priceLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 20));
 
 		labelPnl.add(priceLabel);
@@ -59,14 +63,15 @@ public class OrderGUI extends JFrame {
 		ramenPnl.setLayout(new GridLayout(2, 4));
 		int i;
 		ramen = new MenuPnlGui[8];
-		li li;
+		UpDownListener upDown;
 		for ( i= 0; i < ramen.length; i++) {
 			ramen[i] = new MenuPnlGui(
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i + 1) + ".png");
 			ramen[i].setSize(200, 250);
 			ramenPnl.add(ramen[i]);
-			li=new li(ramen[i]);
-			ramen[i].upBtn.addActionListener(li);
+			upDown = new UpDownListener(ramen[i], i);
+			ramen[i].upBtn.addActionListener(upDown);
+			ramen[i].downBtn.addActionListener(upDown);
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +84,9 @@ public class OrderGUI extends JFrame {
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
 			drink[i].setSize(200, 250);
 			drinkPnl.add(drink[i]);
+			upDown = new UpDownListener(drink[i], i);
+			drink[i].upBtn.addActionListener(upDown);
+			drink[i].downBtn.addActionListener(upDown);
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,22 +99,34 @@ public class OrderGUI extends JFrame {
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
 			snack[i].setSize(200, 260);
 			snackPnl.add(snack[i]);
-			
+			upDown = new UpDownListener(snack[i], i);
+			snack[i].upBtn.addActionListener(upDown);
+			snack[i].downBtn.addActionListener(upDown);
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// °áÁ¦, Ãë¼Ò
 		orderBtn = new JButton("    ÁÖ  ¹®    ");
+		
+		orderBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//°ü¸®ÀÚÇÑÅ× ÁÖ¹® µé¾î°¡¾ßÇÔ !!!
+			}
+		});
+		
 		cancleBtn = new JButton("    Ãë  ¼Ò    ");
+		
 		cancleBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
+		
 		orderBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		cancleBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		orderBtn.setBackground(Color.WHITE);
@@ -118,7 +138,7 @@ public class OrderGUI extends JFrame {
 		selectPnl.add(orderBtn);
 		selectPnl.add(cancleBtn);
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		wholePnl.setLayout(new BoxLayout(wholePnl, BoxLayout.Y_AXIS));
 
@@ -136,24 +156,45 @@ public class OrderGUI extends JFrame {
 		setVisible(true);
 	}
 
+	class UpDownListener implements ActionListener{
+		MenuPnlGui o;
+		int index;
+	
+		public UpDownListener(MenuPnlGui o, int index) {
+			this.o=o;
+			this.index = index;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JButton selected = (JButton)e.getSource();
+			if(selected == o.upBtn) {
+				if(ramen[index] == o) {
+					total += ramenPrice[index];
+				}else if(drink[index] == o) {
+					total += drinkPrice[index];
+				}else if(snack[index] == o) {
+					total += snackPrice[index];
+				}
+				o.count++;
+			}else if(selected == o.downBtn) {
+				if(o.count > 0) {
+					if(ramen[index] == o) {
+						total -= ramenPrice[index];
+					}else if(drink[index] == o) {
+						total -= drinkPrice[index];
+					}else if(snack[index] == o) {
+						total -= snackPrice[index];
+					}
+					o.count--;
+				}
+			}
+			o.countLbl.setText(o.count+"");
+			priceLabel.setText("<html><br>ÃÑ ±Ý¾× : " + total + " ¿ø<br><br></html>");
+		}
+	}
+	
 	public static void main(String[] args) {
 		OrderGUI orderGui = new OrderGUI();
 	}
-	
-	class li implements ActionListener{
-		MenuPnlGui o;
-		public li(MenuPnlGui o) {
-			this.o=o;
-			
-		}
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			o.count++;
-			System.out.println(o.count);
-			o.countLbl.setText(o.count+"");
-		}
-		
-	}
-	
 }

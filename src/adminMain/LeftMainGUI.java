@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 import gui_member.UserMemberInfoGUI;
@@ -55,8 +57,16 @@ public class LeftMainGUI extends JPanel {
 
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	JLabel inputCode_Label = new JLabel("자리 검색 : ");
-	JTextField inputCode_Text = new JTextField(5);
+	JLabel inputSeat_Label = new JLabel("이름 입력 : ");
+	JTextField inputSeat_Text = new JTextField(5);
+
+	public JButton getFindSeatBtn() {
+		return findSeatBtn;
+	}
+
+	public JTextField getInputSeat_Text() {
+		return inputSeat_Text;
+	}
 
 	public LeftMainGUI() {
 		JPanel countGuest_Panel = new JPanel();
@@ -100,14 +110,12 @@ public class LeftMainGUI extends JPanel {
 		// findBtn.setOpaque(false);
 
 		f2 = new Font("맑은 고딕", Font.BOLD, 14);
-		inputCode_Label.setFont(f2);
+		inputSeat_Label.setFont(f2);
 		findSeatBtn.setFont(f2);
 		findSeatBtn.setBackground(Color.WHITE);
 
-		findSeatBtn.addActionListener(new FindSeatActionListener());
-		
-		findGuest_Panel.add(inputCode_Label);
-		findGuest_Panel.add(inputCode_Text);
+		findGuest_Panel.add(inputSeat_Label);
+		findGuest_Panel.add(inputSeat_Text);
 		findGuest_Panel.add(findSeatBtn);
 		findGuest_Panel.setPreferredSize(new Dimension(200, -50));
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -195,21 +203,7 @@ public class LeftMainGUI extends JPanel {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// 회원자리 검색 리스너
-	private class FindSeatActionListener implements ActionListener {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			JButton selected = (JButton) e.getSource();
-			if (selected == findSeatBtn) {
-				RightMainGUI RM_GUI = new RightMainGUI();
-//				 if(inputCode_Text.getText()==RM_GUI.)
-				{
-
-				}
-			}
-
-		}
-	}
+	// 회원자리 검색 버튼
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원정보 검색 리스너

@@ -2,4 +2,9 @@
 /adminMain/
 /gui_member/
 /orderFood/
+<<<<<<< HEAD
 /AdminServer/
+=======
+/chatServer/
+/userUsingState/
+>>>>>>> a467fe388efeb9224dc006a170c5ba1492308ff5

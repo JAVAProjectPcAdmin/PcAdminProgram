@@ -19,17 +19,23 @@ import javax.swing.border.TitledBorder;
 public class RightMainGUI extends JPanel {
 	private JLabel userNumberL;
 	private JLabel userNameL;
-	
 
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> a467fe388efeb9224dc006a170c5ba1492308ff5
 	public JLabel getUserNameL() {
 		return userNameL;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a467fe388efeb9224dc006a170c5ba1492308ff5
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
