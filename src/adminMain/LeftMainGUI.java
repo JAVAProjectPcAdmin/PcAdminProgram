@@ -9,6 +9,11 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -18,20 +23,33 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
 	// 손님 정보 테인블
-	private String[] infoTitle1 = { "이 름", "회원번호", "사용PC" };
+	private String[] infoTitle1 = { "이 름", "회원아이디", "사용PC" };
 	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
-	private String[] infoTitle3 = { "총 사용금액", "선불금액", "주문금액" };
-	private String[][] infoData1 = new String[1][1];
-	private String[][] infoData2 = new String[1][1];
-	private String[][] infoData3 = new String[1][1];
+	private String[] infoTitle3 = { "총 사용금액", "PC사용금액", "음식 주문" };
+	public String[][] infoData1 = new String[1][];
+	public String[][] infoData2 = new String[1][];
+	public String[][] infoData3 = new String[1][];
+	//////////////////////////////////////////////////////////////////////////////////////////////////////
+	// DB값 가져오기
+
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	DefaultTableModel infoModel1 = new DefaultTableModel(infoData1, infoTitle1);
+	DefaultTableModel infoModel2 = new DefaultTableModel(infoData2, infoTitle2);
+	DefaultTableModel infoModel3 = new DefaultTableModel(infoData3, infoTitle3);
+
+	JTable infoTable1 = new JTable(infoModel1);
+	JTable infoTable2 = new JTable(infoModel2);
+	JTable infoTable3 = new JTable(infoModel3);
 	// 하루 사용자 테이블
 	private String[] finishedTitle = { "사용자", "PC", "총 사용금액" };
 	private String[][] finishedData = new String[20][20];
@@ -66,6 +84,18 @@ public class LeftMainGUI extends JPanel {
 
 	public JTextField getInputSeat_Text() {
 		return inputSeat_Text;
+	}
+
+	public String[][] getInfoData1() {
+		return infoData1;
+	}
+
+	public String[][] getInfoData2() {
+		return infoData2;
+	}
+
+	public String[][] getInfoData3() {
+		return infoData3;
 	}
 
 	public LeftMainGUI() {
@@ -120,15 +150,25 @@ public class LeftMainGUI extends JPanel {
 		findGuest_Panel.setPreferredSize(new Dimension(200, -50));
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		findGuest_Panel.setBackground(Color.WHITE);
+
 		/////////////////////////////////////////////////////////////////////////////////////
 		// 손님 정보 테이블
-		DefaultTableModel infoModel1 = new DefaultTableModel(infoData1, infoTitle1);
-		DefaultTableModel infoModel2 = new DefaultTableModel(infoData2, infoTitle2);
-		DefaultTableModel infoModel3 = new DefaultTableModel(infoData3, infoTitle3);
+		JScrollPane infoSp1 = new JScrollPane(infoTable1);
+		JScrollPane infoSp2 = new JScrollPane(infoTable2);
+		JScrollPane infoSp3 = new JScrollPane(infoTable3);
 
-		JTable infoTable1 = new JTable(infoModel1);
-		JTable infoTable2 = new JTable(infoModel2);
-		JTable infoTable3 = new JTable(infoModel3);
+		// 테이블 데이터 가운데 정렬
+		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+		dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+		TableColumnModel tcm1 = infoTable1.getColumnModel();
+		TableColumnModel tcm2 = infoTable2.getColumnModel();
+		TableColumnModel tcm3 = infoTable3.getColumnModel();
+
+		for (int i = 0; i < tcm1.getColumnCount(); i++) {
+			tcm1.getColumn(i).setCellRenderer(dtcr);
+			tcm2.getColumn(i).setCellRenderer(dtcr);
+			tcm3.getColumn(i).setCellRenderer(dtcr);
+		}
 
 		// 열과 행 선택의 동시실행 X
 		infoTable1.setCellSelectionEnabled(false);
@@ -144,10 +184,6 @@ public class LeftMainGUI extends JPanel {
 		infoTable1.setRowHeight(50);
 		infoTable2.setRowHeight(50);
 		infoTable3.setRowHeight(50);
-
-		JScrollPane infoSp1 = new JScrollPane(infoTable1);
-		JScrollPane infoSp2 = new JScrollPane(infoTable2);
-		JScrollPane infoSp3 = new JScrollPane(infoTable3);
 
 		infoSp1.setPreferredSize(new Dimension(0, -10));
 		infoSp2.setPreferredSize(new Dimension(0, -10));
@@ -201,9 +237,6 @@ public class LeftMainGUI extends JPanel {
 		super.paintComponent(g);
 
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// 회원자리 검색 버튼
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원정보 검색 리스너
