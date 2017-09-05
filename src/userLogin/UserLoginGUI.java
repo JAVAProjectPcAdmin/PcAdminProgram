@@ -17,18 +17,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-<<<<<<< HEAD
 import db.UserDao;
 import db.UserVO;
+<<<<<<< HEAD
 =======
+import userUsingState.UserUsingStateGUI;
+>>>>>>> 6393455bd70ffd3994672752c491ec1c543e4785
 import AdminServer.User;
->>>>>>> d64a940bd56c7230199efdf20066912a1148b9b6
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
@@ -119,7 +121,7 @@ public class UserLoginGUI extends JFrame {
 			}
 
 		});
-		
+
 		loginButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -158,10 +160,14 @@ public class UserLoginGUI extends JFrame {
 			int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 			if (result == 1) {
 				System.out.println("로그인 성공");
+				dispose();
+				UserUsingStateGUI uus = new UserUsingStateGUI();
 			} else if (result == 0) {
 				System.out.println("비밀번호가 틀렸습니다.");
+				JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
 			} else {
 				System.out.println("아이디가 없습니다.");
+				JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
 			}
 		}
 	}
