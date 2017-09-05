@@ -1,6 +1,8 @@
 package userUsingState;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -15,6 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ChargeInformationGUI extends JFrame implements ActionListener {
 
@@ -22,6 +27,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 			chargeLabel, rs_chargeLabel, orderChargeLabel, rs_orderChargeLabel, sumLabel, rs_sumLabel;
 	private JPanel panel, moneyBagIcon;
 	private JButton exitButton, detailButton;
+	private JTable chargeTable;
 
 	BufferedImage moneybagImg = null;
 
@@ -55,6 +61,15 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		});
 
 		detailButton = new JButton(new ImageIcon("detailinformation.png"));
+		
+		detailButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		moneyBagIcon = new moenyBagIcon();
 		titleLabel = new JLabel("¿ä±ÝÁ¤º¸");
 		titleLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
@@ -135,6 +150,9 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+
+	}
+	class chargeOrder extends JFrame {
 
 	}
 }
