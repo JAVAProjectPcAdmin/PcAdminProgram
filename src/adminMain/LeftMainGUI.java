@@ -105,16 +105,11 @@ public class LeftMainGUI extends JPanel {
 		findSeatBtn.setBackground(Color.WHITE);
 
 		findSeatBtn.addActionListener(new FindSeatActionListener());
+		
 		findGuest_Panel.add(inputCode_Label);
 		findGuest_Panel.add(inputCode_Text);
 		findGuest_Panel.add(findSeatBtn);
-		findSeatBtn.setFont(f2);
-
-		findSeatBtn.setBackground(Color.WHITE);
-		findGuest_Panel.add(findSeatBtn);
-
 		findGuest_Panel.setPreferredSize(new Dimension(200, -50));
-
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		findGuest_Panel.setBackground(Color.WHITE);
 		/////////////////////////////////////////////////////////////////////////////////////
