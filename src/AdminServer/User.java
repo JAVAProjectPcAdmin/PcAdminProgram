@@ -7,6 +7,7 @@ public class User implements Serializable{
 	private String name;
 	private String date;
 	private String totalPrice;
+	private String addPrice;
 	private int seatNumber;
 	
 	
