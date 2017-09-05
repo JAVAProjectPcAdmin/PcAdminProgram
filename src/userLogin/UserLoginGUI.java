@@ -23,12 +23,9 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-<<<<<<< HEAD
 import db.UserDao;
 import db.UserVO;
-=======
 import AdminServer.User;
->>>>>>> d64a940bd56c7230199efdf20066912a1148b9b6
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;

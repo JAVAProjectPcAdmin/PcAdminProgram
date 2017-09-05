@@ -12,6 +12,12 @@ public class User implements Serializable{
 	
 	
 	
+	public int getSeatNumber() {
+		return seatNumber;
+	}
+	public void setSeatNumber(int seatNumber) {
+		this.seatNumber = seatNumber;
+	}
 	public String getName() {
 		return name;
 	}
