@@ -11,6 +11,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import db.UserDao;
+import db.UserVO;
+
 /*
  * by.jaein
  */
@@ -24,6 +27,8 @@ public class RightMainGUI extends JPanel {
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
+
+	UserVO uv = new UserVO();
 
 	public JLabel getUserIDL() {
 		return userIDL;
@@ -54,8 +59,8 @@ public class RightMainGUI extends JPanel {
 		requestFocus();
 
 		usePCNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
-		userNameL = new JLabel("¼Õ´Ô");
-		userIDL = new JLabel("(2)");
+		userNameL = new JLabel("ÀÌ¸§" + uv.getName());
+		userIDL = new JLabel("È¸¿ø¾ÆÀÌµð" + uv.getId());
 		useTimeL = new JLabel("09 : 24");
 		totalPriceL = new JLabel("120000¿ø");
 		addAmountL = new JLabel("3000¿ø Ãß°¡");
@@ -71,7 +76,7 @@ public class RightMainGUI extends JPanel {
 		userNameL.setSize(80, 30);
 		userNameL.setLocation(80, 15);
 		userNameL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
-		
+
 		userIDL.setSize(30, 30);
 		userIDL.setLocation(125, 15);
 		userIDL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
