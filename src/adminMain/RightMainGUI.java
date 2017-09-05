@@ -17,23 +17,48 @@ import javax.swing.border.TitledBorder;
 //ÀÌ¸§L :Label
 //Tf : TextField
 public class RightMainGUI extends JPanel {
-	private JLabel userNumberL;
+	private JLabel usePCNumberL;
 	private JLabel userNameL;
+	private JLabel userIDL;
 
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
 
+	public JLabel getUserIDL() {
+		return userIDL;
+	}
+
 	public JLabel getUserNameL() {
 		return userNameL;
 	}
+
+<<<<<<< HEAD
+	public JLabel getUsePCNumberL() {
+		return usePCNumberL;
+	}
+
+	public JLabel getUseTimeL() {
+		return useTimeL;
+	}
+
+	public JLabel getTotalPriceL() {
+		return totalPriceL;
+	}
+
+	public JLabel getAddAmountL() {
+		return addAmountL;
+	}
+=======
+>>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
 
-		userNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
-		userNameL = new JLabel("¼Õ´Ô(2)");
+		usePCNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
+		userNameL = new JLabel("¼Õ´Ô");
+		userIDL = new JLabel("(2)");
 		useTimeL = new JLabel("09 : 24");
 		totalPriceL = new JLabel("120000¿ø");
 		addAmountL = new JLabel("3000¿ø Ãß°¡");
@@ -41,14 +66,18 @@ public class RightMainGUI extends JPanel {
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
 
-		userNumberL.setSize(50, 50);
-		userNumberL.setLocation(10, 10);
-		userNumberL.setHorizontalAlignment(JLabel.CENTER);
-		userNumberL.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
+		usePCNumberL.setSize(50, 50);
+		usePCNumberL.setLocation(10, 10);
+		usePCNumberL.setHorizontalAlignment(JLabel.CENTER);
+		usePCNumberL.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
 
 		userNameL.setSize(80, 30);
 		userNameL.setLocation(80, 15);
 		userNameL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		
+		userIDL.setSize(30, 30);
+		userIDL.setLocation(125, 15);
+		userIDL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 
 		useTimeL.setSize(80, 20);
 		useTimeL.setLocation(83, 43);
@@ -65,7 +94,8 @@ public class RightMainGUI extends JPanel {
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
 		add(userNameL);
-		add(userNumberL);
+		add(usePCNumberL);
+		add(userIDL);
 		add(useTimeL);
 		add(totalPriceL);
 		add(addAmountL);
