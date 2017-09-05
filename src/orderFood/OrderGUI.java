@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -20,9 +22,9 @@ public class OrderGUI extends JFrame {
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
 	private MenuPnlGui ramen[], drink[], snack[];
-	
+
 	public OrderGUI() {
-		
+
 		wholePnl = new JPanel();
 
 		ramenPnl = new JPanel();
@@ -53,36 +55,43 @@ public class OrderGUI extends JFrame {
 		labelPnl.setBackground(Color.WHITE);
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		ramenPnl.setLayout(new GridLayout(2, 4));
-		
+		int i;
 		ramen = new MenuPnlGui[8];
-		for(int i=0; i<ramen.length; i++) {
-			ramen[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i+1) + ".png");
+		li li;
+		for ( i= 0; i < ramen.length; i++) {
+			ramen[i] = new MenuPnlGui(
+					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i + 1) + ".png");
 			ramen[i].setSize(200, 250);
 			ramenPnl.add(ramen[i]);
+			li=new li(ramen[i]);
+			ramen[i].upBtn.addActionListener(li);
 		}
-		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
-		
+
 		drinkPnl.setLayout(new GridLayout(2, 4));
 
 		drink = new MenuPnlGui[8];
-		for (int i = 0; i < drink.length; i++) {
-			drink[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
+		for ( i = 0; i < drink.length; i++) {
+			drink[i] = new MenuPnlGui(
+					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
 			drink[i].setSize(200, 250);
 			drinkPnl.add(drink[i]);
 		}
-		
+
 		////////////////////////////////////////////////////////////////////////////////////////////////
 
 		snackPnl.setLayout(new GridLayout(2, 4));
 
 		snack = new MenuPnlGui[8];
-		for (int i = 0; i < snack.length; i++) {
-			snack[i] = new MenuPnlGui("C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
+		for ( i = 0; i < snack.length; i++) {
+			snack[i] = new MenuPnlGui(
+					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
 			snack[i].setSize(200, 260);
 			snackPnl.add(snack[i]);
+			
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -90,6 +99,14 @@ public class OrderGUI extends JFrame {
 		// °áÁ¦, Ãë¼Ò
 		orderBtn = new JButton("    ÁÖ  ¹®    ");
 		cancleBtn = new JButton("    Ãë  ¼Ò    ");
+		cancleBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
 		orderBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		cancleBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 25));
 		orderBtn.setBackground(Color.WHITE);
@@ -112,7 +129,7 @@ public class OrderGUI extends JFrame {
 
 		setSize(1000, 800);
 		setResizable(false);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+
 		setBackground(Color.WHITE);
 		setUndecorated(true);
 		setLocation(150, 100);
@@ -120,6 +137,23 @@ public class OrderGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		OrderGUI oderGui = new OrderGUI();
+		OrderGUI orderGui = new OrderGUI();
 	}
+	
+	class li implements ActionListener{
+		MenuPnlGui o;
+		public li(MenuPnlGui o) {
+			this.o=o;
+			
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			o.count++;
+			System.out.println(o.count);
+			o.countLbl.setText(o.count+"");
+		}
+		
+	}
+	
 }
