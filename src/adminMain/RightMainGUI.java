@@ -19,6 +19,11 @@ import javax.swing.border.TitledBorder;
 public class RightMainGUI extends JPanel {
 	private JLabel userNumberL;
 	private JLabel userNameL;
+	
+	public JLabel getUserNameL() {
+		return userNameL;
+	}
+
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;

@@ -177,7 +177,15 @@ public class UserJoinGUI extends JFrame {
 			if (arg0.getSource() == joinBtn) {
 				if (!idCheckFlag) {
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+<<<<<<< HEAD
+				}
+//					else if(!pwCheckFlag) {
+//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+//				}
+					else{
+=======
 				} else{
+>>>>>>> f52b38ff0bdf6e2634ea2f5da55fca979416e3f0
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
 					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
