@@ -33,9 +33,9 @@ public class UserJoinGUI extends JFrame {
 		pwLbl = new JLabel("*  비밀번호");
 		pwConfirmLbl = new JLabel("*  비밀번호 확인");
 		regiNumLbl = new JLabel("*  주민번호");
-		phLbl = new JLabel("*  전화번호");
-		mailLbl = new JLabel("*  E-Mail");
-		addLbl = new JLabel("   주 소");
+		phLbl = new JLabel("    전화번호");
+		mailLbl = new JLabel("    E-Mail");
+		addLbl = new JLabel("    주 소");
 		atLbl = new JLabel("@");
 		pwNoticeLbl = new JLabel("(최대 12자)");
 
@@ -108,9 +108,6 @@ public class UserJoinGUI extends JFrame {
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
 
-		if (pwTx.getPassword() == pwConfirmTx.getPassword()) {
-			pwCheckFlag = true;
-		}
 
 		// 주민번호
 		add(regiNumLbl);
@@ -156,8 +153,10 @@ public class UserJoinGUI extends JFrame {
 		add(joinBtn);
 		joinBtn.setBounds(100, 450, 90, 30);
 		joinBtn.addActionListener(listener);
+		
 		add(cancelBtn);
 		cancelBtn.setBounds(200, 450, 90, 30);
+		cancelBtn.addActionListener(listener);
 
 		getContentPane().setBackground(Color.WHITE);
 		setTitle("회원가입");
@@ -171,25 +170,32 @@ public class UserJoinGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			UserDao dao = new UserDao();
 			int result = -1;
 			if (arg0.getSource() == joinBtn) {
-				if (!idCheckFlag) {
-					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+				
+				//비밀번호 확인 부분
+				if (pwTx.getPassword().length != pwConfirmTx.getPassword().length) {
+					pwCheckFlag = false;
+				} else {
+					for (int i = 0; i < pwTx.getPassword().length; i++) {
+						if (pwTx.getPassword()[i] == pwConfirmTx.getPassword()[i]) {
+							pwCheckFlag = true;
+						} else {
+							pwCheckFlag = false;
+							break;
+						}
+					}
 				}
-				// else if(!pwCheckFlag) {
-				// JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류",
-				// JOptionPane.OK_OPTION);
-				// }
 
-//					else if(!pwCheckFlag) {
-//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
-//				}
-				 else{
+				if (!idCheckFlag) { //아이디 중복
+					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+				} else if (!pwCheckFlag) { //비밀번호 오류
+					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				} else {
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
-					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
+					user.setPassword(new String(pwTx.getPassword())); // 패스워드는 char배열로 반환 됨
 					user.setName(nameTx.getText());
 					String regiNum = (regiNumTx1.getText()) + (new String(regiNumTx2.getPassword()));
 					user.setResidentNumber(regiNum);
@@ -198,9 +204,10 @@ public class UserJoinGUI extends JFrame {
 					user.setEmailAddress(mailTx1.getText() + "@" + mailTx2.getText());
 					user.setAddress(addTx.getText());
 					dao.UserJoinInsert(user);
+					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "회원가입 완료", JOptionPane.OK_OPTION);
+					dispose();
 				}
 			} else if (arg0.getSource() == idCheckBtn) {
-
 				result = dao.UserIdSelect(idTx.getText());
 				if (result <= 0) {
 					System.out.println("쓸수있는 아이디");
@@ -211,8 +218,9 @@ public class UserJoinGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.", "중복확인", JOptionPane.OK_OPTION);
 					idCheckFlag = false;
 				}
+			} else if (arg0.getSource() == cancelBtn) {
+				dispose();
 			}
 		}
-
 	}
 }
