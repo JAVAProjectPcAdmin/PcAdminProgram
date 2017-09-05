@@ -1,4 +1,5 @@
 package db;
+
 /*
  * by.jaein
  */
@@ -10,17 +11,17 @@ import java.sql.SQLException;
 import java.util.Date;
 
 public class UserDao {
-	PreparedStatement pstnt = null;
+	PreparedStatement pstmt = null;
 	Connection con = null;
 	String sql = null;
 	int result;
-	ResultSet rs; 
-	
-	private static final String DB_Driver="com.mysql.jdbc.Driver";
-	private static final String DB_URL="jdbc:mysql://127.0.0.1:3306/java";
-	private static final String DB_ID="root";
-	private static final String DB_PW ="sds1501";
-	
+	ResultSet rs;
+
+	private static final String DB_Driver = "com.mysql.jdbc.Driver";
+	private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/java";
+	private static final String DB_ID = "root";
+	private static final String DB_PW = "sds1501";
+
 	public UserDao() {
 		try {
 			Class.forName(DB_Driver);
@@ -28,68 +29,103 @@ public class UserDao {
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} 
+		}
 	}
+
 	public void UserJoinInsert(UserVO user) {
-		Date date= new Date();
-		
-		sql= "INSERT INTO USER(ID,PASSWORD,NAME,RESIDENT_NUMBER,PHONE,EMAIL_ADDRESS,ADDRESS,REGISTER_DATE) "
+		Date date = new Date();
+
+		sql = "INSERT INTO USER(ID,PASSWORD,NAME,RESIDENT_NUMBER,PHONE,EMAIL_ADDRESS,ADDRESS,REGISTER_DATE) "
 				+ " VALUES(?,?,?,?,?,?,?,?)";
-		
+
 		try {
-			con = DriverManager.getConnection(DB_URL,DB_ID ,DB_PW);
-			pstnt = con.prepareStatement(sql);
-			
-			pstnt.setString(1, user.getId());
-			pstnt.setString(2, user.getPassword());
-			pstnt.setString(3, user.getName());
-			pstnt.setString(4, user.getResidentNumber());
-			pstnt.setString(5, user.getPhone());
-			pstnt.setString(6, user.getEmailAddress());
-			pstnt.setString(7, user.getAddress());
-			pstnt.setString(8, date.toString());
-			
-			result = pstnt.executeUpdate();
-			System.out.println("insert : "+result);
-			
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, user.getId());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getResidentNumber());
+			pstmt.setString(5, user.getPhone());
+			pstmt.setString(6, user.getEmailAddress());
+			pstmt.setString(7, user.getAddress());
+			pstmt.setString(8, date.toString());
+
+			result = pstmt.executeUpdate();
+			System.out.println("insert : " + result);
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			this.close();
 		}
 	}
+
 	public int UserIdSelect(String Id) {
-		int num=-1;
+		int num = -1;
 		sql = "SELECT USER_NUMBER FROM USER WHERE ID=?";
-		
+
 		try {
-			con = DriverManager.getConnection(DB_URL,DB_ID,DB_PW);
-			pstnt=con.prepareStatement(sql);
-			
-			pstnt.setString(1, Id);
-			
-			rs=pstnt.executeQuery();
-			if(rs.next()) {
-				num=rs.getInt(1);
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, Id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}finally {
+		} finally {
 			close();
 			closeRS();
 		}
 		return num;
-	
+
 	}
-	
-	
+
+	public int UserLoginCheck(String id, String password) {
+		int num;
+		String check = null;
+		sql = "SELECT PASSWORD FROM USER WHERE ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getString(1);
+
+				if (check.equals(password)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+
+			} else {
+				result = -1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return result;
+
+	}
+
 	public void close() {
-		if (pstnt != null) {
+		if (pstmt != null) {
 			try {
-				pstnt.close();
+				pstmt.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -105,8 +141,9 @@ public class UserDao {
 			}
 		}
 	}
+
 	public void closeRS() {
-		if(rs!=null)
+		if (rs != null)
 			try {
 				rs.close();
 			} catch (SQLException e) {
@@ -114,6 +151,5 @@ public class UserDao {
 				e.printStackTrace();
 			}
 	}
-	
-	
+
 }
