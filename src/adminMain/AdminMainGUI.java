@@ -78,7 +78,7 @@ public class AdminMainGUI extends JFrame {
 
 				}
 				if (flag == false) {
-					JOptionPane.showMessageDialog(null, "없습니다.", "자리 검색 결과", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "찾으시는 회원이 없습니다.", "자리 검색 결과", JOptionPane.WARNING_MESSAGE);
 					for (int i = 0; i < rightUserPanel.length; i++) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
 					}

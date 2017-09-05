@@ -57,7 +57,7 @@ public class LeftMainGUI extends JPanel {
 
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	JLabel inputSeat_Label = new JLabel("자리 검색 : ");
+	JLabel inputSeat_Label = new JLabel("이름 입력 : ");
 	JTextField inputSeat_Text = new JTextField(5);
 
 	public JButton getFindSeatBtn() {
