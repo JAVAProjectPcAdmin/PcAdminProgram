@@ -57,13 +57,16 @@ public class OrderGUI extends JFrame {
 		////////////////////////////////////////////////////////////////////////////////////////////////
 
 		ramenPnl.setLayout(new GridLayout(2, 4));
-
+		int i;
 		ramen = new MenuPnlGui[8];
-		for (int i = 0; i < ramen.length; i++) {
+		li li;
+		for ( i= 0; i < ramen.length; i++) {
 			ramen[i] = new MenuPnlGui(
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\ramen" + (i + 1) + ".png");
 			ramen[i].setSize(200, 250);
 			ramenPnl.add(ramen[i]);
+			li=new li(ramen[i]);
+			ramen[i].upBtn.addActionListener(li);
 		}
 
 		////////////////////////////////////////////////////////////////////////////////////////////////
@@ -71,7 +74,7 @@ public class OrderGUI extends JFrame {
 		drinkPnl.setLayout(new GridLayout(2, 4));
 
 		drink = new MenuPnlGui[8];
-		for (int i = 0; i < drink.length; i++) {
+		for ( i = 0; i < drink.length; i++) {
 			drink[i] = new MenuPnlGui(
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\drink" + (i + 1) + ".png");
 			drink[i].setSize(200, 250);
@@ -83,11 +86,12 @@ public class OrderGUI extends JFrame {
 		snackPnl.setLayout(new GridLayout(2, 4));
 
 		snack = new MenuPnlGui[8];
-		for (int i = 0; i < snack.length; i++) {
+		for ( i = 0; i < snack.length; i++) {
 			snack[i] = new MenuPnlGui(
 					"C:\\Users\\student\\Documents\\GitHub\\PcAdminProgram\\food\\snack" + (i + 1) + ".png");
 			snack[i].setSize(200, 260);
 			snackPnl.add(snack[i]);
+			
 		}
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -134,6 +138,22 @@ public class OrderGUI extends JFrame {
 
 	public static void main(String[] args) {
 		OrderGUI orderGui = new OrderGUI();
+	}
+	
+	class li implements ActionListener{
+		MenuPnlGui o;
+		public li(MenuPnlGui o) {
+			this.o=o;
+			
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			o.count++;
+			System.out.println(o.count);
+			o.countLbl.setText(o.count+"");
+		}
+		
 	}
 	
 }
