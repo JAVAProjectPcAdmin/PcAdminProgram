@@ -107,6 +107,15 @@ public class UserJoinGUI extends JFrame {
 		pwConfirmLbl.setBounds(15, 230, 100, 15);
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
+<<<<<<< HEAD
+=======
+
+
+		if (pwTx.getPassword() == pwConfirmTx.getPassword()) {
+			pwCheckFlag = true;
+		}
+
+>>>>>>> 357753ee73c74d4d0898e14dc2f31f551b6ad5bf
 
 		// 주민번호
 		add(regiNumLbl);
@@ -189,9 +198,26 @@ public class UserJoinGUI extends JFrame {
 
 				if (!idCheckFlag) { //아이디 중복
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+<<<<<<< HEAD
 				} else if (!pwCheckFlag) { //비밀번호 오류
 					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
 				} else{
+=======
+				}
+
+					else if(!pwCheckFlag) {
+					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				}
+				// else if(!pwCheckFlag) {
+				// JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류",
+				// JOptionPane.OK_OPTION);
+				// }
+
+//					else if(!pwCheckFlag) {
+//					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+//				}
+				 else{
+>>>>>>> 357753ee73c74d4d0898e14dc2f31f551b6ad5bf
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
 					user.setPassword(new String(pwTx.getPassword())); // 패스워드는 char배열로 반환 됨

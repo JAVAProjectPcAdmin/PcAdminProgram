@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+/db/
+/userLogin/
+=======
 /userLogin/
 /adminMain/
 /gui_member/
@@ -8,3 +12,4 @@
 /chatServer/
 /userUsingState/
 >>>>>>> a467fe388efeb9224dc006a170c5ba1492308ff5
+>>>>>>> d64a940bd56c7230199efdf20066912a1148b9b6
