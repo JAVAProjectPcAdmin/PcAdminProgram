@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.*;
 import java.util.Date;
 
 public class UserDao {
@@ -120,6 +121,29 @@ public class UserDao {
 		}
 		return result;
 
+	}
+	
+	public List<UserVO> UserInfoList() {
+		ArrayList<UserVO> userList = new ArrayList<>();
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			String sql = "SELECT * FROM USER";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				UserVO result = new UserVO();
+				
+			}
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return userList;
 	}
 
 	public void close() {
