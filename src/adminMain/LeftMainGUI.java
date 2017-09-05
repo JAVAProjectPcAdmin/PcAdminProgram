@@ -7,6 +7,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -18,7 +20,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class LeftMainGUI extends JPanel {
+public class LeftMainGUI extends JPanel implements ActionListener {
 	// 손님 정보 테인블
 	private String[] infoTitle1 = { "이 름", "회원번호", "사용PC" };
 	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
@@ -32,6 +34,9 @@ public class LeftMainGUI extends JPanel {
 
 	// 폰트
 	private Font f1, f2;
+	
+	// 회원 자리찾기 버튼
+	JButton findBtn = new JButton();
 
 	// 버튼이미지 사이즈 조절
 	ImageIcon findButtonIcon = new ImageIcon("findbutton.jpg");
@@ -56,13 +61,38 @@ public class LeftMainGUI extends JPanel {
 
 		///////////////////////////////////////////////////////////////////////////////////////
 		// 로고
-		JButton logoBtn = new JButton();
-		logoBtn.setIcon(new ImageIcon(newJavaLogoImg));
+//		JButton logoBtn = new JButton();
+//		logoBtn.setIcon(new ImageIcon(newJavaLogoImg));
+//
+//		logoBtn.setPreferredSize(new Dimension(170, 70));
+//		logo_Panel.setPreferredSize(new Dimension(200, -10));
+//		logo_Panel.add(logoBtn);
+//		logo_Panel.setBackground(Color.WHITE);
+///////////////////////////////////////////////////////////////////////////////////////
+		// 회원 검색
+		JLabel inputCode_Label = new JLabel("이름 입력 : ");
+		JTextField inputCode_Text = new JTextField(5);
+		findBtn.setIcon(new ImageIcon(newFindButtonImg));
 
-		logoBtn.setPreferredSize(new Dimension(170, 70));
-		logo_Panel.setPreferredSize(new Dimension(200, -10));
-		logo_Panel.add(logoBtn);
-		logo_Panel.setBackground(Color.WHITE);
+		findBtn.setPreferredSize(new Dimension(50, 30));
+		// findBtn.setBorderPainted(false);
+		// findBtn.setContentAreaFilled(false);
+		findBtn.setFocusPainted(false);
+		// findBtn.setOpaque(false);
+
+		f2 = new Font("맑은 고딕", Font.BOLD, 14);
+		inputCode_Label.setFont(f2);
+		findBtn.setFont(f2);
+
+		findBtn.setBackground(Color.WHITE);
+		findGuest_Panel.add(inputCode_Label);
+		findGuest_Panel.add(inputCode_Text);
+		findGuest_Panel.add(findBtn);
+
+		findGuest_Panel.setPreferredSize(new Dimension(200, -30));
+
+		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		findGuest_Panel.setBackground(Color.WHITE);
 
 		///////////////////////////////////////////////////////////////////////////////////////
 		// 손님 수
@@ -81,7 +111,6 @@ public class LeftMainGUI extends JPanel {
 		// 손님 검색
 		JLabel inputCode_Label = new JLabel("이름 입력 : ");
 		JTextField inputCode_Text = new JTextField(5);
-		JButton findBtn = new JButton();
 		findBtn.setIcon(new ImageIcon(newFindButtonImg));
 
 		findBtn.setPreferredSize(new Dimension(50, 30));
@@ -171,6 +200,12 @@ public class LeftMainGUI extends JPanel {
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		findBtn = (JButton)e.getSource();
+		
 	}
 
 }
