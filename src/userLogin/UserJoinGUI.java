@@ -10,13 +10,7 @@ import javax.swing.border.LineBorder;
 
 import db.UserDao;
 import db.UserVO;
-/* UI 수정사항 : 아이디 패스워드 찾기에 이메일과 전화번호가 필요하여 이메일 전화번호까지 *(필수사항) 처리하였습니다.
- * 회원 가입 진행 사항 
- * 입력 정보 데이터 베이스로 넘기기 완료
- * 아이디 중복 확인 한번이라도 해야만 회원가입 가능
- * 중복확인 기능 완료
- * 비밀번호 두개가 같아야 회원가입 가능 - 실시간 아님 
- */
+
 public class UserJoinGUI extends JFrame {
 
 	private JLabel joinLbl, idLbl, nameLbl, pwLbl, pwConfirmLbl, regiNumLbl, phLbl, mailLbl, addLbl, atLbl, minusLbl1,
@@ -114,7 +108,9 @@ public class UserJoinGUI extends JFrame {
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
 		
-		
+		if(pwTx.getPassword()==pwConfirmTx.getPassword()) {
+			pwCheckFlag=true;
+		}
 
 		// 주민번호
 		add(regiNumLbl);
@@ -178,17 +174,18 @@ public class UserJoinGUI extends JFrame {
 			// TODO Auto-generated method stub
 			UserDao dao = new UserDao();
 			int result = -1;
-			if(pwTx.getPassword()==pwConfirmTx.getPassword()) {
-				pwCheckFlag=true;
-			}
 			if (arg0.getSource() == joinBtn) {
 				if (!idCheckFlag) {
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+<<<<<<< HEAD
 				}
 //					else if(!pwCheckFlag) {
 //					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
 //				}
 					else{
+=======
+				} else{
+>>>>>>> f52b38ff0bdf6e2634ea2f5da55fca979416e3f0
 					UserVO user = new UserVO();
 					user.setId(idTx.getText());
 					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
@@ -214,7 +211,7 @@ public class UserJoinGUI extends JFrame {
 					idCheckFlag=false;
 				}
 			}
-		}	
+		}
 
 	}
 }
