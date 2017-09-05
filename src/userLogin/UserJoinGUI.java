@@ -2,8 +2,14 @@ package userLogin;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+
+import db.UserDao;
+import db.UserVO;
 
 public class UserJoinGUI extends JFrame {
 
@@ -17,6 +23,9 @@ public class UserJoinGUI extends JFrame {
 	private String[] phNum = { "010", "02", "031", "032", "033", "041", "043", "042", "044", "051", "052", "053", "054",
 			"055", "061", "062", "063", "064", "070" };
 
+	private boolean idCheckFlag = false; //false이면 아이디 중복확인을 안했거나 중복된 아이디//true 면 회원가입 됨
+	private boolean pwCheckFlag = false;
+	
 	public UserJoinGUI() {
 		joinLbl = new JLabel("회원가입");
 		idLbl = new JLabel("*  아 이 디");
@@ -55,6 +64,8 @@ public class UserJoinGUI extends JFrame {
 			phCombo.addItem(phNum[i]);
 		}
 
+		JoinListener listener = new JoinListener();
+
 		setLayout(null);
 
 		joinLbl.setFont(new Font("맑은고딕", Font.BOLD, 30));
@@ -75,6 +86,7 @@ public class UserJoinGUI extends JFrame {
 		idTx.setBounds(110, 105, 150, 25);
 		add(idCheckBtn);
 		idCheckBtn.setBounds(270, 105, 90, 25);
+		idCheckBtn.addActionListener(listener);
 
 		// 이름
 		add(nameLbl);
@@ -95,6 +107,10 @@ public class UserJoinGUI extends JFrame {
 		pwConfirmLbl.setBounds(15, 230, 100, 15);
 		add(pwConfirmTx);
 		pwConfirmTx.setBounds(110, 225, 150, 25);
+		
+		if(pwTx.getPassword()==pwConfirmTx.getPassword()) {
+			pwCheckFlag=true;
+		}
 
 		// 주민번호
 		add(regiNumLbl);
@@ -139,6 +155,7 @@ public class UserJoinGUI extends JFrame {
 		// 버튼
 		add(joinBtn);
 		joinBtn.setBounds(100, 450, 90, 30);
+		joinBtn.addActionListener(listener);
 		add(cancelBtn);
 		cancelBtn.setBounds(200, 450, 90, 30);
 
@@ -148,5 +165,47 @@ public class UserJoinGUI extends JFrame {
 		setResizable(false);
 		setLocation(400, 300);
 		setVisible(true);
+	}
+
+	class JoinListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			UserDao dao = new UserDao();
+			int result = -1;
+			if (arg0.getSource() == joinBtn) {
+				if (!idCheckFlag) {
+					JOptionPane.showMessageDialog(null, "아이디 중복을 확인해주세요", "아이디 오류", JOptionPane.OK_OPTION);
+				} else if(!pwCheckFlag) {
+					JOptionPane.showMessageDialog(null, "패스워드가 같지 않습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				}else{
+					UserVO user = new UserVO();
+					user.setId(idTx.getText());
+					user.setPassword(new String(pwTx.getPassword()));// 패스워드는 char배열로 반환 됨
+					user.setName(nameTx.getText());
+					String regiNum = (regiNumTx1.getText()) + (new String(regiNumTx2.getPassword()));
+					user.setResidentNumber(regiNum);
+					String phone = phCombo.getSelectedItem().toString() + phTx1.getText() + phTx2.getText();
+					user.setPhone(phone);
+					user.setEmailAddress(mailTx1.getText() + "@" + mailTx2.getText());
+					user.setAddress(addTx.getText());
+					dao.UserJoinInsert(user);
+				}
+			} else if (arg0.getSource() == idCheckBtn) {
+
+				result = dao.UserIdSelect(idTx.getText());
+				if (result <= 0) {
+					System.out.println("쓸수있는 아이디");
+					JOptionPane.showMessageDialog(null, "사용가능한 아이디 입니다.");
+					idCheckFlag=true;
+				} else if (result > 0) {
+					System.out.println("중복된 아이디");
+					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.", "중복확인", JOptionPane.OK_OPTION);
+					idCheckFlag=false;
+				}
+			}
+		}
+
 	}
 }
