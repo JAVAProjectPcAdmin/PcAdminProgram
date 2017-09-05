@@ -91,7 +91,13 @@ public class LeftMainGUI extends JPanel {
 
 		/////////////////////////////////////////////////////////////////////////////////////
 		// ¼Õ´Ô °Ë»ö
+<<<<<<< HEAD
 		findSeatBtn.setIcon(new ImageIcon(newFindButtonImg));
+=======
+		JLabel inputCode_Label2 = new JLabel("ÀÌ¸§ ÀÔ·Â : ");
+		JTextField inputCode_Text2 = new JTextField(5);
+		findBtn.setIcon(new ImageIcon(newFindButtonImg));
+>>>>>>> 3bb626007ad4760f8992793cee5605cff04439e9
 
 		findSeatBtn.setPreferredSize(new Dimension(50, 35));
 		// findBtn.setBorderPainted(false);
@@ -100,6 +106,7 @@ public class LeftMainGUI extends JPanel {
 		// findBtn.setOpaque(false);
 
 		f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 14);
+<<<<<<< HEAD
 		inputCode_Label.setFont(f2);
 		findSeatBtn.setFont(f2);
 		findSeatBtn.setBackground(Color.WHITE);
@@ -112,6 +119,15 @@ public class LeftMainGUI extends JPanel {
 
 		findSeatBtn.setBackground(Color.WHITE);
 		findGuest_Panel.add(findSeatBtn);
+=======
+		inputCode_Label2.setFont(f2);
+		findBtn.setFont(f2);
+
+		findBtn.setBackground(Color.WHITE);
+		findGuest_Panel.add(inputCode_Label2);
+		findGuest_Panel.add(inputCode_Text2);
+		findGuest_Panel.add(findBtn);
+>>>>>>> 3bb626007ad4760f8992793cee5605cff04439e9
 
 		findGuest_Panel.setPreferredSize(new Dimension(200, -50));
 
