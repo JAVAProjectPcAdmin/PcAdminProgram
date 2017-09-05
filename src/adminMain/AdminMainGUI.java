@@ -32,7 +32,6 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightPanel.add(rightUserPanel[i]);
-			
 
 		}
 
@@ -116,25 +115,27 @@ public class AdminMainGUI extends JFrame {
 
 	class ClickPanelListener extends MouseAdapter {
 
-
 		@Override
 		public void mousePressed(MouseEvent e) {
 
-			lmp.infoModel1.setValueAt(rightUserPanel[2].getUserNameL().getText(), 0, 0);
-			lmp.infoModel1.setValueAt(rightUserPanel[2].getUserIDL().getText(), 0, 1);
-			lmp.infoModel1.setValueAt(rightUserPanel[2].getUsePCNumberL().getText(), 0, 2);
-			lmp.infoTable1.updateUI();
-			
-			lmp.infoModel2.setValueAt("시작시간", 0, 0);
-			lmp.infoModel2.setValueAt("종료시간", 0, 1);
-			lmp.infoModel2.setValueAt(rightUserPanel[2].getUseTimeL().getText(), 0, 2);
-			lmp.infoTable2.updateUI();
-			
-			lmp.infoModel3.setValueAt(rightUserPanel[2].getTotalPriceL().getText(), 0, 0);
-			lmp.infoModel3.setValueAt("pc사용금액", 0, 1);
-			lmp.infoModel3.setValueAt("음식주문 가격", 0, 2);
-			lmp.infoTable3.updateUI();
-			
+			for (int i = 0; i < rightUserPanel.length; i++) {
+				if (rightUserPanel[i] == e.getSource()) {
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 0);
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1);
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUsePCNumberL().getText(), 0, 2);
+					lmp.infoTable1.updateUI();
+
+					lmp.infoModel2.setValueAt("시작시간", 0, 0);
+					lmp.infoModel2.setValueAt("종료시간", 0, 1);
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
+					lmp.infoTable2.updateUI();
+
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 0);
+					lmp.infoModel3.setValueAt("pc사용금액", 0, 1);
+					lmp.infoModel3.setValueAt("음식주문 가격", 0, 2);
+					lmp.infoTable3.updateUI();
+				}
+			}
 		}
 	}
 
