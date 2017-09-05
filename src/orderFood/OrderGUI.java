@@ -22,7 +22,7 @@ public class OrderGUI extends JFrame {
 	private JTabbedPane menuTab;
 	private JLabel priceLabel;
 	private MenuPnlGui ramen[], drink[], snack[];
-	private int total;
+	private int total = 0;
 	private int ramenPrice[] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
 	private int drinkPrice[] = {700, 1000, 1000, 1000, 1000, 1000, 1000, 1000};
 	private int snackPrice[] = {1000, 1000, 1000, 1000, 1000, 1000, 1000, 1200};
@@ -108,15 +108,25 @@ public class OrderGUI extends JFrame {
 
 		// 결제, 취소
 		orderBtn = new JButton("    주  문    ");
+		
+		orderBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//관리자한테 주문 들어가야함 !!!
+			}
+		});
+		
 		cancleBtn = new JButton("    취  소    ");
+		
 		cancleBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
+		
 		orderBtn.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		cancleBtn.setFont(new Font("맑은 고딕", Font.BOLD, 25));
 		orderBtn.setBackground(Color.WHITE);
@@ -128,7 +138,7 @@ public class OrderGUI extends JFrame {
 		selectPnl.add(orderBtn);
 		selectPnl.add(cancleBtn);
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		wholePnl.setLayout(new BoxLayout(wholePnl, BoxLayout.Y_AXIS));
 
