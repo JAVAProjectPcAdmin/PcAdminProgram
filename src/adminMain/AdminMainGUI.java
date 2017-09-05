@@ -38,8 +38,12 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
 <<<<<<< HEAD
+<<<<<<< HEAD
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
+=======
+			rightUserPanel[i].setVisible(false);
+>>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 =======
 			rightUserPanel[i].setVisible(false);
 >>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
@@ -135,6 +139,7 @@ public class AdminMainGUI extends JFrame {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	class ClickPanelListener extends MouseAdapter {
 
 
@@ -165,6 +170,8 @@ public class AdminMainGUI extends JFrame {
 
 	}
 =======
+=======
+>>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 //	class AdminClient {
 //		
 //		Socket socket = null;
@@ -195,5 +202,8 @@ public class AdminMainGUI extends JFrame {
 //		}
 //
 //	}
+<<<<<<< HEAD
+>>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
+=======
 >>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 }

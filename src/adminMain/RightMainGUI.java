@@ -34,6 +34,7 @@ public class RightMainGUI extends JPanel {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public JLabel getUsePCNumberL() {
 		return usePCNumberL;
 	}
@@ -49,6 +50,8 @@ public class RightMainGUI extends JPanel {
 	public JLabel getAddAmountL() {
 		return addAmountL;
 	}
+=======
+>>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 =======
 >>>>>>> 2cdd1d3821556b8496112b9aa2b82d5f203eee98
 
