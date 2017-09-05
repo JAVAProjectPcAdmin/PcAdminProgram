@@ -51,8 +51,6 @@ public class TalkGUI extends JFrame {
 
 		try {
 			ServerSocket serverSocket = new ServerSocket(2222);
-			textArea.append("기다리는중...");
-
 			Socket socket = new Socket("70.12.115.60", 2222);
 
 			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
