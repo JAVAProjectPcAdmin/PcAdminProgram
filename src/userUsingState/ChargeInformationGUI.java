@@ -61,13 +61,13 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		});
 
 		detailButton = new JButton(new ImageIcon("detailinformation.png"));
-		
+
 		detailButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				OrderInformationGUI OI = new OrderInformationGUI();
 			}
 		});
 		moneyBagIcon = new moenyBagIcon();
@@ -152,7 +152,5 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
-	class chargeOrder extends JFrame {
 
-	}
 }
