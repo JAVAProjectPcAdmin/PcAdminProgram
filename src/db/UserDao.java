@@ -211,20 +211,20 @@ public class UserDao {
 
 	}
 
-	////////////////////////////////////////////
-	public List<UserVO> UserSelectList(String name, String id) {
-		ArrayList<UserVO> userList = new ArrayList<>();
 	/////////////////////////////////////////////////////
 	
 	public void userUpdate(UserVO user) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "UPDATE USER SET NAME=?, ";
+			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, id);
 			
-			
+			pstmt.setString(1, user.getPassword());
+			pstmt.setString(2, user.getName());
+			pstmt.setString(3, user.getPhone());
+			pstmt.setString(4, user.getEmailAddress());
+			pstmt.setString(5, user.getAddress());
+			pstmt.setString(6, user.getMemo());
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -247,13 +247,18 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
+				
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-				//////////// 수정중 !!!!!!!!!!!!
+				result.setResidentNumber(rs.getString(5).substring(0, 6));
+				result.setPhone(rs.getString(6));
+				result.setEmailAddress(rs.getString(7));
+				result.setAddress(rs.getString(8));
+				result.setRegisterDate(rs.getString(9));
+				result.setMemo(rs.getString(10));
 
-				//////////// 수정중 !!!!!!!!!!!!
 				userList.add(result);
 			}
 		} catch (SQLException e) {
@@ -290,7 +295,6 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
