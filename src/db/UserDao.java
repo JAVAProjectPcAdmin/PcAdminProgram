@@ -210,11 +210,7 @@ public class UserDao {
 		return result;
 
 	}
-<<<<<<< HEAD
 
-=======
-	
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 	public void userUpdate(UserVO user) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -235,16 +231,10 @@ public class UserDao {
 			close();
 		}
 	}
-<<<<<<< HEAD
 
-	// 회원 이름으로 검색
-	public List<UserVO> userNameSelectList(String name) {
-
-=======
 	
 	//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
 	public List<UserVO> userNameSelectList(String name) {
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -268,13 +258,6 @@ public class UserDao {
 				result.setRegisterDate(rs.getString(9));
 				result.setMemo(rs.getString(10));
 
-<<<<<<< HEAD
-				//////////// 수정중 !!!!!!!!!!!!
-
-				//////////// 수정중 !!!!!!!!!!!!
-
-=======
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 				userList.add(result);
 			}
 		} catch (SQLException e) {
@@ -286,14 +269,8 @@ public class UserDao {
 		return userList;
 	}
 
-<<<<<<< HEAD
-	// 회원번호로 검색(테이블 눌렀을 때 필요)
-	public List<UserVO> userNumSelectList(int userNum) {
-
-=======
 	//회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
 	public List<UserVO> userNumSelectList(int userNum) {
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -318,10 +295,6 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
-<<<<<<< HEAD
-=======
-
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 			}
 
 		} catch (SQLException e) {
@@ -333,15 +306,9 @@ public class UserDao {
 		return userList;
 	}
 
-<<<<<<< HEAD
-	// 모든 정보
-	public List<UserVO> userInfoList() {
-
-=======
 	
 	//모든 정보
 	public List<UserVO> userInfoList() {
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -363,10 +330,6 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
-<<<<<<< HEAD
-
-=======
->>>>>>> 468af96545be884dfe08358020e87234293a6297
 			}
 
 		} catch (SQLException e) {
