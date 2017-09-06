@@ -14,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -29,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import db.UserDao;
+import db.UserVO;
 import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
@@ -309,6 +312,8 @@ public class LeftMainGUI extends JPanel {
 	// 회원정보 검색 리스너
 	private class FindMemberActionListener implements ActionListener {
 		UserMemberInfoGUI umi;
+		List<UserVO> uv;
+		Object[] temp = new Object[5];
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -316,8 +321,25 @@ public class LeftMainGUI extends JPanel {
 			if (selected == findMemberBtn) {
 				if (flag) {
 					umi = new UserMemberInfoGUI();
-//	수정중				umi.m
+					uv = new ArrayList<>();
+
+					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
+					
+					
+					for (int i = 1; i <= uv.size(); i++) {
+						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
+							temp[0] = uv.get(i).getUserNumber();
+							temp[1] = uv.get(i).getName();
+							temp[2] = uv.get(i).getId();
+							temp[3] = uv.get(i).getRegisterDate();
+							temp[4] = uv.get(i).getResidentNumber();
+
+							umi.model.insertRow(0, temp);
+
+						}
+					}
 					flag = false;
+
 				}
 			}
 		}
