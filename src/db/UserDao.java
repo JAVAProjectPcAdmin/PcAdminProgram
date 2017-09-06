@@ -227,11 +227,28 @@ public class UserDao {
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
+<<<<<<< HEAD
+=======
 
 				//////////// 수정중 !!!!!!!!!!!!
 
+<<<<<<< HEAD
+=======
+			}
+=======
+<<<<<<< HEAD
+>>>>>>> c3299b94d8e55066e2eecb42d71c931848d0dc26
+
+				//////////// 수정중 !!!!!!!!!!!!
+>>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
+
 				//////////// 수정중 !!!!!!!!!!!!
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 3581776503580cf9021e7a2ba9b8e93afadab71a
+>>>>>>> c3299b94d8e55066e2eecb42d71c931848d0dc26
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
@@ -240,7 +257,10 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
+<<<<<<< HEAD
 
+=======
+>>>>>>> c3299b94d8e55066e2eecb42d71c931848d0dc26
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

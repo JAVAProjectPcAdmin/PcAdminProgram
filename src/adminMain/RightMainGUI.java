@@ -29,6 +29,7 @@ public class RightMainGUI extends JPanel {
 	private JLabel addAmountL;
 	static String SEAT_NUMBER = "1";
 	static int seat_num = Integer.parseInt(SEAT_NUMBER);
+	public int userPanelIndex;
 
 	UserDao userDao = new UserDao();
 
@@ -63,17 +64,17 @@ public class RightMainGUI extends JPanel {
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
-		
-		userNumberL = new JLabel("" + userDao.UserInfoList());
+
 		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
-		
-		
-		
-		userNameL = new JLabel("ÀÌ¸§");
-		userIDL = new JLabel("È¸¿ø¾ÆÀÌµð");
+
+		String userNumber = String.valueOf(userDao.UserInfoList().get(userPanelIndex).getUserNumber());
+		userNameL = new JLabel(userDao.UserInfoList().get(userPanelIndex).getName());
+		userNumberL = new JLabel(userNumber);
+		userIDL = new JLabel(userDao.UserInfoList().get(userPanelIndex).getId());
 		useTimeL = new JLabel("09 : 24");
 		totalPriceL = new JLabel("120000¿ø");
 		addAmountL = new JLabel("3000¿ø Ãß°¡");
+
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
 
@@ -86,9 +87,9 @@ public class RightMainGUI extends JPanel {
 		userNameL.setLocation(80, 15);
 		userNameL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 
-		userIDL.setSize(30, 30);
-		userIDL.setLocation(125, 15);
-		userIDL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		userNumberL.setSize(30, 30);
+		userNumberL.setLocation(153, 17);
+		userNumberL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 
 		useTimeL.setSize(80, 20);
 		useTimeL.setLocation(83, 43);
@@ -106,7 +107,7 @@ public class RightMainGUI extends JPanel {
 
 		add(userNameL);
 		add(usePCNumberL);
-		add(userIDL);
+		add(userNumberL);
 		add(useTimeL);
 		add(totalPriceL);
 		add(addAmountL);
