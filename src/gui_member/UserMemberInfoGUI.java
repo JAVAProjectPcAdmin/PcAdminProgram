@@ -26,6 +26,7 @@ public class UserMemberInfoGUI extends JFrame {
 	private JButton storeBtn, searchBtn, resetBtn;
 	private JPanel infoPnl, tablePnl;
 	private JTable memberTbl;
+	private UserDao dao;
 	
 	public UserMemberInfoGUI() {
 		////////////////////////////////////////////////////// infoPnl
@@ -180,13 +181,23 @@ public class UserMemberInfoGUI extends JFrame {
 	class UserInfoListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			dao = new UserDao();
 			JButton selected = (JButton)e.getSource();
+			
 			if(selected == storeBtn) {
 				//DB UPDATE
 			}else if(selected == searchBtn) {
-				//DB SELECt
+				dao.
+				//DB SELECT
 			}else if(selected == resetBtn) {
-				//textfield 다 초기화
+				joinNumTx.setText("");
+				nameTx.setText("");
+				idTx.setText("");
+				birthTx.setText("");
+				phTx.setText("");
+				mailTx.setText("");
+				addTx.setText("");
+				memoTx.setText("");
 			}
 		}
 	}
@@ -195,7 +206,8 @@ public class UserMemberInfoGUI extends JFrame {
 	class UserTableMouseListener extends MouseAdapter{
 		@Override
 		public void mousePressed(MouseEvent e) {
-			UserDao dao = new UserDao();
+			dao = new UserDao();
+			
 		}
 	}
 }
