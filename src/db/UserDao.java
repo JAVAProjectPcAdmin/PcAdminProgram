@@ -270,8 +270,8 @@ public class UserDao {
 	}
 
 	//회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
-	public List<UserVO> userNumSelectList(int userNum) {
-		ArrayList<UserVO> userList = new ArrayList<>();
+	public UserVO userNumSelectList(int userNum) {
+		UserVO user = new UserVO();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 			String sql = "SELECT * FROM USER WHERE USER_NUMBER = ?";
@@ -279,31 +279,25 @@ public class UserDao {
 			pstmt.setInt(1, userNum);
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-				result.setUserNumber(rs.getInt(1));
-				result.setId(rs.getString(2));
-				result.setPassword(rs.getString(3));
-				result.setName(rs.getString(4));
-
-				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				result.setPhone(rs.getString(6));
-				result.setEmailAddress(rs.getString(7));
-				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
-				result.setMemo(rs.getString(10));
-
-				userList.add(result);
+			if (rs.next()) {
+				user.setUserNumber(rs.getInt(1));
+				user.setId(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				user.setName(rs.getString(4));
+				user.setResidentNumber(rs.getString(5).substring(0, 6));
+				user.setPhone(rs.getString(6));
+				user.setEmailAddress(rs.getString(7));
+				user.setAddress(rs.getString(8));
+				user.setRegisterDate(rs.getString(9));
+				user.setMemo(rs.getString(10));
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 			closeRS();
 		}
-		return userList;
+		return user;
 	}
 
 	
