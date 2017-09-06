@@ -148,10 +148,11 @@ public class UserDao {
 
 	}
 
+	/////////////////////////////////// 비회원Dao
 	public String nonMemberIdSelect(String non_Id) {
 		String non_name = null;
 
-		sql = "SELECT NAME FROM NONMEMBER WHERE ID=";
+		sql = "SELECT NAME FROM NONMEMBER WHERE NON_ID=?";
 
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -175,6 +176,42 @@ public class UserDao {
 
 	}
 
+	public int nonMemberLoginCheck(String non_Id) {
+		int num;
+		String check = null;
+		sql = "SELECT NON_ID FROM NONMEMBER WHERE NON_ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getString(1);
+				System.out.println(check);
+				System.out.println(non_Id);
+				if (check.equals(non_Id)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+
+			} else {
+				result = -1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return result;
+
+	}
+
+	////////////////////////////////////////////
 	public List<UserVO> UserInfoList() {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
@@ -185,17 +222,14 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
-<<<<<<< HEAD
+
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-				
-				////////////수정중 !!!!!!!!!!!!
-				
-=======
 
->>>>>>> c82872932c2e20ec40cb6ef4f1b4e6ee92cf459b
+				//////////// 수정중 !!!!!!!!!!!!
+
 			}
 
 		} catch (SQLException e) {
