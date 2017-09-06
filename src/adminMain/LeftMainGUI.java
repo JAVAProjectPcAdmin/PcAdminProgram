@@ -331,8 +331,18 @@ public class LeftMainGUI extends JPanel {
 							umi.model.insertRow(0, temp);
 							umi.memberTbl.updateUI();
 
-						}
+						} else if ((inputMemberInfo_Text.getText()).equals("")) {
+							temp[0] = uv.get(i).getUserNumber();
+							temp[1] = uv.get(i).getName();
+							temp[2] = uv.get(i).getId();
+							temp[3] = uv.get(i).getRegisterDate();
+							temp[4] = uv.get(i).getResidentNumber();
+
+							umi.model.insertRow(0, temp);
+							umi.memberTbl.updateUI();
+						} 
 					}
+
 				}
 				flag = false;
 
