@@ -208,7 +208,7 @@ public class UserMemberInfoGUI extends JFrame {
 				user.setEmailAddress(mailTx.getText());
 				user.setAddress(addTx.getText());
 				user.setMemo(memoTx.getText());
-				dao.userUpdate(user);
+				dao.userUpdate(user, user.getUserNumber());
 				
 			}else if(selected == cancleBtn) {
 				LeftMainGUI.flag = true;
