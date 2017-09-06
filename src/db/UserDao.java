@@ -242,6 +242,13 @@ public class UserDao {
 				//////////// 수정중 !!!!!!!!!!!!
 >>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
 
+			}
+=======
+<<<<<<< HEAD
+
+				//////////// 수정중 !!!!!!!!!!!!
+>>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
+
 =======
 >>>>>>> 3581776503580cf9021e7a2ba9b8e93afadab71a
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
