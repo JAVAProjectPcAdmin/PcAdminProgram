@@ -23,7 +23,7 @@ public class UserMemberInfoGUI extends JFrame {
 	private JTextField joinNumTx, nameTx, idTx, birthTx,
 					   phTx, mailTx, addTx, memoTx;
 	private JPasswordField pwTx;
-	private JButton storeBtn, searchBtn, resetBtn;
+	private JButton storeBtn, cancleBtn;
 	private JPanel infoPnl, tablePnl;
 	private JTable memberTbl;
 	private UserDao dao;
@@ -52,8 +52,7 @@ public class UserMemberInfoGUI extends JFrame {
 		memoTx = new JTextField();
 		
 		storeBtn = new JButton("저 장");
-		searchBtn = new JButton("검 색");
-		resetBtn = new JButton("초기화");
+		cancleBtn = new JButton("닫 기");
 		
 		infoPnl = new JPanel();
 		tablePnl = new JPanel();
@@ -121,11 +120,9 @@ public class UserMemberInfoGUI extends JFrame {
 		
 		//버튼
 		add(storeBtn);
-		storeBtn.setBounds(70, 480, 70, 30);
-		add(searchBtn);
-		searchBtn.setBounds(150, 480, 70, 30);
-		add(resetBtn);
-		resetBtn.setBounds(230, 480, 80, 30);
+		storeBtn.setBounds(100, 480, 70, 30);
+		add(cancleBtn);
+		cancleBtn.setBounds(200, 480, 70, 30);
 		
 		//////////////////////////////////////////////////// tablePnl
 		
@@ -173,6 +170,8 @@ public class UserMemberInfoGUI extends JFrame {
 		
 		setTitle("회원정보");
 		setSize(800,570);
+		setUndecorated(true);
+		setLocation(220, 170);
 		setResizable(false);
 		setVisible(true);
 	}
@@ -186,6 +185,7 @@ public class UserMemberInfoGUI extends JFrame {
 			
 			if(selected == storeBtn) {
 				//DB UPDATE
+<<<<<<< HEAD
 			}else if(selected == searchBtn) {
 				
 				//DB SELECT
@@ -198,6 +198,10 @@ public class UserMemberInfoGUI extends JFrame {
 				mailTx.setText("");
 				addTx.setText("");
 				memoTx.setText("");
+=======
+			}else if(selected == cancleBtn) {
+				
+>>>>>>> 526c830d1ef3983ee033c5accc2d14e706aeb511
 			}
 		}
 	}
