@@ -227,7 +227,7 @@ public class UserMemberInfoGUI extends JFrame {
 			try {
 				JTable jt = (JTable) e.getSource();
 				selectedIndex = jt.getSelectedRow();
-				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); // 빈칸이면 try catch 해서 에러 해야할듯
+				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); 
 				userList = dao.userNumSelectList(userNum);
 
 				joinNumTx.setText(Integer.toString(userList.getUserNumber()));
