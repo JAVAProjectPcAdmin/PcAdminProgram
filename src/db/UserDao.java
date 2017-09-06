@@ -211,24 +211,24 @@ public class UserDao {
 
 	}
 
-<<<<<<< HEAD
 	/////////////////////////////////////////////////////
 	
-	public 
-	
-=======
-<<<<<<< HEAD
-	////////////////////////////////////////////
-	public List<UserVO> UserSelectList(String name, String id) {
-		ArrayList<UserVO> userList = new ArrayList<>();
+	public void userUpdate(UserVO user) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "SELECT * FROM USER WHERE NAME = ? OR ID = ?";
+			String sql = "UPDATE USER SET NAME=?, ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, id);
-=======
->>>>>>> 9d3af5ad7b09633d40a3fd5143cb84eebe3abcbf
+			
+			
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+	
 	//회원 이름으로 검색
 	public List<UserVO> userNameSelectList(String name) {
 		ArrayList<UserVO> userList = new ArrayList<>();
@@ -238,22 +238,14 @@ public class UserDao {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
 
->>>>>>> 526c830d1ef3983ee033c5accc2d14e706aeb511
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
-
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				result.setPhone(rs.getString(6));
-				result.setEmailAddress(rs.getString(7));
-				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
-				result.setMemo(rs.getString(10));
 
 				userList.add(result);
 			}
@@ -284,33 +276,6 @@ public class UserDao {
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				userList.add(result);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-		}
-		return userList;
-	}
-	
-	public List<UserVO> UserInfoList() {
-		ArrayList<UserVO> userList = new ArrayList<>();
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "SELECT * FROM USER";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-				result.setUserNumber(rs.getInt(1));
-				result.setId(rs.getString(2));
-				result.setPassword(rs.getString(3));
-				result.setName(rs.getString(4));
-				result.setResidentNumber(rs.getString(5).substring(1, 6));
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
 				result.setAddress(rs.getString(8));
