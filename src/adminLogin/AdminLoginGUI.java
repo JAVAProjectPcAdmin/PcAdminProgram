@@ -14,14 +14,17 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import adminMain.AdminMainGUI;
 import db.UserDao;
 
 public class AdminLoginGUI extends JFrame {
@@ -69,6 +72,8 @@ public class AdminLoginGUI extends JFrame {
 
 		loginButton = new JButton(new ImageIcon("loginbt.png"));
 		loginButton.setFocusPainted(false);
+		loginButton.addActionListener(new LoginListener());
+		
 		setButton = new JButton(new ImageIcon("adminbt.png"));
 		setButton.setFocusPainted(false);
 
@@ -99,12 +104,22 @@ public class AdminLoginGUI extends JFrame {
 	class LoginListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			String updatePasswd = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
+			
 			if (idTf.getText().equals(adminId)) {
-
-				dispose();
-
+				if(updatePasswd.equals(adminPw)) {
+					System.out.println("로그인 성공");
+					dispose();
+					AdminMainGUI amg = new AdminMainGUI();
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "비밀번호를 잘못 입력하셨습니다.");
+				
+				}
+			}else {
+				JOptionPane.showMessageDialog(null, "등록되지 않은 아이디이거나, 잘못 입력하셨습니다.");
 			}
+		
 
 		}
 
