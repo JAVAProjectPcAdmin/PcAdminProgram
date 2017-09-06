@@ -313,6 +313,7 @@ public class LeftMainGUI extends JPanel {
 	private class FindMemberActionListener implements ActionListener {
 		UserMemberInfoGUI umi;
 		List<UserVO> uv;
+		Object[] temp = new Object[5];
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -321,10 +322,24 @@ public class LeftMainGUI extends JPanel {
 				if (flag) {
 					umi = new UserMemberInfoGUI();
 					uv = new ArrayList<>();
-					uv =  dao.userNameSelectList(inputMemberInfo_Text.getText());
+
+					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
 					
-					umi.model.setValueAt(uv, 0, 0);
+					
+					for (int i = 1; i <= uv.size(); i++) {
+						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
+							temp[0] = uv.get(i).getUserNumber();
+							temp[1] = uv.get(i).getName();
+							temp[2] = uv.get(i).getId();
+							temp[3] = uv.get(i).getRegisterDate();
+							temp[4] = uv.get(i).getResidentNumber();
+
+							umi.model.insertRow(0, temp);
+
+						}
+					}
 					flag = false;
+
 				}
 			}
 		}
