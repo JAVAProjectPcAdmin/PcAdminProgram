@@ -27,11 +27,11 @@ public class RightMainGUI extends JPanel {
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
+	static String SEAT_NUMBER = "1";
+	static int seat_num = Integer.parseInt(SEAT_NUMBER);
 
-	UserVO uv = new UserVO();
+	UserDao userDao = new UserDao();
 
-	
-	
 	public JLabel getUserNumberL() {
 		return userNumberL;
 	}
@@ -63,15 +63,17 @@ public class RightMainGUI extends JPanel {
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
-
-		userNumberL = new JLabel("" + uv.getUserNumber());
-		usePCNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
-		userNameL = new JLabel("이름" + uv.getName());
-		userIDL = new JLabel("회원아이디" + uv.getId());
+		
+		userNumberL = new JLabel("" + userDao.UserInfoList());
+		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
+		
+		
+		
+		userNameL = new JLabel("이름");
+		userIDL = new JLabel("회원아이디");
 		useTimeL = new JLabel("09 : 24");
 		totalPriceL = new JLabel("120000원");
 		addAmountL = new JLabel("3000원 추가");
-
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
 
