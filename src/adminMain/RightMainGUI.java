@@ -23,12 +23,18 @@ public class RightMainGUI extends JPanel {
 	private JLabel usePCNumberL;
 	private JLabel userNameL;
 	private JLabel userIDL;
-
+	private JLabel userNumberL;
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
 
 	UserVO uv = new UserVO();
+
+	
+	
+	public JLabel getUserNumberL() {
+		return userNumberL;
+	}
 
 	public JLabel getUserIDL() {
 		return userIDL;
@@ -58,6 +64,7 @@ public class RightMainGUI extends JPanel {
 		setFocusable(true);
 		requestFocus();
 
+		userNumberL = new JLabel("" + uv.getUserNumber());
 		usePCNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
 		userNameL = new JLabel("이름" + uv.getName());
 		userIDL = new JLabel("회원아이디" + uv.getId());
