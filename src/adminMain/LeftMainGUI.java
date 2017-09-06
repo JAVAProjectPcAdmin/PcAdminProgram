@@ -40,7 +40,7 @@ public class LeftMainGUI extends JPanel {
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];
 
-	boolean flag = true;
+	static boolean flag = true;
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB값 가져오기
 
