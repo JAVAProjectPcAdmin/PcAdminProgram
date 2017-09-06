@@ -67,10 +67,10 @@ public class RightMainGUI extends JPanel {
 
 		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
 
-		String userNumber = String.valueOf(userDao.UserInfoList().get(userPanelIndex).getUserNumber());
-		userNameL = new JLabel(userDao.UserInfoList().get(userPanelIndex).getName());
+		String userNumber = String.valueOf(userDao.userInfoList().get(userPanelIndex).getUserNumber());
+		userNameL = new JLabel(userDao.userInfoList().get(userPanelIndex).getName());
 		userNumberL = new JLabel(userNumber);
-		userIDL = new JLabel(userDao.UserInfoList().get(userPanelIndex).getId());
+		userIDL = new JLabel(userDao.userInfoList().get(userPanelIndex).getId());
 		useTimeL = new JLabel("09 : 24");
 		totalPriceL = new JLabel("120000원");
 		addAmountL = new JLabel("3000원 추가");

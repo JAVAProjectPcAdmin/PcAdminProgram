@@ -211,28 +211,28 @@ public class UserDao {
 
 	}
 
-	////////////////////////////////////////////
-	public List<UserVO> UserSelectList(String name, String id) {
-		ArrayList<UserVO> userList = new ArrayList<>();
-	/////////////////////////////////////////////////////
-	
-	public void userUpdate(UserVO user) {
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "UPDATE USER SET NAME=?, ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, id);
-			
-			
-			
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-	}
+//	////////////////////////////////////////////
+//	public List<UserVO> UserSelectList(String name, String id) {
+////		ArrayList<UserVO> userList = new ArrayList<>();
+//	/////////////////////////////////////////////////////
+//	
+//	public void userUpdate(UserVO user) {
+//		try {
+//			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+//			String sql = "UPDATE USER SET NAME=?, ";
+//			pstmt = con.prepareStatement(sql);
+////			pstmt.setString(1, name);
+////			pstmt.setString(2, id);
+//			
+//			
+//			
+//			pstmt.executeUpdate();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close();
+//		}
+//	}
 	
 	//회원 이름으로 검색
 	public List<UserVO> userNameSelectList(String name) {
