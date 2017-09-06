@@ -17,21 +17,21 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class ID_PW_SearchGUI extends JFrame implements ActionListener {
+public class ID_SearchGUI extends JFrame implements ActionListener {
 	private JTextField nameTf, p_NumberTf, emailTf;
-	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel;
+	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel,resultLabel;
 	private JPanel panel, searchIcon;
 	private JButton cancleButton, checkButton;
 	BufferedImage searchImg = null;
 
-	public ID_PW_SearchGUI() {
-		setTitle("ID/PW Search");
+	public ID_SearchGUI() {
+		setTitle("ID Search");
 		setLayout(null);
 		setLocation(400, 300);
 		setSize(400, 420);
 		setResizable(false);
 		setAlwaysOnTop(true);
-		
+
 		try {
 			searchImg = ImageIO.read(new File("Search.png"));
 
@@ -46,7 +46,7 @@ public class ID_PW_SearchGUI extends JFrame implements ActionListener {
 		panel.setSize(400, 420);
 
 		searchIcon = new SearchIdPw();
-		searchLabel = new JLabel("ID/PW √£±‚");
+		searchLabel = new JLabel("ID √£±‚");
 		searchLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 30));
 		nameLabel = new JLabel("¿Ã∏ß");
 		nameLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
@@ -54,6 +54,7 @@ public class ID_PW_SearchGUI extends JFrame implements ActionListener {
 		p_numberLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
 		emailLabel = new JLabel("¿Ã∏ﬁ¿œ ¡÷º“");
 		emailLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
+		
 
 		nameTf = new JTextField();
 		p_NumberTf = new JTextField();
@@ -102,4 +103,8 @@ public class ID_PW_SearchGUI extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 
 	}
+	public static void main(String[] args) {
+		new ID_SearchGUI();
+	}
+
 }
