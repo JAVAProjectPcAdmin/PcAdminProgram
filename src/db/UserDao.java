@@ -189,12 +189,15 @@ public class UserDao {
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
+				result.setResidentNumber(rs.getString(5).substring(0, 6));
+				result.setPhone(rs.getString(6));
+				result.setEmailAddress(rs.getString(7));
+				result.setAddress(rs.getString(8));
+				result.setRegisterDate(rs.getString(9));
+				result.setMemo(rs.getString(10));
 				
-				////////////¼öÁ¤Áß !!!!!!!!!!!!
-				
-
+				userList.add(result);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
