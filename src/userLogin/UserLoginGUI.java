@@ -57,7 +57,7 @@ public class UserLoginGUI extends JFrame {
 			e.printStackTrace();
 		}
 		LoginListener listener = new LoginListener();
-		NonMemberLoginListener listner2 = new NonMemberLoginListener();
+
 		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "User Login");
 		panel.setBorder(tb);
@@ -80,11 +80,10 @@ public class UserLoginGUI extends JFrame {
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 		nonMemberTf = new JTextField();
-
 		loginButton = new JButton(new ImageIcon("loginbt.png"));
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(listener);
-		loginButton.addActionListener(listner2);
+
 		signInButton = new JButton(new ImageIcon("sign.png"));
 		signInButton.setFocusPainted(false);
 
@@ -159,42 +158,34 @@ public class UserLoginGUI extends JFrame {
 			// TODO Auto-generated method stub
 
 			UserDao dao = new UserDao();
-
-			int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
-			if (result == 1) {
-				System.out.println("로그인 성공");
-				dispose();
-				UserUsingStateGUI uus = new UserUsingStateGUI();
-			} else if (result == 0) {
-				System.out.println("비밀번호가 틀렸습니다.");
-				JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+			if (nonMemberTf.getText() == null) {
+				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
+				if (result == 1) {
+					System.out.println("로그인 성공");
+					dispose();
+					UserUsingStateGUI uus = new UserUsingStateGUI();
+				} else if (result == 0) {
+					System.out.println("비밀번호가 틀렸습니다.");
+					JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				} else {
+					System.out.println("아이디가 없습니다.");
+					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
+				}
 			} else {
-				System.out.println("아이디가 없습니다.");
-				JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
+				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
+				if (result == 1) {
+					System.out.println("로그인 성공");
+					dispose();
+					UserUsingStateGUI uus = new UserUsingStateGUI();
+				} else if (result == 0) {
+					System.out.println("사용중인 번호입니다.");
+					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
+				} else {
+					System.out.println("아이디가 없습니다.");
+					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "오류", JOptionPane.OK_OPTION);
+				}
 			}
-		}
-	}
 
-	class NonMemberLoginListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-
-			UserDao dao = new UserDao();
-
-			int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
-			if (result == 1) {
-				System.out.println("로그인 성공");
-				dispose();
-				UserUsingStateGUI uus = new UserUsingStateGUI();
-			} else if (result == 0) {
-				System.out.println("사용중인 번호입니다.");
-				JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
-			} else {
-				System.out.println("아이디가 없습니다.");
-				JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "오류", JOptionPane.OK_OPTION);
-			}
 		}
 	}
 
