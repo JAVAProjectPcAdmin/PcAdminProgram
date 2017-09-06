@@ -211,17 +211,37 @@ public class UserDao {
 
 	}
 
+<<<<<<< HEAD
 	////////////////////////////////////////////
 	public List<UserVO> UserSelectList(String name, String id) {
 		ArrayList<UserVO> userList = new ArrayList<>();
+=======
+	/////////////////////////////////////////////////////
+	
+	public void userUpdate(UserVO user) {
+>>>>>>> 171d0a0b3ba223f10ae605f1476711e93eb7cc6d
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "SELECT * FROM USER WHERE NAME = ? OR ID = ?";
+			String sql = "UPDATE USER SET NAME=?, ";
 			pstmt = con.prepareStatement(sql);
+<<<<<<< HEAD
 			pstmt.setString(1, name);
 			pstmt.setString(2, id);
+=======
+			
+			
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+	
+>>>>>>> 171d0a0b3ba223f10ae605f1476711e93eb7cc6d
 	//회원 이름으로 검색
-	public List<UserVO> UserNameSelectList(String name) {
+	public List<UserVO> userNameSelectList(String name) {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -233,21 +253,17 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
-
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				result.setPhone(rs.getString(6));
-				result.setEmailAddress(rs.getString(7));
-				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
-				result.setMemo(rs.getString(10));
 
+<<<<<<< HEAD
 				//////////// 수정중 !!!!!!!!!!!!
 
 				//////////// 수정중 !!!!!!!!!!!!
+=======
+>>>>>>> 171d0a0b3ba223f10ae605f1476711e93eb7cc6d
 				userList.add(result);
 			}
 		} catch (SQLException e) {
@@ -260,7 +276,7 @@ public class UserDao {
 	}
 	
 	//회원번호로 검색(테이블 눌렀을 때 필요)
-	public List<UserVO> UserNumSelectList(int userNum) {
+	public List<UserVO> userNumSelectList(int userNum) {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -277,33 +293,6 @@ public class UserDao {
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				userList.add(result);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-		}
-		return userList;
-	}
-	
-	public List<UserVO> UserInfoList() {
-		ArrayList<UserVO> userList = new ArrayList<>();
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "SELECT * FROM USER";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-				result.setUserNumber(rs.getInt(1));
-				result.setId(rs.getString(2));
-				result.setPassword(rs.getString(3));
-				result.setName(rs.getString(4));
-				result.setResidentNumber(rs.getString(5).substring(1, 6));
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
 				result.setAddress(rs.getString(8));
@@ -311,7 +300,10 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 171d0a0b3ba223f10ae605f1476711e93eb7cc6d
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -323,7 +315,7 @@ public class UserDao {
 	}
 	
 	//모든 정보
-	public List<UserVO> UserInfoList() {
+	public List<UserVO> userInfoList() {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
