@@ -31,6 +31,8 @@ public class UserMemberInfoGUI extends JFrame {
 	private JTable memberTbl;
 	private UserDao dao;
 	public DefaultTableModel model;
+	public String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
+	public String contents[][] = new String[100][0];
 	
 	public UserMemberInfoGUI() {
 		////////////////////////////////////////////////////// infoPnl
@@ -135,12 +137,6 @@ public class UserMemberInfoGUI extends JFrame {
 		cancleBtn.addActionListener(InfoListener);
 		
 		//////////////////////////////////////////////////// tablePnl
-		
-		String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
-		
-		// *나중에 DB에서 값 받아와야 함*
-		//{{"1", "이유희", "hello", "2017-09-01", "930227"}};
-		String contents[][] = new String[100][0];
 		
 		model = new DefaultTableModel(contents, header) {
 			@Override
