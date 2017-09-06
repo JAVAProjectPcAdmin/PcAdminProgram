@@ -15,6 +15,7 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import adminMain.LeftMainGUI;
 import db.UserDao;
 import db.UserVO;
 
@@ -191,9 +192,10 @@ public class UserMemberInfoGUI extends JFrame {
 			JButton selected = (JButton)e.getSource();
 			
 			if(selected == storeBtn) {
-				user.setName(sc.nextLine());
+				user.setName(nameTx.getText());
 				dao.userUpdate(user);
 			}else if(selected == cancleBtn) {
+				LeftMainGUI.flag = true;
 				dispose();
 			}
 		}
