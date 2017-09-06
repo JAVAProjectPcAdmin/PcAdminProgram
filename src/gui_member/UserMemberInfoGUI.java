@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.*;
@@ -162,6 +163,8 @@ public class UserMemberInfoGUI extends JFrame {
 		memberTbl.getColumnModel().getColumn(1).setPreferredWidth(60);
 		memberTbl.getColumnModel().getColumn(2).setPreferredWidth(70);
 		
+		memberTbl.addMouseListener(new UserTableMouseListener());
+		
 		//////////////////////////////////////////////////// frame
 		
 		setLayout(null);
@@ -219,7 +222,23 @@ public class UserMemberInfoGUI extends JFrame {
 		@Override
 		public void mousePressed(MouseEvent e) {
 			dao = new UserDao();
+			UserVO userList;
+			int selectedIndex, userNum;
 			
+			JTable jt = (JTable)e.getSource();
+			selectedIndex = jt.getSelectedRow();
+			userNum = (int) memberTbl.getValueAt(selectedIndex, 0); //빈칸이면 try catch 해서 에러 해야할듯
+			userList = dao.userNumSelectList(userNum);
+			
+			joinNumTx.setText(Integer.toString(userList.getUserNumber()));
+			nameTx.setText(userList.getName());
+			idTx.setText(userList.getId());
+			pwTx.setText(userList.getPassword());
+			birthTx.setText(userList.getResidentNumber());
+			phTx.setText(userList.getPhone());
+			mailTx.setText(userList.getEmailAddress());
+			addTx.setText(userList.getAddress());
+			memoTx.setText(userList.getMemo());
 		}
 	}
 }

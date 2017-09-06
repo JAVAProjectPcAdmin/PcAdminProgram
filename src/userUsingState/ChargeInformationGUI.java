@@ -67,7 +67,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				final OrderInformationGUI OI = new OrderInformationGUI();
+				OrderInformationGUI OI = new OrderInformationGUI();
 			}
 		});
 		moneyBagIcon = new moenyBagIcon();
