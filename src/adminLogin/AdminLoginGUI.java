@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +22,8 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import db.UserDao;
+
 public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;
 	private JLabel idLabel, pwLabel;
@@ -28,8 +32,10 @@ public class AdminLoginGUI extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
 
+	private String adminId = "admin", adminPw = "sds1501";
+
 	public AdminLoginGUI() {
-		setLocation(400,400);
+		setLocation(400, 400);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -75,8 +81,7 @@ public class AdminLoginGUI extends JFrame {
 		computerIcon.setBounds(70, 50, 97, 70);
 		loginButton.setBounds(320, 230, 118, 27);
 		setButton.setBounds(450, 230, 123, 27);
-		
-		
+
 		panel.add(loginButton);
 		panel.add(setButton);
 		panel.add(idTf);
@@ -88,6 +93,20 @@ public class AdminLoginGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
+
+	}
+
+	class LoginListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			if (idTf.getText().equals(adminId)) {
+
+				dispose();
+
+			}
+
+		}
 
 	}
 
