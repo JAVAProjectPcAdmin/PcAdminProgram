@@ -15,13 +15,17 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+
+import db.UserDao;
 
 public class ID_SearchGUI extends JFrame implements ActionListener {
 	private JTextField nameTf, p_NumberTf, emailTf;
-	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel,resultLabel;
+	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel, resultLabel;
 	private JPanel panel, searchIcon;
 	private JButton cancleButton, checkButton;
+
 	BufferedImage searchImg = null;
 
 	public ID_SearchGUI() {
@@ -39,7 +43,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		checkListener listener = new checkListener();
 		panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setLayout(null);
@@ -54,7 +58,8 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		p_numberLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		emailLabel = new JLabel("이메일 주소");
 		emailLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		
+		resultLabel = new JLabel();
+		resultLabel.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 
 		nameTf = new JTextField();
 		p_NumberTf = new JTextField();
@@ -75,7 +80,16 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		emailTf.setBounds(170, 250, 200, 30);
 		cancleButton.setBounds(200, 340, 118, 28);
 		checkButton.setBounds(80, 340, 118, 28);
+		resultLabel.setBounds(80, 270, 300, 50);
+		checkButton.addActionListener(listener);
+		cancleButton.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
 		panel.add(searchIcon);
 		panel.add(searchLabel);
 		panel.add(nameLabel);
@@ -86,6 +100,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		panel.add(emailTf);
 		panel.add(cancleButton);
 		panel.add(checkButton);
+		panel.add(resultLabel);
 		add(panel);
 
 		setVisible(true);
@@ -98,11 +113,29 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 	}
 
+	class checkListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			UserDao dao = new UserDao();
+			String id = dao.IdSearch(nameTf.getText(), emailTf.getText(), p_NumberTf.getText());
+
+			if (id == null) {
+				resultLabel.setText("입력값을 다시 확인해 주세요.");
+			} else {
+				resultLabel.setText("아이디는 *" + id + "* 입니다.");
+			}
+		}
+
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 
 	}
+
 	public static void main(String[] args) {
 		new ID_SearchGUI();
 	}

@@ -114,6 +114,65 @@ public class UserDao {
 		return name;
 	}
 
+	public String IdSearch(String name, String email, String phoneNumber) {
+		String id = null;
+
+		sql = "SELECT ID FROM USER WHERE NAME=? AND EMAIL_ADDRESS=? AND PHONE=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, email);
+			pstmt.setString(3, phoneNumber);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				id = rs.getString(1);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+
+		}
+		return id;
+	}
+
+	public String PwSearch(String id, String resident_number) {
+		String pw = null;
+
+		sql = "SELECT PASSWORD FROM USER WHERE ID=? AND RESIDENT_NUMBER=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, resident_number);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				pw = rs.getString(1);
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+
+		}
+		return pw;
+	}
+
 	public int UserLoginCheck(String id, String password) {
 		int num;
 		String check = null;
@@ -232,8 +291,7 @@ public class UserDao {
 		}
 	}
 
-	
-	//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
+	// 회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
 	public List<UserVO> userNameSelectList(String name) {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
@@ -269,7 +327,7 @@ public class UserDao {
 		return userList;
 	}
 
-	//회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
+	// 회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
 	public UserVO userNumSelectList(int userNum) {
 		UserVO user = new UserVO();
 		try {
@@ -300,8 +358,7 @@ public class UserDao {
 		return user;
 	}
 
-	
-	//모든 정보
+	// 모든 정보
 	public List<UserVO> userInfoList() {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
