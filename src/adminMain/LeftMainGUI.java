@@ -315,30 +315,12 @@ public class LeftMainGUI extends JPanel {
 			JButton selected = (JButton) e.getSource();
 			if (selected == findMemberBtn) {
 				if (flag) {
+					dao = new UserDao();
 					umi = new UserMemberInfoGUI();
-					System.out.println(dao.userNameSelectList("È÷È÷È÷"));
-//					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
-//					for(UserVO o : uv) {
-//						System.out.println(o);
-//					}
-					
-//					for (int i = 1; i <= uv.size(); i++) {
-//						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
-//							temp[0] = uv.get(i).getUserNumber();
-//							temp[1] = uv.get(i).getName();
-//							temp[2] = uv.get(i).getId();
-//							temp[3] = uv.get(i).getRegisterDate();
-//							temp[4] = uv.get(i).getResidentNumber();
-//
-//							umi.model.insertRow(0, temp);
-//
-//						}
-//					}
 					uv = new ArrayList<>();
-
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
 
-					for (int i = 1; i <= uv.size(); i++) {
+					for (int i = 0; i < uv.size(); i++) {
 						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
 							temp[0] = uv.get(i).getUserNumber();
 							temp[1] = uv.get(i).getName();
@@ -347,15 +329,16 @@ public class LeftMainGUI extends JPanel {
 							temp[4] = uv.get(i).getResidentNumber();
 
 							umi.model.insertRow(0, temp);
+							umi.memberTbl.updateUI();
 
 						}
 					}
-					flag = false;
 
 				}
+				flag = false;
+
 			}
 		}
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
