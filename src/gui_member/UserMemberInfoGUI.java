@@ -10,11 +10,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import db.UserDao;
+import db.UserVO;
 
 public class UserMemberInfoGUI extends JFrame {
 
@@ -183,11 +185,14 @@ public class UserMemberInfoGUI extends JFrame {
 	class UserInfoListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			Scanner sc = new Scanner(System.in);
+			UserVO user = new UserVO();
 			dao = new UserDao();
 			JButton selected = (JButton)e.getSource();
 			
 			if(selected == storeBtn) {
-				//DB UPDATE
+				user.setName(sc.nextLine());
+				dao.userUpdate(user);
 			}else if(selected == cancleBtn) {
 				dispose();
 			}
