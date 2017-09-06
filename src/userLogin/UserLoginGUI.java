@@ -118,7 +118,7 @@ public class UserLoginGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ID_PW_SearchGUI search = new ID_PW_SearchGUI();
+				ID_SearchGUI search = new ID_SearchGUI();
 
 			}
 
