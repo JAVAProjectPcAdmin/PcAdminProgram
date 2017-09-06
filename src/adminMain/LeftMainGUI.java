@@ -329,6 +329,7 @@ public class LeftMainGUI extends JPanel {
 							temp[4] = uv.get(i).getResidentNumber();
 
 							umi.model.insertRow(0, temp);
+							umi.memberTbl.updateUI();
 
 						}
 					}
