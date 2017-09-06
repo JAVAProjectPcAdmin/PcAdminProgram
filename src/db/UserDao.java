@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
@@ -34,7 +35,14 @@ public class UserDao {
 	}
 
 	public void UserJoinInsert(UserVO user) {
-		Date date = new Date();
+//		Date date = new Date();
+		
+		long time = System.currentTimeMillis(); 
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String date = dayTime.format(new Date(time));
+
+
+
 
 		sql = "INSERT INTO USER(ID,PASSWORD,NAME,RESIDENT_NUMBER,PHONE,EMAIL_ADDRESS,ADDRESS,REGISTER_DATE) "
 				+ " VALUES(?,?,?,?,?,?,?,?)";
