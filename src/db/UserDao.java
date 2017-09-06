@@ -185,6 +185,13 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
+				result.setUserNumber(rs.getInt(1));
+				result.setId(rs.getString(2));
+				result.setPassword(rs.getString(3));
+				result.setName(rs.getString(4));
+				
+				////////////МіСЄСп !!!!!!!!!!!!
+				
 
 			}
 
