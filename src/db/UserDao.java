@@ -222,35 +222,25 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
-<<<<<<< HEAD
 
-=======
->>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-<<<<<<< HEAD
 
 				//////////// 수정중 !!!!!!!!!!!!
 
-			}
-=======
-<<<<<<< HEAD
-
 				//////////// 수정중 !!!!!!!!!!!!
->>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
 
-=======
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
 				result.setAddress(rs.getString(8));
 				result.setRegisterDate(rs.getString(9));
 				result.setMemo(rs.getString(10));
-				
+
 				userList.add(result);
->>>>>>> 8da63f93d0daa96b91bd0eb0efdeb47faab6f5de
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
