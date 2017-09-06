@@ -148,10 +148,11 @@ public class UserDao {
 
 	}
 
+	/////////////////////////////////// 비회원Dao
 	public String nonMemberIdSelect(String non_Id) {
 		String non_name = null;
 
-		sql = "SELECT NAME FROM NONMEMBER WHERE ID=";
+		sql = "SELECT NAME FROM NONMEMBER WHERE NON_ID=?";
 
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -175,6 +176,42 @@ public class UserDao {
 
 	}
 
+	public int nonMemberLoginCheck(String non_Id) {
+		int num;
+		String check = null;
+		sql = "SELECT NON_ID FROM NONMEMBER WHERE NON_ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getString(1);
+				System.out.println(check);
+				System.out.println(non_Id);
+				if (check.equals(non_Id)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+
+			} else {
+				result = -1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return result;
+
+	}
+
+	////////////////////////////////////////////
 	public List<UserVO> UserInfoList() {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
@@ -185,24 +222,36 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
 				result.setName(rs.getString(4));
-<<<<<<< HEAD
 
 				//////////// 수정중 !!!!!!!!!!!!
 
+<<<<<<< HEAD
 =======
+			}
+=======
+<<<<<<< HEAD
+
+				//////////// 수정중 !!!!!!!!!!!!
+>>>>>>> 5210c022ea5dcfc83052985db4971fe9e71ac66d
+
+=======
+>>>>>>> 3581776503580cf9021e7a2ba9b8e93afadab71a
 				result.setResidentNumber(rs.getString(5).substring(0, 6));
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
 				result.setAddress(rs.getString(8));
 				result.setRegisterDate(rs.getString(9));
 				result.setMemo(rs.getString(10));
-				
+
 				userList.add(result);
->>>>>>> 8da63f93d0daa96b91bd0eb0efdeb47faab6f5de
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

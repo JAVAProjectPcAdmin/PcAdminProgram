@@ -139,7 +139,7 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoTable2.updateUI();
 
 					lmp.infoModel3.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 0);
-					lmp.infoModel3.setValueAt("pc사용금액", 0, 1);
+					lmp.infoModel3.setValueAt("음식 주문 금액", 0, 1);
 					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 2);
 					lmp.infoTable3.updateUI();
 				}
