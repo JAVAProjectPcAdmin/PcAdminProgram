@@ -242,49 +242,12 @@ public class UserDao {
 
 =======
 	
-	//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
-	public List<UserVO> userNameSelectList(String name) {
->>>>>>> 468af96545be884dfe08358020e87234293a6297
-		ArrayList<UserVO> userList = new ArrayList<>();
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "SELECT * FROM USER WHERE NAME = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-
-			rs = pstmt.executeQuery();
-
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-				result.setUserNumber(rs.getInt(1));
-				result.setId(rs.getString(2));
-				result.setPassword(rs.getString(3));
-				result.setName(rs.getString(4));
-				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				result.setPhone(rs.getString(6));
-				result.setEmailAddress(rs.getString(7));
-				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
-				result.setMemo(rs.getString(10));
-
-<<<<<<< HEAD
-				//////////// 수정중 !!!!!!!!!!!!
-
-				//////////// 수정중 !!!!!!!!!!!!
-
-=======
->>>>>>> 468af96545be884dfe08358020e87234293a6297
-				userList.add(result);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-		}
-		return userList;
-	}
+		public List<UserVO> userNameSelectList(String name) {
+	
+	=======
+		
+		//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
+	
 
 <<<<<<< HEAD
 	// 회원번호로 검색(테이블 눌렀을 때 필요)
