@@ -14,6 +14,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -29,6 +31,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import db.UserDao;
+import db.UserVO;
 import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
@@ -309,6 +312,7 @@ public class LeftMainGUI extends JPanel {
 	// 회원정보 검색 리스너
 	private class FindMemberActionListener implements ActionListener {
 		UserMemberInfoGUI umi;
+		List<UserVO> uv;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -316,7 +320,10 @@ public class LeftMainGUI extends JPanel {
 			if (selected == findMemberBtn) {
 				if (flag) {
 					umi = new UserMemberInfoGUI();
-//	수정중				umi.m
+					uv = new ArrayList<>();
+					uv =  dao.userNameSelectList(inputMemberInfo_Text.getText());
+					
+					umi.model.setValueAt(uv, 0, 0);
 					flag = false;
 				}
 			}
