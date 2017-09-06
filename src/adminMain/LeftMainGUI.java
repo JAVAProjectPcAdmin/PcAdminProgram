@@ -316,7 +316,6 @@ public class LeftMainGUI extends JPanel {
 			if (selected == findMemberBtn) {
 				if (flag) {
 					umi = new UserMemberInfoGUI();
-<<<<<<< HEAD
 					System.out.println(dao.userNameSelectList("È÷È÷È÷"));
 //					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
 //					for(UserVO o : uv) {
@@ -335,7 +334,6 @@ public class LeftMainGUI extends JPanel {
 //
 //						}
 //					}
-=======
 					uv = new ArrayList<>();
 
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
@@ -352,7 +350,6 @@ public class LeftMainGUI extends JPanel {
 
 						}
 					}
->>>>>>> e662dd480bb2013a8c5133d4daa1f3610c0d2080
 					flag = false;
 
 				}

@@ -127,7 +127,8 @@ public class UserDao {
 
 			if (rs.next()) {
 				check = rs.getString(1);
-
+				System.out.println(check);
+				System.out.println(password);
 				if (check.equals(password)) {
 					result = 1;
 				} else {
@@ -146,65 +147,6 @@ public class UserDao {
 		}
 		return result;
 
-	}
-
-	public String IdSearch(String name, String email, String phoneNumber) {
-		String id = null;
-
-		sql = "SELECT ID FROM USER WHERE NAME=? AND EMAIL_ADDRESS=? AND PHONE=?";
-
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, name);
-			pstmt.setString(2, email);
-			pstmt.setString(3, phoneNumber);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				id = rs.getString(1);
-
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-
-		}
-		return id;
-	}
-
-	public String PwSearch(String id, String resident_number) {
-		String pw = null;
-
-		sql = "SELECT PASSWORD FROM USER WHERE ID=? AND RESIDENT_NUMBER=?";
-
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			pstmt.setString(2, resident_number);
-
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				pw = rs.getString(1);
-
-			}
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-
-		}
-		return id;
 	}
 
 	/////////////////////////////////// 비회원Dao
@@ -290,12 +232,9 @@ public class UserDao {
 		}
 	}
 
-	// 회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
+	
+	//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
 	public List<UserVO> userNameSelectList(String name) {
-<<<<<<< HEAD
-
-=======
->>>>>>> c1159431e89ac994084f4e1bd2f38caa9ae792ab
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -318,11 +257,7 @@ public class UserDao {
 				result.setAddress(rs.getString(8));
 				result.setRegisterDate(rs.getString(9));
 				result.setMemo(rs.getString(10));
-<<<<<<< HEAD
-=======
 
-
->>>>>>> c1159431e89ac994084f4e1bd2f38caa9ae792ab
 				userList.add(result);
 			}
 		} catch (SQLException e) {
@@ -334,18 +269,9 @@ public class UserDao {
 		return userList;
 	}
 
-<<<<<<< HEAD
-	// 회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
-	public List<UserVO> userNumSelectList(int userNum) {
-
-		ArrayList<UserVO> userList = new ArrayList<>();
-=======
-	ArrayList<UserVO> userList = new ArrayList<>();
-
-	// 회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
+	//회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
 	public UserVO userNumSelectList(int userNum) {
 		UserVO user = new UserVO();
->>>>>>> c1159431e89ac994084f4e1bd2f38caa9ae792ab
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 			String sql = "SELECT * FROM USER WHERE USER_NUMBER = ?";
@@ -353,26 +279,6 @@ public class UserDao {
 			pstmt.setInt(1, userNum);
 			rs = pstmt.executeQuery();
 
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-				result.setUserNumber(rs.getInt(1));
-				result.setId(rs.getString(2));
-				result.setPassword(rs.getString(3));
-				result.setName(rs.getString(4));
-
-				result.setResidentNumber(rs.getString(5).substring(0, 6));
-				result.setPhone(rs.getString(6));
-				result.setEmailAddress(rs.getString(7));
-				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
-				result.setMemo(rs.getString(10));
-
-				userList.add(result);
-<<<<<<< HEAD
-
-=======
-			}
 			if (rs.next()) {
 				user.setUserNumber(rs.getInt(1));
 				user.setId(rs.getString(2));
@@ -384,7 +290,6 @@ public class UserDao {
 				user.setAddress(rs.getString(8));
 				user.setRegisterDate(rs.getString(9));
 				user.setMemo(rs.getString(10));
->>>>>>> c1159431e89ac994084f4e1bd2f38caa9ae792ab
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -392,15 +297,12 @@ public class UserDao {
 			close();
 			closeRS();
 		}
-		return userList;
+		return user;
 	}
 
-	// 모든 정보
+	
+	//모든 정보
 	public List<UserVO> userInfoList() {
-<<<<<<< HEAD
-
-=======
->>>>>>> c1159431e89ac994084f4e1bd2f38caa9ae792ab
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -422,8 +324,8 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
-
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
