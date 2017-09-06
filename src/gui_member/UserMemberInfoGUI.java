@@ -185,7 +185,6 @@ public class UserMemberInfoGUI extends JFrame {
 			
 			if(selected == storeBtn) {
 				//DB UPDATE
-<<<<<<< HEAD
 			}else if(selected == searchBtn) {
 				
 				//DB SELECT
@@ -198,10 +197,8 @@ public class UserMemberInfoGUI extends JFrame {
 				mailTx.setText("");
 				addTx.setText("");
 				memoTx.setText("");
-=======
 			}else if(selected == cancleBtn) {
 				
->>>>>>> 526c830d1ef3983ee033c5accc2d14e706aeb511
 			}
 		}
 	}
