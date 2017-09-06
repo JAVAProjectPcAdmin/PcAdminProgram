@@ -119,10 +119,13 @@ public class UserMemberInfoGUI extends JFrame {
 		memoTx.setBounds(110, 425, 150, 25);
 		
 		//¹öÆ°
+		UserInfoListener InfoListener = new UserInfoListener();
 		add(storeBtn);
 		storeBtn.setBounds(100, 480, 70, 30);
+		storeBtn.addActionListener(InfoListener);
 		add(cancleBtn);
 		cancleBtn.setBounds(200, 480, 70, 30);
+		cancleBtn.addActionListener(InfoListener);
 		
 		//////////////////////////////////////////////////// tablePnl
 		
@@ -186,7 +189,7 @@ public class UserMemberInfoGUI extends JFrame {
 			if(selected == storeBtn) {
 				//DB UPDATE
 			}else if(selected == cancleBtn) {
-				
+				dispose();
 			}
 		}
 	}
