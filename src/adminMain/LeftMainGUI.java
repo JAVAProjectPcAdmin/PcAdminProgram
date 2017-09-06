@@ -324,8 +324,7 @@ public class LeftMainGUI extends JPanel {
 					uv = new ArrayList<>();
 
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
-					
-					
+
 					for (int i = 1; i <= uv.size(); i++) {
 						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
 							temp[0] = uv.get(i).getUserNumber();
