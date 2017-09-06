@@ -211,10 +211,11 @@ public class UserDao {
 
 	}
 
-	public void userUpdate(UserVO user) {
+	public void userUpdate(UserVO user, int userNum) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? ";
+			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? "
+					+ "WHERE USER_NUMBER = ?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, user.getPassword());
@@ -223,7 +224,8 @@ public class UserDao {
 			pstmt.setString(4, user.getEmailAddress());
 			pstmt.setString(5, user.getAddress());
 			pstmt.setString(6, user.getMemo());
-
+			pstmt.setInt(7, userNum);
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
