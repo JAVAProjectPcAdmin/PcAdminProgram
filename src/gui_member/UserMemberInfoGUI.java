@@ -15,6 +15,7 @@ import java.util.Scanner;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import adminMain.LeftMainGUI;
 import db.UserDao;
 import db.UserVO;
 
@@ -29,6 +30,9 @@ public class UserMemberInfoGUI extends JFrame {
 	private JPanel infoPnl, tablePnl;
 	private JTable memberTbl;
 	private UserDao dao;
+	public DefaultTableModel model;
+	public String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
+	public String contents[][] = new String[100][0];
 	
 	public UserMemberInfoGUI() {
 		////////////////////////////////////////////////////// infoPnl
@@ -71,6 +75,7 @@ public class UserMemberInfoGUI extends JFrame {
 		joinNumLbl.setBounds(20, 110, 100, 15);
 		infoPnl.add(joinNumTx);
 		joinNumTx.setBounds(110, 105, 150, 25);
+		joinNumTx.setEditable(false);
 		
 		//이름
 		infoPnl.add(nameLbl);
@@ -83,6 +88,7 @@ public class UserMemberInfoGUI extends JFrame {
 		idLbl.setBounds(20, 190, 100, 15);
 		infoPnl.add(idTx);
 		idTx.setBounds(110, 185, 150, 25);
+		idTx.setEditable(false);
 		
 		//비밀번호
 		infoPnl.add(pwLbl);
@@ -95,7 +101,8 @@ public class UserMemberInfoGUI extends JFrame {
 		birthLbl.setBounds(20, 270, 100, 15);
 		infoPnl.add(birthTx);
 		birthTx.setBounds(110, 265, 150, 25);
-	
+		birthTx.setEditable(false);
+		
 		//전화번호
 		infoPnl.add(phLbl);
 		phLbl.setBounds(20, 310, 100, 15);
@@ -131,13 +138,7 @@ public class UserMemberInfoGUI extends JFrame {
 		
 		//////////////////////////////////////////////////// tablePnl
 		
-		String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
-		
-		// *나중에 DB에서 값 받아와야 함*
-		//{{"1", "이유희", "hello", "2017-09-01", "930227"}};
-		String contents[][] = new String[100][0];
-		
-		DefaultTableModel model = new DefaultTableModel(contents, header) {
+		model = new DefaultTableModel(contents, header) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				if(column >= 0) {
@@ -185,15 +186,29 @@ public class UserMemberInfoGUI extends JFrame {
 	class UserInfoListener implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			String updatePasswd = "";
 			Scanner sc = new Scanner(System.in);
 			UserVO user = new UserVO();
 			dao = new UserDao();
 			JButton selected = (JButton)e.getSource();
 			
 			if(selected == storeBtn) {
-				user.setName(sc.nextLine());
+				user.setName(nameTx.getText());
+				
+//				for(int i=0; i<pwTx.getPassword().length; i++) {
+//					updatePasswd += pwTx.getPassword()[i];
+//				}
+				
+				updatePasswd = new String(pwTx.getPassword(), 0, pwTx.getPassword().length);
+				user.setPassword(updatePasswd);
+				user.setPhone(phTx.getText());
+				user.setEmailAddress(mailTx.getText());
+				user.setAddress(addTx.getText());
+				user.setMemo(memoTx.getText());
 				dao.userUpdate(user);
+				
 			}else if(selected == cancleBtn) {
+				LeftMainGUI.flag = true;
 				dispose();
 			}
 		}
