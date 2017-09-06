@@ -187,7 +187,7 @@ public class UserMemberInfoGUI extends JFrame {
 			if(selected == storeBtn) {
 				//DB UPDATE
 			}else if(selected == searchBtn) {
-				dao.
+				
 				//DB SELECT
 			}else if(selected == resetBtn) {
 				joinNumTx.setText("");

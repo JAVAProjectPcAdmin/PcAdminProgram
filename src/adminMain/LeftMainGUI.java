@@ -84,7 +84,7 @@ public class LeftMainGUI extends JPanel {
 	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
 	private String[][] finishedData = new String[20][20];
 	
-	JLabel inputSeat_Label = new JLabel("이름 입력 : ");
+	JLabel inputSeat_Label = new JLabel("자리 검색 : ");
 	JTextField inputSeat_Text = new JTextField(5);
 	
 	JLabel inputMemberInfo_Label = new JLabel("이름 입력 : ");
@@ -98,7 +98,7 @@ public class LeftMainGUI extends JPanel {
 	private JButton findSeatBtn = new JButton();
 
 	// 이미지 사이즈 조절
-	ImageIcon findButtonIcon = new ImageIcon("findbutton.jpg");
+	ImageIcon findButtonIcon = new ImageIcon("findseat.jpg");
 	Image findButton = findButtonIcon.getImage();
 	Image newFindButtonImg = findButton.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
@@ -108,9 +108,9 @@ public class LeftMainGUI extends JPanel {
 	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 	
-	ImageIcon findSeatIcon = new ImageIcon("findseat.jpg");
+	ImageIcon findSeatIcon = new ImageIcon("findbutton.jpg");
 	Image findSeat = findSeatIcon.getImage();
-	Image newFindSeatImg = findSeat.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
+	Image newFindSeatImg = findSeat.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindSeat = new ImageIcon(newFindSeatImg);
 	
 
@@ -193,6 +193,9 @@ public class LeftMainGUI extends JPanel {
 		inputMemberInfo_Label.setFont(f2);
 		findMemberBtn.setFont(f2);
 		findMemberBtn.setBackground(Color.WHITE);
+		findMemberBtn.setFocusPainted(false);
+		findMemberBtn.addActionListener(new FindMemberActionListener());
+
 
 		findGuest_Panel.add(inputMemberInfo_Label);
 		findGuest_Panel.add(inputMemberInfo_Text);
@@ -200,6 +203,7 @@ public class LeftMainGUI extends JPanel {
 		findGuest_Panel.setPreferredSize(new Dimension(200, 0));
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		findGuest_Panel.setBackground(Color.WHITE);
+		
 
 		// 손님 정보 테이블
 		JScrollPane infoSp1 = new JScrollPane(infoTable1);
@@ -277,6 +281,7 @@ public class LeftMainGUI extends JPanel {
 		finishedSp.setBackground(Color.WHITE);
 		finishedTable.setBackground(Color.WHITE);
 		fee_Panel.add(finishedSp);
+		fee_Panel.setBackground(Color.WHITE);
 
 		// 회원검색
 //
