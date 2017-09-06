@@ -6,11 +6,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -22,32 +17,31 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import AdminServer.User;
-
 public class AdminMainGUI extends JFrame {
 	private JPopupMenu popup;
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
+	private JPanel rightPanel = new JPanel();
+	// private
 
 	public AdminMainGUI() {
-
-		JPanel rightPanel = new JPanel();
-
-		lmp.setBounds(0, 80, 220, 850);
-
-		rightPanel.setLayout(new GridLayout(5, 5));
 
 		for (int i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
-			rightUserPanel[i].setVisible(false);
+			rightUserPanel[i].addMouseListener(new ClickPanelListener());
+			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightPanel.add(rightUserPanel[i]);
-			rightPanel.addMouseListener(new PopupListener());
-		}
-		rightPanel.setBounds(230, 90, 1030, 800);
-		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
-		add(rightPanel);
 
+		}
+
+		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
+
+		lmp.setBounds(0, 80, 220, 850);
+		rightPanel.setLayout(new GridLayout(5, 5));
+		rightPanel.setBounds(230, 90, 1030, 800);
+
+		add(rightPanel);
 		add(lmp);
 		setResizable(false);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -70,9 +64,9 @@ public class AdminMainGUI extends JFrame {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원자리 검색 리스너
 	private class FindSeatActionListener implements ActionListener {
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
+
 			System.out.println((lmp.getInputSeat_Text()).getText());
 			JButton selected = (JButton) e.getSource();
 			if (selected == lmp.getFindSeatBtn()) {
@@ -99,14 +93,11 @@ public class AdminMainGUI extends JFrame {
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	public static void main(String[] args) {
-		AdminMainGUI admin = new AdminMainGUI();
-
-	}
-
 	class PopupListener extends MouseAdapter {
+
 		@Override
 		public void mousePressed(MouseEvent e) {
+
 			showPopup(e);
 		}
 
@@ -122,36 +113,35 @@ public class AdminMainGUI extends JFrame {
 		}
 	}
 
-	class AdminClient {
-		ServerSocket serverSocket = null;
-		Socket socket = null;
-		BufferedWriter bw = null;
-		User user2;
-		ObjectInputStream ois;
+	class ClickPanelListener extends MouseAdapter {
 
-		public AdminClient() {
-			try {
-				serverSocket = new ServerSocket(7777);
-				System.out.println("기다리는중....");
-				socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
-				System.out.println("클라이언트 요청 들어옴 ");
+		@Override
+		public void mousePressed(MouseEvent e) {
 
-				ois = new ObjectInputStream(socket.getInputStream());
-				user2 = (User) ois.readObject();
-				System.out.println(user2.getName());
-				if (user2.getSeatNumber() == 1) {
-					rightUserPanel[1].setVisible(true);
-					System.out.println("여기까지!!!!!");
+			for (int i = 0; i < rightUserPanel.length; i++) {
+				if (rightUserPanel[i] == e.getSource()) {
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 0);
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1);
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUsePCNumberL().getText(), 0, 2);
+					lmp.infoTable1.updateUI();
+
+					lmp.infoModel2.setValueAt("시작시간", 0, 0);
+					lmp.infoModel2.setValueAt("종료시간", 0, 1);
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
+					lmp.infoTable2.updateUI();
+
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 0);
+					lmp.infoModel3.setValueAt("pc사용금액", 0, 1);
+					lmp.infoModel3.setValueAt("음식주문 가격", 0, 2);
+					lmp.infoTable3.updateUI();
 				}
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		}
+	}
+
+	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	public static void main(String[] args) {
+		AdminMainGUI admin = new AdminMainGUI();
 
 	}
 }

@@ -89,6 +89,31 @@ public class UserDao {
 
 	}
 
+	public String UserNameSelect(String Id) {
+		String name = null;
+		sql = "SELECT NAME FROM USER WHERE ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				name = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+
+		}
+		return name;
+	}
+
 	public int UserLoginCheck(String id, String password) {
 		int num;
 		String check = null;
@@ -122,7 +147,34 @@ public class UserDao {
 		return result;
 
 	}
-	
+
+	public String nonMemberIdSelect(String non_Id) {
+		String non_name = null;
+
+		sql = "SELECT NAME FROM NONMEMBER WHERE ID=";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				non_name = rs.getString(1);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+
+		}
+		return non_name;
+
+	}
+
 	public List<UserVO> UserInfoList() {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
@@ -130,9 +182,10 @@ public class UserDao {
 			String sql = "SELECT * FROM USER";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				UserVO result = new UserVO();
+<<<<<<< HEAD
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
@@ -140,9 +193,11 @@ public class UserDao {
 				
 				////////////¼öÁ¤Áß !!!!!!!!!!!!
 				
+=======
+
+>>>>>>> c82872932c2e20ec40cb6ef4f1b4e6ee92cf459b
 			}
-			
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

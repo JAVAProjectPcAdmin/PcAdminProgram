@@ -26,10 +26,11 @@ import javax.swing.border.TitledBorder;
 
 import db.UserDao;
 import db.UserVO;
-<<<<<<< HEAD
-=======
+
 import userUsingState.UserUsingStateGUI;
->>>>>>> 6393455bd70ffd3994672752c491ec1c543e4785
+
+import userUsingState.UserUsingStateGUI;
+
 import AdminServer.User;
 
 public class UserLoginGUI extends JFrame {
