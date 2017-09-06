@@ -315,9 +315,6 @@ public class UserDao {
 				result.setRegisterDate(rs.getString(9));
 				result.setMemo(rs.getString(10));
 
-				//////////// 수정중 !!!!!!!!!!!!
-
-				//////////// 수정중 !!!!!!!!!!!!
 
 				userList.add(result);
 			}
