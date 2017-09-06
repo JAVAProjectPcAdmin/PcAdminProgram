@@ -80,6 +80,8 @@ public class LeftMainGUI extends JPanel {
 	JTable infoTable1 = new JTable(infoModel1);
 	JTable infoTable2 = new JTable(infoModel2);
 	JTable infoTable3 = new JTable(infoModel3);
+	
+	
 
 	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
 	private String[][] finishedData = new String[20][20];
@@ -210,13 +212,14 @@ public class LeftMainGUI extends JPanel {
 		JScrollPane infoSp2 = new JScrollPane(infoTable2);
 		JScrollPane infoSp3 = new JScrollPane(infoTable3);
 
+		
 		// 테이블 열 이동 x, 크기조절 x
 		infoTable1.getTableHeader().setReorderingAllowed(false);
 		infoTable1.getTableHeader().setResizingAllowed(false);
 		infoTable2.getTableHeader().setReorderingAllowed(false);
 		infoTable2.getTableHeader().setResizingAllowed(false);
-		infoTable2.getTableHeader().setReorderingAllowed(false);
-		infoTable2.getTableHeader().setResizingAllowed(false);
+		infoTable3.getTableHeader().setReorderingAllowed(false);
+		infoTable3.getTableHeader().setResizingAllowed(false);
 
 		// 테이블 데이터 가운데 정렬
 		DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
