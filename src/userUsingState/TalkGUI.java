@@ -4,12 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -38,7 +40,11 @@ public class TalkGUI extends JFrame {
 		add(textField, BorderLayout.SOUTH);
 		setLocation(500, 300);
 		setSize(300, 400);
-
+		addWindowListener(new WindowAdapter() {    ////////윈도우창 x버튼 종료시 flag false값 입력하는 이벤트
+			public void windowClosing(WindowEvent e) {
+				UserUsingStateGUI.flag = false;
+			}
+		});
 		setVisible(true);
 		// 네트워크 초기화 메소드 실행.
 		server();

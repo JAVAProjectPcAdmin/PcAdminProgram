@@ -36,16 +36,16 @@ import AdminServer.User;
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
 	private JLabel idLabel, pcNumLabel, pwLabel, nonMembersLabel;
-	private JButton loginButton, signInButton, searchButton;
+	private JButton loginButton, signInButton, idSearchButton, pwSearchButton;
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
+	public static boolean flag = false;
 
 	public UserLoginGUI() {
 		setSize(1280, 1024);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// setDefaultCloseOperation(DISPOSE_ON_CLOSE);종료시 이벤트 사용하는 코드
 		setResizable(false);
 		setTitle("User Login");
 
@@ -87,8 +87,10 @@ public class UserLoginGUI extends JFrame {
 		signInButton = new JButton(new ImageIcon("sign.png"));
 		signInButton.setFocusPainted(false);
 
-		searchButton = new JButton(new ImageIcon("idpwsearch.png"));
-		searchButton.setFocusPainted(false);
+		idSearchButton = new JButton(new ImageIcon("idsearch.png"));
+		idSearchButton.setFocusPainted(false);
+		pwSearchButton = new JButton(new ImageIcon("pwsearch.png"));
+		pwSearchButton.setFocusPainted(false);
 
 		panel.setBounds(650, 680, 600, 300);
 		pcNumPanel.setBounds(20, 30, 200, 200);
@@ -111,9 +113,9 @@ public class UserLoginGUI extends JFrame {
 				UserJoinGUI join = new UserJoinGUI();
 			}
 		});
-		searchButton.setBounds(470, 230, 100, 27);
+		idSearchButton.setBounds(470, 230, 94, 28);
 
-		searchButton.addActionListener(new ActionListener() {
+		idSearchButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +124,16 @@ public class UserLoginGUI extends JFrame {
 
 			}
 
+		});
+		pwSearchButton.setBounds(470, 260, 94, 28);
+
+		pwSearchButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				PW_SearchGUI search = new PW_SearchGUI();
+			}
 		});
 
 		loginButton.addActionListener(new ActionListener() {
@@ -136,7 +148,7 @@ public class UserLoginGUI extends JFrame {
 
 		panel.add(loginButton);
 		panel.add(signInButton);
-		panel.add(searchButton);
+		panel.add(idSearchButton);
 		panel.add(idTf);
 		panel.add(pwTf);
 		panel.add(nonMemberTf);
@@ -144,6 +156,7 @@ public class UserLoginGUI extends JFrame {
 		panel.add(pwLabel);
 		panel.add(nonMembersLabel);
 		panel.add(plzLogin);
+		panel.add(pwSearchButton);
 		pcNumPanel.add(pcNumLabel);
 		add(pcNumPanel);
 		add(panel);

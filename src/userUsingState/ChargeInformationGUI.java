@@ -56,6 +56,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		exitButton = new JButton("확인");
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UserUsingStateGUI.flag2 = false;
 				dispose(); // 창하나만 종료 전체종료는 system.exit
 			}
 		});
@@ -67,7 +68,10 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				OrderInformationGUI OI = new OrderInformationGUI();
+				if(!UserUsingStateGUI.flag4) {
+					OrderInformationGUI OI = new OrderInformationGUI();
+					UserUsingStateGUI.flag4=true;
+				}
 			}
 		});
 		moneyBagIcon = new moenyBagIcon();

@@ -20,10 +20,14 @@ import javax.swing.JPanel;
 import orderFood.OrderGUI;
 
 public class UserUsingStateGUI extends JFrame {
-	private JLabel timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
-	private JButton talkBt, orderBt, informationBt;
+	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
+	private JButton talkBt, orderBt, informationBt, logoutBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
+	public static boolean flag = false;
+	public static boolean flag2 = false;
+	public static boolean flag3 = false;// Ã¢ Áßº¹À» ¸·±âÀ§ÇÑ flag //Ã¢À»¶ç¿ì¸é true¸¦ ¹ÝÈ¯ÇÏ°í ²¨Áú¶§ false¸¦ ¹ÝÈ¯ //falseÀÏ¶§ ÄÑÁöµµ·Ï if¹®
+	public static boolean flag4 = false;
 
 	public UserUsingStateGUI() {
 		setLayout(null);
@@ -56,7 +60,10 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-
+		nameLb = new JLabel("±èÁ¾ÈÆ´Ô");
+		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		logoutBt = new JButton(new ImageIcon("logout.png"));
+		logoutBt.setBorderPainted(false);
 		talkBt = new JButton(new ImageIcon("talk.png"));
 		talkBt.setBorderPainted(false);
 
@@ -64,8 +71,12 @@ public class UserUsingStateGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
-				TalkGUI talk = new TalkGUI();
+				if (!flag) {
+					TalkGUI talk = new TalkGUI();
+					flag = true;
+				}
 			}
 		});
 		orderBt = new JButton(new ImageIcon("order.png"));
@@ -77,12 +88,16 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ChargeInformationGUI ci = new ChargeInformationGUI();
+				if (!flag2) {
+					ChargeInformationGUI ci = new ChargeInformationGUI();
+					flag2 = true;
+				}
 			}
 		});
 
 		panel.setBounds(10, 80, 283, 84);
-		customerNumberLb.setBounds(40, 0, 100, 100);
+		customerNumberLb.setBounds(30, 0, 100, 100);
+		nameLb.setBounds(110, 30, 100, 50);
 		talkBt.setBounds(50, 180, 44, 32);
 		orderBt.setBounds(130, 180, 38, 29);
 		orderBt.addActionListener(new ActionListener() {
@@ -90,7 +105,19 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				OrderGUI order = new OrderGUI();
+				if (!flag3) {
+					OrderGUI order = new OrderGUI();
+					flag3 = true;
+				}
+			}
+		});
+		logoutBt.setBounds(200, 20, 63, 51);
+		logoutBt.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
 			}
 		});
 		informationBt.setBounds(210, 180, 42, 36);
@@ -103,7 +130,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
-
+		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
 		add(informationBt);
@@ -111,6 +138,7 @@ public class UserUsingStateGUI extends JFrame {
 		add(orderLb);
 		add(informationLb);
 		add(customerNumberLb);
+		add(nameLb);
 		add(panel);
 
 		setVisible(true);
