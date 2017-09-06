@@ -185,7 +185,6 @@ public class UserDao {
 
 			while (rs.next()) {
 				UserVO result = new UserVO();
-<<<<<<< HEAD
 				result.setUserNumber(rs.getInt(1));
 				result.setId(rs.getString(2));
 				result.setPassword(rs.getString(3));
@@ -193,9 +192,7 @@ public class UserDao {
 				
 				////////////¼öÁ¤Áß !!!!!!!!!!!!
 				
-=======
 
->>>>>>> c82872932c2e20ec40cb6ef4f1b4e6ee92cf459b
 			}
 
 		} catch (SQLException e) {
