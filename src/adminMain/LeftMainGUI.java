@@ -317,6 +317,7 @@ public class LeftMainGUI extends JPanel {
 				if (flag) {
 					dao = new UserDao();
 					umi = new UserMemberInfoGUI();
+					uv = new ArrayList<>();
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
 
 					for (int i = 0; i < uv.size(); i++) {
@@ -331,28 +332,12 @@ public class LeftMainGUI extends JPanel {
 
 						}
 					}
-					uv = new ArrayList<>();
-
-					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
-
-					for (int i = 1; i <= uv.size(); i++) {
-						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
-							temp[0] = uv.get(i).getUserNumber();
-							temp[1] = uv.get(i).getName();
-							temp[2] = uv.get(i).getId();
-							temp[3] = uv.get(i).getRegisterDate();
-							temp[4] = uv.get(i).getResidentNumber();
-
-							umi.model.insertRow(0, temp);
-
-						}
-					}
-					flag = false;
 
 				}
+				flag = false;
+
 			}
 		}
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
