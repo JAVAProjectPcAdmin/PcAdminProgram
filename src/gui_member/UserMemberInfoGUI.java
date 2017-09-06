@@ -210,6 +210,8 @@ public class UserMemberInfoGUI extends JFrame {
 				user.setMemo(memoTx.getText());
 				dao.userUpdate(user, Integer.parseInt(joinNumTx.getText()));
 				
+				
+				
 			}else if(selected == cancleBtn) {
 				LeftMainGUI.flag = true;
 				dispose();

@@ -51,7 +51,7 @@ public class UserDao {
 			pstmt.setString(6, user.getEmailAddress());
 			pstmt.setString(7, user.getAddress());
 			pstmt.setString(8, date.toString());
-
+			
 			result = pstmt.executeUpdate();
 			System.out.println("insert : " + result);
 
