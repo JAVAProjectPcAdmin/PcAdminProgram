@@ -96,12 +96,12 @@ public class RightMainGUI extends JPanel {
 		useTimeL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
 		totalPriceL.setSize(150, 30);
-		totalPriceL.setLocation(0, 70);
+		totalPriceL.setLocation(30, 70);
 		totalPriceL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 23));
 
 		addAmountL.setSize(150, 15);
-		addAmountL.setLocation(0, 103);
+		addAmountL.setLocation(30, 103);
 		addAmountL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 

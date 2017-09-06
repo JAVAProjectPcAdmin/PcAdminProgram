@@ -39,6 +39,8 @@ public class LeftMainGUI extends JPanel {
 	public String[][] infoData1 = new String[1][];
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];
+
+	boolean flag = true;
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB값 가져오기
 
@@ -81,8 +83,16 @@ public class LeftMainGUI extends JPanel {
 
 	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
 	private String[][] finishedData = new String[20][20];
+	
+	JLabel inputSeat_Label = new JLabel("이름 입력 : ");
+	JTextField inputSeat_Text = new JTextField(5);
+	
+	JLabel inputMemberInfo_Label = new JLabel("이름 입력 : ");
+	JTextField inputMemberInfo_Text = new JTextField(5);
+	
 	// 폰트
 	private Font f1, f2;
+	
 	// 찾기 버튼
 	private JButton findMemberBtn = new JButton();
 	private JButton findSeatBtn = new JButton();
@@ -92,16 +102,22 @@ public class LeftMainGUI extends JPanel {
 	Image findButton = findButtonIcon.getImage();
 	Image newFindButtonImg = findButton.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
-	
+
 	ImageIcon javaLogoIcon = new ImageIcon("JavaLogo.png");
 	Image javaLogo = javaLogoIcon.getImage();
 	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
+	
+	ImageIcon findSeatIcon = new ImageIcon("findseat.jpg");
+	Image findSeat = findSeatIcon.getImage();
+	Image newFindSeatImg = findSeat.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon chFindSeat = new ImageIcon(newFindSeatImg);
+	
+
 
 	////////////////////////////////////////////////////////////////////////////////////////
 
-	JLabel inputSeat_Label = new JLabel("이름 입력 : ");
-	JTextField inputSeat_Text = new JTextField(5);
+
 
 	public JButton getFindSeatBtn() {
 		return findSeatBtn;
@@ -140,7 +156,7 @@ public class LeftMainGUI extends JPanel {
 		logo_Panel.add(logoBtn);
 		logo_Panel.setBackground(Color.WHITE);
 
-		// 손님 수
+		// 현재 손님 수
 		JLabel countGuest_Label1 = new JLabel();
 
 		countGuest_Label1.setText("12" + " / " + "25");
@@ -152,7 +168,7 @@ public class LeftMainGUI extends JPanel {
 		countGuest_Panel.add(countGuest_Label1);
 		countGuest_Panel.setBackground(Color.WHITE);
 
-		// 손님 검색
+		// 손님 자리 검색
 		findSeatBtn.setIcon(new ImageIcon(newFindButtonImg));
 		findSeatBtn.setPreferredSize(new Dimension(50, 35));
 		findSeatBtn.setFocusPainted(false);
@@ -165,7 +181,23 @@ public class LeftMainGUI extends JPanel {
 		findGuest_Panel.add(inputSeat_Label);
 		findGuest_Panel.add(inputSeat_Text);
 		findGuest_Panel.add(findSeatBtn);
-		findGuest_Panel.setPreferredSize(new Dimension(200, -50));
+		findGuest_Panel.setPreferredSize(new Dimension(200, 0));
+		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		findGuest_Panel.setBackground(Color.WHITE);
+		
+		// 회원 정보 검색
+		findMemberBtn.setIcon(new ImageIcon(newFindSeatImg));
+		findMemberBtn.setPreferredSize(new Dimension(50, 35));
+		findMemberBtn.setFocusPainted(false);
+
+		inputMemberInfo_Label.setFont(f2);
+		findMemberBtn.setFont(f2);
+		findMemberBtn.setBackground(Color.WHITE);
+
+		findGuest_Panel.add(inputMemberInfo_Label);
+		findGuest_Panel.add(inputMemberInfo_Text);
+		findGuest_Panel.add(findMemberBtn);
+		findGuest_Panel.setPreferredSize(new Dimension(200, 0));
 		findGuest_Panel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		findGuest_Panel.setBackground(Color.WHITE);
 
@@ -247,15 +279,14 @@ public class LeftMainGUI extends JPanel {
 		fee_Panel.add(finishedSp);
 
 		// 회원검색
-
-		findMemberBtn.setText("회원 검색");
-		findMemberBtn.setFont(f2);
-		findMemberBtn.setBackground(Color.WHITE);
-		findMemberBtn.setFocusPainted(false);
-		findMemberBtn.addActionListener(new FindMemberActionListener());
-
-		fee_Panel.add(findMemberBtn, BorderLayout.CENTER);
-		fee_Panel.setBackground(Color.WHITE);
+//
+//		findMemberBtn.setText("회원 검색");
+//		findMemberBtn.setFont(f2);
+//		findMemberBtn.setBackground(Color.WHITE);
+//		findMemberBtn.setFocusPainted(false);
+//		findMemberBtn.addActionListener(new FindMemberActionListener());
+//		fee_Panel.add(findMemberBtn, BorderLayout.CENTER);
+//		fee_Panel.setBackground(Color.WHITE);
 
 		/////////////////////////////////////////////////////////////////////////////////////
 
@@ -278,14 +309,16 @@ public class LeftMainGUI extends JPanel {
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원정보 검색 리스너
 	private class FindMemberActionListener implements ActionListener {
+		UserMemberInfoGUI UMI;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JButton selected = (JButton) e.getSource();
 			if (selected == findMemberBtn) {
-				UserMemberInfoGUI UMI = new UserMemberInfoGUI();
-				
+				if (flag) {
+					UMI = new UserMemberInfoGUI();
+					flag = false;
+				}
 			}
-
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
