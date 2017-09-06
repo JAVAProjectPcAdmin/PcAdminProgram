@@ -28,7 +28,7 @@ public class UserMemberInfoGUI extends JFrame {
 	private JPasswordField pwTx;
 	private JButton storeBtn, cancleBtn;
 	private JPanel infoPnl, tablePnl;
-	private JTable memberTbl;
+	public JTable memberTbl;
 	private UserDao dao;
 	public DefaultTableModel model;
 	public String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
