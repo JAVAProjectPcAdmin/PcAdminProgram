@@ -185,6 +185,18 @@ public class UserMemberInfoGUI extends JFrame {
 			
 			if(selected == storeBtn) {
 				//DB UPDATE
+			}else if(selected == searchBtn) {
+				
+				//DB SELECT
+			}else if(selected == resetBtn) {
+				joinNumTx.setText("");
+				nameTx.setText("");
+				idTx.setText("");
+				birthTx.setText("");
+				phTx.setText("");
+				mailTx.setText("");
+				addTx.setText("");
+				memoTx.setText("");
 			}else if(selected == cancleBtn) {
 				
 			}
