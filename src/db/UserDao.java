@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
@@ -34,7 +35,14 @@ public class UserDao {
 	}
 
 	public void UserJoinInsert(UserVO user) {
-		Date date = new Date();
+//		Date date = new Date();
+		
+		long time = System.currentTimeMillis(); 
+		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String date = dayTime.format(new Date(time));
+
+
+
 
 		sql = "INSERT INTO USER(ID,PASSWORD,NAME,RESIDENT_NUMBER,PHONE,EMAIL_ADDRESS,ADDRESS,REGISTER_DATE) "
 				+ " VALUES(?,?,?,?,?,?,?,?)";
@@ -51,7 +59,7 @@ public class UserDao {
 			pstmt.setString(6, user.getEmailAddress());
 			pstmt.setString(7, user.getAddress());
 			pstmt.setString(8, date.toString());
-
+			
 			result = pstmt.executeUpdate();
 			System.out.println("insert : " + result);
 
@@ -270,10 +278,11 @@ public class UserDao {
 
 	}
 
-	public void userUpdate(UserVO user) {
+	public void userUpdate(UserVO user, int userNum) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? ";
+			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? "
+					+ "WHERE USER_NUMBER = ?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, user.getPassword());
@@ -282,7 +291,8 @@ public class UserDao {
 			pstmt.setString(4, user.getEmailAddress());
 			pstmt.setString(5, user.getAddress());
 			pstmt.setString(6, user.getMemo());
-
+			pstmt.setInt(7, userNum);
+			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -198,17 +198,16 @@ public class UserMemberInfoGUI extends JFrame {
 			if(selected == storeBtn) {
 				user.setName(nameTx.getText());
 				
-//				for(int i=0; i<pwTx.getPassword().length; i++) {
-//					updatePasswd += pwTx.getPassword()[i];
-//				}
-				
 				updatePasswd = new String(pwTx.getPassword(), 0, pwTx.getPassword().length);
+				
 				user.setPassword(updatePasswd);
 				user.setPhone(phTx.getText());
 				user.setEmailAddress(mailTx.getText());
 				user.setAddress(addTx.getText());
 				user.setMemo(memoTx.getText());
-				dao.userUpdate(user);
+				dao.userUpdate(user, Integer.parseInt(joinNumTx.getText()));
+				
+				
 				
 			}else if(selected == cancleBtn) {
 				LeftMainGUI.flag = true;
@@ -225,20 +224,24 @@ public class UserMemberInfoGUI extends JFrame {
 			UserVO userList;
 			int selectedIndex, userNum;
 			
-			JTable jt = (JTable)e.getSource();
-			selectedIndex = jt.getSelectedRow();
-			userNum = (int) memberTbl.getValueAt(selectedIndex, 0); //빈칸이면 try catch 해서 에러 해야할듯
-			userList = dao.userNumSelectList(userNum);
-			
-			joinNumTx.setText(Integer.toString(userList.getUserNumber()));
-			nameTx.setText(userList.getName());
-			idTx.setText(userList.getId());
-			pwTx.setText(userList.getPassword());
-			birthTx.setText(userList.getResidentNumber());
-			phTx.setText(userList.getPhone());
-			mailTx.setText(userList.getEmailAddress());
-			addTx.setText(userList.getAddress());
-			memoTx.setText(userList.getMemo());
+			try {
+				JTable jt = (JTable) e.getSource();
+				selectedIndex = jt.getSelectedRow();
+				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); 
+				userList = dao.userNumSelectList(userNum);
+
+				joinNumTx.setText(Integer.toString(userList.getUserNumber()));
+				nameTx.setText(userList.getName());
+				idTx.setText(userList.getId());
+				pwTx.setText(userList.getPassword());
+				birthTx.setText(userList.getResidentNumber());
+				phTx.setText(userList.getPhone());
+				mailTx.setText(userList.getEmailAddress());
+				addTx.setText(userList.getAddress());
+				memoTx.setText(userList.getMemo());
+			} catch (Exception ex) {
+				ex.getMessage();
+			}
 		}
 	}
 }
