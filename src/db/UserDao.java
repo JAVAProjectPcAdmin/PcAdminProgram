@@ -233,14 +233,6 @@ public class UserDao {
 	}
 
 	
-<<<<<<< HEAD
-		public List<UserVO> userNameSelectList(String name) {
-	
-	=======
-		
-		//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
-	
-=======
 	//회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
 	public List<UserVO> userNameSelectList(String name) {
 		ArrayList<UserVO> userList = new ArrayList<>();
@@ -276,7 +268,6 @@ public class UserDao {
 		}
 		return userList;
 	}
->>>>>>> c86ff83a9f019617f01ae2f7f6d165ca71b5cd62
 
 	//회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
 	public List<UserVO> userNumSelectList(int userNum) {
