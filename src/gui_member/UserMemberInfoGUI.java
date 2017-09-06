@@ -5,9 +5,16 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import db.UserDao;
 
 public class UserMemberInfoGUI extends JFrame {
 
@@ -127,13 +134,24 @@ public class UserMemberInfoGUI extends JFrame {
 		//{{"1", "이유희", "hello", "2017-09-01", "930227"}};
 		String contents[][] = new String[100][0];
 		
+		DefaultTableModel model = new DefaultTableModel(contents, header) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				if(column >= 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		};
 		
-		
-		DefaultTableModel model = new DefaultTableModel(contents, header);
 		memberTbl = new JTable(model);
 		JScrollPane scrollpane = new JScrollPane(memberTbl);
 		scrollpane.setPreferredSize(new Dimension(400, 500));
 		tablePnl.add(scrollpane, BorderLayout.CENTER);
+		
+		memberTbl.getTableHeader().setReorderingAllowed(false);
+		memberTbl.getTableHeader().setResizingAllowed(false);
 		
 		memberTbl.setRowHeight(23);
 		memberTbl.getColumnModel().getColumn(0).setPreferredWidth(50);
@@ -156,5 +174,28 @@ public class UserMemberInfoGUI extends JFrame {
 		setSize(800,570);
 		setResizable(false);
 		setVisible(true);
+	}
+	
+	//버튼 클릭
+	class UserInfoListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			JButton selected = (JButton)e.getSource();
+			if(selected == storeBtn) {
+				//DB UPDATE
+			}else if(selected == searchBtn) {
+				//DB SELECt
+			}else if(selected == resetBtn) {
+				//textfield 다 초기화
+			}
+		}
+	}
+	
+	//테이블 클릭시 상세정보 
+	class UserTableMouseListener extends MouseAdapter{
+		@Override
+		public void mousePressed(MouseEvent e) {
+			UserDao dao = new UserDao();
+		}
 	}
 }

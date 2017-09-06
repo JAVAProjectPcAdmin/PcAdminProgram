@@ -17,12 +17,16 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import db.UserDao;
+
 public class AdminMainGUI extends JFrame {
 	private JPopupMenu popup;
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private JPanel rightPanel = new JPanel();
 	// private
+	
+	UserDao userDao = new UserDao();
 
 	public AdminMainGUI() {
 
@@ -31,8 +35,11 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
+			rightUserPanel[i].seat_num++;
+			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
 			rightPanel.add(rightUserPanel[i]);
-
+			
+			
 		}
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
@@ -117,11 +124,12 @@ public class AdminMainGUI extends JFrame {
 
 		@Override
 		public void mousePressed(MouseEvent e) {
+			
 
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 0);
-					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1);
+					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNumberL().getText(), 0, 1);
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUsePCNumberL().getText(), 0, 2);
 					lmp.infoTable1.updateUI();
 
@@ -130,9 +138,9 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
 					lmp.infoTable2.updateUI();
 
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 0);
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 0);
 					lmp.infoModel3.setValueAt("pc사용금액", 0, 1);
-					lmp.infoModel3.setValueAt("음식주문 가격", 0, 2);
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 2);
 					lmp.infoTable3.updateUI();
 				}
 			}
