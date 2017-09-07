@@ -54,9 +54,6 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
-			rightUserPanel[i].setVisible(true);
-			flag = new Flagment(i);
-			thread = new UserThread(i, flag);
 
 			rightUserPanel[i].setVisible(false); 
 			rightPanel.add(rightUserPanel[i]);
