@@ -40,7 +40,7 @@ public class UserLoginGUI extends JFrame {
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
-	public static boolean flag = false;
+	
 
 	public UserLoginGUI() {
 		setSize(1280, 1024);
@@ -161,7 +161,7 @@ public class UserLoginGUI extends JFrame {
 			// TODO Auto-generated method stub
 
 			UserDao dao = new UserDao();
-			if (nonMemberTf.getText() == null) {
+			if (idTf.getText()!=null) {
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
