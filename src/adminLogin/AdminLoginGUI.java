@@ -35,7 +35,7 @@ public class AdminLoginGUI extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
 
-	private String adminId = "admin", adminPw = "sds1501";
+	public static String adminId = "admin", adminPw="sds1501";
 
 	public AdminLoginGUI() {
 		setLocation(350, 250);
