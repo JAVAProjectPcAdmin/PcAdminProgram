@@ -26,10 +26,6 @@ public class AdminChatGUI extends JFrame{
 		textField.addActionListener(listener);
 		add(new JScrollPane(textArea), BorderLayout.CENTER);
 		add(textField, BorderLayout.SOUTH);
-<<<<<<< HEAD
-		
-=======
->>>>>>> 9777ba8c0ff6b97d58602bdf8d59f142e36ffafa
 		setSize(300, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);

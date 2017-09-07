@@ -29,14 +29,11 @@ public class ChatServer {
 		}
 		try {
 			while (true) {
-<<<<<<< HEAD
+
 				
 				serverSocket = new ServerSocket(8888);
 				socket = serverSocket.accept();
-				System.out.println(socket.getInetAddress());
-=======
->>>>>>> 9777ba8c0ff6b97d58602bdf8d59f142e36ffafa
-				
+				System.out.println(socket.getInetAddress());			
 				System.out.println("기다리는중...");
 				socket = serverSocket.accept();
 				AdminChatGUI adc = new AdminChatGUI();
