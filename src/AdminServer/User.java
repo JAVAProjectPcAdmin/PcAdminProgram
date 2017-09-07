@@ -1,6 +1,7 @@
 package AdminServer;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class User implements Serializable {
@@ -10,6 +11,7 @@ public class User implements Serializable {
 	private String totalPrice;
 	private String addPrice;
 	private int seatNumber;
+	private String startTime;
 
 	public String getName() {
 		return name;
@@ -47,9 +49,14 @@ public class User implements Serializable {
 		return date;
 	}
 
+	public String getStartTime() {
+		return startTime;
+	}
+	
 	public User(String name) {
 		this.name = name;
-		Date time = new Date();
+		long time = System.currentTimeMillis();
+		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
+		startTime = dayTime.format(new Date(time));
 	}
-
 }

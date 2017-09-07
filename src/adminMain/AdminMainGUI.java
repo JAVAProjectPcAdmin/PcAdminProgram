@@ -36,8 +36,14 @@ public class AdminMainGUI extends JFrame {
 	UserThread thread;
 	int i;
 	// private
-	
+
 	UserDao userDao = new UserDao();
+
+	public static void main(String[] args) {
+
+		AdminMainGUI admin = new AdminMainGUI();
+
+	}
 
 	public AdminMainGUI() {
 
@@ -48,14 +54,12 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
-			rightUserPanel[i].setVisible(true);
-			rightUserPanel[i].setVisible(false);
-			rightUserPanel[i].setVisible(false);
-			flag = new Flagment(i);
-			thread = new UserThread(i, flag);
+
+			rightUserPanel[i].setVisible(false); 
 			rightPanel.add(rightUserPanel[i]);
 		}
-
+		thread = new UserThread(flag);
+		thread.start();
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
 		lmp.setBounds(0, 80, 220, 850);
@@ -79,6 +83,7 @@ public class AdminMainGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
+		new AdminClient();
 
 	}
 
@@ -138,7 +143,6 @@ public class AdminMainGUI extends JFrame {
 
 		@Override
 		public void mousePressed(MouseEvent e) {
-			
 
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
@@ -162,27 +166,26 @@ public class AdminMainGUI extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	public static void main(String[] args) {
-		AdminMainGUI admin = new AdminMainGUI();
-		new AdminServer();
-		AdminClient adcli =new AdminClient();
-	}
-	class UserThread extends Thread{
-		private int i;
+
+	class UserThread extends Thread {
 		private Flagment flag;
-		public UserThread(int i ,Flagment flag) {
+
+		public UserThread(Flagment flag) {
 			// TODO Auto-generated constructor stub
 			// TODO Auto-generated constructor stub
-			this.i=i;
-			this.flag=flag;
+			this.flag = flag;
 		}
+
 		@Override
 		public void run() {
-			// TODO Auto-generated method stub
-			super.run();
-			if(flag.UserLoginState[i]) {
-				System.out.println(flag.UserLoginState[i]);
-				rightUserPanel[i].setVisible(true);
+			while (true) {
+//				System.out.println("panel");
+				for (int i = 0; i < 25; i++) {
+					if (flag.UserLoginState[i]) {
+						rightUserPanel[i].setVisible(true);
+						rightUserPanel[i].updateUI();
+					}
+				}
 			}
 		}
 	}

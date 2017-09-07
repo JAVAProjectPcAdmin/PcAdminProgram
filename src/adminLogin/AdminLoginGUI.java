@@ -116,7 +116,6 @@ public class AdminLoginGUI extends JFrame {
 				}
 				else {
 					JOptionPane.showMessageDialog(null, "비밀번호를 잘못 입력하셨습니다.");
-				
 				}
 			}else {
 				JOptionPane.showMessageDialog(null, "등록되지 않은 아이디이거나, 잘못 입력하셨습니다.");
