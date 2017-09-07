@@ -22,7 +22,7 @@ public class ChatServer {
 		Collections.synchronizedMap(clientMap);
 		try {
 			while (true) {
-
+				
 				serverSocket = new ServerSocket(8888);
 				socket = serverSocket.accept();
 				System.out.println(socket.getInetAddress());
