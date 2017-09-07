@@ -68,6 +68,7 @@ public class UserLoginGUI extends JFrame {
 		pcNumPanel.setLayout(null);
 		plzLogin = new PlzLogin();
 
+		
 		pwLabel = new JLabel("Password");
 		pwLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		idLabel = new JLabel("ID");
@@ -170,6 +171,7 @@ public class UserLoginGUI extends JFrame {
 					String name=dao.UserNameSelect(idTf.getText());
 					User user = new User(name);
 					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
+					user.setUserID(idTf.getText());
 					UserClient userclient = new UserClient(user);
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI(user);

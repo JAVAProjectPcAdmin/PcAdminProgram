@@ -206,7 +206,7 @@ public class UserJoinGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "회원가입 완료", JOptionPane.OK_OPTION);
 					dispose();
 				}
-			} else if (arg0.getSource() == idCheckBtn) {
+			} else if (arg0.getSource() == idCheckBtn) {	//user에 넣기 0908
 				result = dao.UserNumberSelect(idTx.getText());
 				if (result <= 0) {
 					System.out.println("쓸수있는 아이디");

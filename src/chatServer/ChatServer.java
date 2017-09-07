@@ -26,7 +26,9 @@ public class ChatServer {
 				serverSocket = new ServerSocket(8888);
 				socket = serverSocket.accept();
 				System.out.println(socket.getInetAddress());
-
+				
+				Receiver receiver = new Receiver(socket);
+				receiver.start();
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

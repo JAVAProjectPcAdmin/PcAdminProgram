@@ -120,7 +120,6 @@ public class UserDao {
 		}
 		return name;
 	}
-
 	public String IdSearch(String name, String email, String phoneNumber) {
 		String id = null;
 

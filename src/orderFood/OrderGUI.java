@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import AdminServer.User;
 import userUsingState.UserUsingStateGUI;
 
 public class OrderGUI extends JFrame {
@@ -34,7 +35,7 @@ public class OrderGUI extends JFrame {
 	private String drinkName[] = {"레쓰비", "밀키스", "스프라이트", "조지아", "코카콜라", "파워에이드", "핫식스", "환타 오렌지"};
 	private String snackName[] = {"꼬깔콘", "도리토스", "스윙칩", "오잉", "오징어땅콩", "치토스", "포카칩 오리지널", "포카칩 어니언"};
 	
-	public OrderGUI() {
+	public OrderGUI(User user) {
 
 		wholePnl = new JPanel();
 
@@ -129,7 +130,7 @@ public class OrderGUI extends JFrame {
 					}
 				}
 				order += "</html>";
-				AdminOrderGUI g = new AdminOrderGUI(order);
+				AdminOrderGUI g = new AdminOrderGUI(order, user);
 			}
 		});
 
@@ -209,9 +210,5 @@ public class OrderGUI extends JFrame {
 			o.countLbl.setText(o.count + "");
 			priceLbl.setText("<html><br>총 금액 : " + total + " 원<br><br></html>");
 		}
-	}
-
-	public static void main(String[] args) {
-		OrderGUI orderGui = new OrderGUI();
 	}
 }
