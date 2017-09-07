@@ -85,7 +85,7 @@ public class LeftMainGUI extends JPanel {
 	JLabel inputSeat_Label = new JLabel("자리 검색 : ");
 	JTextField inputSeat_Text = new JTextField(5);
 
-	JLabel inputMemberInfo_Label = new JLabel("이름 입력 : ");
+	JLabel inputMemberInfo_Label = new JLabel("회원 검색 : ");
 	JTextField inputMemberInfo_Text = new JTextField(5);
 
 	// 폰트
@@ -308,7 +308,9 @@ public class LeftMainGUI extends JPanel {
 	private class FindMemberActionListener implements ActionListener {
 		UserMemberInfoGUI umi;
 		List<UserVO> uv;
+		List<UserVO> empty;
 		Object[] temp = new Object[5];
+		Object[] tempEmpty = new Object[5];
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -319,6 +321,7 @@ public class LeftMainGUI extends JPanel {
 					umi = new UserMemberInfoGUI();
 					uv = new ArrayList<>();
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
+					empty = dao.userInfoList();
 
 					for (int i = 0; i < uv.size(); i++) {
 						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
@@ -332,15 +335,19 @@ public class LeftMainGUI extends JPanel {
 							umi.memberTbl.updateUI();
 
 						} else if ((inputMemberInfo_Text.getText()).equals("")) {
-							temp[0] = uv.get(i).getUserNumber();
-							temp[1] = uv.get(i).getName();
-							temp[2] = uv.get(i).getId();
-							temp[3] = uv.get(i).getRegisterDate();
-							temp[4] = uv.get(i).getResidentNumber();
+							for(int index=0; index<empty.size(); index++) {
+							tempEmpty[0] = empty.get(index).getUserNumber();
+							tempEmpty[1] = empty.get(index).getName();
+							tempEmpty[2] = empty.get(index).getId();
+							tempEmpty[3] = empty.get(index).getRegisterDate();
+							tempEmpty[4] = empty.get(index).getResidentNumber();
 
-							umi.model.insertRow(0, temp);
+							umi.model.insertRow(0, tempEmpty);
 							umi.memberTbl.updateUI();
-						} 
+							}
+						} else {
+							System.out.println("?");
+						}
 					}
 
 				}
