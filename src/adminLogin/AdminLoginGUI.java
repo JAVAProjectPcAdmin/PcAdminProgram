@@ -38,7 +38,7 @@ public class AdminLoginGUI extends JFrame {
 	private String adminId = "admin", adminPw = "sds1501";
 
 	public AdminLoginGUI() {
-		setLocation(400, 400);
+		setLocation(350, 250);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
@@ -130,7 +130,7 @@ public class AdminLoginGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			AdminSetPwGUI adminSetPw = new AdminSetPwGUI();
 			
 		}
 		
