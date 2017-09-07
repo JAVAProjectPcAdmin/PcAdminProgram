@@ -161,7 +161,7 @@ public class UserLoginGUI extends JFrame {
 			// TODO Auto-generated method stub
 
 			UserDao dao = new UserDao();
-			if (nonMemberTf.getText() == null) {
+			if (nonMemberTf.getText().equals("")) {
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
