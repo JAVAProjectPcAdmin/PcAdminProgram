@@ -17,13 +17,13 @@ public class UserClient {
 			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("서버랑 연결됬네?!");
 			String ip= socket.getInetAddress()+"";
-			if(ip.equals("70.12.115.60"))
-				user.setSeatNumber(1);
+			System.out.println(ip);
+
 			oos=new ObjectOutputStream((socket.getOutputStream()));
 			
 			oos.writeObject(user);
 			oos.flush();
-			Thread.sleep(10000);
+			Thread.sleep(500);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
