@@ -125,17 +125,19 @@ public class AdminSetPwGUI extends JFrame {
 				String newPasswd = new String(newPWf.getPassword(), 0, newPWf.getPassword().length);
 				String comparePasswd = new String(comparePWf.getPassword(), 0, comparePWf.getPassword().length);
 
-				if (oldPasswd.equalsIgnoreCase(adminLoginGui.adminPw)) {
-					if (newPasswd.equalsIgnoreCase(comparePasswd)) {
-						adminLoginGui.adminPw = newPasswd;
-						JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
-					} else {
-						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
-					}
-
-				} else {
-					JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
-				}
+//				if (oldPasswd.equalsIgnoreCase(adminLoginGui.adminPw)) {
+//					if (newPasswd.equalsIgnoreCase(comparePasswd)) {
+//						adminLoginGui.adminPw = newPasswd;
+//						JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
+//					} else {
+//						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
+//					}
+//
+//				} else {
+//					JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
+//				}
+				
+				//여기
 
 			}
 		}
