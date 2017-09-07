@@ -165,6 +165,8 @@ public class UserLoginGUI extends JFrame {
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
+					User user= new User("손님");
+					UserClient userclient= new UserClient(user);
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI();
 				} else if (result == 0) {

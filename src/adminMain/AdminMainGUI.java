@@ -178,6 +178,7 @@ public class AdminMainGUI extends JFrame {
 			// TODO Auto-generated method stub
 			super.run();
 			if(flag.UserLoginState[i]) {
+				System.out.println(flag.UserLoginState[i]);
 				rightUserPanel[i].setVisible(true);
 			}
 		}
