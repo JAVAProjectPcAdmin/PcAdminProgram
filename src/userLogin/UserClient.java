@@ -17,6 +17,7 @@ public class UserClient {
 			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("서버랑 연결됬네?!");
 			String ip= socket.getInetAddress()+"";
+			System.out.println(ip);
 			if(ip.equals("70.12.115.60"))
 				user.setSeatNumber(1);
 			oos=new ObjectOutputStream((socket.getOutputStream()));
