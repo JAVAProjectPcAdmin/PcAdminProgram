@@ -159,6 +159,7 @@ public class UserLoginGUI extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 
+			
 			UserDao dao = new UserDao();
 
 			if (idTf.getText().length() > 0) {
