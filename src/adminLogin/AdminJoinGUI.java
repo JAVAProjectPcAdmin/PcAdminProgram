@@ -79,7 +79,7 @@ public class AdminJoinGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminDao dao = new AdminDao();
-			int result = -1;
+			String  result = null;
 
 			if (e.getSource() == okBtn) {
 
@@ -96,10 +96,10 @@ public class AdminJoinGUI extends JFrame {
 				}
 			} else if (e.getSource() == idSearchBtn) {
 				result = dao.AdminIdSelect(idTf.getText());
-				if (result <= 0) {
+				if (result.equals(null)) {
 					JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
 					idcheckFlag = true;
-				}else if(result > 0) {
+				}else if(!result.equals(null)) {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 					idcheckFlag = false;
 				}
