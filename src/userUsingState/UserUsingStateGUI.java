@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -17,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import AdminServer.User;
 import orderFood.OrderGUI;
 
 public class UserUsingStateGUI extends JFrame {
@@ -28,8 +31,10 @@ public class UserUsingStateGUI extends JFrame {
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// Ã¢ Áßº¹À» ¸·±âÀ§ÇÑ flag //Ã¢À»¶ç¿ì¸é true¸¦ ¹ÝÈ¯ÇÏ°í ²¨Áú¶§ false¸¦ ¹ÝÈ¯ //falseÀÏ¶§ ÄÑÁöµµ·Ï if¹®
 	public static boolean flag4 = false;
+	User user;
 
-	public UserUsingStateGUI() {
+	public UserUsingStateGUI(User user) {
+		this.user = user;
 		setLayout(null);
 		setLocation(950, 50); // ½ÃÀÛÀ§Ä¡ ¼³Á¤ ¸Þ¼Òµå
 		setSize(310, 280);
@@ -50,17 +55,17 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(0, 0, 600, 400);
 
-		customerNumberLb = new JLabel("001");
+		customerNumberLb = new JLabel(user.getSeatNumber() + "");
 		customerNumberLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
-		moneyLb = new JLabel("0¿ø");
+		moneyLb = new JLabel(user.getTotalPrice()+"¿ø");
 		talkLb = new JLabel("¹®ÀÇ");
 		talkLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		orderLb = new JLabel("ÁÖ¹®");
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-		nameLb = new JLabel("±èÁ¾ÈÆ´Ô");
+		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		logoutBt = new JButton(new ImageIcon("images//logout.png"));
 		logoutBt.setBorderPainted(false);
@@ -113,7 +118,7 @@ public class UserUsingStateGUI extends JFrame {
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
 		logoutBt.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -142,6 +147,9 @@ public class UserUsingStateGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
+		
+		TimerThread thread=new TimerThread();
+		thread.start();
 
 	}
 
@@ -161,7 +169,32 @@ public class UserUsingStateGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new UserUsingStateGUI();
+		new UserUsingStateGUI(new User(""));
+	}
+
+	class TimerThread extends Thread {
+		@Override
+		public void run() {
+			String nowTime;
+			while (true) {
+				long time=System.currentTimeMillis()-1000*60*60*9;
+				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
+				long checkTime=(time-user.getStartTimeCalc());
+				timeLb.setText(dayTime.format(new Date(checkTime)));
+				timeLb.updateUI();
+				if(checkTime/1000%60==0) {
+					user.setTotalPrice(user.getTotalPrice()+20);
+					moneyLb.setText(user.getTotalPrice()+"");
+					moneyLb.updateUI();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 	}
 
 }

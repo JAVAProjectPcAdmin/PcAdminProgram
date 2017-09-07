@@ -7,9 +7,9 @@ import java.util.Date;
 public class User implements Serializable {
 	private String name;
 	private String userNumber;
-	private String date;
-	private String totalPrice;
-	private String addPrice;
+	private long startTimeCalc;
+	private int totalPrice=0;
+	private int addPrice=0;
 	private int seatNumber;
 	private String startTime;
 
@@ -37,26 +37,27 @@ public class User implements Serializable {
 		this.seatNumber = seatNumber;
 	}
 
-	public String getTotalPrice() {
+	public int getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(String totalPrice) {
+	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
 
-	public String getDate() {
-		return date;
+	public long getStartTimeCalc() {
+		return startTimeCalc;
 	}
 
 	public String getStartTime() {
 		return startTime;
 	}
-	
+
 	public User(String name) {
 		this.name = name;
-		long time = System.currentTimeMillis();
+		this.startTimeCalc = System.currentTimeMillis();
+		
 		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
-		startTime = dayTime.format(new Date(time));
+		startTime = dayTime.format(new Date(startTimeCalc));
 	}
 }

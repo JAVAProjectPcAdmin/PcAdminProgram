@@ -35,10 +35,7 @@ public class AdminSetPwGUI extends JFrame {
 	private JPasswordField oldPWf, newPWf, comparePWf;
 	BufferedImage adminImg, keyImg = null;
 
-//	ImageIcon findButtonIcon = new ImageIcon("images//findseat.jpg");
-//	Image findButton = findButtonIcon.getImage();
-//	Image newFindButtonImg = findButton.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
-//	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
+	AdminLoginGUI adminLoginGui;
 
 	public AdminSetPwGUI() {
 		setLocation(350, 250);
@@ -46,7 +43,7 @@ public class AdminSetPwGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(600, 300);
-		setTitle("Admin Login");
+		setTitle("Admin Settings");
 
 		try {
 			adminImg = ImageIO.read(new File("images//adminsettings.png"));
@@ -71,16 +68,18 @@ public class AdminSetPwGUI extends JFrame {
 		newLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		compareLabel = new JLabel("비밀번호 확인");
 		compareLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-		
+
 		oldPWf = new JPasswordField();
 		newPWf = new JPasswordField();
 		comparePWf = new JPasswordField();
 
 		updateButton = new JButton(new ImageIcon("images//updatebtn.png"));
 		updateButton.setFocusPainted(false);
-		
+		updateButton.addActionListener(new checkListener());
+
 		cancelButton = new JButton(new ImageIcon("images//cancelbtn.png"));
 		cancelButton.setFocusPainted(false);
+		cancelButton.addActionListener(new checkListener());
 
 		panel.setBounds(0, 0, 600, 300);
 		oldPWf.setBounds(290, 120, 250, 30);
@@ -89,11 +88,11 @@ public class AdminSetPwGUI extends JFrame {
 		oldLabel.setBounds(170, 110, 200, 50);
 		newLabel.setBounds(170, 140, 200, 50);
 		compareLabel.setBounds(170, 170, 200, 50);
-		
+
 		adminIcon.setBounds(180, 60, 328, 50);
 		keyIcon.setBounds(100, 40, 110, 90);
-		updateButton.setBounds(340, 230, 77, 27);
-		cancelButton.setBounds(430, 230, 77, 27);
+		updateButton.setBounds(340, 230, 75, 25);
+		cancelButton.setBounds(430, 230, 75, 25);
 
 		panel.add(updateButton);
 		panel.add(cancelButton);
@@ -110,7 +109,36 @@ public class AdminSetPwGUI extends JFrame {
 		setVisible(true);
 
 	}
-	
+
+	class checkListener implements ActionListener {
+		
+		boolean checkFlag = false;
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			if (e.getSource() == cancelButton) {
+				dispose();
+			}
+			if (e.getSource() == updateButton) {
+				String oldPasswd = new String(oldPWf.getPassword(), 0, oldPWf.getPassword().length);
+				String newPasswd = new String(newPWf.getPassword(), 0, newPWf.getPassword().length);
+				String comparePasswd = new String(comparePWf.getPassword(), 0, comparePWf.getPassword().length);
+				
+				if (oldPasswd.equalsIgnoreCase(adminLoginGui.adminPw)) {
+					if (newPasswd.equalsIgnoreCase(comparePasswd)) {
+						adminLoginGui.adminPw = newPasswd;
+						JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
+					} else {
+						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
+				}
+
+			}
+		}
+	}
 
 	class adminIcon extends JPanel {
 		public void paint(Graphics g) {
@@ -122,6 +150,7 @@ public class AdminSetPwGUI extends JFrame {
 		public void paint(Graphics g) {
 			g.drawImage(keyImg, 0, 0, null);
 		}
+
 	}
 
 	public static void main(String[] args) {

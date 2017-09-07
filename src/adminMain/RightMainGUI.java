@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.User;
 import db.UserDao;
 import db.UserVO;
 
@@ -30,6 +31,7 @@ public class RightMainGUI extends JPanel {
 	static String SEAT_NUMBER = "1";
 	static int seat_num = Integer.parseInt(SEAT_NUMBER);
 	public int userPanelIndex;
+	User user;
 
 	UserDao userDao = new UserDao();
 
@@ -60,8 +62,12 @@ public class RightMainGUI extends JPanel {
 	public JLabel getAddAmountL() {
 		return addAmountL;
 	}
-
 	public RightMainGUI() {
+		
+	}
+
+	public RightMainGUI(User user) {
+		this.user=user;
 		setFocusable(true);
 		requestFocus();
 

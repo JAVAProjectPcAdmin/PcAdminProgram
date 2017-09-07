@@ -21,11 +21,11 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import AdminServer.AdminClient;
 import AdminServer.AdminServer;
 import AdminServer.User;
 import db.UserDao;
 import flagment.Flagment;
+import AdminServer.AdminClient;
 
 public class AdminMainGUI extends JFrame {
 	private JPopupMenu popup;
@@ -189,4 +189,6 @@ public class AdminMainGUI extends JFrame {
 			}
 		}
 	}
+
+
 }
