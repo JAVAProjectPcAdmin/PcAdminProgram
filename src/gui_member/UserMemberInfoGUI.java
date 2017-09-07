@@ -207,7 +207,9 @@ public class UserMemberInfoGUI extends JFrame {
 				user.setMemo(memoTx.getText());
 				dao.userUpdate(user, Integer.parseInt(joinNumTx.getText()));
 				
-				
+				LeftMainGUI.flag = true;
+				JOptionPane.showMessageDialog(null, "회원정보가 수정되었습니다.", "회원정보 수정 완료", JOptionPane.OK_OPTION);
+				dispose();
 				
 			}else if(selected == cancleBtn) {
 				LeftMainGUI.flag = true;

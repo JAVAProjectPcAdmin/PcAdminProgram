@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -17,29 +21,41 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.AdminClient;
+import AdminServer.AdminServer;
+import AdminServer.User;
 import db.UserDao;
+import flagment.Flagment;
 
 public class AdminMainGUI extends JFrame {
 	private JPopupMenu popup;
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
+	private Flagment flag;
 	private JPanel rightPanel = new JPanel();
+	UserThread thread;
+	int i;
 	// private
 	
 	UserDao userDao = new UserDao();
 
 	public AdminMainGUI() {
 
-		for (int i = 0; i < 25; i++) {
+		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
+<<<<<<< HEAD
+			rightUserPanel[i].setVisible(true);
+=======
+			rightUserPanel[i].setVisible(false);
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+			flag = new Flagment(i);
+			thread = new UserThread(i, flag);
 			rightPanel.add(rightUserPanel[i]);
-			
-			
 		}
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
@@ -150,6 +166,64 @@ public class AdminMainGUI extends JFrame {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 		AdminMainGUI admin = new AdminMainGUI();
-
+		new AdminServer();
+		AdminClient adcli =new AdminClient();
 	}
+	class UserThread extends Thread{
+		private int i;
+		private Flagment flag;
+		public UserThread(int i ,Flagment flag) {
+<<<<<<< HEAD
+=======
+			// TODO Auto-generated constructor stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+			this.i=i;
+			this.flag=flag;
+		}
+		@Override
+		public void run() {
+<<<<<<< HEAD
+=======
+			// TODO Auto-generated method stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+			super.run();
+			if(flag.UserLoginState[i]) {
+				rightUserPanel[i].setVisible(true);
+			}
+		}
+<<<<<<< HEAD
+	}
+<<<<<<< HEAD
+class AdminClient {
+		
+		Socket socket = null;
+		BufferedWriter bw = null;
+		User user2;
+		ObjectInputStream ois;
+
+		public AdminClient() {
+			try {
+				
+				socket = new Socket("127.0.0.1", 7777); 
+				System.out.println("드디어 연결!!");
+				ois = new ObjectInputStream(socket.getInputStream());
+				user2 = (User) ois.readObject();
+				System.out.println(user2.getName());
+				if (user2.getSeatNumber() == 1) {
+					rightUserPanel[i].setVisible(false);
+					System.out.println("여기까지!!!!!");
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+=======
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+	}
+=======
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 }
