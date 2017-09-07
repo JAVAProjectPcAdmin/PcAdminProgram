@@ -10,6 +10,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -33,9 +35,11 @@ public class AdminMainGUI extends JFrame {
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private Flagment flag;
 	private JPanel rightPanel = new JPanel();
-	UserThread thread;
+	UserThread isUserThread;
+	TimerThread timerThread;
 	int i;
 	// private
+	AdminClient adminClient;
 
 	UserDao userDao = new UserDao();
 
@@ -55,11 +59,14 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
 
-			rightUserPanel[i].setVisible(false); 
+			rightUserPanel[i].setVisible(false);
 			rightPanel.add(rightUserPanel[i]);
 		}
-		thread = new UserThread(flag);
-		thread.start();
+		isUserThread = new UserThread(flag);
+		isUserThread.start();
+		timerThread = new TimerThread(flag);
+		timerThread.start();
+		
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
 		lmp.setBounds(0, 80, 220, 850);
@@ -83,7 +90,7 @@ public class AdminMainGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
-		new AdminClient();
+		adminClient = new AdminClient();
 
 	}
 
@@ -179,9 +186,9 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-//				System.out.println("panel");
 				for (int i = 0; i < 25; i++) {
 					if (flag.UserLoginState[i]) {
+						rightUserPanel[i].setUserPanel(AdminClient.userlist.get(adminClient.userlist.size() - 1));
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 					}
@@ -190,5 +197,43 @@ public class AdminMainGUI extends JFrame {
 		}
 	}
 
+	class TimerThread extends Thread {
+		User user = null;
+		Flagment flag;
+
+		public TimerThread( Flagment flag) {
+			// TODO Auto-generated constructor stub
+			this.flag = flag;
+		}
+
+		@Override
+		public void run() {
+			String nowTime;
+			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
+			while (true) {
+				for (int i = 0; i < 25; i++) {
+					if (flag.UserLoginState[i]) {
+						user=AdminClient.userlist.get(adminClient.userlist.size() - 1);
+						long time = System.currentTimeMillis() - 1000 *( (60 * 60 * 9)+44);
+						long checkTime = (time - user.getStartTimeCalc());
+						String useTime = dayTime.format(new Date(checkTime));
+						rightUserPanel[i].getUseTimeL().setText(useTime);
+						rightUserPanel[i].getUseTimeL().updateUI();
+						if (checkTime/1000%60==0) {
+							user.setTotalPrice(user.getTotalPrice() + 20);
+							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
+							rightUserPanel[i].getTotalPriceL().updateUI();
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 
 }

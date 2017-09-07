@@ -207,7 +207,7 @@ public class UserJoinGUI extends JFrame {
 					dispose();
 				}
 			} else if (arg0.getSource() == idCheckBtn) {
-				result = dao.UserIdSelect(idTx.getText());
+				result = dao.UserNumberSelect(idTx.getText());
 				if (result <= 0) {
 					System.out.println("쓸수있는 아이디");
 					JOptionPane.showMessageDialog(null, "사용가능한 아이디 입니다.");

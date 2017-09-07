@@ -111,12 +111,12 @@ public class AdminSetPwGUI extends JFrame {
 	}
 
 	class checkListener implements ActionListener {
-		
+
 		boolean checkFlag = false;
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource() == cancelButton) {
 				dispose();
 			}
@@ -124,7 +124,7 @@ public class AdminSetPwGUI extends JFrame {
 				String oldPasswd = new String(oldPWf.getPassword(), 0, oldPWf.getPassword().length);
 				String newPasswd = new String(newPWf.getPassword(), 0, newPWf.getPassword().length);
 				String comparePasswd = new String(comparePWf.getPassword(), 0, comparePWf.getPassword().length);
-				
+
 				if (oldPasswd.equalsIgnoreCase(adminLoginGui.adminPw)) {
 					if (newPasswd.equalsIgnoreCase(comparePasswd)) {
 						adminLoginGui.adminPw = newPasswd;
@@ -132,7 +132,8 @@ public class AdminSetPwGUI extends JFrame {
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
 					}
-				}else {
+
+				} else {
 					JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
 				}
 
