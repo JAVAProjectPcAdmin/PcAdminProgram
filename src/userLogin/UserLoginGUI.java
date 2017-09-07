@@ -167,10 +167,12 @@ public class UserLoginGUI extends JFrame {
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
-					User user = new User("손님");
+					String name=dao.UserNameSelect(idTf.getText());
+					User user = new User(name);
+					user.setUserNumber(dao.UserIdSelect(idTf.getText())+"");
 					UserClient userclient = new UserClient(user);
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI();
+					UserUsingStateGUI uus = new UserUsingStateGUI(user);
 				} else if (result == 0) {
 					System.out.println("비밀번호가 틀렸습니다.");
 					JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
@@ -183,7 +185,7 @@ public class UserLoginGUI extends JFrame {
 				if (result == 1) {
 					System.out.println("로그인 성공");
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI();
+//					UserUsingStateGUI uus = new UserUsingStateGUI();
 				} else if (result == 0) {
 					System.out.println("사용중인 번호입니다.");
 					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);

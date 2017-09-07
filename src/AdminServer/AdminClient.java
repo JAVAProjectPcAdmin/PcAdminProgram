@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+
 import flagment.Flagment;
 
 public class AdminClient {
@@ -51,6 +52,7 @@ public class AdminClient {
 					System.out.println(user2.getName());
 
 					Flagment.UserLoginState[user2.getSeatNumber()] = true;
+					
 					System.out.println("여기까지!!!!!");
 				}
 			} catch (IOException e) {
