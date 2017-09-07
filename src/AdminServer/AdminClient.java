@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
+import flagment.Flagment;
+
 public class AdminClient {
 		
 		Socket socket = null;
@@ -20,10 +22,9 @@ public class AdminClient {
 				ois = new ObjectInputStream(socket.getInputStream());
 				user2 = (User) ois.readObject();
 				System.out.println(user2.getName());
-				if (user2.getSeatNumber() == 1) {
-//					rightUserPanel[1].setVisible(true);
+
+					Flagment.UserLoginState[user2.getSeatNumber()-1]=true;
 					System.out.println("여기까지!!!!!");
-				}
 
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
