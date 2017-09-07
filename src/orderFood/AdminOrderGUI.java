@@ -1,6 +1,7 @@
 package orderFood;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -25,11 +26,13 @@ public class AdminOrderGUI extends JFrame {
 		
 		
 		seatLbl = new JLabel(user.getSeatNumber() + "번 자리에서 주문이 들어왔습니다.");
+		seatLbl.setFont(new Font("맑은고딕", Font.BOLD, 15));
 		orderLbl = new JLabel(order);
+		orderLbl.setFont(new Font("맑은고딕", Font.PLAIN, 13));
 		wholePnl = new JPanel();
 		wholePnl.setLayout(null);
 		wholePnl.add(seatLbl);
-		seatLbl.setBounds(40, 7, 300, 50);
+		seatLbl.setBounds(30, 7, 300, 50);
 		wholePnl.add(orderLbl);
 		orderLbl.setBounds(95, 30, 300, 100);
 		wholePnl.add(okBtn);
