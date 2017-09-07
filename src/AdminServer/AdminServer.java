@@ -38,16 +38,16 @@ public class AdminServer {
 					String ip=socket.getInetAddress()+"";
 					
 					//70.12.115.59
-					if(ip.substring(11).equals(53))
+					if(ip.substring(11).equals("53"))
 						user2.setSeatNumber(2);
-					else if(ip.substring(11).equals(54))
+					else if(ip.substring(11).equals("54"))
 						user2.setSeatNumber(3);
-					else if(ip.substring(11).equals(60))
+					else if(ip.substring(11).equals("60"))
 						user2.setSeatNumber(1);
 					
 					
 					adminOutStream.writeObject(user2);
-					Thread.sleep(1000);
+					Thread.sleep(500);
 				}
 			}
 

@@ -185,6 +185,7 @@ public class AdminMainGUI extends JFrame {
 		public void run() {
 			while (true) {
 				if (flag.UserLoginState[i]) {
+					System.out.println(i);
 					rightUserPanel[i].setVisible(true);
 					rightUserPanel[i].updateUI();
 				}

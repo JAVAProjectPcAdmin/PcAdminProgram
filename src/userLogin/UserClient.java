@@ -18,13 +18,12 @@ public class UserClient {
 			System.out.println("서버랑 연결됬네?!");
 			String ip= socket.getInetAddress()+"";
 			System.out.println(ip);
-			if(ip.equals("70.12.115.60"))
-				user.setSeatNumber(1);
+
 			oos=new ObjectOutputStream((socket.getOutputStream()));
 			
 			oos.writeObject(user);
 			oos.flush();
-			Thread.sleep(10000);
+			Thread.sleep(500);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
