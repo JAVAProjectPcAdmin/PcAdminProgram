@@ -108,8 +108,7 @@ public class OrderGUI extends JFrame {
 			snack[i].downBtn.addActionListener(upDown);
 		}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		//////////////////////////////////////////////////////////////////////////////////////////////////
 		// 결제, 취소
 		orderBtn = new JButton("    주  문    ");
 		
@@ -117,18 +116,19 @@ public class OrderGUI extends JFrame {
 		orderBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String order = "";
+				String order = "<html>";
 				for(int i=0; i<ramen.length; i++) {
 					if(ramen[i].count > 0) {
-						order += " - " + ramenName[i] + " " + ramen[i].count + "개" + ","; 
+						order += " - " + ramenName[i] + " " + ramen[i].count + "개" + "<br>"; 
 					}
 					if(drink[i].count > 0) {
-						order += " - " + drinkName[i] + " " + drink[i].count + "개" + ","; 
+						order += " - " + drinkName[i] + " " + drink[i].count + "개" + "<br>"; 
 					}
 					if(snack[i].count > 0) {
-						order += " - " + snackName[i] + " " + snack[i].count + "개" + ","; 
+						order += " - " + snackName[i] + " " + snack[i].count + "개" + "<br>"; 
 					}
 				}
+				order += "</html>";
 				AdminOrderGUI g = new AdminOrderGUI(order);
 			}
 		});
