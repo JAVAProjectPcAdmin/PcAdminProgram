@@ -48,7 +48,15 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
+<<<<<<< HEAD
+<<<<<<< HEAD
+			rightUserPanel[i].setVisible(true);
+=======
 			rightUserPanel[i].setVisible(false);
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+=======
+			rightUserPanel[i].setVisible(false);
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 			flag = new Flagment(i);
 			thread = new UserThread(i, flag);
 			rightPanel.add(rightUserPanel[i]);
@@ -169,17 +177,68 @@ public class AdminMainGUI extends JFrame {
 		private int i;
 		private Flagment flag;
 		public UserThread(int i ,Flagment flag) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			// TODO Auto-generated constructor stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+=======
+			// TODO Auto-generated constructor stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 			this.i=i;
 			this.flag=flag;
 		}
 		@Override
 		public void run() {
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 			// TODO Auto-generated method stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+=======
+			// TODO Auto-generated method stub
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 			super.run();
 			if(flag.UserLoginState[i]) {
 				rightUserPanel[i].setVisible(true);
 			}
 		}
+<<<<<<< HEAD
+<<<<<<< HEAD
 	}
+<<<<<<< HEAD
+class AdminClient {
+		
+		Socket socket = null;
+		BufferedWriter bw = null;
+		User user2;
+		ObjectInputStream ois;
+
+		public AdminClient() {
+			try {
+				
+				socket = new Socket("127.0.0.1", 7777); 
+				System.out.println("드디어 연결!!");
+				ois = new ObjectInputStream(socket.getInputStream());
+				user2 = (User) ois.readObject();
+				System.out.println(user2.getName());
+				if (user2.getSeatNumber() == 1) {
+					rightUserPanel[i].setVisible(false);
+					System.out.println("여기까지!!!!!");
+				}
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}
+
+=======
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+=======
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
+	}
+=======
+>>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 }

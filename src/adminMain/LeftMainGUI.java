@@ -321,21 +321,11 @@ public class LeftMainGUI extends JPanel {
 					umi = new UserMemberInfoGUI();
 					uv = new ArrayList<>();
 					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
+					empty = new ArrayList<>();
 					empty = dao.userInfoList();
 
-					for (int i = 0; i < uv.size(); i++) {
-						if ((uv.get(i).getName()).equals(inputMemberInfo_Text.getText())) {
-							temp[0] = uv.get(i).getUserNumber();
-							temp[1] = uv.get(i).getName();
-							temp[2] = uv.get(i).getId();
-							temp[3] = uv.get(i).getRegisterDate();
-							temp[4] = uv.get(i).getResidentNumber();
-
-							umi.model.insertRow(0, temp);
-							umi.memberTbl.updateUI();
-
-						} else if ((inputMemberInfo_Text.getText()).equals("")) {
-							for(int index=0; index<empty.size(); index++) {
+					if ((inputMemberInfo_Text.getText()).equals("")) {
+						for (int index = 0; index < empty.size(); index++) {
 							tempEmpty[0] = empty.get(index).getUserNumber();
 							tempEmpty[1] = empty.get(index).getName();
 							tempEmpty[2] = empty.get(index).getId();
@@ -344,9 +334,19 @@ public class LeftMainGUI extends JPanel {
 
 							umi.model.insertRow(0, tempEmpty);
 							umi.memberTbl.updateUI();
+						}
+					} else {
+						for (int i = 0; i < uv.size(); i++) {
+							if (uv.get(i).getName().equals(inputMemberInfo_Text.getText())) {
+								temp[0] = uv.get(i).getUserNumber();
+								temp[1] = uv.get(i).getName();
+								temp[2] = uv.get(i).getId();
+								temp[3] = uv.get(i).getRegisterDate();
+								temp[4] = uv.get(i).getResidentNumber();
+
+								umi.model.insertRow(0, temp);
+								umi.memberTbl.updateUI();
 							}
-						} else {
-							System.out.println("?");
 						}
 					}
 

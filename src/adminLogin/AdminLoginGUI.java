@@ -50,7 +50,6 @@ public class AdminLoginGUI extends JFrame {
 			computerImg = ImageIO.read(new File("images//computer.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -76,6 +75,7 @@ public class AdminLoginGUI extends JFrame {
 		
 		setButton = new JButton(new ImageIcon("images//adminbt.png"));
 		setButton.setFocusPainted(false);
+		setButton.addActionListener(new adminSetPwListener());
 
 		panel.setBounds(0, 0, 600, 300);
 		idTf.setBounds(320, 150, 250, 30);
@@ -100,12 +100,14 @@ public class AdminLoginGUI extends JFrame {
 		setVisible(true);
 
 	}
-
+	
+	// 관리자 로그인
 	class LoginListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String updatePasswd = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
 			
+			//로그인
 			if (idTf.getText().equals(adminId)) {
 				if(updatePasswd.equals(adminPw)) {
 					System.out.println("로그인 성공");
@@ -120,10 +122,20 @@ public class AdminLoginGUI extends JFrame {
 				JOptionPane.showMessageDialog(null, "등록되지 않은 아이디이거나, 잘못 입력하셨습니다.");
 			}
 		
-
 		}
-
 	}
+	
+	// 관리자 설정
+	class adminSetPwListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			
+		}
+		
+	}
+	
 
 	class adminIcon extends JPanel {
 		public void paint(Graphics g) {
