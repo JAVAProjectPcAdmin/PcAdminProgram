@@ -30,7 +30,7 @@ import db.UserDao;
 public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;
 	private JLabel idLabel, pwLabel;
-	private JButton loginButton, setButton;
+	private JButton loginButton, setButton, registerButton;
 	private JTextField idTf;
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
@@ -73,6 +73,10 @@ public class AdminLoginGUI extends JFrame {
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(new LoginListener());
 		
+		registerButton = new JButton(new ImageIcon("images//registeradmin.png"));
+		registerButton.setFocusPainted(false);
+		registerButton.addActionListener(new adminRegisterListener());
+		
 		setButton = new JButton(new ImageIcon("images//adminbt.png"));
 		setButton.setFocusPainted(false);
 		setButton.addActionListener(new adminSetPwListener());
@@ -84,10 +88,14 @@ public class AdminLoginGUI extends JFrame {
 		pwLabel.setBounds(200, 170, 200, 50);
 		adminIcon.setBounds(180, 60, 328, 50);
 		computerIcon.setBounds(70, 50, 97, 70);
-		loginButton.setBounds(320, 230, 118, 27);
-		setButton.setBounds(450, 230, 123, 27);
+		
+		
+		loginButton.setBounds(250, 230, 90, 27);
+		registerButton.setBounds(350, 230, 90, 27);
+		setButton.setBounds(450, 230, 90, 27);
 
 		panel.add(loginButton);
+		panel.add(registerButton);
 		panel.add(setButton);
 		panel.add(idTf);
 		panel.add(pwTf);
@@ -124,12 +132,23 @@ public class AdminLoginGUI extends JFrame {
 		}
 	}
 	
-	// 관리자 설정
+	// 관리자 비밀번호 변경
 	class adminSetPwListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminSetPwGUI adminSetPw = new AdminSetPwGUI();
+			
+		}
+		
+	}
+	
+	// 관리자 등록 
+	class adminRegisterListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			AdminJoinGUI adminRegister = new AdminJoinGUI();
 			
 		}
 		
