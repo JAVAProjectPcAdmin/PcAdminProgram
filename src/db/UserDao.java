@@ -1,8 +1,7 @@
 package db;
 
-/*
- * by.jaein
- */
+
+ 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -71,7 +70,7 @@ public class UserDao {
 		}
 	}
 
-	public int UserIdSelect(String Id) {
+	public int UserNumberSelect(String Id) {
 		int num = -1;
 		sql = "SELECT USER_NUMBER FROM USER WHERE ID=?";
 

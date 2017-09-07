@@ -22,7 +22,6 @@ public class UserClient {
 			oos=new ObjectOutputStream((socket.getOutputStream()));
 			
 			oos.writeObject(user);
-			oos.flush();
 			Thread.sleep(500);
 			
 		} catch (IOException e) {
