@@ -41,7 +41,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		setAlwaysOnTop(true);
 
 		try {
-			moneybagImg = ImageIO.read(new File("moneybag.png"));
+			moneybagImg = ImageIO.read(new File("images//moneybag.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -61,7 +61,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 			}
 		});
 
-		detailButton = new JButton(new ImageIcon("detailinformation.png"));
+		detailButton = new JButton(new ImageIcon("images//detailinformation.png"));
 
 		detailButton.addActionListener(new ActionListener() {
 
