@@ -6,13 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import AdminServer.User;
+
 public class AdminOrderGUI extends JFrame {
 	private JButton okBtn;
 	private JPanel wholePnl;
 	private JLabel seatLbl;
 	private JLabel orderLbl; 
 
-	public AdminOrderGUI(String order) {
+	public AdminOrderGUI(String order, User user) {
 		okBtn = new JButton("확인");
 		okBtn.addActionListener(new ActionListener() {
 			@Override
@@ -21,7 +23,8 @@ public class AdminOrderGUI extends JFrame {
 			}
 		});
 		
-		seatLbl = new JLabel("3번 자리에서 주문이 들어왔습니다.");
+		
+		seatLbl = new JLabel(user.getSeatNumber() + "번 자리에서 주문이 들어왔습니다.");
 		orderLbl = new JLabel(order);
 		wholePnl = new JPanel();
 		wholePnl.setLayout(null);
