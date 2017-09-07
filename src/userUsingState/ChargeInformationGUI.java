@@ -114,7 +114,6 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		detailButton.setBounds(30, 268, 73, 23);
 		sumLabel.setBounds(20, 280, 80, 50);
 		///////////////////////////////////////////////////////////////
-
 		rs_nameLabel.setBounds(250, 110, 50, 50);
 		rs_startLabel.setBounds(191, 140, 100, 50);
 		rs_usingTimeLabel.setBounds(255, 170, 100, 50);

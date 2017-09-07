@@ -49,8 +49,6 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
 			rightUserPanel[i].setVisible(true);
-			rightUserPanel[i].setVisible(false);
-			rightUserPanel[i].setVisible(false);
 			flag = new Flagment(i);
 			thread = new UserThread(i, flag);
 			rightPanel.add(rightUserPanel[i]);
