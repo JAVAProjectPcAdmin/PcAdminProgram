@@ -42,6 +42,10 @@ public class AdminServer {
 				} else {
 					ois = new ObjectInputStream(socket.getInputStream());
 					user2 = (User) ois.readObject();
+					String ip=socket.getInetAddress()+"";
+					//70.12.115.59
+					if(ip.substring(10)=="60")
+						user2.setSeatNumber(1);
 					System.out.println(user2.getName() + "AdminServer");
 				}
 			}
