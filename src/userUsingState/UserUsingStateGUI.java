@@ -41,7 +41,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		panel = null;
 		try {
-			panel = new JPanelWithBackground("graypanel.png");
+			panel = new JPanelWithBackground("images//graypanel.png");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -62,9 +62,9 @@ public class UserUsingStateGUI extends JFrame {
 		informationLb.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 13));
 		nameLb = new JLabel("±Ë¡æ»∆¥‘");
 		nameLb.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 16));
-		logoutBt = new JButton(new ImageIcon("logout.png"));
+		logoutBt = new JButton(new ImageIcon("images//logout.png"));
 		logoutBt.setBorderPainted(false);
-		talkBt = new JButton(new ImageIcon("talk.png"));
+		talkBt = new JButton(new ImageIcon("images//talk.png"));
 		talkBt.setBorderPainted(false);
 
 		talkBt.addActionListener(new ActionListener() {
@@ -79,9 +79,9 @@ public class UserUsingStateGUI extends JFrame {
 				}
 			}
 		});
-		orderBt = new JButton(new ImageIcon("order.png"));
+		orderBt = new JButton(new ImageIcon("images//order.png"));
 		orderBt.setBorderPainted(false);
-		informationBt = new JButton(new ImageIcon("information.png"));
+		informationBt = new JButton(new ImageIcon("images//information.png"));
 		informationBt.setBorderPainted(false);
 		informationBt.addActionListener(new ActionListener() {
 
@@ -150,7 +150,7 @@ public class UserUsingStateGUI extends JFrame {
 		private Image backgroundImage;
 
 		public JPanelWithBackground(String fileName) throws IOException {
-			backgroundImage = ImageIO.read(new File("graypanel.png"));
+			backgroundImage = ImageIO.read(new File("images//graypanel.png"));
 		}
 
 		public void paintComponent(Graphics g) {

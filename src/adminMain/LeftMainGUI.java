@@ -96,17 +96,17 @@ public class LeftMainGUI extends JPanel {
 	private JButton findSeatBtn = new JButton();
 
 	// 이미지 사이즈 조절
-	ImageIcon findButtonIcon = new ImageIcon("findseat.jpg");
+	ImageIcon findButtonIcon = new ImageIcon("images//findseat.jpg");
 	Image findButton = findButtonIcon.getImage();
 	Image newFindButtonImg = findButton.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindButton = new ImageIcon(newFindButtonImg);
 
-	ImageIcon javaLogoIcon = new ImageIcon("JavaLogo.png");
+	ImageIcon javaLogoIcon = new ImageIcon("images//JavaLogo.png");
 	Image javaLogo = javaLogoIcon.getImage();
 	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 
-	ImageIcon findSeatIcon = new ImageIcon("findbutton.jpg");
+	ImageIcon findSeatIcon = new ImageIcon("images//findbutton.jpg");
 	Image findSeat = findSeatIcon.getImage();
 	Image newFindSeatImg = findSeat.getScaledInstance(50, 35, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chFindSeat = new ImageIcon(newFindSeatImg);
