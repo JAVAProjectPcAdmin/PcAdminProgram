@@ -21,6 +21,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.AdminClient;
+import AdminServer.AdminServer;
 import AdminServer.User;
 import db.UserDao;
 import flagment.Flagment;
@@ -160,6 +162,8 @@ public class AdminMainGUI extends JFrame {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 	public static void main(String[] args) {
 		AdminMainGUI admin = new AdminMainGUI();
+		new AdminServer();
+		AdminClient adcli =new AdminClient();
 	}
 	class UserThread extends Thread{
 		private int i;
@@ -177,35 +181,5 @@ public class AdminMainGUI extends JFrame {
 				rightUserPanel[i].setVisible(true);
 			}
 		}
-	}
-class AdminClient {
-		
-		Socket socket = null;
-		BufferedWriter bw = null;
-		User user2;
-		ObjectInputStream ois;
-
-		public AdminClient() {
-			try {
-				
-				socket = new Socket("127.0.0.1", 7777); 
-				System.out.println("드디어 연결!!");
-				ois = new ObjectInputStream(socket.getInputStream());
-				user2 = (User) ois.readObject();
-				System.out.println(user2.getName());
-				if (user2.getSeatNumber() == 1) {
-					rightUserPanel[i].setVisible(false);
-					System.out.println("여기까지!!!!!");
-				}
-
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-
 	}
 }

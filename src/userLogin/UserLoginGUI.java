@@ -136,16 +136,6 @@ public class UserLoginGUI extends JFrame {
 			}
 		});
 
-		loginButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				User user = new User("¿Ã∏ß");
-				new UserClient(user);
-			}
-		});
-
 		panel.add(loginButton);
 		panel.add(signInButton);
 		panel.add(idSearchButton);
