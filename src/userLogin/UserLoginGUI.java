@@ -40,7 +40,6 @@ public class UserLoginGUI extends JFrame {
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
-	
 
 	public UserLoginGUI() {
 		setSize(1280, 1024);
@@ -159,16 +158,16 @@ public class UserLoginGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			
+
 			UserDao dao = new UserDao();
-<<<<<<< HEAD
-			if (idTf.getText()!=null) {
-=======
-			if (idTf.getText().length()>0) {
->>>>>>> ea0a9fd71394d876e13fac8b3d36cb51fb040749
+
+			if (idTf.getText().length() > 0) {
+
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
+					User user = new User("손님");
+					UserClient userclient = new UserClient(user);
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI();
 				} else if (result == 0) {
@@ -178,7 +177,7 @@ public class UserLoginGUI extends JFrame {
 					System.out.println("아이디가 없습니다.");
 					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
 				}
-			} else if(nonMemberTf.getText().length()>0){
+			} else if (nonMemberTf.getText().length() > 0) {
 				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
 				if (result == 1) {
 					System.out.println("로그인 성공");
