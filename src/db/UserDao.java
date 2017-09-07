@@ -1,7 +1,5 @@
 package db;
 
-
- 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,14 +32,11 @@ public class UserDao {
 	}
 
 	public void UserJoinInsert(UserVO user) {
-//		Date date = new Date();
-		
-		long time = System.currentTimeMillis(); 
+		// Date date = new Date();
+
+		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		String date = dayTime.format(new Date(time));
-
-
-
 
 		sql = "INSERT INTO USER(ID,PASSWORD,NAME,RESIDENT_NUMBER,PHONE,EMAIL_ADDRESS,ADDRESS,REGISTER_DATE) "
 				+ " VALUES(?,?,?,?,?,?,?,?)";
@@ -58,7 +53,7 @@ public class UserDao {
 			pstmt.setString(6, user.getEmailAddress());
 			pstmt.setString(7, user.getAddress());
 			pstmt.setString(8, date.toString());
-			
+
 			result = pstmt.executeUpdate();
 			System.out.println("insert : " + result);
 
@@ -120,6 +115,7 @@ public class UserDao {
 		}
 		return name;
 	}
+
 	public String IdSearch(String name, String email, String phoneNumber) {
 		String id = null;
 
@@ -214,9 +210,6 @@ public class UserDao {
 
 	}
 
-<<<<<<< HEAD
-	public List<UserVO> UserInfoList() {
-=======
 	/////////////////////////////////// 비회원Dao
 	public String nonMemberIdSelect(String non_Id) {
 		String non_name = null;
@@ -293,7 +286,7 @@ public class UserDao {
 			pstmt.setString(5, user.getAddress());
 			pstmt.setString(6, user.getMemo());
 			pstmt.setInt(7, userNum);
-			
+
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -371,19 +364,14 @@ public class UserDao {
 
 	// 모든 정보
 	public List<UserVO> userInfoList() {
->>>>>>> f54fe62040e5ee32aa5995864fa794b66347eb21
+
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 			String sql = "SELECT * FROM USER";
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
-<<<<<<< HEAD
 
-			while (rs.next()) {
-				UserVO result = new UserVO();
-
-=======
 			while (rs.next()) {
 				UserVO result = new UserVO();
 
@@ -399,10 +387,12 @@ public class UserDao {
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
->>>>>>> f54fe62040e5ee32aa5995864fa794b66347eb21
+
 			}
 
-		} catch (SQLException e) {
+		} catch (
+
+		SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
