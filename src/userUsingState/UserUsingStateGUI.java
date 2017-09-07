@@ -9,6 +9,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -17,15 +19,22 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import AdminServer.User;
 import orderFood.OrderGUI;
 
 public class UserUsingStateGUI extends JFrame {
-	private JLabel timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
-	private JButton talkBt, orderBt, informationBt;
+	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
+	private JButton talkBt, orderBt, informationBt, logoutBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
+	public static boolean flag = false;
+	public static boolean flag2 = false;
+	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
+	public static boolean flag4 = false;
+	User user;
 
-	public UserUsingStateGUI() {
+	public UserUsingStateGUI(User user) {
+		this.user = user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
@@ -37,7 +46,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		panel = null;
 		try {
-			panel = new JPanelWithBackground("graypanel.png");
+			panel = new JPanelWithBackground("images//graypanel.png");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -46,43 +55,54 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(0, 0, 600, 400);
 
-		customerNumberLb = new JLabel("001");
+		customerNumberLb = new JLabel(user.getSeatNumber() + "");
 		customerNumberLb.setFont(new Font("맑은 고딕", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
-		moneyLb = new JLabel("0원");
+		moneyLb = new JLabel(user.getTotalPrice()+"원");
 		talkLb = new JLabel("문의");
 		talkLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		orderLb = new JLabel("주문");
 		orderLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		informationLb = new JLabel("요금정보");
 		informationLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-
-		talkBt = new JButton(new ImageIcon("talk.png"));
+		nameLb = new JLabel(user.getName());
+		nameLb.setFont(new Font("맑은 고딕", Font.BOLD, 16));
+		logoutBt = new JButton(new ImageIcon("images//logout.png"));
+		logoutBt.setBorderPainted(false);
+		talkBt = new JButton(new ImageIcon("images//talk.png"));
 		talkBt.setBorderPainted(false);
 
 		talkBt.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
 				// TODO Auto-generated method stub
-				TalkGUI talk = new TalkGUI();
+				if (!flag) {
+					TalkGUI talk = new TalkGUI();
+					flag = true;
+				}
 			}
 		});
-		orderBt = new JButton(new ImageIcon("order.png"));
+		orderBt = new JButton(new ImageIcon("images//order.png"));
 		orderBt.setBorderPainted(false);
-		informationBt = new JButton(new ImageIcon("information.png"));
+		informationBt = new JButton(new ImageIcon("images//information.png"));
 		informationBt.setBorderPainted(false);
 		informationBt.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				ChargeInformationGUI ci = new ChargeInformationGUI();
+				if (!flag2) {
+					ChargeInformationGUI ci = new ChargeInformationGUI();
+					flag2 = true;
+				}
 			}
 		});
 
 		panel.setBounds(10, 80, 283, 84);
-		customerNumberLb.setBounds(40, 0, 100, 100);
+		customerNumberLb.setBounds(30, 0, 100, 100);
+		nameLb.setBounds(110, 30, 100, 50);
 		talkBt.setBounds(50, 180, 44, 32);
 		orderBt.setBounds(130, 180, 38, 29);
 		orderBt.addActionListener(new ActionListener() {
@@ -90,7 +110,19 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				OrderGUI order = new OrderGUI();
+				if (!flag3) {
+					OrderGUI order = new OrderGUI(user);
+					flag3 = true;
+				}
+			}
+		});
+		logoutBt.setBounds(200, 20, 63, 51);
+		logoutBt.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				dispose();
 			}
 		});
 		informationBt.setBounds(210, 180, 42, 36);
@@ -103,7 +135,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
-
+		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
 		add(informationBt);
@@ -111,9 +143,13 @@ public class UserUsingStateGUI extends JFrame {
 		add(orderLb);
 		add(informationLb);
 		add(customerNumberLb);
+		add(nameLb);
 		add(panel);
 
 		setVisible(true);
+		
+		TimerThread thread=new TimerThread();
+		thread.start();
 
 	}
 
@@ -122,7 +158,7 @@ public class UserUsingStateGUI extends JFrame {
 		private Image backgroundImage;
 
 		public JPanelWithBackground(String fileName) throws IOException {
-			backgroundImage = ImageIO.read(new File("graypanel.png"));
+			backgroundImage = ImageIO.read(new File("images//graypanel.png"));
 		}
 
 		public void paintComponent(Graphics g) {
@@ -133,7 +169,32 @@ public class UserUsingStateGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new UserUsingStateGUI();
+		new UserUsingStateGUI(new User(""));
+	}
+
+	class TimerThread extends Thread {
+		@Override
+		public void run() {
+			String nowTime;
+			while (true) {
+				long time=System.currentTimeMillis()-1000*60*60*9;
+				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
+				long checkTime=(time-user.getStartTimeCalc());
+				timeLb.setText(dayTime.format(new Date(checkTime)));
+				timeLb.updateUI();
+				if(checkTime/1000%60==0) {
+					user.setTotalPrice(user.getTotalPrice()+20);
+					moneyLb.setText(user.getTotalPrice()+"");
+					moneyLb.updateUI();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}
 	}
 
 }

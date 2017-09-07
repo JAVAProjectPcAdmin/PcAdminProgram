@@ -41,7 +41,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		setAlwaysOnTop(true);
 
 		try {
-			moneybagImg = ImageIO.read(new File("moneybag.png"));
+			moneybagImg = ImageIO.read(new File("images//moneybag.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -56,18 +56,22 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		exitButton = new JButton("확인");
 		exitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UserUsingStateGUI.flag2 = false;
 				dispose(); // 창하나만 종료 전체종료는 system.exit
 			}
 		});
 
-		detailButton = new JButton(new ImageIcon("detailinformation.png"));
+		detailButton = new JButton(new ImageIcon("images//detailinformation.png"));
 
 		detailButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				OrderInformationGUI OI = new OrderInformationGUI();
+				if(!UserUsingStateGUI.flag4) {
+					OrderInformationGUI OI = new OrderInformationGUI();
+					UserUsingStateGUI.flag4=true;
+				}
 			}
 		});
 		moneyBagIcon = new moenyBagIcon();
@@ -110,7 +114,6 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		detailButton.setBounds(30, 268, 73, 23);
 		sumLabel.setBounds(20, 280, 80, 50);
 		///////////////////////////////////////////////////////////////
-
 		rs_nameLabel.setBounds(250, 110, 50, 50);
 		rs_startLabel.setBounds(191, 140, 100, 50);
 		rs_usingTimeLabel.setBounds(255, 170, 100, 50);

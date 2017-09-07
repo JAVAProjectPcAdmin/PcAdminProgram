@@ -5,9 +5,20 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.ScrollPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import adminMain.LeftMainGUI;
+import db.UserDao;
+import db.UserVO;
 
 public class UserMemberInfoGUI extends JFrame {
 
@@ -16,9 +27,13 @@ public class UserMemberInfoGUI extends JFrame {
 	private JTextField joinNumTx, nameTx, idTx, birthTx,
 					   phTx, mailTx, addTx, memoTx;
 	private JPasswordField pwTx;
-	private JButton storeBtn, searchBtn, resetBtn;
+	private JButton storeBtn, cancleBtn;
 	private JPanel infoPnl, tablePnl;
-	private JTable memberTbl;
+	public JTable memberTbl;
+	private UserDao dao;
+	public DefaultTableModel model;
+	public String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
+	public String contents[][] = new String[100][0];
 	
 	public UserMemberInfoGUI() {
 		////////////////////////////////////////////////////// infoPnl
@@ -44,8 +59,7 @@ public class UserMemberInfoGUI extends JFrame {
 		memoTx = new JTextField();
 		
 		storeBtn = new JButton("저 장");
-		searchBtn = new JButton("검 색");
-		resetBtn = new JButton("초기화");
+		cancleBtn = new JButton("닫 기");
 		
 		infoPnl = new JPanel();
 		tablePnl = new JPanel();
@@ -62,6 +76,7 @@ public class UserMemberInfoGUI extends JFrame {
 		joinNumLbl.setBounds(20, 110, 100, 15);
 		infoPnl.add(joinNumTx);
 		joinNumTx.setBounds(110, 105, 150, 25);
+		joinNumTx.setEditable(false);
 		
 		//이름
 		infoPnl.add(nameLbl);
@@ -74,6 +89,7 @@ public class UserMemberInfoGUI extends JFrame {
 		idLbl.setBounds(20, 190, 100, 15);
 		infoPnl.add(idTx);
 		idTx.setBounds(110, 185, 150, 25);
+		idTx.setEditable(false);
 		
 		//비밀번호
 		infoPnl.add(pwLbl);
@@ -86,7 +102,8 @@ public class UserMemberInfoGUI extends JFrame {
 		birthLbl.setBounds(20, 270, 100, 15);
 		infoPnl.add(birthTx);
 		birthTx.setBounds(110, 265, 150, 25);
-	
+		birthTx.setEditable(false);
+		
 		//전화번호
 		infoPnl.add(phLbl);
 		phLbl.setBounds(20, 310, 100, 15);
@@ -112,33 +129,41 @@ public class UserMemberInfoGUI extends JFrame {
 		memoTx.setBounds(110, 425, 150, 25);
 		
 		//버튼
+		UserInfoListener InfoListener = new UserInfoListener();
 		add(storeBtn);
-		storeBtn.setBounds(70, 480, 70, 30);
-		add(searchBtn);
-		searchBtn.setBounds(150, 480, 70, 30);
-		add(resetBtn);
-		resetBtn.setBounds(230, 480, 80, 30);
+		storeBtn.setBounds(100, 480, 70, 30);
+		storeBtn.addActionListener(InfoListener);
+		add(cancleBtn);
+		cancleBtn.setBounds(200, 480, 70, 30);
+		cancleBtn.addActionListener(InfoListener);
 		
 		//////////////////////////////////////////////////// tablePnl
 		
-		String header[] = {"회원번호", "이름", "아이디", "등록일자", "생년월일"};
+		model = new DefaultTableModel(contents, header) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				if(column >= 0) {
+					return false;
+				} else {
+					return true;
+				}
+			}
+		};
 		
-		// *나중에 DB에서 값 받아와야 함*
-		//{{"1", "이유희", "hello", "2017-09-01", "930227"}};
-		String contents[][] = new String[100][0];
-		
-		
-		
-		DefaultTableModel model = new DefaultTableModel(contents, header);
 		memberTbl = new JTable(model);
 		JScrollPane scrollpane = new JScrollPane(memberTbl);
 		scrollpane.setPreferredSize(new Dimension(400, 500));
 		tablePnl.add(scrollpane, BorderLayout.CENTER);
 		
+		memberTbl.getTableHeader().setReorderingAllowed(false);
+		memberTbl.getTableHeader().setResizingAllowed(false);
+		
 		memberTbl.setRowHeight(23);
 		memberTbl.getColumnModel().getColumn(0).setPreferredWidth(50);
 		memberTbl.getColumnModel().getColumn(1).setPreferredWidth(60);
 		memberTbl.getColumnModel().getColumn(2).setPreferredWidth(70);
+		
+		memberTbl.addMouseListener(new UserTableMouseListener());
 		
 		//////////////////////////////////////////////////// frame
 		
@@ -154,7 +179,71 @@ public class UserMemberInfoGUI extends JFrame {
 		
 		setTitle("회원정보");
 		setSize(800,570);
+		setUndecorated(true);
+		setLocation(220, 170);
 		setResizable(false);
 		setVisible(true);
+	}
+	
+	//버튼 클릭
+	class UserInfoListener implements ActionListener{
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			String updatePasswd = "";
+			Scanner sc = new Scanner(System.in);
+			UserVO user = new UserVO();
+			dao = new UserDao();
+			JButton selected = (JButton)e.getSource();
+			
+			if(selected == storeBtn) {
+				user.setName(nameTx.getText());
+				
+				updatePasswd = new String(pwTx.getPassword(), 0, pwTx.getPassword().length);
+				
+				user.setPassword(updatePasswd);
+				user.setPhone(phTx.getText());
+				user.setEmailAddress(mailTx.getText());
+				user.setAddress(addTx.getText());
+				user.setMemo(memoTx.getText());
+				dao.userUpdate(user, Integer.parseInt(joinNumTx.getText()));
+				
+				LeftMainGUI.flag = true;
+				JOptionPane.showMessageDialog(null, "회원정보가 수정되었습니다.", "회원정보 수정 완료", JOptionPane.OK_OPTION);
+				dispose();
+				
+			}else if(selected == cancleBtn) {
+				LeftMainGUI.flag = true;
+				dispose();
+			}
+		}
+	}
+	
+	//테이블 클릭시 상세정보 
+	class UserTableMouseListener extends MouseAdapter{
+		@Override
+		public void mousePressed(MouseEvent e) {
+			dao = new UserDao();
+			UserVO userList;
+			int selectedIndex, userNum;
+			
+			try {
+				JTable jt = (JTable) e.getSource();
+				selectedIndex = jt.getSelectedRow();
+				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); 
+				userList = dao.userNumSelectList(userNum);
+
+				joinNumTx.setText(Integer.toString(userList.getUserNumber()));
+				nameTx.setText(userList.getName());
+				idTx.setText(userList.getId());
+				pwTx.setText(userList.getPassword());
+				birthTx.setText(userList.getResidentNumber());
+				phTx.setText(userList.getPhone());
+				mailTx.setText(userList.getEmailAddress());
+				addTx.setText(userList.getAddress());
+				memoTx.setText(userList.getMemo());
+			} catch (Exception ex) {
+				ex.getMessage();
+			}
+		}
 	}
 }

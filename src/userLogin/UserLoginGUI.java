@@ -26,13 +26,17 @@ import javax.swing.border.TitledBorder;
 
 import db.UserDao;
 import db.UserVO;
+
 import userUsingState.UserUsingStateGUI;
+
+import userUsingState.UserUsingStateGUI;
+
 import AdminServer.User;
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
 	private JLabel idLabel, pcNumLabel, pwLabel, nonMembersLabel;
-	private JButton loginButton, signInButton, searchButton;
+	private JButton loginButton, signInButton, idSearchButton, pwSearchButton;
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
@@ -41,18 +45,18 @@ public class UserLoginGUI extends JFrame {
 		setSize(1280, 1024);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// setDefaultCloseOperation(DISPOSE_ON_CLOSE);종료시 이벤트 사용하는 코드
 		setResizable(false);
 		setTitle("User Login");
 
 		try {
-			userLoginImg = ImageIO.read(new File("plzlogin.png"));
+			userLoginImg = ImageIO.read(new File("images//plzlogin.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		LoginListener listener = new LoginListener();
+
 		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "User Login");
 		panel.setBorder(tb);
@@ -64,6 +68,7 @@ public class UserLoginGUI extends JFrame {
 		pcNumPanel.setLayout(null);
 		plzLogin = new PlzLogin();
 
+		
 		pwLabel = new JLabel("Password");
 		pwLabel.setFont(new Font("맑은 고딕", Font.BOLD, 22));
 		idLabel = new JLabel("ID");
@@ -74,16 +79,18 @@ public class UserLoginGUI extends JFrame {
 		pcNumLabel.setFont(new Font("맑은 고딕", Font.BOLD, 140));
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
-		nonMemberTf = new JTextField();
-
-		loginButton = new JButton(new ImageIcon("loginbt.png"));
+		nonMemberTf = new JTextField(null);
+		loginButton = new JButton(new ImageIcon("images//loginbt.png"));
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(listener);
-		signInButton = new JButton(new ImageIcon("sign.png"));
+
+		signInButton = new JButton(new ImageIcon("images//sign.png"));
 		signInButton.setFocusPainted(false);
 
-		searchButton = new JButton(new ImageIcon("idpwsearch.png"));
-		searchButton.setFocusPainted(false);
+		idSearchButton = new JButton(new ImageIcon("images//idsearch.png"));
+		idSearchButton.setFocusPainted(false);
+		pwSearchButton = new JButton(new ImageIcon("images//pwsearch.png"));
+		pwSearchButton.setFocusPainted(false);
 
 		panel.setBounds(650, 680, 600, 300);
 		pcNumPanel.setBounds(20, 30, 200, 200);
@@ -106,32 +113,32 @@ public class UserLoginGUI extends JFrame {
 				UserJoinGUI join = new UserJoinGUI();
 			}
 		});
-		searchButton.setBounds(470, 230, 100, 27);
+		idSearchButton.setBounds(470, 230, 94, 28);
 
-		searchButton.addActionListener(new ActionListener() {
+		idSearchButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				ID_PW_SearchGUI search = new ID_PW_SearchGUI();
+				ID_SearchGUI search = new ID_SearchGUI();
 
 			}
 
 		});
+		pwSearchButton.setBounds(470, 260, 94, 28);
 
-		loginButton.addActionListener(new ActionListener() {
+		pwSearchButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				User user = new User("이름");
-				new UserClient(user);
+				PW_SearchGUI search = new PW_SearchGUI();
 			}
 		});
 
 		panel.add(loginButton);
 		panel.add(signInButton);
-		panel.add(searchButton);
+		panel.add(idSearchButton);
 		panel.add(idTf);
 		panel.add(pwTf);
 		panel.add(nonMemberTf);
@@ -139,6 +146,7 @@ public class UserLoginGUI extends JFrame {
 		panel.add(pwLabel);
 		panel.add(nonMembersLabel);
 		panel.add(plzLogin);
+		panel.add(pwSearchButton);
 		pcNumPanel.add(pcNumLabel);
 		add(pcNumPanel);
 		add(panel);
@@ -152,20 +160,43 @@ public class UserLoginGUI extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 
+			
 			UserDao dao = new UserDao();
 
-			int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
-			if (result == 1) {
-				System.out.println("로그인 성공");
-				dispose();
-				UserUsingStateGUI uus = new UserUsingStateGUI();
-			} else if (result == 0) {
-				System.out.println("비밀번호가 틀렸습니다.");
-				JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
-			} else {
-				System.out.println("아이디가 없습니다.");
-				JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
+			if (idTf.getText().length() > 0) {
+
+				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
+				if (result == 1) {
+					System.out.println("로그인 성공");
+					String name=dao.UserNameSelect(idTf.getText());
+					User user = new User(name);
+					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
+					user.setUserID(idTf.getText());
+					UserClient userclient = new UserClient(user);
+					dispose();
+					UserUsingStateGUI uus = new UserUsingStateGUI(user);
+				} else if (result == 0) {
+					System.out.println("비밀번호가 틀렸습니다.");
+					JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
+				} else {
+					System.out.println("아이디가 없습니다.");
+					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
+				}
+			} else if (nonMemberTf.getText().length() > 0) {
+				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
+				if (result == 1) {
+					System.out.println("로그인 성공");
+					dispose();
+//					UserUsingStateGUI uus = new UserUsingStateGUI();
+				} else if (result == 0) {
+					System.out.println("사용중인 번호입니다.");
+					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
+				} else {
+					System.out.println("아이디가 없습니다.(비회원)");
+					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "오류", JOptionPane.OK_OPTION);
+				}
 			}
+
 		}
 	}
 

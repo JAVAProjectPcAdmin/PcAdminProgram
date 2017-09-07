@@ -2,6 +2,8 @@ package adminMain;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.User;
 import db.UserDao;
 import db.UserVO;
 
@@ -23,12 +26,19 @@ public class RightMainGUI extends JPanel {
 	private JLabel usePCNumberL;
 	private JLabel userNameL;
 	private JLabel userIDL;
-
+	private JLabel userNumberL;
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
+	static String SEAT_NUMBER = "1";
+	static int seat_num = Integer.parseInt(SEAT_NUMBER);
+	public int userPanelIndex;
 
-	UserVO uv = new UserVO();
+	UserDao userDao = new UserDao();
+
+	public JLabel getUserNumberL() {
+		return userNumberL;
+	}
 
 	public JLabel getUserIDL() {
 		return userIDL;
@@ -53,17 +63,18 @@ public class RightMainGUI extends JPanel {
 	public JLabel getAddAmountL() {
 		return addAmountL;
 	}
-
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
 
-		usePCNumberL = new JLabel("23", new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
-		userNameL = new JLabel("ÀÌ¸§" + uv.getName());
-		userIDL = new JLabel("È¸¿ø¾ÆÀÌµð" + uv.getId());
-		useTimeL = new JLabel("09 : 24");
-		totalPriceL = new JLabel("120000¿ø");
-		addAmountL = new JLabel("3000¿ø Ãß°¡");
+		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
+
+		userNameL = new JLabel();
+		userNumberL = new JLabel();
+		userIDL = new JLabel();
+		useTimeL = new JLabel();
+		totalPriceL = new JLabel("0¿ø");
+		addAmountL = new JLabel();
 
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
@@ -77,31 +88,37 @@ public class RightMainGUI extends JPanel {
 		userNameL.setLocation(80, 15);
 		userNameL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 
-		userIDL.setSize(30, 30);
-		userIDL.setLocation(125, 15);
-		userIDL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
+		userNumberL.setSize(30, 30);
+		userNumberL.setLocation(153, 17);
+		userNumberL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 
 		useTimeL.setSize(80, 20);
 		useTimeL.setLocation(83, 43);
 		useTimeL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
 		totalPriceL.setSize(150, 30);
-		totalPriceL.setLocation(0, 70);
+		totalPriceL.setLocation(30, 70);
 		totalPriceL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 23));
 
 		addAmountL.setSize(150, 15);
-		addAmountL.setLocation(0, 103);
+		addAmountL.setLocation(30, 103);
 		addAmountL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
 		add(userNameL);
 		add(usePCNumberL);
-		add(userIDL);
+		add(userNumberL);
 		add(useTimeL);
 		add(totalPriceL);
 		add(addAmountL);
 
 	}
-
+	public void setUserPanel(User user) {
+		userNameL.setText(user.getName());;
+		userNumberL.setText(user.getUserNumber());
+		addAmountL.setText("");
+		userIDL.setText(user.getUserID());
+	}
+	
 }

@@ -7,42 +7,48 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AdminServer {
 	ServerSocket serverSocket = null;
-	Socket socket = null;
+	List<Socket> clientSocket = new ArrayList<>();
+	Socket adminSocket=null;
 	BufferedWriter bw = null;
 	User user2;
-	ObjectInputStream ois;
-	ObjectOutputStream oos = null;
+	ObjectInputStream clientInStream;
+	ObjectOutputStream adminOutStream = null;
 
 	public AdminServer() {
 		try {
 			serverSocket = new ServerSocket(7777);
 			while (true) {
-				System.out.println("기다리는중....");
-				socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
-				System.out.println("클라이언트 요청 들어옴 ");
+				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 
-				if (socket.getInetAddress() == serverSocket.getInetAddress()) {
-					if (oos == null) {
-
-					} else {
-						oos = new ObjectOutputStream((socket.getOutputStream()));
-
-						oos.writeObject(user2);
-
-						oos.flush();
-						Thread.sleep(10000);
-						// user2=null;
-						// oos=null;
-					
-					}
+				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+					System.out.println("Admin client 연결");
+					adminSocket = socket;			
+					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
-					ois = new ObjectInputStream(socket.getInputStream());
-					user2 = (User) ois.readObject();
-					System.out.println(user2.getName() + "AdminServer");
+					clientSocket.add(socket);
+					
+					clientInStream = new ObjectInputStream(socket.getInputStream());
+					user2 = (User) clientInStream.readObject();
+					String ip=socket.getInetAddress()+"";
+					
+					//70.12.115.59
+					if(ip.substring(11).equals("53"))
+						user2.setSeatNumber(2);
+					else if(ip.substring(11).equals("54"))
+						user2.setSeatNumber(3);
+					else if(ip.substring(11).equals("60"))
+						user2.setSeatNumber(1);
+					else if(ip.substring(11).equals("59"))
+						user2.setSeatNumber(10);
+					
+					adminOutStream.writeObject(user2);
+					Thread.sleep(500);
 				}
 			}
 
@@ -56,6 +62,9 @@ public class AdminServer {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		new AdminServer();
 	}
 
 	
