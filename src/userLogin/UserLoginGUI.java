@@ -50,7 +50,7 @@ public class UserLoginGUI extends JFrame {
 		setTitle("User Login");
 
 		try {
-			userLoginImg = ImageIO.read(new File("plzlogin.png"));
+			userLoginImg = ImageIO.read(new File("images//plzlogin.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -80,16 +80,16 @@ public class UserLoginGUI extends JFrame {
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 		nonMemberTf = new JTextField();
-		loginButton = new JButton(new ImageIcon("loginbt.png"));
+		loginButton = new JButton(new ImageIcon("images//loginbt.png"));
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(listener);
 
-		signInButton = new JButton(new ImageIcon("sign.png"));
+		signInButton = new JButton(new ImageIcon("images//sign.png"));
 		signInButton.setFocusPainted(false);
 
-		idSearchButton = new JButton(new ImageIcon("idsearch.png"));
+		idSearchButton = new JButton(new ImageIcon("images//idsearch.png"));
 		idSearchButton.setFocusPainted(false);
-		pwSearchButton = new JButton(new ImageIcon("pwsearch.png"));
+		pwSearchButton = new JButton(new ImageIcon("images//pwsearch.png"));
 		pwSearchButton.setFocusPainted(false);
 
 		panel.setBounds(650, 680, 600, 300);

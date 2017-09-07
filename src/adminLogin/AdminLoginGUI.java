@@ -46,8 +46,8 @@ public class AdminLoginGUI extends JFrame {
 		setTitle("Admin Login");
 
 		try {
-			adminLoginImg = ImageIO.read(new File("adminlogin.png"));
-			computerImg = ImageIO.read(new File("computer.png"));
+			adminLoginImg = ImageIO.read(new File("images//adminlogin.png"));
+			computerImg = ImageIO.read(new File("images//computer.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -70,11 +70,11 @@ public class AdminLoginGUI extends JFrame {
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 
-		loginButton = new JButton(new ImageIcon("loginbt.png"));
+		loginButton = new JButton(new ImageIcon("images//loginbt.png"));
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(new LoginListener());
 		
-		setButton = new JButton(new ImageIcon("adminbt.png"));
+		setButton = new JButton(new ImageIcon("images//adminbt.png"));
 		setButton.setFocusPainted(false);
 
 		panel.setBounds(0, 0, 600, 300);

@@ -37,7 +37,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		setAlwaysOnTop(true);
 
 		try {
-			searchImg = ImageIO.read(new File("Search.png"));
+			searchImg = ImageIO.read(new File("images//Search.png"));
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -65,9 +65,9 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		p_NumberTf = new JTextField();
 		emailTf = new JTextField();
 
-		cancleButton = new JButton(new ImageIcon("cancle.png"));
+		cancleButton = new JButton(new ImageIcon("images//cancle.png"));
 		cancleButton.setFocusPainted(false);
-		checkButton = new JButton(new ImageIcon("ok.png"));
+		checkButton = new JButton(new ImageIcon("images//ok.png"));
 		checkButton.setFocusPainted(false);
 
 		searchIcon.setBounds(70, 20, 64, 64);
