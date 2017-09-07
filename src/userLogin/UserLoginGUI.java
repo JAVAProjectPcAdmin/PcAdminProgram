@@ -162,10 +162,14 @@ public class UserLoginGUI extends JFrame {
 			
 			UserDao dao = new UserDao();
 <<<<<<< HEAD
+			if (nonMemberTf.getText().equals("")) {
+=======
+<<<<<<< HEAD
 			if (idTf.getText()!=null) {
 =======
 			if (idTf.getText().length()>0) {
 >>>>>>> ea0a9fd71394d876e13fac8b3d36cb51fb040749
+>>>>>>> 85ec8f4800a0307244da4443e02dc5aa4dbe21b0
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
