@@ -48,6 +48,8 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
+			rightUserPanel[i].setVisible(true);
+			rightUserPanel[i].setVisible(false);
 			rightUserPanel[i].setVisible(false);
 			flag = new Flagment(i);
 			thread = new UserThread(i, flag);
@@ -170,6 +172,7 @@ public class AdminMainGUI extends JFrame {
 		private Flagment flag;
 		public UserThread(int i ,Flagment flag) {
 			// TODO Auto-generated constructor stub
+			// TODO Auto-generated constructor stub
 			this.i=i;
 			this.flag=flag;
 		}
@@ -178,6 +181,7 @@ public class AdminMainGUI extends JFrame {
 			// TODO Auto-generated method stub
 			super.run();
 			if(flag.UserLoginState[i]) {
+				System.out.println(flag.UserLoginState[i]);
 				rightUserPanel[i].setVisible(true);
 			}
 		}
