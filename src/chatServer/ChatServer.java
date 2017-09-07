@@ -14,21 +14,37 @@ public class ChatServer {
 	private ServerSocket serverSocket;
 	private Socket socket;
 	private String msg;
+	private AdminChatGUI gui;
 
-	private Map<String, DataOutputStream> clientMap = new HashMap<String, DataOutputStream>();
+	private Map<String, DataOutputStream> clientMap = new HashMap<String, DataOutputStream>(); // 사용자들의 정보를 저장
 
 	public void ServerSetting() {
 
 		Collections.synchronizedMap(clientMap);
 		try {
+			serverSocket = new ServerSocket(8888);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		try {
 			while (true) {
+<<<<<<< HEAD
 				
 				serverSocket = new ServerSocket(8888);
 				socket = serverSocket.accept();
 				System.out.println(socket.getInetAddress());
+=======
+>>>>>>> 9777ba8c0ff6b97d58602bdf8d59f142e36ffafa
 				
+				System.out.println("기다리는중...");
+				socket = serverSocket.accept();
+				AdminChatGUI adc = new AdminChatGUI();
+				System.out.println(socket.getInetAddress() + "에서 접속했습니다.");
+
 				Receiver receiver = new Receiver(socket);
 				receiver.start();
+			
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -36,13 +52,17 @@ public class ChatServer {
 		}
 	}
 
+	public final void setGui(AdminChatGUI gui) {
+		this.gui = gui;
+	}
+
 	public void addClient(String name, DataOutputStream out) {
-		sendMessage(name);
+		sendMessage(name + "님이 접속했습니다.");
 		clientMap.put(name, out);
 	}
 
 	public void removeClint(String name) {
-		sendMessage(name);
+		sendMessage(name + "님이 나갔습니다.");
 		clientMap.remove(name);
 
 	}
@@ -88,6 +108,7 @@ public class ChatServer {
 				while (in != null) {
 					msg = in.readUTF();
 					sendMessage(msg);
+					gui.appendMsg(msg);
 
 				}
 

@@ -35,7 +35,6 @@ public class AdminLoginGUI extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
 
-	public static String adminId = "admin", adminPw="sds1501";
 
 	public AdminLoginGUI() {
 		setLocation(350, 250);
@@ -115,19 +114,7 @@ public class AdminLoginGUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String updatePasswd = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
 			
-			//로그인
-			if (idTf.getText().equals(adminId)) {
-				if(updatePasswd.equals(adminPw)) {
-					System.out.println("로그인 성공");
-					dispose();
-					AdminMainGUI amg = new AdminMainGUI();
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "비밀번호를 잘못 입력하셨습니다.");
-				}
-			}else {
-				JOptionPane.showMessageDialog(null, "등록되지 않은 아이디이거나, 잘못 입력하셨습니다.");
-			}
+				//로그인 만들기
 		
 		}
 	}

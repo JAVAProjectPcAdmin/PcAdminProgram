@@ -19,20 +19,25 @@ public class AdminChatGUI extends JFrame{
 
 	////////////////////////////////////////////////////////
 	public AdminChatGUI() {
-		// 그래픽 환경 초기화 작업
+		
 		textArea.setEditable(false);
 		textField.setBackground(Color.PINK);
 		ChatListener listener = new ChatListener();
 		textField.addActionListener(listener);
 		add(new JScrollPane(textArea), BorderLayout.CENTER);
 		add(textField, BorderLayout.SOUTH);
+<<<<<<< HEAD
 		
+=======
+>>>>>>> 9777ba8c0ff6b97d58602bdf8d59f142e36ffafa
 		setSize(300, 400);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		// 네트워크 초기화 메소드 실행.
+		
+		
+		server.setGui(this);
+//		server.ServerSetting();
 	
-		// 연결되고 나면
 
 	}
 	
@@ -40,13 +45,15 @@ public class AdminChatGUI extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String msg = " : "+textField.getText()+"\n";
+			String msg = "서버 : "+textField.getText()+"\n";
 			server.sendMessage(msg);
 			textField.setText("");
-			textArea.append("나:" + msg + "\n");
 			
 		}
 		
+	}
+	public void appendMsg(String msg) {
+		textArea.append(msg);
 	}
 	public static void main(String[] args) {
 		new AdminChatGUI();
