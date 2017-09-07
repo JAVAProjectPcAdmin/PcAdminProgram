@@ -71,7 +71,7 @@ public class RightMainGUI extends JPanel {
 
 		userNameL = new JLabel();
 		userNumberL = new JLabel();
-//		userIDL = new JLabel(userDao.userInfoList().get(userPanelIndex).getId());
+		userIDL = new JLabel();
 		useTimeL = new JLabel();
 		totalPriceL = new JLabel("0¿ø");
 		addAmountL = new JLabel();
@@ -118,6 +118,7 @@ public class RightMainGUI extends JPanel {
 		userNameL.setText(user.getName());;
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
+		userIDL.setText(user.getUserID());
 	}
 	
 }
