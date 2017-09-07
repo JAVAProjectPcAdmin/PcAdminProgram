@@ -48,8 +48,8 @@ public class AdminDao {
 		}
 	}
 
-	public int AdminIdSelect(String Id) {
-		int num = -1;
+	public String AdminIdSelect(String Id) {
+		String num = null;
 		sql = "SELECT ID FROM ADMIN WHERE ID=?";
 
 		try {
@@ -60,7 +60,7 @@ public class AdminDao {
 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				num = rs.getInt(1);
+				num = rs.getString(1);
 			}
 
 		} catch (SQLException e) {

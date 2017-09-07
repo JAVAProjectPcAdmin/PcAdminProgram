@@ -7,11 +7,22 @@ import java.util.Date;
 public class User implements Serializable {
 	private String name;
 	private String userNumber;
+	private String UserID;
+	private String startTime;
 	private long startTimeCalc;
 	private int totalPrice=0;
 	private int addPrice=0;
 	private int seatNumber;
-	private String startTime;
+
+
+	
+	public String getUserID() {
+		return UserID;
+	}
+
+	public void setUserID(String userID) {
+		UserID = userID;
+	}
 
 	public String getName() {
 		return name;
