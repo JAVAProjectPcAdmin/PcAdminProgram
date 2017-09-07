@@ -60,4 +60,5 @@ public class User implements Serializable {
 		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
 		startTime = dayTime.format(new Date(startTimeCalc));
 	}
+	
 }

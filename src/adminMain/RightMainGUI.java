@@ -2,6 +2,8 @@ package adminMain;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -31,7 +33,6 @@ public class RightMainGUI extends JPanel {
 	static String SEAT_NUMBER = "1";
 	static int seat_num = Integer.parseInt(SEAT_NUMBER);
 	public int userPanelIndex;
-	User user;
 
 	UserDao userDao = new UserDao();
 
@@ -63,23 +64,17 @@ public class RightMainGUI extends JPanel {
 		return addAmountL;
 	}
 	public RightMainGUI() {
-		
-	}
-
-	public RightMainGUI(User user) {
-		this.user=user;
 		setFocusable(true);
 		requestFocus();
 
 		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
 
-		String userNumber = String.valueOf(userDao.userInfoList().get(userPanelIndex).getUserNumber());
-		userNameL = new JLabel(userDao.userInfoList().get(userPanelIndex).getName());
-		userNumberL = new JLabel(userNumber);
-		userIDL = new JLabel(userDao.userInfoList().get(userPanelIndex).getId());
-		useTimeL = new JLabel("09 : 24");
-		totalPriceL = new JLabel("120000원");
-		addAmountL = new JLabel("3000원 추가");
+		userNameL = new JLabel();
+		userNumberL = new JLabel();
+//		userIDL = new JLabel(userDao.userInfoList().get(userPanelIndex).getId());
+		useTimeL = new JLabel();
+		totalPriceL = new JLabel("0원");
+		addAmountL = new JLabel();
 
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
@@ -119,5 +114,10 @@ public class RightMainGUI extends JPanel {
 		add(addAmountL);
 
 	}
-
+	public void setUserPanel(User user) {
+		userNameL.setText(user.getName());;
+		userNumberL.setText(user.getUserNumber());
+		addAmountL.setText("");
+	}
+	
 }

@@ -169,7 +169,7 @@ public class UserLoginGUI extends JFrame {
 					System.out.println("로그인 성공");
 					String name=dao.UserNameSelect(idTf.getText());
 					User user = new User(name);
-					user.setUserNumber(dao.UserIdSelect(idTf.getText())+"");
+					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
 					UserClient userclient = new UserClient(user);
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI(user);
