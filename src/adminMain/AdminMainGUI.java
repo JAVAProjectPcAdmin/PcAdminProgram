@@ -49,11 +49,7 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].seat_num++;
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
 <<<<<<< HEAD
-<<<<<<< HEAD
 			rightUserPanel[i].setVisible(true);
-=======
-			rightUserPanel[i].setVisible(false);
->>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 =======
 			rightUserPanel[i].setVisible(false);
 >>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
@@ -178,10 +174,6 @@ public class AdminMainGUI extends JFrame {
 		private Flagment flag;
 		public UserThread(int i ,Flagment flag) {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-			// TODO Auto-generated constructor stub
->>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 =======
 			// TODO Auto-generated constructor stub
 >>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
@@ -191,10 +183,6 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 <<<<<<< HEAD
-<<<<<<< HEAD
-=======
-			// TODO Auto-generated method stub
->>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 =======
 			// TODO Auto-generated method stub
 >>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
@@ -203,7 +191,6 @@ public class AdminMainGUI extends JFrame {
 				rightUserPanel[i].setVisible(true);
 			}
 		}
-<<<<<<< HEAD
 <<<<<<< HEAD
 	}
 <<<<<<< HEAD
@@ -234,8 +221,6 @@ class AdminClient {
 			}
 		}
 
-=======
->>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 =======
 >>>>>>> 35e748bb1a47f2fc74d4441b1b808ca41f60b6a1
 	}
