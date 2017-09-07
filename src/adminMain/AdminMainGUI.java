@@ -56,13 +56,10 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
 
 			rightUserPanel[i].setVisible(false);
-
-			flag = new Flagment(i);
-			thread = new UserThread(i, flag);
-			thread.start();
 			rightPanel.add(rightUserPanel[i]);
 		}
-
+		thread = new UserThread(flag);
+		thread.start();
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
 		lmp.setBounds(0, 80, 220, 850);
@@ -171,23 +168,23 @@ public class AdminMainGUI extends JFrame {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class UserThread extends Thread {
-		private int i;
 		private Flagment flag;
 
-		public UserThread(int i, Flagment flag) {
+		public UserThread(Flagment flag) {
 			// TODO Auto-generated constructor stub
 			// TODO Auto-generated constructor stub
-			this.i = i;
 			this.flag = flag;
 		}
 
 		@Override
 		public void run() {
 			while (true) {
-				if (flag.UserLoginState[i]) {
-					System.out.println(i);
-					rightUserPanel[i].setVisible(true);
-					rightUserPanel[i].updateUI();
+//				System.out.println("panel");
+				for (int i = 0; i < 25; i++) {
+					if (flag.UserLoginState[i]) {
+						rightUserPanel[i].setVisible(true);
+						rightUserPanel[i].updateUI();
+					}
 				}
 			}
 		}
