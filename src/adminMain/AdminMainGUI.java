@@ -254,6 +254,7 @@ public class AdminMainGUI extends JFrame {
 					if(flag.UserLoginState[i]) {
 						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
 						if(!user.getOrder().equals("")) { //주문이 들어옴!
+							System.out.println("주문들어왔어요~!");
 							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 							userOrder.setVisible(true);
 							user.setOrder("");
