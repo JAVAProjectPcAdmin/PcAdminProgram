@@ -51,6 +51,7 @@ public class AdminClient {
 				while (true) {
 					user = (User) ois.readObject();
 					System.out.println(user.getName());
+					user.setStartTime();
 					userlist.add(user);
 					Flagment.UserLoginState[user.getSeatNumber()] = true;
 					

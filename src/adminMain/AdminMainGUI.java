@@ -66,11 +66,9 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread(flag);
 		isUserThread.start();
-		timerThread = new TimerThread(flag);
-		timerThread.start();
-		orderThread = new OrderThread(flag);
-		orderThread.start();
-		
+//		orderThread = new OrderThread(flag);
+//		orderThread.start();
+
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
 		lmp.setBounds(0, 80, 220, 850);
@@ -192,9 +190,14 @@ public class AdminMainGUI extends JFrame {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
 					if (flag.UserLoginState[i]) {
-						rightUserPanel[i].setUserPanel(AdminClient.userlist.get(adminClient.userlist.size() - 1));
+						User user=AdminClient.userlist.get(adminClient.userlist.size() - 1);
+						rightUserPanel[i].setUserPanel(user);
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
+						
+						TimerThread thread = new TimerThread(flag, user, i);
+						thread.start();
+						flag.UserLoginState[i] = false;
 					}
 				}
 			}
@@ -204,10 +207,13 @@ public class AdminMainGUI extends JFrame {
 	class TimerThread extends Thread {
 		User user = null;
 		Flagment flag;
+		int i;
 
-		public TimerThread( Flagment flag) {
+		public TimerThread(Flagment flag, User user,int i) {
 			// TODO Auto-generated constructor stub
 			this.flag = flag;
+			this.user = user;
+			this.i=i;
 		}
 
 		@Override
@@ -215,31 +221,27 @@ public class AdminMainGUI extends JFrame {
 			String nowTime;
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
 			while (true) {
-				for (int i = 0; i < 25; i++) {
-					if (flag.UserLoginState[i]) {
-						user=AdminClient.userlist.get(adminClient.userlist.size() - 1);
-						long time = System.currentTimeMillis() - 1000 *( (60 * 60 * 9)+44);
-						long checkTime = (time - user.getStartTimeCalc());
-						String useTime = dayTime.format(new Date(checkTime));
-						rightUserPanel[i].getUseTimeL().setText(useTime);
-						rightUserPanel[i].getUseTimeL().updateUI();
-						if (checkTime/1000%60==0) {
-							user.setTotalPrice(user.getTotalPrice() + 20);
-							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
-							rightUserPanel[i].getTotalPriceL().updateUI();
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-						}
+				long time = System.currentTimeMillis() - 1000 * ((60 * 60 * 9));
+				long checkTime = (time - user.getStartTimeCalc());
+				String useTime = dayTime.format(new Date(checkTime));
+				rightUserPanel[i].getUseTimeL().setText(useTime);
+				rightUserPanel[i].getUseTimeL().updateUI();
+				if (checkTime / 1000 % 60 == 0) {
+					user.setTotalPrice(user.getTotalPrice() + 20);
+					rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
+					rightUserPanel[i].getTotalPriceL().updateUI();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
 				}
 			}
 		}
+
 	}
-	
+
 	class OrderThread extends Thread {
 		User user = null;
 		private Flagment flag;
@@ -247,13 +249,14 @@ public class AdminMainGUI extends JFrame {
 		public OrderThread(Flagment flag) {
 			this.flag = flag;
 		}
+
 		@Override
 		public void run() {
-			while(true) {
-				for(int i=0; i<25; i++) {
-					if(flag.UserLoginState[i]) {
+			while (true) {
+				for (int i = 0; i < 25; i++) {
+					if (flag.UserLoginState[i]) {
 						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
-						if(!user.getOrder().equals("")) { //주문이 들어옴!
+						if (!user.getOrder().equals("")) { // 주문이 들어옴!
 							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 							user.setOrder("");
 						}
@@ -261,5 +264,5 @@ public class AdminMainGUI extends JFrame {
 				}
 			}
 		}
-	}//orderThread 종료
+	}// orderThread 종료
 }
