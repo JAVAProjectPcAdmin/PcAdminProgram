@@ -96,7 +96,7 @@ public class UserUsingStateGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (!flag2) {
-					ChargeInformationGUI ci = new ChargeInformationGUI();
+					ChargeInformationGUI ci = new ChargeInformationGUI(user);
 					flag2 = true;
 				}
 			}

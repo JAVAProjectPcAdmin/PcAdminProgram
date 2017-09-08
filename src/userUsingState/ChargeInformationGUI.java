@@ -21,6 +21,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import AdminServer.User;
+
 public class ChargeInformationGUI extends JFrame implements ActionListener {
 
 	private JLabel titleLabel, nameLabel, rs_nameLabel, startLabel, rs_startLabel, usingTimeLabel, rs_usingTimeLabel,
@@ -31,7 +33,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 
 	BufferedImage moneybagImg = null;
 
-	public ChargeInformationGUI() {
+	public ChargeInformationGUI(User user) {
 		setTitle("요금정보");
 		setLayout(null);
 		setLocation(950, 330);
