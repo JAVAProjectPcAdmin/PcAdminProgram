@@ -15,25 +15,32 @@ public class UserClient {
 	public static boolean newOrder=false;
 	User user;
 	
-=======
 
->>>>>>> ddcc51003c207bacef11fd9b078782ef1872da43
 	public UserClient(User user) {
 		try {
 
-			socket = new Socket("70.12.115.59", 7777);
-//			socket = new Socket("70.12.115.59", 7777);
+			socket = new Socket("70.12.115.54", 7777);
+			//socket = new Socket("70.12.115.59", 7777);
+=======
+	public static boolean newOrder = false;
+	User user;
+
+	public UserClient(User user) {
+		try {
+			socket = new Socket("70.12.115.54", 7777);
+			// socket = new Socket("70.12.115.59", 7777);
+>>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 
 			System.out.println("서버랑 연결됬네?!");
-			
-			String ip= socket.getInetAddress()+"";
+
+			String ip = socket.getInetAddress() + "";
 			System.out.println(ip);
 
-			oos=new ObjectOutputStream((socket.getOutputStream()));
-			
+			oos = new ObjectOutputStream((socket.getOutputStream()));
+
 			oos.writeObject(user);
 			Thread.sleep(500);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -43,13 +50,16 @@ public class UserClient {
 		}
 	}
 <<<<<<< HEAD
+=======
+
+>>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 	public void orderTOAdmin() {
 		try {
 
-			oos=new ObjectOutputStream((socket.getOutputStream()));
+			oos = new ObjectOutputStream((socket.getOutputStream()));
 			oos.writeObject(user);
 			Thread.sleep(500);
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -57,12 +67,10 @@ public class UserClient {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-	}
-	public void setUser(User user) {
-		this.user=user;
-	}
-=======
 
->>>>>>> ddcc51003c207bacef11fd9b078782ef1872da43
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 }

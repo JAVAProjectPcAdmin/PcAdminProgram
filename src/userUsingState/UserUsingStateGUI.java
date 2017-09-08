@@ -19,6 +19,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.oracle.jrockit.jfr.UseConstantPool;
+
 import AdminServer.User;
 import orderFood.OrderGUI;
 import userLogin.UserClient;
@@ -96,7 +98,7 @@ public class UserUsingStateGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (!flag2) {
-					ChargeInformationGUI ci = new ChargeInformationGUI();
+					ChargeInformationGUI ci = new ChargeInformationGUI(user);
 					flag2 = true;
 				}
 			}
@@ -120,10 +122,10 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.setBounds(200, 20, 63, 51);
 		logoutBt.addActionListener(new ActionListener() {
 
+			// 로그아웃시 left메인에 유저 정보전달
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				// 로그아웃시 left메인에 정보전달
+				
 				
 				dispose();
 			}

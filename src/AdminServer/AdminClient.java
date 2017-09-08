@@ -18,8 +18,8 @@ public class AdminClient {
 
 	public AdminClient() {
 		try {
-			socket = new Socket("70.12.115.54", 7777);
-			//socket = new Socket("70.12.115.59", 7777);
+//			socket = new Socket("70.12.115.54", 7777);
+			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
 			User user = null;
@@ -50,10 +50,19 @@ public class AdminClient {
 				ois = new ObjectInputStream(socket.getInputStream());
 				while (true) {
 					user = (User) ois.readObject();
+					for(int i=0;i<userlist.size();i++) {
+						if(userlist.get(i).getUserNumber()==user.getUserNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
+							userlist.set(i, user); //정보 새로 갱신
+							Flagment.UserOrderstate[user.getSeatNumber()]=true;
+						}else {//이전 리스트에 없으면 새로 로그인 한 유저
+							System.out.println("new "+user.getName());
+							user.setStartTime();
+							userlist.add(user);
+							Flagment.UserLoginState[user.getSeatNumber()] = true;
+						}
+							
+					}
 					System.out.println(user.getName());
-					user.setStartTime();
-					userlist.add(user);
-					Flagment.UserLoginState[user.getSeatNumber()] = true;
 					
 				}
 			} catch (IOException e) {

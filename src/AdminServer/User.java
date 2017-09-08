@@ -55,6 +55,14 @@ public class User implements Serializable {
 		this.totalPrice = totalPrice;
 	}
 
+	public int getAddPrice() {
+		return addPrice;
+	}
+	
+	public void setAddPrice(int addPrice) {
+		this.addPrice = addPrice;
+	}
+	
 	public long getStartTimeCalc() {
 		return startTimeCalc;
 	}
