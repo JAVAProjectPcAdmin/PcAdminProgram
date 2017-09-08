@@ -244,7 +244,8 @@ public class AdminMainGUI extends JFrame {
 
 	class OrderThread extends Thread {
 		User user = null;
-		private Flagment flag;
+		Flagment flag;
+		AdminOrderGUI userOrder;
 
 		public OrderThread(Flagment flag) {
 			this.flag = flag;
@@ -256,8 +257,16 @@ public class AdminMainGUI extends JFrame {
 				for (int i = 0; i < 25; i++) {
 					if (flag.UserLoginState[i]) {
 						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
+<<<<<<< HEAD
 						if (!user.getOrder().equals("")) { // 주문이 들어옴!
 							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+=======
+						System.out.println("주문 : " + user.getOrder());
+						if(!user.getOrder().equals("")) { //주문이 들어옴!
+							System.out.println("주문들어왔어요~!");
+							userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+							userOrder.setVisible(true);
+>>>>>>> 8c53a77c8c15aa18cfded3adc083066d36d3de10
 							user.setOrder("");
 						}
 					}

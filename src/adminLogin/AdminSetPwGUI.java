@@ -28,15 +28,18 @@ import adminLogin.AdminLoginGUI.adminSetPwListener;
 import adminLogin.AdminLoginGUI.computerIcon;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
+import db.AdminVO;
 
 public class AdminSetPwGUI extends JFrame {
 	private JPanel panel, keyIcon, adminIcon;
-	private JLabel oldLabel, newLabel, compareLabel;
+	private JLabel oldLabel, newLabel, compareLabel, idLabel;
 	private JButton updateButton, cancelButton;
+	private JTextField IdTxf;
 	private JPasswordField oldPWf, newPWf, comparePWf;
 	BufferedImage adminImg, keyImg = null;
 
-	AdminLoginGUI adminLoginGui;
+	private AdminLoginGUI adminLoginGui;
+	private AdminDao dao;
 
 	public AdminSetPwGUI() {
 		setLocation(350, 250);
@@ -63,6 +66,8 @@ public class AdminSetPwGUI extends JFrame {
 		adminIcon = new adminIcon();
 		keyIcon = new keyIcon();
 
+		idLabel = new JLabel("관리자 ID");
+		idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		oldLabel = new JLabel("기존 비밀번호");
 		oldLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 		newLabel = new JLabel("새로운 비밀번호");
@@ -70,6 +75,7 @@ public class AdminSetPwGUI extends JFrame {
 		compareLabel = new JLabel("비밀번호 확인");
 		compareLabel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
 
+		IdTxf = new JTextField();
 		oldPWf = new JPasswordField();
 		newPWf = new JPasswordField();
 		comparePWf = new JPasswordField();
@@ -83,23 +89,27 @@ public class AdminSetPwGUI extends JFrame {
 		cancelButton.addActionListener(new checkListener());
 
 		panel.setBounds(0, 0, 600, 300);
-		oldPWf.setBounds(290, 120, 250, 30);
-		newPWf.setBounds(290, 150, 250, 30);
-		comparePWf.setBounds(290, 180, 250, 30);
-		oldLabel.setBounds(170, 110, 200, 50);
-		newLabel.setBounds(170, 140, 200, 50);
-		compareLabel.setBounds(170, 170, 200, 50);
+		IdTxf.setBounds(290, 95, 250, 30);
+		oldPWf.setBounds(290, 125, 250, 30);
+		newPWf.setBounds(290, 155, 250, 30);
+		comparePWf.setBounds(290, 185, 250, 30);
+		idLabel.setBounds(170, 85, 200, 50);
+		oldLabel.setBounds(170, 115, 200, 50);
+		newLabel.setBounds(170, 145, 200, 50);
+		compareLabel.setBounds(170, 175, 200, 50);
 
-		adminIcon.setBounds(180, 60, 328, 50);
-		keyIcon.setBounds(100, 40, 110, 90);
+		adminIcon.setBounds(180, 35, 328, 50);
+		keyIcon.setBounds(100, 15, 110, 90);
 		updateButton.setBounds(340, 230, 75, 25);
 		cancelButton.setBounds(430, 230, 75, 25);
 
 		panel.add(updateButton);
 		panel.add(cancelButton);
+		panel.add(IdTxf);
 		panel.add(oldPWf);
 		panel.add(newPWf);
 		panel.add(comparePWf);
+		panel.add(idLabel);
 		panel.add(oldLabel);
 		panel.add(newLabel);
 		panel.add(compareLabel);
@@ -117,31 +127,39 @@ public class AdminSetPwGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			AdminDao dao = new AdminDao();
+			dao = new AdminDao();
+			AdminVO vo = new AdminVO();
 
 			if (e.getSource() == cancelButton) {
 				dispose();
 			}
 			if (e.getSource() == updateButton) {
+				String adminId = IdTxf.getText();
 				String oldPasswd = new String(oldPWf.getPassword(), 0, oldPWf.getPassword().length);
 				String newPasswd = new String(newPWf.getPassword(), 0, newPWf.getPassword().length);
 				String comparePasswd = new String(comparePWf.getPassword(), 0, comparePWf.getPassword().length);
 
-//				if (oldPasswd.equalsIgnoreCase(adminLoginGui.adminPw)) {
-//					if (newPasswd.equalsIgnoreCase(comparePasswd)) {
-//						adminLoginGui.adminPw = newPasswd;
-//						JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
-//					} else {
-//						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
-//					}
-//
-//				} else {
-//					JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
-//				}
-				
-				//여기
+				if (dao.AdminIdSelect(adminId).equals(adminId)) {
+					if (oldPasswd.equalsIgnoreCase(dao.AdminPWSelect(oldPasswd))) {
+
+						if (newPasswd.equalsIgnoreCase(comparePasswd)) {
+							dao.adminUpdate(vo, newPasswd);
+							JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
+						} else {
+							JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
+						}
+
+					} else {
+						JOptionPane.showMessageDialog(null, "기존 비밀번호가 틀립니다.");
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "관리자 ID를 확인해주세요.");
+				}
+
 
 			}
+
 		}
 	}
 
