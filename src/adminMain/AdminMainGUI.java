@@ -38,6 +38,7 @@ public class AdminMainGUI extends JFrame {
 	private JPanel rightPanel = new JPanel();
 	UserThread isUserThread;
 	TimerThread timerThread;
+	OrderThread orderThread;
 	int i;
 	// private
 	AdminClient adminClient;
@@ -67,6 +68,8 @@ public class AdminMainGUI extends JFrame {
 		isUserThread.start();
 		timerThread = new TimerThread(flag);
 		timerThread.start();
+		orderThread = new OrderThread(flag);
+		OrderThread.start();
 		
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -231,11 +234,7 @@ public class AdminMainGUI extends JFrame {
 								e.printStackTrace();
 							}
 						}
-					}//로그인 한 유저를 유저 리스트에 넣어두고 가장 나중에 받아온 유저의 정보를 화면에 띄움 
-					// 쓰레드가 돌면서 flag가 0 이면 이전의 유저가 아니라 가장 마지막의 유저로 덮어씌워짐 
-					// 한개의 쓰레드가 계속 돌아서 그럼 ㅎㅅㅎ 
-					// 그렇다고 25개 돌릴수도 없고.....
-					//생각점.....
+					}
 				}
 			}
 		}
@@ -243,6 +242,11 @@ public class AdminMainGUI extends JFrame {
 	
 	class OrderThread extends Thread {
 		User user = null;
+		private Flagment flag;
+
+		public OrderThread(Flagment flag) {
+			this.flag = flag;
+		}
 		@Override
 		public void run() {
 			while(true) {
@@ -257,5 +261,5 @@ public class AdminMainGUI extends JFrame {
 				}
 			}
 		}
-	}
+	}//orderThread 종료
 }
