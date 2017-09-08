@@ -66,6 +66,4 @@ public class AdminServer {
 	public static void main(String[] args) {
 		new AdminServer();
 	}
-
-	
 }

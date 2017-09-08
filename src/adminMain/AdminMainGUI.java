@@ -235,5 +235,4 @@ public class AdminMainGUI extends JFrame {
 			}
 		}
 	}
-
 }
