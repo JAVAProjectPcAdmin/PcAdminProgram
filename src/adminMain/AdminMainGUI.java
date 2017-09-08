@@ -255,6 +255,7 @@ public class AdminMainGUI extends JFrame {
 						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
 						if(!user.getOrder().equals("")) { //주문이 들어옴!
 							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+							userOrder.setVisible(true);
 							user.setOrder("");
 						}
 					}
