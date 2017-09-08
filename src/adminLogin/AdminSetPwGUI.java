@@ -138,15 +138,20 @@ public class AdminSetPwGUI extends JFrame {
 				String oldPasswd = new String(oldPWf.getPassword(), 0, oldPWf.getPassword().length);
 				String newPasswd = new String(newPWf.getPassword(), 0, newPWf.getPassword().length);
 				String comparePasswd = new String(comparePWf.getPassword(), 0, comparePWf.getPassword().length);
-
-				if (dao.AdminIdSelect(adminId).equals(adminId)) {
-					if (oldPasswd.equalsIgnoreCase(dao.AdminPWSelect(oldPasswd))) {
+				vo.setPassword(newPasswd);
+				if (adminId.equals(dao.AdminIdSelect(adminId))) {
+					if (oldPasswd.equalsIgnoreCase(dao.AdminPWSelect(adminId))) {
 
 						if (newPasswd.equalsIgnoreCase(comparePasswd)) {
-							dao.adminUpdate(vo, newPasswd);
-							JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
+							if (newPasswd.equalsIgnoreCase("")) {
+								JOptionPane.showMessageDialog(null, "새로운 비밀번호를 입력해주세요.");
+							} else {
+								dao.adminUpdate(vo, adminId);
+								JOptionPane.showMessageDialog(null, "비밀번호가 변경되었습니다.");
+								dispose();
+							}
 						} else {
-							JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주십시오.");
+							JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
 						}
 
 					} else {
@@ -156,7 +161,6 @@ public class AdminSetPwGUI extends JFrame {
 				} else {
 					JOptionPane.showMessageDialog(null, "관리자 ID를 확인해주세요.");
 				}
-
 
 			}
 

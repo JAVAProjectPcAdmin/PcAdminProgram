@@ -11,11 +11,10 @@ public class User implements Serializable {
 	private String startTime;
 	private String order;
 	private long startTimeCalc;
-	private int totalPrice=0;
-	private int addPrice=0;
+	private int totalPrice = 0;
+	private int addPrice = 0;
 	private int seatNumber;
 
-	
 	public String getUserID() {
 		return UserID;
 	}
@@ -63,21 +62,26 @@ public class User implements Serializable {
 	public String getStartTime() {
 		return startTime;
 	}
-	
+
+	public void setStartTime() {
+		this.startTimeCalc = System.currentTimeMillis();
+
+		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
+		this.startTime = dayTime.format(new Date(startTimeCalc));
+	}
+
 	public void setOrder(String order) {
 		this.order = order;
 	}
-	
+
 	public String getOrder() {
 		return order;
 	}
 
 	public User(String name) {
 		this.name = name;
-		this.startTimeCalc = System.currentTimeMillis();
-		
-		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
-		startTime = dayTime.format(new Date(startTimeCalc));
+		this.setStartTime();
+
 	}
-	
+
 }

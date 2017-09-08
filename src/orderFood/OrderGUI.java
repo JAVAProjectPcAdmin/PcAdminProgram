@@ -131,7 +131,9 @@ public class OrderGUI extends JFrame {
 					}
 				}
 				order += "</html>";
+				System.out.println(order);
 				user.setOrder(order);
+				System.out.println(user.getOrder());
 				dispose();
 				JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.", "주문 완료", JOptionPane.OK_OPTION);
 			}
