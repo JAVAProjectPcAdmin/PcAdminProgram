@@ -31,17 +31,16 @@ public class ChatServer {
 			while (true) {
 
 				
-				serverSocket = new ServerSocket(8888);
+				
 				socket = serverSocket.accept();
-				System.out.println(socket.getInetAddress());			
 				System.out.println("기다리는중...");
-				socket = serverSocket.accept();
+
 				AdminChatGUI adc = new AdminChatGUI();
 				System.out.println(socket.getInetAddress() + "에서 접속했습니다.");
 
 				Receiver receiver = new Receiver(socket);
 				receiver.start();
-			
+
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
