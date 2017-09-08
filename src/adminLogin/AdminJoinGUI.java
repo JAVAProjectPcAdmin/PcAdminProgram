@@ -79,32 +79,44 @@ public class AdminJoinGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminDao dao = new AdminDao();
-			String  result = null;
+			String result = null;
+			String pw = new String(pwf.getPassword(), 0, pwf.getPassword().length);
 
 			if (e.getSource() == okBtn) {
 
 				if (!idcheckFlag) {
 					JOptionPane.showMessageDialog(null, "아이디 중복을 확인하세요.");
 				} else {
-					AdminVO admin = new AdminVO();
-					admin.setId(idTf.getText());
-					admin.setPassword(new String(pwf.getPassword()));
-					dao.AdminJoinInsert(admin);
-					JOptionPane.showMessageDialog(null, "관리자가 등록되었습니다.");
-					dispose();
+					if (pw.equals("")) {
+						JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
+					} else {
+
+						AdminVO admin = new AdminVO();
+						admin.setId(idTf.getText());
+						admin.setPassword(new String(pwf.getPassword()));
+						dao.AdminJoinInsert(admin);
+						JOptionPane.showMessageDialog(null, "관리자가 등록되었습니다.");
+
+						dispose();
+					}
 
 				}
+
 			} else if (e.getSource() == idSearchBtn) {
 				result = dao.AdminIdSelect(idTf.getText());
-				if (result.equals(null)) {
-					JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+				if (result == null) {
+					if (idTf.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
+
+					} else {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");
+					}
 					idcheckFlag = true;
-				}else if(!result.equals(null)) {
+				} else if (!result.equals(null)) {
 					JOptionPane.showMessageDialog(null, "중복된 아이디입니다.");
 					idcheckFlag = false;
 				}
-			}
-			else if(e.getSource()==cancelBtn) {
+			} else if (e.getSource() == cancelBtn) {
 				dispose();
 			}
 		}
