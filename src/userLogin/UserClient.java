@@ -16,6 +16,10 @@ public class UserClient {
 		try {
 			socket = new Socket("70.12.115.54", 7777);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+			//socket = new Socket("70.12.115.59", 7777);
+>>>>>>> b138e81c3bf7d3e832de5b4a83a9da8bf7556cb4
 =======
 			//socket = new Socket("70.12.115.59", 7777);
 >>>>>>> b138e81c3bf7d3e832de5b4a83a9da8bf7556cb4
