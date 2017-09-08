@@ -49,7 +49,7 @@ public class AdminDao {
 	}
 
 	public String AdminIdSelect(String Id) {
-		String num = null;
+		String id = null;
 		sql = "SELECT ID FROM ADMIN WHERE ID=?";
 
 		try {
@@ -60,7 +60,7 @@ public class AdminDao {
 
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				num = rs.getString(1);
+				id = rs.getString(1);
 			}
 
 		} catch (SQLException e) {
@@ -69,9 +69,57 @@ public class AdminDao {
 			close();
 			closeRS();
 		}
-		return num;
+		return id;
 
 	}
+	
+	public String AdminPWSelect(String Id) {
+		String pw = null;
+		sql = "SELECT PASSWORD FROM ADMIN WHERE ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, Id);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				pw = rs.getString(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return pw;
+	}
+	
+	public void adminUpdate(AdminVO admin, String adminId) {
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			String sql = "UPDATE Admin SET PASSWORD=?"
+					+ "WHERE ID = ?";
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, admin.getPassword());
+			pstmt.setString(2, adminId);
+			
+
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+	}
+	
+	
+	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////
 
 	public void close() {
 		if (pstmt != null) {

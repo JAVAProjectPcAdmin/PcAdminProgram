@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -131,6 +132,8 @@ public class OrderGUI extends JFrame {
 				}
 				order += "</html>";
 				user.setOrder(order);
+				dispose();
+				JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.", "주문 완료", JOptionPane.OK_OPTION);
 			}
 		});
 
