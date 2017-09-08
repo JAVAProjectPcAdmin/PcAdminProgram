@@ -109,7 +109,6 @@ public class UserUsingStateGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (!flag3) {
 					OrderGUI order = new OrderGUI(user);
 					flag3 = true;
@@ -122,6 +121,8 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				// 로그아웃시 left메인에 정보전달
+				
 				dispose();
 			}
 		});
