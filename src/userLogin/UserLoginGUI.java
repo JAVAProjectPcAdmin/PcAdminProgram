@@ -68,7 +68,6 @@ public class UserLoginGUI extends JFrame {
 		pcNumPanel.setLayout(null);
 		plzLogin = new PlzLogin();
 
-		
 		pwLabel = new JLabel("Password");
 		pwLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		idLabel = new JLabel("ID");
