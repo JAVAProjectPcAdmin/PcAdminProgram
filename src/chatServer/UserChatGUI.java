@@ -8,6 +8,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.util.Scanner;
+
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -20,6 +22,7 @@ public class UserChatGUI extends JFrame {
 	private JTextArea textArea = new JTextArea();
 	private JTextField textField = new JTextField();
 	private UserChatClient client = new UserChatClient();
+	private static String name;
 	User user;
 
 	////////////////////////////////////////////////////////
@@ -36,7 +39,7 @@ public class UserChatGUI extends JFrame {
 		setVisible(true);
 
 		client.setGUI(this);
-		// client.setName(user.getName());
+		client.setName(name);
 		client.connect();
 
 	}
@@ -45,7 +48,7 @@ public class UserChatGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String msg = "클라이언트  : " + textField.getText() + "\n";
+			String msg = name+":" + textField.getText() + "\n";
 			client.sendMessage(msg);
 			textField.setText("");
 
@@ -58,6 +61,12 @@ public class UserChatGUI extends JFrame {
 	}
 
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("이름 입력 : ");
+		name = scanner.nextLine();
+		scanner.close();	
+		
 		new UserChatGUI();
+		
 	}
 }

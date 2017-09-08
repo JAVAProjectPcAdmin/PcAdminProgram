@@ -22,8 +22,8 @@ public class UserChatClient {
 			System.out.println("¼­¹ö¿¬°áµÊ");
 			out = new DataOutputStream(socket.getOutputStream());
 			in = new DataInputStream(socket.getInputStream());
-
-			out.writeUTF("¤·¤·");
+			
+			out.writeUTF(name);
 
 			while (in != null) {
 				msg = in.readUTF();

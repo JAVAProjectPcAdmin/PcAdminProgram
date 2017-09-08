@@ -100,8 +100,7 @@ public class AdminDao {
 	public void adminUpdate(AdminVO admin, String adminId) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			String sql = "UPDATE Admin SET PASSWORD=?"
-					+ "WHERE ID = ?";
+			String sql = "UPDATE admin SET PASSWORD = ? WHERE ID = ?";
 			pstmt = con.prepareStatement(sql);
 
 			pstmt.setString(1, admin.getPassword());
