@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import AdminServer.User;
 import sun.net.InetAddressCachePolicy;
+import userUsingState.UserUsingStateGUI;
 
 public class UserClient {
 	Socket socket = null;
@@ -14,6 +15,9 @@ public class UserClient {
 	public static boolean newOrder = false;
 	User user;
 
+	public Socket getSocket() {
+		return socket;
+	}
 
 	public UserClient(User user) {
 		try {
@@ -29,7 +33,7 @@ public class UserClient {
 
 			oos.writeObject(user);
 			Thread.sleep(500);
-
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

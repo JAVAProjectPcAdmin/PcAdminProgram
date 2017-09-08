@@ -127,9 +127,11 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
-				
-				
+				try {
+					userclient.getSocket().close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				dispose();
 			}
 		});
