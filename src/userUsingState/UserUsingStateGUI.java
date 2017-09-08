@@ -21,6 +21,7 @@ import javax.swing.JPanel;
 
 import AdminServer.User;
 import orderFood.OrderGUI;
+import userLogin.UserClient;
 
 public class UserUsingStateGUI extends JFrame {
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
@@ -32,8 +33,9 @@ public class UserUsingStateGUI extends JFrame {
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
 	public static boolean flag4 = false;
 	User user;
+	UserClient userclient;
 
-	public UserUsingStateGUI(User user) {
+	public UserUsingStateGUI(User user,UserClient userclient) {
 		this.user = user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
@@ -110,7 +112,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
-					OrderGUI order = new OrderGUI(user);
+					OrderGUI order = new OrderGUI(user,userclient);
 					flag3 = true;
 				}
 			}
@@ -167,10 +169,6 @@ public class UserUsingStateGUI extends JFrame {
 
 			g.drawImage(backgroundImage, 0, 0, null);
 		}
-	}
-
-	public static void main(String[] args) {
-		new UserUsingStateGUI(new User(""));
 	}
 
 	class TimerThread extends Thread {
