@@ -84,10 +84,12 @@ public class AdminJoinGUI extends JFrame {
 
 			if (e.getSource() == okBtn) {
 
-				if (!idcheckFlag) {
-					JOptionPane.showMessageDialog(null, "아이디 중복을 확인하세요.");
-				} else {
-					if (pw.equals("")) {
+				if (idcheckFlag) {
+					if (idTf.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "관리자 ID를 입력해주세요.");
+					}
+
+					else if (pw.equals("")) {
 						JOptionPane.showMessageDialog(null, "비밀번호를 입력해주세요.");
 					} else {
 
@@ -100,13 +102,19 @@ public class AdminJoinGUI extends JFrame {
 						dispose();
 					}
 
+				} else {
+					if (idTf.getText().equals("")) {
+						JOptionPane.showMessageDialog(null, "관리자 ID를 입력해주세요.");
+					}else {
+					JOptionPane.showMessageDialog(null, "아이디 중복을 확인하세요.");
+					}
 				}
 
 			} else if (e.getSource() == idSearchBtn) {
 				result = dao.AdminIdSelect(idTf.getText());
 				if (result == null) {
 					if (idTf.getText().equals("")) {
-						JOptionPane.showMessageDialog(null, "아이디를 입력해주세요.");
+						JOptionPane.showMessageDialog(null, "관리자 ID를 입력해주세요.");
 
 					} else {
 						JOptionPane.showMessageDialog(null, "사용가능한 아이디입니다.");

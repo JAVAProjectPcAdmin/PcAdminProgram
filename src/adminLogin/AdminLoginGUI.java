@@ -25,6 +25,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import adminMain.AdminMainGUI;
+import db.AdminDao;
+import db.AdminVO;
 import db.UserDao;
 
 public class AdminLoginGUI extends JFrame {
@@ -34,7 +36,6 @@ public class AdminLoginGUI extends JFrame {
 	private JTextField idTf;
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
-
 
 	public AdminLoginGUI() {
 		setLocation(350, 250);
@@ -71,11 +72,11 @@ public class AdminLoginGUI extends JFrame {
 		loginButton = new JButton(new ImageIcon("images//loginbt.png"));
 		loginButton.setFocusPainted(false);
 		loginButton.addActionListener(new LoginListener());
-		
+
 		registerButton = new JButton(new ImageIcon("images//registeradmin.png"));
 		registerButton.setFocusPainted(false);
 		registerButton.addActionListener(new adminRegisterListener());
-		
+
 		setButton = new JButton(new ImageIcon("images//adminbt.png"));
 		setButton.setFocusPainted(false);
 		setButton.addActionListener(new adminSetPwListener());
@@ -87,8 +88,7 @@ public class AdminLoginGUI extends JFrame {
 		pwLabel.setBounds(200, 170, 200, 50);
 		adminIcon.setBounds(180, 60, 328, 50);
 		computerIcon.setBounds(70, 50, 97, 70);
-		
-		
+
 		loginButton.setBounds(250, 230, 90, 27);
 		registerButton.setBounds(350, 230, 90, 27);
 		setButton.setBounds(450, 230, 90, 27);
@@ -107,41 +107,59 @@ public class AdminLoginGUI extends JFrame {
 		setVisible(true);
 
 	}
-	
+
 	// 관리자 로그인
 	class LoginListener implements ActionListener {
+		AdminVO adminVo = new AdminVO();
+		AdminDao adminDao = new AdminDao();
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			String updatePasswd = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
-			
-				
-				//로그인 만들기
-		
+			String adminId = idTf.getText();
+			String adminPw = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
+
+			if (e.getSource() == loginButton) {
+
+				if (adminId.equals(adminDao.AdminIdSelect(adminDao.AdminIdSelect(adminId)))) {
+					if (adminPw.equals(adminDao.AdminPWSelect(adminId))) {
+						new AdminMainGUI();
+						dispose();
+					} else {
+						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null, "관리자ID를 다시 확인해주세요.");
+				}
+
+			}
+
+			// 로그인 만들기
+
 		}
 	}
-	
+
 	// 관리자 비밀번호 변경
-	class adminSetPwListener implements ActionListener{
+	class adminSetPwListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminSetPwGUI adminSetPw = new AdminSetPwGUI();
 
 		}
-		
+
 	}
-	
-	// 관리자 등록 
-	class adminRegisterListener implements ActionListener{
+
+	// 관리자 등록
+	class adminRegisterListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminJoinGUI adminRegister = new AdminJoinGUI();
-			
+
 		}
-		
+
 	}
-	
 
 	class adminIcon extends JPanel {
 		public void paint(Graphics g) {
