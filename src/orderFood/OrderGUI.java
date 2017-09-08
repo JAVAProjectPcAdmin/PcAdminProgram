@@ -138,7 +138,10 @@ public class OrderGUI extends JFrame {
 				userclient.orderTOAdmin();
 				System.out.println(user.getOrder());
 <<<<<<< HEAD
+<<<<<<< HEAD
 				
+=======
+>>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 =======
 >>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 				dispose();

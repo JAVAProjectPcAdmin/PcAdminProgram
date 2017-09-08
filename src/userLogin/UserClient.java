@@ -11,9 +11,9 @@ import sun.net.InetAddressCachePolicy;
 public class UserClient {
 	Socket socket = null;
 	ObjectOutputStream oos;
-<<<<<<< HEAD
-	public static boolean newOrder=false;
+	public static boolean newOrder = false;
 	User user;
+<<<<<<< HEAD
 	
 
 	public UserClient(User user) {
@@ -24,6 +24,13 @@ public class UserClient {
 =======
 	public static boolean newOrder = false;
 	User user;
+
+	public UserClient(User user) {
+		try {
+			socket = new Socket("70.12.115.54", 7777);
+			// socket = new Socket("70.12.115.59", 7777);
+>>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
+=======
 
 	public UserClient(User user) {
 		try {
@@ -50,6 +57,10 @@ public class UserClient {
 		}
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 =======
 
 >>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
