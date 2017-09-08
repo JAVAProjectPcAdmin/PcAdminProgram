@@ -14,7 +14,7 @@ public class ChatServer {
 	private ServerSocket serverSocket;
 	private Socket socket;
 	private String msg;
-	private AdminChatGUI gui;
+	private AdminChatClient gui;
 
 	private Map<String, DataOutputStream> clientMap = new HashMap<String, DataOutputStream>(); // 사용자들의 정보를 저장
 
@@ -30,14 +30,10 @@ public class ChatServer {
 		try {
 			while (true) {
 
-				
-				
 				socket = serverSocket.accept();
 				System.out.println("기다리는중...");
-
 //				AdminChatGUI adc = new AdminChatGUI();
 				System.out.println(socket.getInetAddress() + "에서 접속했습니다.");
-
 				Receiver receiver = new Receiver(socket);
 				receiver.start();
 
@@ -48,7 +44,7 @@ public class ChatServer {
 		}
 	}
 
-	public final void setGui(AdminChatGUI gui) {
+	public final void setGui(AdminChatClient gui) {
 		this.gui = gui;
 	}
 
@@ -102,6 +98,7 @@ public class ChatServer {
 		public void run() {
 			try {
 				while (in != null) {
+					
 					msg = in.readUTF();
 					sendMessage(msg);
 					gui.appendMsg(msg);

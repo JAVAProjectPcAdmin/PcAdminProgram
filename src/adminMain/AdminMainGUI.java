@@ -66,8 +66,8 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread(flag);
 		isUserThread.start();
-//		orderThread = new OrderThread(flag);
-//		orderThread.start();
+		// orderThread = new OrderThread(flag);
+		// orderThread.start();
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -190,11 +190,11 @@ public class AdminMainGUI extends JFrame {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
 					if (flag.UserLoginState[i]) {
-						User user=AdminClient.userlist.get(adminClient.userlist.size() - 1);
+						User user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
 						rightUserPanel[i].setUserPanel(user);
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
-						
+
 						TimerThread thread = new TimerThread(flag, user, i);
 						thread.start();
 						flag.UserLoginState[i] = false;
@@ -209,11 +209,11 @@ public class AdminMainGUI extends JFrame {
 		Flagment flag;
 		int i;
 
-		public TimerThread(Flagment flag, User user,int i) {
+		public TimerThread(Flagment flag, User user, int i) {
 			// TODO Auto-generated constructor stub
 			this.flag = flag;
 			this.user = user;
-			this.i=i;
+			this.i = i;
 		}
 
 		@Override
@@ -247,29 +247,30 @@ public class AdminMainGUI extends JFrame {
 		Flagment flag;
 		AdminOrderGUI userOrder;
 
-		public OrderThread(Flagment flag) {
+		public OrderThread(Flagment flag, User user) {
 			this.flag = flag;
+			this.user = user;
 		}
 
 		@Override
 		public void run() {
 			while (true) {
-				for (int i = 0; i < 25; i++) {
-					if (flag.UserLoginState[i]) {
-						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
-						if (!user.getOrder().equals("")) { // 주문이 들어옴!
-							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+				if (flag.UserLoginState[i]) {
+					user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
+					if (!user.getOrder().equals("")) { // 주문이 들어옴!
+						AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 						System.out.println("주문 : " + user.getOrder());
-						if(!user.getOrder().equals("")) { //주문이 들어옴!
+						if (!user.getOrder().equals("")) { // 주문이 들어옴!
 							System.out.println("주문들어왔어요~!");
 							userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 							userOrder.setVisible(true);
 							user.setOrder("");
 						}
-						}
+
 					}
 				}
+
 			}
-		}
-	}// orderThread 종료
+		} // orderThread 종료
+	}
 }

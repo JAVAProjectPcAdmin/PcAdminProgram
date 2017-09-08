@@ -11,16 +11,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class AdminServer {
 	ServerSocket serverSocket = null;
 	List<Socket> clientSocket = new ArrayList<>();
 	Socket adminSocket = null;
-	BufferedWriter bw = null;
+
 	User user2;
 	ObjectInputStream clientInStream;
 	ObjectOutputStream adminOutStream = null;
-
+	private List<UserThread> threadList;
+	
 	public AdminServer() {
+		threadList = new ArrayList<>();
 		try {
 			serverSocket = new ServerSocket(7777);
 			while (true) {
@@ -32,12 +35,7 @@ public class AdminServer {
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
-					if (clientSocket.contains(socket)) {
-						clientSocket.add(socket);
-					}
 
-					clientInStream = new ObjectInputStream(socket.getInputStream());
-					user2 = (User) clientInStream.readObject();
 					String ip = socket.getInetAddress() + "";
 
 					// 70.12.115.59
@@ -49,21 +47,49 @@ public class AdminServer {
 						user2.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user2.setSeatNumber(10);
+					
+//					clientSocket.add(socket);
+					UserThread t = new UserThread(user2,socket);
+					threadList.add(t);
+					t.start();
 
-					adminOutStream.writeObject(user2);
-					Thread.sleep(500);
+					
 				}
 			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} 
+	}
+	
+	class UserThread extends Thread{
+		User user;
+		Socket socket;
+		public UserThread(User user,Socket socket) {
+			this.user=user;
+			this.socket=socket;
+		}
+		@Override
+		public void run() {
+			try {
+				clientInStream = new ObjectInputStream(socket.getInputStream());
+				user = (User) clientInStream.readObject();
+			
+				adminOutStream.writeObject(user);
+				Thread.sleep(500);
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 	}
 
