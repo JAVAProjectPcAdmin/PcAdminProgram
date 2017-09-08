@@ -255,36 +255,22 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-<<<<<<< HEAD
-
-				if (flag.UserOrderstate[user.getSeatNumber()]) {
+				if (flag.UserLoginState[i]) {
 					user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
 					if (!user.getOrder().equals("")) { // 주문이 들어옴!
-						System.out.println("주문들어왔어요~!");
-						userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
-						userOrder.setVisible(true);
-						user.setOrder("");
-						flag.UserOrderstate[user.getSeatNumber()] = false;
-=======
-				for (int i = 0; i < 25; i++) {
-					if (flag.UserLoginState[i]) {
-						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
-						if (!user.getOrder().equals("")) { // 주문이 들어옴!
-							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+						AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 						System.out.println("주문 : " + user.getOrder());
-						if(!user.getOrder().equals("")) { //주문이 들어옴!
+						if (!user.getOrder().equals("")) { // 주문이 들어옴!
 							System.out.println("주문들어왔어요~!");
 							userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 							userOrder.setVisible(true);
 							user.setOrder("");
 						}
-						}
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
+
 					}
 				}
 
 			}
 		} // orderThread 종료
 	}
-
 }

@@ -137,13 +137,7 @@ public class OrderGUI extends JFrame {
 				userclient.setUser(user);
 				userclient.orderTOAdmin();
 				System.out.println(user.getOrder());
-<<<<<<< HEAD
-<<<<<<< HEAD
 				
-=======
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
-=======
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 				dispose();
 				JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.", "주문 완료", JOptionPane.OK_OPTION);
 			}

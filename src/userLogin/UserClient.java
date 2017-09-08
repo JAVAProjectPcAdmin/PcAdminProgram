@@ -13,30 +13,12 @@ public class UserClient {
 	ObjectOutputStream oos;
 	public static boolean newOrder = false;
 	User user;
-<<<<<<< HEAD
-	
 
-	public UserClient(User user) {
-		try {
-
-			socket = new Socket("70.12.115.54", 7777);
-			//socket = new Socket("70.12.115.59", 7777);
-=======
-	public static boolean newOrder = false;
-	User user;
 
 	public UserClient(User user) {
 		try {
 			socket = new Socket("70.12.115.54", 7777);
 			// socket = new Socket("70.12.115.59", 7777);
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
-=======
-
-	public UserClient(User user) {
-		try {
-			socket = new Socket("70.12.115.54", 7777);
-			// socket = new Socket("70.12.115.59", 7777);
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 
 			System.out.println("서버랑 연결됬네?!");
 
@@ -56,14 +38,7 @@ public class UserClient {
 			e.printStackTrace();
 		}
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
-=======
-
->>>>>>> bd7b89c828468c599ac7887b7fd088e8dd8b8cb0
 	public void orderTOAdmin() {
 		try {
 
