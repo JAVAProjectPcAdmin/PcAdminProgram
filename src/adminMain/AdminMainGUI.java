@@ -69,7 +69,7 @@ public class AdminMainGUI extends JFrame {
 		timerThread = new TimerThread(flag);
 		timerThread.start();
 		orderThread = new OrderThread(flag);
-		OrderThread.start();
+		orderThread.start();
 		
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
