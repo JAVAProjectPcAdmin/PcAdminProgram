@@ -27,6 +27,7 @@ import adminLogin.AdminLoginGUI.adminIcon;
 import adminLogin.AdminLoginGUI.adminSetPwListener;
 import adminLogin.AdminLoginGUI.computerIcon;
 import adminMain.AdminMainGUI;
+import db.AdminDao;
 
 public class AdminSetPwGUI extends JFrame {
 	private JPanel panel, keyIcon, adminIcon;
@@ -116,6 +117,7 @@ public class AdminSetPwGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			AdminDao dao = new AdminDao();
 
 			if (e.getSource() == cancelButton) {
 				dispose();

@@ -114,6 +114,7 @@ public class AdminLoginGUI extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			String updatePasswd = new String(pwTf.getPassword(), 0, pwTf.getPassword().length);
 			
+				
 				//로그인 만들기
 		
 		}
@@ -125,7 +126,7 @@ public class AdminLoginGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			AdminSetPwGUI adminSetPw = new AdminSetPwGUI();
-			
+
 		}
 		
 	}
