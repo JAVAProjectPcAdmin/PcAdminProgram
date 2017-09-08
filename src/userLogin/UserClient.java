@@ -11,6 +11,8 @@ import sun.net.InetAddressCachePolicy;
 public class UserClient {
 	Socket socket=null;
 	ObjectOutputStream oos;
+	public static boolean newOrder=false;
+	User user;
 	
 	public UserClient(User user) {
 		try {
@@ -35,5 +37,23 @@ public class UserClient {
 			e.printStackTrace();
 		}
 	}
-	
+	public void orderTOAdmin() {
+		try {
+
+			oos=new ObjectOutputStream((socket.getOutputStream()));
+			oos.writeObject(user);
+			Thread.sleep(500);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	public void setUser(User user) {
+		this.user=user;
+	}
 }

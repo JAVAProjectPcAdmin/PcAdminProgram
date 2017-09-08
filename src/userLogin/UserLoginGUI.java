@@ -173,7 +173,7 @@ public class UserLoginGUI extends JFrame {
 					user.setUserID(idTf.getText());
 					UserClient userclient = new UserClient(user);
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI(user);
+					UserUsingStateGUI uus = new UserUsingStateGUI(user,userclient);
 				} else if (result == 0) {
 					System.out.println("비밀번호가 틀렸습니다.");
 					JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
