@@ -9,11 +9,11 @@ public class User implements Serializable {
 	private String userNumber;
 	private String UserID;
 	private String startTime;
+	private String order;
 	private long startTimeCalc;
 	private int totalPrice=0;
 	private int addPrice=0;
 	private int seatNumber;
-
 
 	
 	public String getUserID() {
@@ -62,6 +62,14 @@ public class User implements Serializable {
 
 	public String getStartTime() {
 		return startTime;
+	}
+	
+	public void setOrder(String order) {
+		this.order = order;
+	}
+	
+	public String getOrder() {
+		return order;
 	}
 
 	public User(String name) {

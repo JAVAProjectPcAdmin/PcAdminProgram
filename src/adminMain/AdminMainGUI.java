@@ -27,6 +27,7 @@ import AdminServer.AdminServer;
 import AdminServer.User;
 import db.UserDao;
 import flagment.Flagment;
+import orderFood.AdminOrderGUI;
 import AdminServer.AdminClient;
 
 public class AdminMainGUI extends JFrame {
@@ -235,6 +236,24 @@ public class AdminMainGUI extends JFrame {
 					// 한개의 쓰레드가 계속 돌아서 그럼 ㅎㅅㅎ 
 					// 그렇다고 25개 돌릴수도 없고.....
 					//생각점.....
+				}
+			}
+		}
+	}
+	
+	class OrderThread extends Thread {
+		User user = null;
+		@Override
+		public void run() {
+			while(true) {
+				for(int i=0; i<25; i++) {
+					if(flag.UserLoginState[i]) {
+						user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
+						if(!user.getOrder().equals("")) { //주문이 들어옴!
+							AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+							user.setOrder("");
+						}
+					}
 				}
 			}
 		}

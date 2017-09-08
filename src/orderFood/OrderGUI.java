@@ -130,7 +130,6 @@ public class OrderGUI extends JFrame {
 					}
 				}
 				order += "</html>";
-				AdminOrderGUI g = new AdminOrderGUI(order, user);
 			}
 		});
 
