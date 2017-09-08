@@ -14,8 +14,13 @@ public class UserClient {
 	
 	public UserClient(User user) {
 		try {
+<<<<<<< HEAD
+			socket = new Socket("70.12.115.59", 7777);
+//			socket = new Socket("70.12.115.59", 7777);
+=======
 			socket = new Socket("70.12.115.54", 7777);
 			//socket = new Socket("70.12.115.59", 7777);
+>>>>>>> c6bc7d065994edc39dfa4e8bf40df6e7e43b5eb7
 			
 			System.out.println("서버랑 연결됬네?!");
 			

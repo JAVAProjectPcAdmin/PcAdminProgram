@@ -35,7 +35,7 @@ public class ChatServer {
 				socket = serverSocket.accept();
 				System.out.println("기다리는중...");
 
-				AdminChatGUI adc = new AdminChatGUI();
+//				AdminChatGUI adc = new AdminChatGUI();
 				System.out.println(socket.getInetAddress() + "에서 접속했습니다.");
 
 				Receiver receiver = new Receiver(socket);
@@ -57,7 +57,7 @@ public class ChatServer {
 		clientMap.put(name, out);
 	}
 
-	public void removeClint(String name) {
+	public void removeClient(String name) {
 		sendMessage(name + "님이 나갔습니다.");
 		clientMap.remove(name);
 
@@ -109,7 +109,7 @@ public class ChatServer {
 				}
 
 			} catch (IOException e) {
-				removeClint(name);
+				removeClient(name);
 			}
 
 		}
