@@ -27,13 +27,14 @@ import userLogin.UserClient;
 
 public class UserUsingStateGUI extends JFrame {
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
-	private JButton talkBt, orderBt, informationBt, logoutBt;
+	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
 	public static boolean flag = false;
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
 	public static boolean flag4 = false;
+	public JButton logoutBt;
 	User user;
 	UserClient userclient;
 
@@ -125,6 +126,8 @@ public class UserUsingStateGUI extends JFrame {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				
 				
 				
 				dispose();
