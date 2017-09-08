@@ -32,7 +32,7 @@ public class AdminChatGUI extends JFrame{
 		
 		
 		server.setGui(this);
-//		server.ServerSetting();
+		server.ServerSetting();
 	
 
 	}
@@ -42,6 +42,7 @@ public class AdminChatGUI extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String msg = "¼­¹ö : "+textField.getText()+"\n";
+			textArea.append(msg);
 			server.sendMessage(msg);
 			textField.setText("");
 			
