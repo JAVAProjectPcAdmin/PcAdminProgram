@@ -109,7 +109,6 @@ public class UserUsingStateGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (!flag3) {
 					OrderGUI order = new OrderGUI(user);
 					flag3 = true;
