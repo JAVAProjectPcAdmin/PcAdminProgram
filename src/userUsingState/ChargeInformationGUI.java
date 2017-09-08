@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -92,17 +94,22 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		sumLabel = new JLabel(" * ÇÕ°è");
 		sumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		////////////////////////////////////////////////////////////////////////////////////
-		rs_nameLabel = new JLabel("±èÁ¾ÈÆ");
+		rs_nameLabel = new JLabel(user.getName());
 		rs_nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_startLabel = new JLabel("2017-09-04 4:58");
+		rs_startLabel = new JLabel(user.getStartTime());
 		rs_startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_usingTimeLabel = new JLabel("10:34");
+//		this.startTimeCalc = System.currentTimeMillis();
+//
+//		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
+//		this.startTime = dayTime.format(new Date(startTimeCalc));
+		//½ÃÀÛ½Ã°£ - ÇöÀç½Ã°£ ? ¾Æ´Ï¸é rightMain¿¡¼­ ¹Þ¾Æ¿Í¾ß ÇÏ³ª?
+		rs_usingTimeLabel = new JLabel();
 		rs_usingTimeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_chargeLabel = new JLabel("10900¿ø");
+		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice()-user.getAddPrice()));
 		rs_chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_orderChargeLabel = new JLabel("40100¿ø");
+		rs_orderChargeLabel = new JLabel(Integer.toString(user.getAddPrice()));
 		rs_orderChargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_sumLabel = new JLabel("50000¿ø");
+		rs_sumLabel = new JLabel(Integer.toString(user.getTotalPrice()));
 		rs_sumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		/////////////////////////////////////////////////////////////////////////////////////
 		exitButton.setBounds(190, 330, 100, 20);
