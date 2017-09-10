@@ -81,9 +81,11 @@ public class ChatServer {
 		private DataInputStream in;
 		private DataOutputStream out;
 		private String name;
+		
+		Socket socket = null;
 
 		public Receiver(Socket socket) {
-
+			this.socket = socket;
 			try {
 				out = new DataOutputStream(socket.getOutputStream());
 				in = new DataInputStream(socket.getInputStream());

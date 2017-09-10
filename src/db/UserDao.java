@@ -210,68 +210,6 @@ public class UserDao {
 
 	}
 
-	/////////////////////////////////// 비회원Dao
-	public String nonMemberIdSelect(String non_Id) {
-		String non_name = null;
-
-		sql = "SELECT NAME FROM NONMEMBER WHERE NON_ID=?";
-
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, non_Id);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				non_name = rs.getString(1);
-
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-
-		}
-		return non_name;
-
-	}
-
-	public int nonMemberLoginCheck(String non_Id) {
-		int num;
-		String check = null;
-		sql = "SELECT NON_ID FROM NONMEMBER WHERE NON_ID=?";
-
-		try {
-			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, non_Id);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				check = rs.getString(1);
-
-				if (check.equals(non_Id)) {
-					result = 1;
-				} else {
-					result = 0;
-				}
-
-			} else {
-				result = -1;
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			close();
-			closeRS();
-		}
-		return result;
-
-	}
-
 	public void userUpdate(UserVO user, int userNum) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -400,7 +338,93 @@ public class UserDao {
 		}
 		return userList;
 	}
+	
+	
+	/////////////////////////////////// 비회원Dao
+	public String nonMemberIdSelect(String non_Id) {
+		String non_name = null;
 
+		sql = "SELECT NAME FROM NONMEMBER WHERE NON_ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				non_name = rs.getString(1);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+
+		}
+		return non_name;
+
+	}
+
+	public int nonMemberLoginCheck(String non_Id) {
+		int num;
+		String check = null;
+		sql = "SELECT NON_ID FROM NONMEMBER WHERE NON_ID=?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				check = rs.getString(1);
+
+				if (check.equals(non_Id)) {
+					result = 1;
+				} else {
+					result = 0;
+				}
+
+			} else {
+				result = -1;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return result;
+	}
+	
+	public String NonMemberNumSelect(String non_Id) {
+		String nonNum = null;
+		sql = "SELECT NONMEMBER_NUMBER FROM NONMEMBER WHERE NON_ID = ?";
+	
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, non_Id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nonNum = rs.getString(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return nonNum;
+	}
+	
+///////////////////////////////////////////////////////////
+	
 	public void close() {
 		if (pstmt != null) {
 			try {
