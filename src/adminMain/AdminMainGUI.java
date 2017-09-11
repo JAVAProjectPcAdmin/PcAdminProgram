@@ -262,6 +262,7 @@ public class AdminMainGUI extends JFrame {
 								user.setOrder("");
 								rightUserPanel[i].getAddAmountL().setText(user.getAddPrice()+"¿ø");
 								rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice()+user.getAddPrice()+"¿ø");
+								rightUserPanel[i].updateUI();
 								break;
 						}
 					}
