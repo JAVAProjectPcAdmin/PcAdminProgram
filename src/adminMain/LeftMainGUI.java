@@ -25,7 +25,6 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-import AdminServer.AdminClient;
 import db.UserDao;
 import db.UserVO;
 import gui_member.UserMemberInfoGUI;
@@ -35,13 +34,13 @@ public class LeftMainGUI extends JPanel {
 	private String[] infoTitle1 = { "이 름", "회원번호", "사용PC" };
 	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
 	private String[] infoTitle3 = { "회원아이디", "음식 주문", "총 사용금액" };
+	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
+	public String[][] finishedData = new String[20][];
 	public String[][] infoData1 = new String[1][];
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];
 	public static int countSeat = 0;
 	static public boolean flag = true;
-	
-	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB값 가져오기
 	UserDao dao;
@@ -78,12 +77,20 @@ public class LeftMainGUI extends JPanel {
 		}
 	};
 
+	public DefaultTableModel finishedModel = new DefaultTableModel(finishedData, finishedTitle) {
+		public boolean isCellEditable(int row, int column) {
+			if (column >= 0) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+	};
+
 	JTable infoTable1 = new JTable(infoModel1);
 	JTable infoTable2 = new JTable(infoModel2);
 	JTable infoTable3 = new JTable(infoModel3);
-
-	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
-	private String[][] finishedData = new String[20][20];
+	public JTable finishedTable = new JTable(finishedModel);
 
 	JLabel inputSeat_Label = new JLabel("자리 검색 : ");
 	JTextField inputSeat_Text = new JTextField(5);
@@ -124,18 +131,21 @@ public class LeftMainGUI extends JPanel {
 		return inputSeat_Text;
 	}
 
-//	public String[][] getInfoData1() {
-//		return infoData1;
-//	}
-//
-//	public String[][] getInfoData2() {
-//		return infoData2;
-//	}
-//
-//	public String[][] getInfoData3() {
-//		return infoData3;
-//	}
-	///////////////////////////////////////////////////////////////////////////////////////
+	 public String[][] getInfoData1() {
+	 return infoData1;
+	 }
+	
+	 public String[][] getInfoData2() {
+	 return infoData2;
+	 }
+	
+	 public String[][] getInfoData3() {
+	 return infoData3;
+	 }
+	 
+	 
+
+///////////////////////////////////////////////////////////////////////////////////
 
 	public LeftMainGUI() {
 		JPanel countGuest_Panel = new JPanel();
@@ -252,19 +262,6 @@ public class LeftMainGUI extends JPanel {
 
 		// 하루동안 사용자
 
-		// 테이블 수정 x
-		DefaultTableModel finishedModel = new DefaultTableModel(finishedData, finishedTitle) {
-			public boolean isCellEditable(int row, int column) {
-				if (column >= 0) {
-					return false;
-				} else {
-					return true;
-				}
-			}
-		};
-
-		JTable finishedTable = new JTable(finishedModel);
-
 		finishedTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		finishedTable.getTableHeader().setReorderingAllowed(false);
 		finishedTable.getTableHeader().setResizingAllowed(false);
@@ -304,8 +301,6 @@ public class LeftMainGUI extends JPanel {
 		super.paintComponent(g);
 
 	}
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// 회원ㅈ 검색 리스너}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원정보 검색 리스너
@@ -361,8 +356,5 @@ public class LeftMainGUI extends JPanel {
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
 
 }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import adminMain.LeftMainGUI;
+
 public class AdminServer {
 	ServerSocket serverSocket = null;
 	List<Socket> clientSocket = new ArrayList<>();
@@ -18,7 +20,8 @@ public class AdminServer {
 	ObjectInputStream clientInStream;
 	ObjectOutputStream adminOutStream = null;
 	private List<UserThread> threadList;
-	
+
+	LeftMainGUI lmGui;
 	AdminClient adminClient;
 
 	public AdminServer() {
@@ -29,8 +32,8 @@ public class AdminServer {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
-				if ((socket.getInetAddress() + "").equals("/70.12.115.59")) {
-				
+				if ((socket.getInetAddress() + "").equals("/70.12.115.53")) {
+
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
@@ -81,10 +84,33 @@ public class AdminServer {
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
 				}
-
 				// 연결 끊기
+				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
+				int tempSize = adminClient.userlist.size();
+				lmGui = new LeftMainGUI();
+				Object[] temp = new Object[4];
 
+				System.out.println(tempSize);
+
+				for (int i = 0; i < tempSize; i++) {
+					if (user.getUserID().equals(adminClient.userlist.get(i).getUserID())) {
+						temp[0] = adminClient.userlist.get(i).getName();
+						System.out.println(temp[0]);
+						temp[1] = adminClient.userlist.get(i).getUserID();
+						System.out.println(temp[1]);
+						temp[2] = adminClient.userlist.get(i).getSeatNumber();
+						System.out.println(temp[2]);
+						temp[3] = adminClient.userlist.get(i).getTotalPrice();
+						System.out.println(temp[3]);
+
+						lmGui.finishedModel.insertRow(0, temp);
+						lmGui.finishedTable.updateUI();
+					}else {
+						System.out.println("else");
+					}
+						
+				}
 
 				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
