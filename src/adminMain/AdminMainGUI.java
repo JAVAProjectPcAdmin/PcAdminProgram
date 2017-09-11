@@ -65,8 +65,6 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread();
 		isUserThread.start();
-//		 orderThread = new OrderThread(flag);
-//		 orderThread.start();
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -252,6 +250,7 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
+				System.out.println(Flagment.UserOrder[i]);
 				if (Flagment.UserOrder[i]) {//여기 안들어와....
 					System.out.println("주문");
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {

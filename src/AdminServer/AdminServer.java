@@ -75,9 +75,6 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
-					else if (ip.substring(1, 4).equals("192"))
-						;
-					user.setSeatNumber(15);
 
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
