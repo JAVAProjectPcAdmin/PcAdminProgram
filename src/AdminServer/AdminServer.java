@@ -28,10 +28,15 @@ public class AdminServer {
 			serverSocket = new ServerSocket(7777);
 			while (true) {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
+<<<<<<< HEAD
+				System.out.println(socket.getInetAddress());
+				if ((socket.getInetAddress() + "").equals("/70.12.115.59")) {
+=======
 
 				if ((socket.getInetAddress()+"").equals("/70.12.115.53")) {
 //				if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
 //				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
@@ -88,9 +93,19 @@ public class AdminServer {
 				
 				// 연결 끊기
 			} catch (IOException e) {
+<<<<<<< HEAD
+				removeThread(this);
 				
 				
+=======
+				
+				
+<<<<<<< HEAD
+				removeThread(this);
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+=======
 //				removeThread(this);
+>>>>>>> 31eaf5974df6168bd32b23969792be17f489eb64
 				System.out.println("연결이 끊어졋다 !");
 				
 				
@@ -101,6 +116,10 @@ public class AdminServer {
 				e.printStackTrace();
 			}
 			
+		}
+		
+		public void removeThread(UserThread t) {
+			threadList.remove(t);
 		}
 		
 		public void removeThread(UserThread t) {
