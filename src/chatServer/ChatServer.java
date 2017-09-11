@@ -51,6 +51,7 @@ public class ChatServer {
 	public void addClient(String name, DataOutputStream out) {
 		sendMessage(name + "님이 접속했습니다.");
 		clientMap.put(name, out);
+		
 	}
 
 	public void removeClient(String name) {
