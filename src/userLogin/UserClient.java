@@ -18,22 +18,7 @@ public class UserClient {
 
 	public UserClient(User user) {
 		try {
-			socket = new Socket("70.12.115.59", 7777);
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-			socket = new Socket("70.12.115.54", 7777);
->>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
-=======
 			socket = new Socket("192.168.43.53", 7777);
->>>>>>> 31eaf5974df6168bd32b23969792be17f489eb64
-=======
->>>>>>> 9151ae72b57005a8e5ca39bd75adcc26b60ca1bb
-			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("서버랑 연결됬네?!");
 
 			String ip = socket.getInetAddress() + "";

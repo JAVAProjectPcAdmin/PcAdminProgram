@@ -131,7 +131,7 @@ public class UserUsingStateGUI extends JFrame {
 
 				try {
 					userclient.getSocket().close();
-				} catch (IOException e1) {
+				}catch (IOException e1) {
 					e1.printStackTrace();
 				} finally {
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
@@ -151,6 +151,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
+
 		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
@@ -189,14 +190,14 @@ public class UserUsingStateGUI extends JFrame {
 		public void run() {
 			String nowTime;
 			while (true) {
-				long time=System.currentTimeMillis()-1000*60*60*9;
+				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
 				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
-				long checkTime=(time-user.getStartTimeCalc());
+				long checkTime = (time - user.getStartTimeCalc());
 				timeLb.setText(dayTime.format(new Date(checkTime)));
 				timeLb.updateUI();
-				if(checkTime/1000%60==0) {
-					user.setTotalPrice(user.getTotalPrice()+20);
-					moneyLb.setText(user.getTotalPrice()+"");
+				if (checkTime / 1000 % 60 == 0) {
+					user.setTotalPrice(user.getTotalPrice() + 20);
+					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.updateUI();
 					try {
 						Thread.sleep(1000);
@@ -222,3 +223,4 @@ public class UserUsingStateGUI extends JFrame {
 		}// while문 종료
 	}
 }
+
