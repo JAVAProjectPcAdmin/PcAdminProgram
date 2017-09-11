@@ -21,8 +21,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import com.oracle.jrockit.jfr.UseConstantPool;
-
 import AdminServer.User;
 import orderFood.OrderGUI;
 import userLogin.UserClient;

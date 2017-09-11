@@ -48,7 +48,7 @@ public class AdminClient {
 					boolean set=false; //새 유저인지 아닌지 구분
 					user = (User) ois.readObject();
 					for(int i=0;i<userlist.size();i++) {
-						if(userlist.get(i).getUserNumber().equals(user.getUserNumber())) {// 이전에 있었던 유저면 이번에 order로 넘어온것
+						if(userlist.get(i).getSeatNumber()==user.getSeatNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
 							userlist.set(i, user); //정보 새로 갱신
 							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
 							System.out.println(Flagment.UserOrder[user.getSeatNumber()]+" , "+user.getSeatNumber());

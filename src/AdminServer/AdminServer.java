@@ -32,13 +32,10 @@ public class AdminServer {
 				System.out.println(socket.getInetAddress());
 
 				if ((socket.getInetAddress() + "").equals("/70.12.115.53")) {
-					// if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
-					// if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
 					System.out.println("Admin client ¿¬°á");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
-
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -78,6 +75,7 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
+					
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
 				}
