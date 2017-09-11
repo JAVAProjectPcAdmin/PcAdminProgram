@@ -6,10 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -18,16 +23,18 @@ import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import AdminServer.AdminClient;
+import AdminServer.AdminServer;
 import AdminServer.User;
 import db.UserDao;
 import flagment.Flagment;
 import orderFood.AdminOrderGUI;
+import AdminServer.AdminClient;
 
 public class AdminMainGUI extends JFrame {
 	private JPopupMenu popup;
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
+	private Flagment flag;
 	private JPanel rightPanel = new JPanel();
 	UserThread isUserThread;
 	TimerThread timerThread;
@@ -57,7 +64,7 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setVisible(false);
 			rightPanel.add(rightUserPanel[i]);
 		}
-		isUserThread = new UserThread();
+		isUserThread = new UserThread(flag);
 		isUserThread.start();
 		// orderThread = new OrderThread(flag);
 		// orderThread.start();
@@ -170,27 +177,29 @@ public class AdminMainGUI extends JFrame {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class UserThread extends Thread {
+		private Flagment flag;
 
-		public UserThread() {
+		public UserThread(Flagment flag) {
 			// TODO Auto-generated constructor stub
 			// TODO Auto-generated constructor stub
+			this.flag = flag;
 		}
 
 		@Override
 		public void run() {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
-					if (Flagment.UserLoginState[i]) {
+					if (flag.UserLoginState[i]) {
 						User user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
 						rightUserPanel[i].setUserPanel(user);
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 
-						TimerThread timerThread = new TimerThread( user, i);
+						TimerThread timerThread = new TimerThread(flag, user, i);
 						timerThread.start();
-						OrderThread orderThread = new OrderThread( user, i);
+						OrderThread orderThread = new OrderThread(flag, user, i);
 						orderThread.start();
-						Flagment.UserLoginState[i] = false;
+						flag.UserLoginState[i] = false;
 					}
 				}
 			}
@@ -199,10 +208,12 @@ public class AdminMainGUI extends JFrame {
 
 	class TimerThread extends Thread {
 		User user = null;
+		Flagment flag;
 		int i;
 
-		public TimerThread( User user, int i) {
+		public TimerThread(Flagment flag, User user, int i) {
 			// TODO Auto-generated constructor stub
+			this.flag = flag;
 			this.user = user;
 			this.i = i;
 		}
@@ -235,10 +246,12 @@ public class AdminMainGUI extends JFrame {
 
 	class OrderThread extends Thread {
 		User user = null;
+		Flagment flag;
+		AdminOrderGUI userOrder;
 		int i;
-		AdminOrderGUI orderGUI;
-		
-		public OrderThread( User user, int i) {
+
+		public OrderThread(Flagment flag, User user, int i) {
+			this.flag = flag;
 			this.user = user;
 			this.i = i;// 쓰레드가 생성된 패널의 주소
 		}
@@ -246,19 +259,17 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-				System.out.println(Flagment.UserOrder[i]+" , "+i);
-				if (Flagment.UserOrder[i]) {//여기 안들어와....
+				if (flag.UserOrder[i]) {//여기 안들어와....
 					System.out.println("주문");
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
 						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
 							user = AdminClient.userlist.get(j); // 갱신된 User 받아옴
 								System.out.println("주문들어왔어요~!");
-								orderGUI = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+								userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 								user.setOrder("");
 								break;
 						}
 					}
-					Flagment.UserOrder[i]=false;
 				}
 			}
 

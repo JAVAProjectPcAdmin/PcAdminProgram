@@ -18,8 +18,13 @@ public class AdminClient {
 
 	public AdminClient() {
 		try {
+<<<<<<< HEAD
 			socket = new Socket("70.12.115.59", 7777);
 //			socket = new Socket("70.12.115.53", 7777);
+=======
+//			socket = new Socket("70.12.115.59", 7777);
+			socket = new Socket("70.12.115.53", 7777);
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
 			User user = null;
@@ -69,12 +74,16 @@ public class AdminClient {
 					}
 				}
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				
+				
+				
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 }
