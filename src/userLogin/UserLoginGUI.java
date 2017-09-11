@@ -172,6 +172,7 @@ public class UserLoginGUI extends JFrame {
 					user = new User(name);
 					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
 					user.setUserID(idTf.getText());
+					user.setBirthYear(dao.UserBirthSelect(idTf.getText()));
 					UserClient userclient = new UserClient(user);
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI(user,userclient);
