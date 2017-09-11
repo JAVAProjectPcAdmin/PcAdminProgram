@@ -65,7 +65,7 @@ public class AdminServer {
 					user = (User) clientInStream.readObject();
 
 					String ip = socket.getInetAddress() + "";
-
+					System.out.println(ip);
 					// 70.12.115.59
 					if (ip.substring(11).equals("53"))
 						user.setSeatNumber(2);
