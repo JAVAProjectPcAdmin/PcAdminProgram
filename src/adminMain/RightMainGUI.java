@@ -2,6 +2,8 @@ package adminMain;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -33,6 +35,7 @@ public class RightMainGUI extends JPanel {
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
+
 	static String SEAT_NUMBER = "1";
 	static int seat_num = Integer.parseInt(SEAT_NUMBER);
 	public int userPanelIndex;
@@ -66,6 +69,7 @@ public class RightMainGUI extends JPanel {
 	public JLabel getAddAmountL() {
 		return addAmountL;
 	}
+
 	public RightMainGUI() {
 		setFocusable(true);
 		requestFocus();
@@ -117,12 +121,13 @@ public class RightMainGUI extends JPanel {
 		add(addAmountL);
 
 	}
+
 	public void setUserPanel(User user) {
-		userNameL.setText(user.getName());;
+		userNameL.setText(user.getName());
+		;
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
 	}
-	
 
 }
