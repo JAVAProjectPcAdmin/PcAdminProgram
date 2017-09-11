@@ -123,6 +123,7 @@ public class UserUsingStateGUI extends JFrame {
 			}
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
+<<<<<<< HEAD
 //		logoutBt.addActionListener(new ActionListener() {
 //			// 로그아웃시 left메인에 유저 정보전달
 //			@Override
@@ -141,6 +142,35 @@ public class UserUsingStateGUI extends JFrame {
 //				UserLoginGUI g = new UserLoginGUI();
 //			}
 //		});
+=======
+		logoutBt.addActionListener(new ActionListener() {
+			// 로그아웃시 left메인에 유저 정보전달
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					userclient.getSocket().close();
+<<<<<<< HEAD
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+=======
+					System.out.println("서버와 연결 끊어짐");
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+					dispose();
+					UserLoginGUI g = new UserLoginGUI();
+				}
+			}
+<<<<<<< HEAD
+
+=======
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+		});
+>>>>>>> 708d7cd30f5adf9de671e28e92d8743bf7deec8b
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
