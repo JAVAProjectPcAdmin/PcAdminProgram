@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.oracle.jrockit.jfr.UseConstantPool;
@@ -39,7 +40,7 @@ public class UserUsingStateGUI extends JFrame {
 	User user;
 	UserClient userclient;
 
-	public UserUsingStateGUI(User user,UserClient userclient) {
+	public UserUsingStateGUI(User user, UserClient userclient) {
 		this.user = user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
@@ -64,7 +65,7 @@ public class UserUsingStateGUI extends JFrame {
 		customerNumberLb = new JLabel(user.getSeatNumber() + "");
 		customerNumberLb.setFont(new Font("맑은 고딕", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
-		moneyLb = new JLabel(user.getTotalPrice()+"원");
+		moneyLb = new JLabel(user.getTotalPrice() + "원");
 		talkLb = new JLabel("문의");
 		talkLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		orderLb = new JLabel("주문");
@@ -116,30 +117,29 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
-					OrderGUI order = new OrderGUI(user,userclient);
+					OrderGUI order = new OrderGUI(user, userclient);
 					flag3 = true;
 				}
 			}
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
-//		logoutBt.addActionListener(new ActionListener() {
-//			// 로그아웃시 left메인에 유저 정보전달
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//
-//				try {
-//					userclient.getSocket().close();
-//				} catch (IOException e1) {
-//					e1.printStackTrace();
-//				} finally {
-//					dispose();
-//					UserLoginGUI g = new UserLoginGUI();
-//				}
-//				}
-//				dispose();
-//				UserLoginGUI g = new UserLoginGUI();
-//			}
-//		});
+		logoutBt.addActionListener(new ActionListener() {
+			// 로그아웃시 left메인에 유저 정보전달
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					userclient.getSocket().close();
+					System.out.println("서버와 연결 끊어짐");
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
+					dispose();
+					UserLoginGUI g = new UserLoginGUI();
+				}
+			}
+		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
@@ -150,6 +150,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
+
 		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
@@ -162,8 +163,8 @@ public class UserUsingStateGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
-		
-		TimerThread thread=new TimerThread();
+
+		TimerThread thread = new TimerThread();
 		thread.start();
 
 	}
@@ -188,14 +189,14 @@ public class UserUsingStateGUI extends JFrame {
 		public void run() {
 			String nowTime;
 			while (true) {
-				long time=System.currentTimeMillis()-1000*60*60*9;
+				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
 				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
-				long checkTime=(time-user.getStartTimeCalc());
+				long checkTime = (time - user.getStartTimeCalc());
 				timeLb.setText(dayTime.format(new Date(checkTime)));
 				timeLb.updateUI();
-				if(checkTime/1000%60==0) {
-					user.setTotalPrice(user.getTotalPrice()+20);
-					moneyLb.setText(user.getTotalPrice()+"");
+				if (checkTime / 1000 % 60 == 0) {
+					user.setTotalPrice(user.getTotalPrice() + 20);
+					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.updateUI();
 					try {
 						Thread.sleep(1000);
