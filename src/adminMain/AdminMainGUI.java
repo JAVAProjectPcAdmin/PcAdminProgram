@@ -65,14 +65,8 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread();
 		isUserThread.start();
-<<<<<<< HEAD
-<<<<<<< HEAD
 //		 orderThread = new OrderThread(flag);
 //		 orderThread.start();
-=======
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
-=======
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -183,20 +177,9 @@ public class AdminMainGUI extends JFrame {
 
 	class UserThread extends Thread {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-		public UserThread(Flagment flag) {
-			this.flag = flag;
-=======
 		public UserThread() {
 			// TODO Auto-generated constructor stub
 			// TODO Auto-generated constructor stub
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
-=======
-		public UserThread() {
-			// TODO Auto-generated constructor stub
-			// TODO Auto-generated constructor stub
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
 		}
 
 		@Override

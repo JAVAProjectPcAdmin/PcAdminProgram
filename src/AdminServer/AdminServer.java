@@ -87,17 +87,8 @@ public class AdminServer {
 			} catch (IOException e) {
 
 				removeThread(this);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 				System.out.println("연결이 끊어졋다 !");
-
-=======
-				System.out.println("연결이 끊어졋다 !");
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
-=======
-				System.out.println("연결이 끊어졋다 !");
->>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
