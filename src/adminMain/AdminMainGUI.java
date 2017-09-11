@@ -181,8 +181,6 @@ public class AdminMainGUI extends JFrame {
 	class UserThread extends Thread {
 
 		public UserThread() {
-			// TODO Auto-generated constructor stub
-			// TODO Auto-generated constructor stub
 		}
 
 		@Override
@@ -212,7 +210,6 @@ public class AdminMainGUI extends JFrame {
 		int i;
 
 		public TimerThread(User user, int i) {
-			// TODO Auto-generated constructor stub
 			this.user = user;
 			this.i = i;
 		}
