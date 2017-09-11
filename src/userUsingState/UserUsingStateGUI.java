@@ -206,10 +206,7 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
-<<<<<<< HEAD
 //				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
-=======
->>>>>>> b5a3ddeb7309a67319794787e043112fe613ad2a
 				// 여기서 만약 시간이 22시이면 ! 하면 되겟지?
 			
 //				if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
