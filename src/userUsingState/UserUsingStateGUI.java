@@ -198,7 +198,11 @@ public class UserUsingStateGUI extends JFrame {
 				timeLb.updateUI();
 				if (checkTime / 1000 % 60 == 0) {
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
+<<<<<<< HEAD
 					moneyLb.setText(user.getTotalPrice() + "");
+=======
+					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
+>>>>>>> 4826e4d4e615fc3685ae8abba00224ca7b6d03c4
 					moneyLb.updateUI();
 					try {
 						Thread.sleep(1000);
@@ -206,6 +210,11 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
+				if(flag3) { //주문하면 가격 증가 
+					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
+					moneyLb.updateUI();
+				}
+				
 				
 				//21:30분이 되면 ! 미성년자들에게 알림 !
 				if(c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
