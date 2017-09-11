@@ -20,6 +20,7 @@ import javax.swing.JTabbedPane;
 
 import AdminServer.User;
 import userLogin.UserClient;
+import userLogin.UserLoginGUI;
 import userUsingState.UserUsingStateGUI;
 
 public class OrderGUI extends JFrame {
@@ -37,7 +38,7 @@ public class OrderGUI extends JFrame {
 	private String drinkName[] = {"레쓰비", "밀키스", "스프라이트", "조지아", "코카콜라", "파워에이드", "핫식스", "환타 오렌지"};
 	private String snackName[] = {"꼬깔콘", "도리토스", "스윙칩", "오잉", "오징어땅콩", "치토스", "포카칩 오리지널", "포카칩 어니언"};
 	
-	public OrderGUI(User user,UserClient userclient) {
+	public OrderGUI(UserClient userclient) {
 
 		wholePnl = new JPanel();
 
@@ -137,12 +138,13 @@ public class OrderGUI extends JFrame {
 				}
 				order += "</html>";
 				System.out.println(order);
-				user.setOrder(order);
-				user.setAddPrice(user.getAddPrice()+price);
-				userclient.setUser(user);
+				UserLoginGUI.user.setOrder(order);
+				UserLoginGUI.user.setAddPrice(UserLoginGUI.user.getAddPrice()+price);
+				UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice()+price);
+				userclient.setUser(UserLoginGUI.user);
 
 				userclient.orderTOAdmin();
-				System.out.println(user.getOrder());
+				System.out.println(UserLoginGUI.user.getOrder());
 				
 				UserUsingStateGUI.flag3 = false;
 				dispose();

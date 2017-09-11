@@ -42,8 +42,8 @@ public class UserUsingStateGUI extends JFrame {
 	UserClient userclient;
 	private boolean noticeFlag = false;
 
-	public UserUsingStateGUI(User user, UserClient userclient) {
-		this.user = user;
+	public UserUsingStateGUI(UserClient userclient) {
+		this.user= UserLoginGUI.user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
@@ -103,7 +103,7 @@ public class UserUsingStateGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (!flag2) {
-					ChargeInformationGUI ci = new ChargeInformationGUI(user);
+					ChargeInformationGUI ci = new ChargeInformationGUI();
 					flag2 = true;
 				}
 			}
@@ -119,7 +119,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
-					OrderGUI order = new OrderGUI(user, userclient);
+					OrderGUI order = new OrderGUI(userclient);
 					flag3 = true;
 				}
 			}

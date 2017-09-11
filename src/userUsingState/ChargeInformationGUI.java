@@ -24,6 +24,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import AdminServer.User;
+import userLogin.UserLoginGUI;
 
 public class ChargeInformationGUI extends JFrame {
 
@@ -35,7 +36,7 @@ public class ChargeInformationGUI extends JFrame {
 
 	BufferedImage moneybagImg = null;
 
-	public ChargeInformationGUI(User user) {
+	public ChargeInformationGUI() {
 		setTitle("¿ä±ÝÁ¤º¸");
 		setLayout(null);
 		setLocation(950, 330);
@@ -79,15 +80,15 @@ public class ChargeInformationGUI extends JFrame {
 		sumLabel = new JLabel(" * ÇÕ°è");
 		sumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		////////////////////////////////////////////////////////////////////////////////////
-		rs_nameLabel = new JLabel(user.getName());
+		rs_nameLabel = new JLabel(UserLoginGUI.user.getName());
 		rs_nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_startLabel = new JLabel(user.getStartTime());
+		rs_startLabel = new JLabel(UserLoginGUI.user.getStartTime());
 		rs_startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice() - user.getAddPrice()));
+		rs_chargeLabel = new JLabel(Integer.toString(UserLoginGUI.user.getTotalPrice() - UserLoginGUI.user.getAddPrice()));
 		rs_chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_orderChargeLabel = new JLabel(Integer.toString(user.getAddPrice()));
+		rs_orderChargeLabel = new JLabel(Integer.toString(UserLoginGUI.user.getAddPrice()));
 		rs_orderChargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_sumLabel = new JLabel(Integer.toString(user.getTotalPrice()));
+		rs_sumLabel = new JLabel(Integer.toString(UserLoginGUI.user.getTotalPrice()));
 		rs_sumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
 		/////////////////////////////////////////////////////////////////////////////////////
 		exitButton.setBounds(190, 330, 100, 20);

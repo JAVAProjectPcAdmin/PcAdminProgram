@@ -28,8 +28,7 @@ public class AdminServer {
 				System.out.println(socket.getInetAddress());
 
 				if ((socket.getInetAddress() + "").equals("/70.12.115.59")) {
-					// if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
-					// if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+				
 					System.out.println("Admin client ¿¬°á");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());

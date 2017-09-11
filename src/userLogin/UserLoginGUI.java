@@ -40,6 +40,7 @@ public class UserLoginGUI extends JFrame {
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
+	public static User user = null;
 
 	public UserLoginGUI() {
 		setSize(1280, 1024);
@@ -160,7 +161,7 @@ public class UserLoginGUI extends JFrame {
 			// TODO Auto-generated method stub
 
 			String name = null;
-			User user = null;
+		
 			UserDao dao = new UserDao();
 
 			if (idTf.getText().length() > 0) {
@@ -173,9 +174,9 @@ public class UserLoginGUI extends JFrame {
 					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
 					user.setUserID(idTf.getText());
 					user.setBirthYear(dao.UserBirthSelect(idTf.getText()));
-					UserClient userclient = new UserClient(user);
+					UserClient userclient = new UserClient();
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI(user,userclient);
+					UserUsingStateGUI uus = new UserUsingStateGUI(userclient);
 				} else if (result == 0) {
 					System.out.println("비밀번호가 틀렸습니다.");
 					JOptionPane.showMessageDialog(null, "비밀번호가 틀렸습니다.", "패스워드 오류", JOptionPane.OK_OPTION);
@@ -191,9 +192,9 @@ public class UserLoginGUI extends JFrame {
 					user = new User(name);
 					user.setUserNumber(dao.NonMemberNumSelect(nonMemberTf.getText()));
 					user.setUserID(nonMemberTf.getText());
-					UserClient userclient = new UserClient(user);
+					UserClient userclient = new UserClient();
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI(user, userclient);
+					UserUsingStateGUI uus = new UserUsingStateGUI( userclient);
 				} else if (result == 0) {
 					System.out.println("사용중인 번호입니다.");
 					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
