@@ -31,7 +31,7 @@ public class AdminClient {
 			AdminclientThread thread= new AdminclientThread(user, ois, socket);
 			thread.start();
 			
-		} catch (IOException e) {
+		} catch (IOException e) {   
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
