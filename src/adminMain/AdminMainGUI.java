@@ -193,7 +193,7 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
-						lmp.updateUI();
+						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						TimerThread timerThread = new TimerThread(user, i);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
