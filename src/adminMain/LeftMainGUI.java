@@ -320,9 +320,9 @@ public class LeftMainGUI extends JPanel {
 					dao = new UserDao();
 					umi = new UserMemberInfoGUI();
 					uv = new ArrayList<>();
-					uv = dao.userNameSelectList(inputMemberInfo_Text.getText());
+					uv = dao.UserNameSelectList(inputMemberInfo_Text.getText());
 					empty = new ArrayList<>();
-					empty = dao.userInfoList();
+					empty = dao.UserInfoList();
 
 					if ((inputMemberInfo_Text.getText()).equals("")) {
 						for (int index = 0; index < empty.size(); index++) {

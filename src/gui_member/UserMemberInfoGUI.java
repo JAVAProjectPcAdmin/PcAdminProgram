@@ -205,7 +205,7 @@ public class UserMemberInfoGUI extends JFrame {
 				user.setEmailAddress(mailTx.getText());
 				user.setAddress(addTx.getText());
 				user.setMemo(memoTx.getText());
-				dao.userUpdate(user, Integer.parseInt(joinNumTx.getText()));
+				dao.UserUpdate(user, Integer.parseInt(joinNumTx.getText()));
 				
 				LeftMainGUI.flag = true;
 				JOptionPane.showMessageDialog(null, "회원정보가 수정되었습니다.", "회원정보 수정 완료", JOptionPane.OK_OPTION);
@@ -230,7 +230,7 @@ public class UserMemberInfoGUI extends JFrame {
 				JTable jt = (JTable) e.getSource();
 				selectedIndex = jt.getSelectedRow();
 				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); 
-				userList = dao.userNumSelectList(userNum);
+				userList = dao.UserNumSelectList(userNum);
 
 				joinNumTx.setText(Integer.toString(userList.getUserNumber()));
 				nameTx.setText(userList.getName());

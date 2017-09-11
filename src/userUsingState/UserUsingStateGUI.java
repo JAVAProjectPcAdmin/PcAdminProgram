@@ -40,6 +40,7 @@ public class UserUsingStateGUI extends JFrame {
 	public JButton logoutBt;
 	User user;
 	UserClient userclient;
+	private boolean noticeFlag = false;
 
 	public UserUsingStateGUI(User user, UserClient userclient) {
 		this.user = user;
@@ -188,7 +189,7 @@ public class UserUsingStateGUI extends JFrame {
 	class TimerThread extends Thread {
 		@Override
 		public void run() {
-			String nowTime;
+			Calendar c = Calendar.getInstance();
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
 				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
@@ -202,23 +203,16 @@ public class UserUsingStateGUI extends JFrame {
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				}
-//				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
-				// 여기서 만약 시간이 22시이면 ! 하면 되겟지?
-			
-//				if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
-//					//21:30분이 되면 ! 미성년자들에게 알림 !
-//					//이렇게 하면 계속 뜨는데.............? ㅠㅠㅠ flag 해야되나..?
-//					if(Calendar.HOUR_OF_DAY == 21 && Calendar.MINUTE == 30) {
-//						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
-//					}
-//				}
-//				System.out.println(Calendar.HOUR_OF_DAY);
-//				long curTime = System.currentTimeMillis();
-//				System.out.println(dayTime.format(new Date(curTime))); // 21:30 이후 이면 !
+				//21:30분이 되면 ! 미성년자들에게 알림 !
+				if(c.get(Calendar.HOUR_OF_DAY) == 21 && c.get(Calendar.MINUTE) == 30 && noticeFlag == false) {
+					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
+						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
+						noticeFlag = true;
+					}
+				}
 			}
 		}// while문 종료
 	}
