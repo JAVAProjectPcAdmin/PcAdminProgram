@@ -250,7 +250,12 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
-				System.out.println(Flagment.UserOrder[i]);
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				if (Flagment.UserOrder[i]) {//여기 안들어와....
 					System.out.println("주문");
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
@@ -265,6 +270,7 @@ public class AdminMainGUI extends JFrame {
 								break;
 						}
 					}
+					Flagment.UserOrder[i]=false;
 				}
 			}
 
