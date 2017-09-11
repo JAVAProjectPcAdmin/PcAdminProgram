@@ -81,7 +81,7 @@ public class AdminMainGUI extends JFrame {
 		JMenuItem menuLogout = new JMenuItem("로그아웃");
 		popup.add(menuChat);
 		popup.add(menuLogout);
-//		 menuChat.addActionListener(this);
+		// menuChat.addActionListener(this);
 
 		setLayout(null);
 		setSize(1280, 924);
@@ -189,7 +189,7 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setUserPanel(user);
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
-
+						LeftMainGUI.countSeat++;
 						TimerThread timerThread = new TimerThread( user, i);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
@@ -206,7 +206,7 @@ public class AdminMainGUI extends JFrame {
 		User user = null;
 		int i;
 
-		public TimerThread( User user, int i) {
+		public TimerThread(User user, int i) {
 			// TODO Auto-generated constructor stub
 			this.user = user;
 			this.i = i;
@@ -223,14 +223,19 @@ public class AdminMainGUI extends JFrame {
 				rightUserPanel[i].getUseTimeL().setText(useTime);
 				rightUserPanel[i].getUseTimeL().updateUI();
 				if (checkTime / 1000 % 60 == 0) {
-					user.setTotalPrice(user.getTotalPrice() + 20);
-					rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
-					rightUserPanel[i].getTotalPriceL().updateUI();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+					for (int j = 0; j < AdminClient.userlist.size(); j++) {
+						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
+							user=AdminClient.userlist.get(j);
+							user.setTotalPrice(user.getTotalPrice() + 20);
+							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
+							rightUserPanel[i].getTotalPriceL().updateUI();
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
 					}
 				}
 			}
@@ -243,7 +248,7 @@ public class AdminMainGUI extends JFrame {
 		AdminOrderGUI userOrder;
 		int i;
 
-		public OrderThread( User user, int i) { 
+		public OrderThread(User user, int i) {
 			this.user = user;
 			this.i = i;// 쓰레드가 생성된 패널의 주소
 		}
@@ -257,21 +262,21 @@ public class AdminMainGUI extends JFrame {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (Flagment.UserOrder[i]) {//여기 안들어와....
+				if (Flagment.UserOrder[i]) {// 여기 안들어와....
 					System.out.println("주문");
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
 						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
 							user = AdminClient.userlist.get(j); // 갱신된 User 받아옴
-								System.out.println("주문들어왔어요~!");
-								userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
-								user.setOrder("");
-								rightUserPanel[i].getAddAmountL().setText(user.getAddPrice()+"원");
-								rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice()+"원");
-								rightUserPanel[i].updateUI();
-								break;
+							System.out.println("주문들어왔어요~!");
+							userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+							user.setOrder("");
+							rightUserPanel[i].getAddAmountL().setText(user.getAddPrice() + "원");
+							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
+							rightUserPanel[i].updateUI();
+							break;
 						}
 					}
-					Flagment.UserOrder[i]=false;
+					Flagment.UserOrder[i] = false;
 				}
 			}
 
