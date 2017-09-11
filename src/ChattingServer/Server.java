@@ -21,7 +21,7 @@ class Server {
 
 	void addGuest(Guest g) {
 		list.add(g);
-		System.out.println("접속자수:" + list.size());
+
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {
@@ -52,7 +52,7 @@ class Server {
 		}
 	}
 
-	void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
+	void makeGuestlist() throws Exception {
 
 		StringBuffer buffer = new StringBuffer("guestlist/");
 		for (Guest g : list) {
@@ -91,11 +91,7 @@ class Server {
 					case "enter":
 						id = array[1];
 						server.makeGuestlist();
-						server.broadcast(line);
-						break;
-					case "msg":
-						String str = "msg/[" + id + "]" + array[1];
-						server.broadcast(str);
+
 						break;
 
 					case "귓속말":
@@ -103,7 +99,7 @@ class Server {
 						server.talkMsg(talk[0], talk[1], talk[2]);
 						// talk[0] 보낼사람
 						// talk[1] 할말
-
+						break;
 					}
 				}
 			} catch (Exception e) {
