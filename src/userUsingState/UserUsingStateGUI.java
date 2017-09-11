@@ -131,7 +131,8 @@ public class UserUsingStateGUI extends JFrame {
 
 				try {
 					userclient.getSocket().close();
-				}catch (IOException e1) {
+					System.out.println("서버와 연결 끊어짐");
+				} catch (IOException e1) {
 					e1.printStackTrace();
 				} finally {
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
@@ -139,7 +140,6 @@ public class UserUsingStateGUI extends JFrame {
 					UserLoginGUI g = new UserLoginGUI();
 				}
 			}
-
 		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
@@ -206,12 +206,12 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
-				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
+//				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
 				// 여기서 만약 시간이 22시이면 ! 하면 되겟지?
 			
 //				if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
 //					//21:30분이 되면 ! 미성년자들에게 알림 !
-//					//이렇게 하면 계속 뜨는데.............? ㅠㅠㅠ
+//					//이렇게 하면 계속 뜨는데.............? ㅠㅠㅠ flag 해야되나..?
 //					if(Calendar.HOUR_OF_DAY == 21 && Calendar.MINUTE == 30) {
 //						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
 //					}
