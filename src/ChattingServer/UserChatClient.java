@@ -6,9 +6,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class UserChatClient extends Frame implements ActionListener {
-	TextField tf;
+	TextField tf, tf2;
 	TextArea ta;
-	Button b;
+	Button b, b2;
 	List list;
 	BufferedReader br;
 	BufferedWriter bw;
@@ -22,7 +22,7 @@ public class UserChatClient extends Frame implements ActionListener {
 		ta = new TextArea();
 		b = new Button("나가기");
 		list = new List();
-
+		tf2 = new TextField(); // 쪽지보내기 텍필
 		Panel p1 = new Panel();
 		Panel p2 = new Panel();
 		p1.setLayout(new BorderLayout());
@@ -39,21 +39,18 @@ public class UserChatClient extends Frame implements ActionListener {
 		initNet();
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
-		readMsg(); // 상대방 읽어오는 메소드
+		readMsg();
 	}
 
 	public void initNet() throws Exception {
 		Socket socket = new Socket("localhost", 8877);
-		
 		InputStream is = socket.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		br = new BufferedReader(isr);
-		
 		OutputStream os = socket.getOutputStream();
 		OutputStreamWriter osw = new OutputStreamWriter(os);
 		bw = new BufferedWriter(osw);
-		
-		sendMsg("enter/" + id); //아이디 보내는 send
+		sendMsg("enter/" + id);
 	}
 
 	public void readMsg() {
@@ -63,15 +60,12 @@ public class UserChatClient extends Frame implements ActionListener {
 				System.out.println(line);
 				String array[] = line.split("/");
 				switch (array[0]) {
-
 				case "귓속말":
 					String arr[] = array[1].split("&");
 					ta.append("[" + arr[0] + "->" + arr[1] + "]" + arr[2] + "\n");
 					break;
 
 				}
-				String arr[] = array[1].split("&");
-				ta.append("[" + arr[1] + "]" + arr[2] + "\n");
 			}
 		} catch (Exception e) {
 			System.out.println("읽다가오류남~");
@@ -97,6 +91,7 @@ public class UserChatClient extends Frame implements ActionListener {
 		} else if (e.getActionCommand().equals("나가기")) {
 			try {
 				System.exit(0);
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

@@ -21,12 +21,12 @@ class Server {
 
 	void addGuest(Guest g) {
 		list.add(g);
-
+		System.out.println("접속자수:" + list.size());
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {
 		// talk 보낸사람
-		// 2 받을사
+		// 2 받을사람
 		// 3 할말
 		for (Guest g : list) {
 			if (g.id.equals(talk2)) {
@@ -46,19 +46,12 @@ class Server {
 		System.out.println("접속자수:" + list.size());
 	}
 
-	void broadcast(String msg) throws Exception {
-		for (Guest g : list) {
-			g.sendMsg(msg);
-		}
-	}
-
-	void makeGuestlist() throws Exception {
+	void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
 
 		StringBuffer buffer = new StringBuffer("guestlist/");
 		for (Guest g : list) {
 			buffer.append(g.id + "/");
 		}
-		broadcast(buffer.toString());
 
 	}
 
@@ -99,17 +92,15 @@ class Server {
 						server.talkMsg(talk[0], talk[1], talk[2]);
 						// talk[0] 보낼사람
 						// talk[1] 할말
-						break;
+
 					}
 				}
 			} catch (Exception e) {
 				// e.printStackTrace();
 				System.out.println(e.getMessage() + "겟메시지");
-				System.out.println(id + "님 읽다가 에러남ㅠㅠ");
-
-				// server.removeGuest(this);
+				server.removeGuest(this); // 리스트에서 지워야 재접속가능.
 				try {
-					server.broadcast("exit/" + id + "나갓다");
+
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

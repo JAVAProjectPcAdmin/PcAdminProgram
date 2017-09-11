@@ -6,9 +6,9 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class AdminChatClient extends Frame implements ActionListener {
-	TextField tf;
+	TextField tf, tf2;
 	TextArea ta;
-	Button b;
+	Button b, b2;
 	List list;
 	BufferedReader br;
 	BufferedWriter bw;
@@ -23,6 +23,7 @@ public class AdminChatClient extends Frame implements ActionListener {
 		b = new Button("나가기");
 
 		list = new List();
+		tf2 = new TextField(); // 쪽지보내기 텍필
 
 		Panel p1 = new Panel();
 		Panel p2 = new Panel();
@@ -64,7 +65,6 @@ public class AdminChatClient extends Frame implements ActionListener {
 				System.out.println(line);
 				String array[] = line.split("/");
 				switch (array[0]) {
-
 				case "귓속말":
 					String arr[] = array[1].split("&");
 					ta.append("[" + arr[0] + "->" + arr[1] + "]" + arr[2] + "\n");
