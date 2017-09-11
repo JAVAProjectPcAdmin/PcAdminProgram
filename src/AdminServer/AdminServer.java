@@ -34,6 +34,7 @@ public class AdminServer {
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
+					clientSocket.add(socket);
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -81,6 +82,8 @@ public class AdminServer {
 
 				// 연결 끊기
 			} catch (IOException e) {
+
+
 				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
