@@ -62,7 +62,6 @@ public class UserChatClient extends Frame implements ActionListener {
 				String line = br.readLine();
 				System.out.println(line);
 				String array[] = line.split("/");
-<<<<<<< HEAD
 				switch (array[0]) {
 
 				case "귓속말":
@@ -71,10 +70,8 @@ public class UserChatClient extends Frame implements ActionListener {
 					break;
 
 				}
-=======
 				String arr[] = array[1].split("&");
 				ta.append("[" + arr[1] + "]" + arr[2] + "\n");
->>>>>>> 6e432b3ac636af95798c15ae2ca4ff7c923e2003
 			}
 		} catch (Exception e) {
 			System.out.println("읽다가오류남~");
