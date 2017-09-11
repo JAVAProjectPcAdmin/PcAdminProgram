@@ -34,11 +34,7 @@ public class AdminServer {
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
-<<<<<<< HEAD
-					// clientSocket.add(socket);
 					clientSocket.add(socket);
-=======
->>>>>>> 3da4608201fa01c16bfab1c240297dbc2e3b3ad7
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -86,17 +82,10 @@ public class AdminServer {
 
 				// ¿¬°á ²÷±â
 			} catch (IOException e) {
-<<<<<<< HEAD
+
 
 				removeThread(this);
-
-				// removeThread(this);
 				System.out.println("¿¬°áÀÌ ²÷¾î º´Ù !");
-
-=======
-				removeThread(this);
-				System.out.println("¿¬°áÀÌ ²÷¾î º´Ù !");
->>>>>>> 3da4608201fa01c16bfab1c240297dbc2e3b3ad7
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
