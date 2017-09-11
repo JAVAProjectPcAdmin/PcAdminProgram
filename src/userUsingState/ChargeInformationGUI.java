@@ -25,10 +25,10 @@ import javax.swing.table.DefaultTableModel;
 
 import AdminServer.User;
 
-public class ChargeInformationGUI extends JFrame{
+public class ChargeInformationGUI extends JFrame {
 
-	private JLabel titleLabel, nameLabel, rs_nameLabel, startLabel, rs_startLabel,
-			chargeLabel, rs_chargeLabel, orderChargeLabel, rs_orderChargeLabel, sumLabel, rs_sumLabel;
+	private JLabel titleLabel, nameLabel, rs_nameLabel, startLabel, rs_startLabel, chargeLabel, rs_chargeLabel,
+			orderChargeLabel, rs_orderChargeLabel, sumLabel, rs_sumLabel;
 	private JPanel panel, moneyBagIcon;
 	private JButton exitButton;
 	private JTable chargeTable;
@@ -83,7 +83,7 @@ public class ChargeInformationGUI extends JFrame{
 		rs_nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_startLabel = new JLabel(user.getStartTime());
 		rs_startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice()-user.getAddPrice()));
+		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice() - user.getAddPrice()));
 		rs_chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_orderChargeLabel = new JLabel(Integer.toString(user.getAddPrice()));
 		rs_orderChargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
@@ -129,4 +129,5 @@ public class ChargeInformationGUI extends JFrame{
 			g.drawImage(moneybagImg, 0, 0, null);
 		}
 	}
+
 }

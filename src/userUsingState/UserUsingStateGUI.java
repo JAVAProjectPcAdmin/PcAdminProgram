@@ -24,6 +24,7 @@ import com.oracle.jrockit.jfr.UseConstantPool;
 import AdminServer.User;
 import orderFood.OrderGUI;
 import userLogin.UserClient;
+import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
@@ -127,10 +128,13 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				
-				
-				
+				try {
+					userclient.getSocket().close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				dispose();
+				UserLoginGUI g = new UserLoginGUI();
 			}
 		});
 		informationBt.setBounds(210, 180, 42, 36);
