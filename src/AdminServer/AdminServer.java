@@ -18,6 +18,8 @@ public class AdminServer {
 	ObjectInputStream clientInStream;
 	ObjectOutputStream adminOutStream = null;
 	private List<UserThread> threadList;
+	
+	AdminClient adminClient;
 
 	public AdminServer() {
 		threadList = new ArrayList<>();
