@@ -12,9 +12,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	List list;
 	BufferedReader br;
 	BufferedWriter bw;
-	PopupMenu pm;
 	String id;
-	MenuItem mi;
 
 	public UserChatClient(String id) throws Exception {
 		super(id + "님의 채팅창입니다");
@@ -63,7 +61,7 @@ public class UserChatClient extends Frame implements ActionListener {
 				String array[] = line.split("/");
 				switch (array[0]) {
 				case "msg":
-					ta.append("[전체]"+array[1] + "\n");
+					ta.append("[전체]" + array[1] + "\n");
 					break;
 				case "귓속말":
 					String arr[] = array[1].split("&");
@@ -83,11 +81,11 @@ public class UserChatClient extends Frame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
+
 		if (e.getSource() == tf) {
 			try {
-				sendMsg("귓속말/" + "User2" + "&" + "관리자2" + "&" + tf.getText());
-				ta.append("[User2]->[관리자] " + tf.getText() + "\n");
+				sendMsg("귓속말/" + "User" + "&" + "Admin" + "&" + tf.getText());
+				ta.append("[User]->[Admin] " + tf.getText() + "\n");
 				tf.setText("");
 
 			} catch (Exception ee) {
@@ -105,7 +103,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	}
 
 	public static void main(String args[]) throws Exception {
-		UserChatClient client = new UserChatClient("User2");
+		UserChatClient client = new UserChatClient("User");
 
 	}
 }

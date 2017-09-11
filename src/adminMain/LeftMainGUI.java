@@ -31,11 +31,17 @@ import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
 	// 손님 정보 테인블
+<<<<<<< HEAD
 	private String[] infoTitle1 = { "이 름", "회원번호", "사용PC" };
 	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
 	private String[] infoTitle3 = { "회원아이디", "음식 주문", "총 사용금액" };
 	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
 	public String[][] finishedData = new String[20][];
+=======
+	private String[] infoTitle1 = { "회원번호", "아이디", "이  름" };
+	private String[] infoTitle2 = { "사용PC", "시작시간", "사용시간" };
+	private String[] infoTitle3 = { "PC 금액", "음식 금액", "총 사용금액" };
+>>>>>>> b646ba6b6a56cb38cc2534cf81eec091074b195f
 	public String[][] infoData1 = new String[1][];
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];

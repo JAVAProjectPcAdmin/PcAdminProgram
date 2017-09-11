@@ -20,9 +20,12 @@ public class AdminServer {
 	ObjectInputStream clientInStream;
 	ObjectOutputStream adminOutStream = null;
 	private List<UserThread> threadList;
+<<<<<<< HEAD
 
 	LeftMainGUI lmGui;
 	AdminClient adminClient;
+=======
+>>>>>>> b646ba6b6a56cb38cc2534cf81eec091074b195f
 
 	public AdminServer() {
 		threadList = new ArrayList<>();
@@ -32,14 +35,19 @@ public class AdminServer {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
+<<<<<<< HEAD
 				if ((socket.getInetAddress() + "").equals("/70.12.115.53")) {
 
+=======
+				if ((socket.getInetAddress() + "").equals("/70.12.115.59")) {
+					// if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
+					// if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+>>>>>>> b646ba6b6a56cb38cc2534cf81eec091074b195f
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
-					clientSocket.add(socket);
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -87,6 +95,7 @@ public class AdminServer {
 				// 연결 끊기
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
+<<<<<<< HEAD
 				int tempSize = adminClient.userlist.size();
 				lmGui = new LeftMainGUI();
 				Object[] temp = new Object[4];
@@ -112,6 +121,8 @@ public class AdminServer {
 						
 				}
 
+=======
+>>>>>>> b646ba6b6a56cb38cc2534cf81eec091074b195f
 				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
