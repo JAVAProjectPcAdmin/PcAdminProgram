@@ -209,7 +209,7 @@ public class UserUsingStateGUI extends JFrame {
 				//21:30분이 되면 ! 미성년자들에게 알림 !
 				if(c.get(Calendar.HOUR_OF_DAY) == 21 && c.get(Calendar.MINUTE) == 30 && noticeFlag == false) {
 					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
-						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
+						WarningGUI g = new WarningGUI();
 						noticeFlag = true;
 					}
 				}
