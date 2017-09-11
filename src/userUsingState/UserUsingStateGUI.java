@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.oracle.jrockit.jfr.UseConstantPool;
@@ -40,7 +41,7 @@ public class UserUsingStateGUI extends JFrame {
 	User user;
 	UserClient userclient;
 
-	public UserUsingStateGUI(User user,UserClient userclient) {
+	public UserUsingStateGUI(User user, UserClient userclient) {
 		this.user = user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
@@ -65,7 +66,7 @@ public class UserUsingStateGUI extends JFrame {
 		customerNumberLb = new JLabel(user.getSeatNumber() + "");
 		customerNumberLb.setFont(new Font("맑은 고딕", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
-		moneyLb = new JLabel(user.getTotalPrice()+"원");
+		moneyLb = new JLabel(user.getTotalPrice() + "원");
 		talkLb = new JLabel("문의");
 		talkLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		orderLb = new JLabel("주문");
@@ -117,32 +118,12 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
-					OrderGUI order = new OrderGUI(user,userclient);
+					OrderGUI order = new OrderGUI(user, userclient);
 					flag3 = true;
 				}
 			}
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
-<<<<<<< HEAD
-//		logoutBt.addActionListener(new ActionListener() {
-//			// 로그아웃시 left메인에 유저 정보전달
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//
-//				try {
-//					userclient.getSocket().close();
-//				} catch (IOException e1) {
-//					e1.printStackTrace();
-//				} finally {
-//					dispose();
-//					UserLoginGUI g = new UserLoginGUI();
-//				}
-//				}
-//				dispose();
-//				UserLoginGUI g = new UserLoginGUI();
-//			}
-//		});
-=======
 		logoutBt.addActionListener(new ActionListener() {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
@@ -150,27 +131,16 @@ public class UserUsingStateGUI extends JFrame {
 
 				try {
 					userclient.getSocket().close();
-<<<<<<< HEAD
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-=======
-					System.out.println("서버와 연결 끊어짐");
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} finally {
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
->>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 					dispose();
 					UserLoginGUI g = new UserLoginGUI();
 				}
 			}
-<<<<<<< HEAD
 
-=======
->>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 		});
->>>>>>> 708d7cd30f5adf9de671e28e92d8743bf7deec8b
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
@@ -193,8 +163,8 @@ public class UserUsingStateGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
-		
-		TimerThread thread=new TimerThread();
+
+		TimerThread thread = new TimerThread();
 		thread.start();
 
 	}
@@ -251,10 +221,4 @@ public class UserUsingStateGUI extends JFrame {
 			}
 		}// while문 종료
 	}
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> c95900780792d7dc857aa16d6f3e615d256a40ae
 }
-
