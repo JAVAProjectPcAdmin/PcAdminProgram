@@ -36,7 +36,7 @@ public class AdminMainGUI extends JFrame {
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private Flagment flag;
 	private JPanel rightPanel = new JPanel();
-	UserThread isUserThread;
+	public static UserThread isUserThread;
 	TimerThread timerThread;
 	OrderThread orderThread;
 	int i;
@@ -66,8 +66,8 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread(flag);
 		isUserThread.start();
-		// orderThread = new OrderThread(flag);
-		// orderThread.start();
+//		 orderThread = new OrderThread(flag);
+//		 orderThread.start();
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -84,7 +84,7 @@ public class AdminMainGUI extends JFrame {
 		JMenuItem menuLogout = new JMenuItem("·Î±×¾Æ¿ô");
 		popup.add(menuChat);
 		popup.add(menuLogout);
-		// menuChat.addActionListener(this);
+//		 menuChat.addActionListener(this);
 
 		setLayout(null);
 		setSize(1280, 924);
@@ -180,8 +180,6 @@ public class AdminMainGUI extends JFrame {
 		private Flagment flag;
 
 		public UserThread(Flagment flag) {
-			// TODO Auto-generated constructor stub
-			// TODO Auto-generated constructor stub
 			this.flag = flag;
 		}
 
