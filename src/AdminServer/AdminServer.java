@@ -30,6 +30,7 @@ public class AdminServer {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 
 				if ((socket.getInetAddress()+"").equals("/70.12.115.53")) {
+//				if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
 //				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
@@ -84,12 +85,16 @@ public class AdminServer {
 				adminOutStream.writeObject(user);
 				Thread.sleep(500);
 				}
+				
+				// 연결 끊기
 			} catch (IOException e) {
+				
+				
 				removeThread(this);
-				
-				
 				System.out.println("연결이 끊어졋다 !");
-				e.printStackTrace();
+				
+				
+//				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
