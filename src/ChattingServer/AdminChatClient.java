@@ -5,33 +5,26 @@ import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class AdminChatClient extends Frame implements ActionListener, MouseListener {
+public class AdminChatClient extends Frame implements ActionListener {
 	TextField tf, tf2;
 	TextArea ta;
 	Button b, b2;
 	List list;
-	Dialog dia;
 	BufferedReader br;
 	BufferedWriter bw;
-	PopupMenu pm;
 	String id;
-	MenuItem mi;
 
 	public AdminChatClient(String id) throws Exception {
 		super(id + "님의 채팅창입니다");
 		this.id = id;
-		mi = new MenuItem("메세지");
-		pm = new PopupMenu();
-		pm.add(mi);
 
-		dia = new Dialog(this);
 		tf = new TextField(15);
 		ta = new TextArea();
 		b = new Button("나가기");
-		b2 = new Button("보내기"); // 쪽지 보내기
+
 		list = new List();
 		tf2 = new TextField(); // 쪽지보내기 텍필
-		list.add(pm);
+
 		Panel p1 = new Panel();
 		Panel p2 = new Panel();
 
@@ -39,18 +32,15 @@ public class AdminChatClient extends Frame implements ActionListener, MouseListe
 		p2.setLayout(new BorderLayout());
 
 		p1.add(ta);
-		p1.add(list, "East");
-
 		p2.add(tf);
 		p2.add(b, "East");
 
 		add(p1, "Center");
 		add(p2, "South");
-		list.addMouseListener(this);
+
 		tf.addActionListener(this);
 		b.addActionListener(this);
-		b2.addActionListener(this);
-		mi.addActionListener(this);
+
 		initNet();
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
@@ -75,20 +65,9 @@ public class AdminChatClient extends Frame implements ActionListener, MouseListe
 				System.out.println(line);
 				String array[] = line.split("/");
 				switch (array[0]) {
-				case "enter":
-					ta.append(array[1] + "님 입장~\n");
-					break;
 
 				case "msg":
 					ta.append(array[1] + "\n");
-					break;
-
-				case "guestlist":
-					list.removeAll();
-
-					int len = array.length;
-					for (int i = 1; i < len; i++)
-						list.add(array[i]);
 					break;
 
 				case "귓속말":
@@ -112,7 +91,8 @@ public class AdminChatClient extends Frame implements ActionListener, MouseListe
 
 		if (e.getSource() == tf) {
 			try {
-				sendMsg("msg/" + tf.getText());
+				sendMsg("귓속말/" + "Admin" + "&" + "User" + "&" + tf.getText());
+				ta.append("[Admin]->[User] " + tf.getText() + "\n");
 				tf.setText("");
 
 			} catch (Exception ee) {
@@ -127,64 +107,10 @@ public class AdminChatClient extends Frame implements ActionListener, MouseListe
 			}
 		}
 
-		else if (e.getSource() == b2) {
-			try {
-				ta.append("[" + id + "->" + list.getSelectedItem() + "]" + tf2.getText() + "\n");
-				sendMsg("귓속말/" + id + "&" + list.getSelectedItem() + "&" + tf2.getText());
-				dia.setVisible(false);
-				dia.dispose();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		} else if (e.getSource() == mi) {
-			dia.add(tf2);
-			dia.add(b2);
-			dia.setLayout(new GridLayout(2, 0));
-			dia.setBounds(300, 300, 200, 200);
-			dia.setVisible(true);
-		}
-
-	}
-
-	public void mousePressed(MouseEvent e) {
-		if (e.getButton() == 3 && list.getSelectedItem() != null) {
-
-			pm.show(list, e.getX(), e.getY());
-
-		}
-
-	}
-
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public static void main(String args[]) throws Exception {
-		AdminChatClient[] client;
-		for (int i = 0; i < 5; i++) {
-			client = new AdminChatClient[i];
-			client[i] = new AdminChatClient("관리자" + i);
-		}
+		AdminChatClient client = new AdminChatClient("Admin");
 
 	}
 }
