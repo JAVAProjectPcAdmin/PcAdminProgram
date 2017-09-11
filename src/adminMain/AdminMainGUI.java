@@ -41,7 +41,7 @@ public class AdminMainGUI extends JFrame {
 	int i;
 	// private
 	AdminClient adminClient;
-
+	
 	UserDao userDao = new UserDao();
 
 	public static void main(String[] args) {
@@ -190,13 +190,13 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
+						repaint(); //repaint()? UpdateUI()?
 						TimerThread timerThread = new TimerThread( user, i);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
 						orderThread.start();
 						Flagment.UserLoginState[i] = false;
 					}
-					
 				}
 			}
 		}
