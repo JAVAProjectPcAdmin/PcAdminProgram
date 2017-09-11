@@ -124,7 +124,6 @@ public class RightMainGUI extends JPanel {
 
 	public void setUserPanel(User user) {
 		userNameL.setText(user.getName());
-		;
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
