@@ -10,6 +10,7 @@ public class User implements Serializable {
 	private String UserID;
 	private String startTime;
 	private String order;
+	private String birthYear;
 	private long startTimeCalc;
 	private int totalPrice = 0;
 	private int addPrice = 0;
@@ -86,6 +87,14 @@ public class User implements Serializable {
 		return order;
 	}
 
+	public String getBirthYear() {
+		return birthYear;
+	}
+	
+	public void setBirthYear(String birthYear) {
+		this.birthYear = birthYear;
+	}
+	
 	public User(String name) {
 		this.name = name;
 		this.setStartTime();

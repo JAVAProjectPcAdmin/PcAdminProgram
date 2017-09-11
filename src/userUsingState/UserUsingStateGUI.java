@@ -10,6 +10,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.imageio.ImageIO;
@@ -205,8 +206,21 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
+				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
+				// 여기서 만약 시간이 22시이면 ! 하면 되겟지?
+			
+//				if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
+//					//21:30분이 되면 ! 미성년자들에게 알림 !
+//					//이렇게 하면 계속 뜨는데.............? ㅠㅠㅠ
+//					if(Calendar.HOUR_OF_DAY == 21 && Calendar.MINUTE == 30) {
+//						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
+//					}
+//				}
+//				System.out.println(Calendar.HOUR_OF_DAY);
+//				long curTime = System.currentTimeMillis();
+//				System.out.println(dayTime.format(new Date(curTime))); // 21:30 이후 이면 !
 			}
-		}
+		}// while문 종료
 	}
-
 }
+
