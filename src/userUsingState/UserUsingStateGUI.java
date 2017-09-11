@@ -123,7 +123,11 @@ public class UserUsingStateGUI extends JFrame {
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
 //		logoutBt.addActionListener(new ActionListener() {
+<<<<<<< HEAD
 //
+=======
+
+>>>>>>> 4d5a7c994dba6a48c701914653163d1b639700ad
 //			// 로그아웃시 left메인에 유저 정보전달
 //			@Override
 //			public void actionPerformed(ActionEvent e) {
@@ -132,10 +136,16 @@ public class UserUsingStateGUI extends JFrame {
 //					userclient.getSocket().close();
 //				} catch (IOException e1) {
 //					e1.printStackTrace();
+<<<<<<< HEAD
 //				} finally {
 //					dispose();
 //					UserLoginGUI g = new UserLoginGUI();
 //				}
+=======
+//				}
+//				dispose();
+//				UserLoginGUI g = new UserLoginGUI();
+>>>>>>> 4d5a7c994dba6a48c701914653163d1b639700ad
 //			}
 //		});
 		informationBt.setBounds(210, 180, 42, 36);
