@@ -86,7 +86,7 @@ public class UserChatClient extends Frame implements ActionListener {
 
 		if (e.getSource() == tf) {
 			try {
-				sendMsg("庇加富/" + "User" + "&" + "包府磊" + "&" + tf.getText());
+				sendMsg("庇加富/" + "包府磊2" + "&" + "包府磊" + "&" + tf.getText());
 				ta.append("[User2]->[包府磊] " + tf.getText() + "\n");
 				tf.setText("");
 
@@ -105,7 +105,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	}
 
 	public static void main(String args[]) throws Exception {
-		UserChatClient client = new UserChatClient("User1");
+		UserChatClient client = new UserChatClient("User3");
 
 	}
 }

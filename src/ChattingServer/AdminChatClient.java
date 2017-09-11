@@ -180,7 +180,12 @@ public class AdminChatClient extends Frame implements ActionListener, MouseListe
 	}
 
 	public static void main(String args[]) throws Exception {
-		AdminChatClient client = new AdminChatClient("包府磊");
+		AdminChatClient[] client;
+		client = new AdminChatClient[2];
+		
+		client[0] = new AdminChatClient("包府磊1");
+		client[1] = new AdminChatClient("包府磊2");
+		
 
 	}
 }
