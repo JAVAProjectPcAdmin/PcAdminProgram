@@ -102,7 +102,7 @@ public class RightMainGUI extends JPanel {
 		userNameL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 20));
 
 		userNumberL.setSize(30, 30);
-		userNumberL.setLocation(153, 17);
+		userNumberL.setLocation(163, 17);
 		userNumberL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 17));
 
 		useTimeL.setSize(80, 20);
