@@ -25,20 +25,23 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import AdminServer.AdminClient;
 import db.UserDao;
 import db.UserVO;
 import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
 	// 손님 정보 테인블
-	private String[] infoTitle1 = { "이 름", "회원번호", "사용PC" };
-	private String[] infoTitle2 = { "시작시간", "종료시간", "사용시간" };
-	private String[] infoTitle3 = { "회원아이디", "음식 주문", "총 사용금액" };
+	private String[] infoTitle1 = { "회원번호", "아이디", "이  름" };
+	private String[] infoTitle2 = { "사용PC", "시작시간", "사용시간" };
+	private String[] infoTitle3 = { "PC 금액", "음식 금액", "총 사용금액" };
 	public String[][] infoData1 = new String[1][];
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];
 	public static int countSeat = 0;
 	static public boolean flag = true;
+	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB값 가져오기
 	UserDao dao;
@@ -121,17 +124,17 @@ public class LeftMainGUI extends JPanel {
 		return inputSeat_Text;
 	}
 
-	public String[][] getInfoData1() {
-		return infoData1;
-	}
-
-	public String[][] getInfoData2() {
-		return infoData2;
-	}
-
-	public String[][] getInfoData3() {
-		return infoData3;
-	}
+//	public String[][] getInfoData1() {
+//		return infoData1;
+//	}
+//
+//	public String[][] getInfoData2() {
+//		return infoData2;
+//	}
+//
+//	public String[][] getInfoData3() {
+//		return infoData3;
+//	}
 	///////////////////////////////////////////////////////////////////////////////////////
 
 	public LeftMainGUI() {
