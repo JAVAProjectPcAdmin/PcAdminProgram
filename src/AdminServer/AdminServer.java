@@ -90,11 +90,11 @@ public class AdminServer {
 			} catch (IOException e) {
 				
 				
-				removeThread(this);
+//				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
 				
 				
-//				e.printStackTrace();
+				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
