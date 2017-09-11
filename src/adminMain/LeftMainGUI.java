@@ -37,7 +37,7 @@ public class LeftMainGUI extends JPanel {
 	public String[][] infoData1 = new String[1][];
 	public String[][] infoData2 = new String[1][];
 	public String[][] infoData3 = new String[1][];
-
+	public static int countSeat = 0;
 	static public boolean flag = true;
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB°ª °¡Á®¿À±â
@@ -153,7 +153,7 @@ public class LeftMainGUI extends JPanel {
 		// ÇöÀç ¼Õ´Ô ¼ö
 		JLabel countGuest_Label1 = new JLabel();
 
-		countGuest_Label1.setText("12" + " / " + "25");
+		countGuest_Label1.setText(countSeat + " / " + "25");
 		f1 = new Font("¸¼Àº °íµñ", Font.BOLD, 50);
 		f2 = new Font("¸¼Àº °íµñ", Font.BOLD, 14);
 

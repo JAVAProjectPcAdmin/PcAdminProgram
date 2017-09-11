@@ -1,10 +1,5 @@
-/ChattingServer/
-/chatServer/
-/db/
+/AdminServer/
+/orderFood/
 /userLogin/
 /userUsingState/
-/AdminServer/
 /adminMain/
-/flagment/
-/orderFood/
-/gui_member/
