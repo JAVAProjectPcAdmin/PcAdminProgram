@@ -49,21 +49,23 @@ public class AdminClient {
 			try {
 				ois = new ObjectInputStream(socket.getInputStream());
 				while (true) {
+					boolean set=false; //새 유저인지 아닌지 구분
 					user = (User) ois.readObject();
 					for(int i=0;i<userlist.size();i++) {
-						if(userlist.get(i).getUserNumber()==user.getUserNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
+						if(userlist.get(i).getUserNumber().equals(user.getUserNumber())) {// 이전에 있었던 유저면 이번에 order로 넘어온것
 							userlist.set(i, user); //정보 새로 갱신
-							Flagment.UserOrderstate[user.getSeatNumber()]=true;
-						}else {//이전 리스트에 없으면 새로 로그인 한 유저
-							System.out.println("new "+user.getName());
-							user.setStartTime();
-							userlist.add(user);
-							Flagment.UserLoginState[user.getSeatNumber()] = true;
+							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
+							set=true;
+							System.out.println(set);
+							break;
 						}
-							
 					}
-					System.out.println(user.getName());
-					
+					if(!set) {
+						System.out.println("new "+user.getName());
+						user.setStartTime();
+						userlist.add(user);
+						Flagment.UserLoginState[user.getSeatNumber()] = true;
+					}
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block

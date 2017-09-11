@@ -195,8 +195,10 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 
-						TimerThread thread = new TimerThread(flag, user, i);
-						thread.start();
+						TimerThread timerThread = new TimerThread(flag, user, i);
+						timerThread.start();
+						OrderThread orderThread = new OrderThread(flag, user, i);
+						orderThread.start();
 						flag.UserLoginState[i] = false;
 					}
 				}
@@ -246,31 +248,31 @@ public class AdminMainGUI extends JFrame {
 		User user = null;
 		Flagment flag;
 		AdminOrderGUI userOrder;
+		int i;
 
-		public OrderThread(Flagment flag, User user) {
+		public OrderThread(Flagment flag, User user, int i) {
 			this.flag = flag;
 			this.user = user;
+			this.i = i;// 쓰레드가 생성된 패널의 주소
 		}
 
 		@Override
 		public void run() {
 			while (true) {
-				if (flag.UserLoginState[i]) {
-					user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
-					if (!user.getOrder().equals("")) { // 주문이 들어옴!
-						AdminOrderGUI userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
-						System.out.println("주문 : " + user.getOrder());
-						if (!user.getOrder().equals("")) { // 주문이 들어옴!
-							System.out.println("주문들어왔어요~!");
-							userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
-							userOrder.setVisible(true);
-							user.setOrder("");
+				if (flag.UserOrder[i]) {//여기 안들어와....
+					System.out.println("주문");
+					for (int j = 0; j < AdminClient.userlist.size(); j++) {
+						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
+							user = AdminClient.userlist.get(j); // 갱신된 User 받아옴
+								System.out.println("주문들어왔어요~!");
+								userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
+								user.setOrder("");
+								break;
 						}
-
 					}
 				}
-
 			}
+
 		} // orderThread 종료
 	}
 }
