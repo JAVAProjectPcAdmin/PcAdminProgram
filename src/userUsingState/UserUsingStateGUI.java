@@ -197,7 +197,7 @@ public class UserUsingStateGUI extends JFrame {
 				timeLb.setText(dayTime.format(new Date(checkTime)));
 				timeLb.updateUI();
 				if (checkTime / 1000 % 60 == 0) {
-					user.setTotalPrice(user.getTotalPrice() + 20);
+					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
 					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.updateUI();
 					try {
@@ -206,6 +206,7 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
+				
 				//21:30분이 되면 ! 미성년자들에게 알림 !
 				if(c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
 					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
