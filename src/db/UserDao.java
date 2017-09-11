@@ -210,7 +210,7 @@ public class UserDao {
 
 	}
 
-	public void userUpdate(UserVO user, int userNum) {
+	public void UserUpdate(UserVO user, int userNum) {
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 			String sql = "UPDATE USER SET PASSWORD=?, NAME=?, PHONE=?, EMAIL_ADDRESS=?, ADDRESS=?, MEMO=? "
@@ -234,7 +234,7 @@ public class UserDao {
 	}
 
 	// 회원 이름으로 검색 -> 회원번호, 이름, 아이디, 등록일자, 생년월일
-	public List<UserVO> userNameSelectList(String name) {
+	public List<UserVO> UserNameSelectList(String name) {
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -270,7 +270,7 @@ public class UserDao {
 	}
 
 	// 회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
-	public UserVO userNumSelectList(int userNum) {
+	public UserVO UserNumSelectList(int userNum) {
 		UserVO user = new UserVO();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -301,7 +301,7 @@ public class UserDao {
 	}
 
 	// 모든 정보
-	public List<UserVO> userInfoList() {
+	public List<UserVO> UserInfoList() {
 
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
@@ -339,6 +339,35 @@ public class UserDao {
 		return userList;
 	}
 	
+	public String UserBirthSelect(String id) {
+		String birthYear = null;
+
+		sql = "SELECT RESIDENT_NUMBER FROM USER WHERE ID = ?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				if(Integer.parseInt(rs.getString(1).substring(6, 7)) == 1 
+						|| Integer.parseInt(rs.getString(1).substring(6, 7)) == 2) {
+					birthYear = 19 + rs.getString(1).substring(0, 2);
+				} else if(Integer.parseInt(rs.getString(1).substring(6, 7)) == 3 
+						|| Integer.parseInt(rs.getString(1).substring(6, 7)) == 4) {
+					birthYear = 20 + rs.getString(1).substring(0, 2);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+		return birthYear;
+	}
 	
 	/////////////////////////////////// 비회원Dao
 	public String nonMemberIdSelect(String non_Id) {

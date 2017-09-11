@@ -10,7 +10,7 @@ public class User implements Serializable {
 	private String UserID;
 	private String startTime;
 	private String order;
-	private String birthYear;
+	private String birthYear = "0";
 	private long startTimeCalc;
 	private int totalPrice = 0;
 	private int addPrice = 0;
