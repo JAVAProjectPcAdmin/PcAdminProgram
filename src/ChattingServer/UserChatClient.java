@@ -83,7 +83,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-
+		
 		if (e.getSource() == tf) {
 			try {
 				sendMsg("庇加富/" + "User2" + "&" + "包府磊2" + "&" + tf.getText());

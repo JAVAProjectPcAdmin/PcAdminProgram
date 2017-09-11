@@ -7,6 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class AdminServer {
 	ServerSocket serverSocket = null;
@@ -26,7 +27,7 @@ public class AdminServer {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
-				if ((socket.getInetAddress() + "").equals("/70.12.115.53")) {
+				if ((socket.getInetAddress() + "").equals("/70.12.115.59")) {
 					// if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
 					// if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
 					System.out.println("Admin client 연결");
@@ -34,7 +35,6 @@ public class AdminServer {
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
-					clientSocket.add(socket);
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -75,9 +75,6 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
-					else if (ip.substring(1, 4).equals("192"))
-						;
-					user.setSeatNumber(15);
 
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
@@ -85,9 +82,7 @@ public class AdminServer {
 
 				// 연결 끊기
 			} catch (IOException e) {
-
 				removeThread(this);
-
 				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
