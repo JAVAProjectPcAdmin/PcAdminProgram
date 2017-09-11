@@ -189,7 +189,6 @@ public class UserUsingStateGUI extends JFrame {
 	class TimerThread extends Thread {
 		@Override
 		public void run() {
-			String nowTime;
 			Calendar c = Calendar.getInstance();
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
