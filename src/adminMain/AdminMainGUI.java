@@ -65,8 +65,6 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread();
 		isUserThread.start();
-//		 orderThread = new OrderThread(flag);
-//		 orderThread.start();
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -244,7 +242,7 @@ public class AdminMainGUI extends JFrame {
 		AdminOrderGUI userOrder;
 		int i;
 
-		public OrderThread( User user, int i) {
+		public OrderThread( User user, int i) { 
 			this.user = user;
 			this.i = i;// 쓰레드가 생성된 패널의 주소
 		}
@@ -252,6 +250,7 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			while (true) {
+				System.out.println(Flagment.UserOrder[i]);
 				if (Flagment.UserOrder[i]) {//여기 안들어와....
 					System.out.println("주문");
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
@@ -260,6 +259,9 @@ public class AdminMainGUI extends JFrame {
 								System.out.println("주문들어왔어요~!");
 								userOrder = new AdminOrderGUI(user.getOrder(), user.getSeatNumber());
 								user.setOrder("");
+								rightUserPanel[i].getAddAmountL().setText(user.getAddPrice()+"원");
+								rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice()+user.getAddPrice()+"원");
+								rightUserPanel[i].updateUI();
 								break;
 						}
 					}
