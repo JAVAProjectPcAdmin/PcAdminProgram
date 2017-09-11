@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
+import AdminServer.AdminClient;
 import db.UserDao;
 import db.UserVO;
 import gui_member.UserMemberInfoGUI;
@@ -39,6 +40,8 @@ public class LeftMainGUI extends JPanel {
 	public String[][] infoData3 = new String[1][];
 	public static int countSeat = 0;
 	static public boolean flag = true;
+	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////
 	// DB값 가져오기
 	UserDao dao;
@@ -121,17 +124,17 @@ public class LeftMainGUI extends JPanel {
 		return inputSeat_Text;
 	}
 
-	public String[][] getInfoData1() {
-		return infoData1;
-	}
-
-	public String[][] getInfoData2() {
-		return infoData2;
-	}
-
-	public String[][] getInfoData3() {
-		return infoData3;
-	}
+//	public String[][] getInfoData1() {
+//		return infoData1;
+//	}
+//
+//	public String[][] getInfoData2() {
+//		return infoData2;
+//	}
+//
+//	public String[][] getInfoData3() {
+//		return infoData3;
+//	}
 	///////////////////////////////////////////////////////////////////////////////////////
 
 	public LeftMainGUI() {
