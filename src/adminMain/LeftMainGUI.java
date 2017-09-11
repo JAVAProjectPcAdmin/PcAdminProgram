@@ -155,6 +155,7 @@ public class LeftMainGUI extends JPanel {
 
 		countGuest_Label1.setText("12" + " / " + "25");
 		f1 = new Font("맑은 고딕", Font.BOLD, 50);
+		f2 = new Font("맑은 고딕", Font.BOLD, 14);
 
 		countGuest_Label1.setFont(f1);
 
@@ -163,14 +164,13 @@ public class LeftMainGUI extends JPanel {
 		countGuest_Panel.setBackground(Color.WHITE);
 
 		// 손님 자리 검색
+		inputSeat_Label.setFont(f2);
 		findSeatBtn.setIcon(new ImageIcon(newFindButtonImg));
 		findSeatBtn.setPreferredSize(new Dimension(50, 35));
 		findSeatBtn.setFocusPainted(false);
-
-		f2 = new Font("맑은 고딕", Font.BOLD, 14);
-		inputSeat_Label.setFont(f2);
 		findSeatBtn.setFont(f2);
 		findSeatBtn.setBackground(Color.WHITE);
+		findSeatBtn.addActionListener(new FindMemberActionListener());
 
 		findGuest_Panel.add(inputSeat_Label);
 		findGuest_Panel.add(inputSeat_Text);
@@ -180,11 +180,10 @@ public class LeftMainGUI extends JPanel {
 		findGuest_Panel.setBackground(Color.WHITE);
 
 		// 회원 정보 검색
+		inputMemberInfo_Label.setFont(f2);
 		findMemberBtn.setIcon(new ImageIcon(newFindSeatImg));
 		findMemberBtn.setPreferredSize(new Dimension(50, 35));
 		findMemberBtn.setFocusPainted(false);
-
-		inputMemberInfo_Label.setFont(f2);
 		findMemberBtn.setFont(f2);
 		findMemberBtn.setBackground(Color.WHITE);
 		findMemberBtn.setFocusPainted(false);
@@ -302,6 +301,8 @@ public class LeftMainGUI extends JPanel {
 		super.paintComponent(g);
 
 	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	// 회원ㅈ 검색 리스너}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원정보 검색 리스너
@@ -357,6 +358,8 @@ public class LeftMainGUI extends JPanel {
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
