@@ -22,7 +22,6 @@ public class AdminServer {
 	private List<UserThread> threadList;
 
 	LeftMainGUI lmGui;
-	AdminClient adminClient;
 
 	public AdminServer() {
 		threadList = new ArrayList<>();
@@ -87,21 +86,21 @@ public class AdminServer {
 				// ¿¬°á ²÷±â
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
-				int tempSize = adminClient.userlist.size();
+				int tempSize = AdminClient.userlist.size();
 				lmGui = new LeftMainGUI();
 				Object[] temp = new Object[4];
 
 				System.out.println(tempSize);
 
 				for (int i = 0; i < tempSize; i++) {
-					if (user.getUserID().equals(adminClient.userlist.get(i).getUserID())) {
-						temp[0] = adminClient.userlist.get(i).getName();
+					if (user.getUserID().equals(AdminClient.userlist.get(i).getUserID())) {
+						temp[0] = AdminClient.userlist.get(i).getName();
 						System.out.println(temp[0]);
-						temp[1] = adminClient.userlist.get(i).getUserID();
+						temp[1] = AdminClient.userlist.get(i).getUserID();
 						System.out.println(temp[1]);
-						temp[2] = adminClient.userlist.get(i).getSeatNumber();
+						temp[2] = AdminClient.userlist.get(i).getSeatNumber();
 						System.out.println(temp[2]);
-						temp[3] = adminClient.userlist.get(i).getTotalPrice();
+						temp[3] = AdminClient.userlist.get(i).getTotalPrice();
 						System.out.println(temp[3]);
 
 						lmGui.finishedModel.insertRow(0, temp);

@@ -12,7 +12,6 @@ import flagment.Flagment;
 public class AdminClient {
 
 	Socket socket = null;
-//	BufferedWriter bw = null;
 	public static List<User> userlist=new ArrayList<User>();
 	ObjectInputStream ois = null;
 
@@ -26,7 +25,6 @@ public class AdminClient {
 			thread.start();
 			
 		} catch (IOException e) {   
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -37,7 +35,6 @@ public class AdminClient {
 		Socket socket;
 
 		public AdminclientThread(User user, ObjectInputStream ois, Socket socket) {
-			// TODO Auto-generated constructor stub
 			this.user = user;
 			this.ois = ois;
 			this.socket = socket;
@@ -74,7 +71,6 @@ public class AdminClient {
 				
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
