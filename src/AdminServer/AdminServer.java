@@ -47,7 +47,6 @@ public class AdminServer {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -79,7 +78,6 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
-
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
 				}
@@ -105,10 +103,10 @@ public class AdminServer {
 
 						lmGui.finishedModel.insertRow(0, temp);
 						lmGui.finishedTable.updateUI();
-					}else {
+					} else {
 						System.out.println("else");
 					}
-						
+
 				}
 
 				removeThread(this);
