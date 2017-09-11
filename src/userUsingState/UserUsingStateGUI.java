@@ -42,8 +42,8 @@ public class UserUsingStateGUI extends JFrame {
 	UserClient userclient;
 	private boolean noticeFlag = false;
 
-	public UserUsingStateGUI(User user, UserClient userclient) {
-		this.user = user;
+	public UserUsingStateGUI(UserClient userclient) {
+		this.user= UserLoginGUI.user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
@@ -103,7 +103,7 @@ public class UserUsingStateGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				if (!flag2) {
-					ChargeInformationGUI ci = new ChargeInformationGUI(user);
+					ChargeInformationGUI ci = new ChargeInformationGUI();
 					flag2 = true;
 				}
 			}
@@ -119,7 +119,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
-					OrderGUI order = new OrderGUI(user, userclient);
+					OrderGUI order = new OrderGUI(userclient);
 					flag3 = true;
 				}
 			}
@@ -207,9 +207,9 @@ public class UserUsingStateGUI extends JFrame {
 					}
 				}
 				//21:30분이 되면 ! 미성년자들에게 알림 !
-				if(c.get(Calendar.HOUR_OF_DAY) == 21 && c.get(Calendar.MINUTE) == 30 && noticeFlag == false) {
+				if(c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
 					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
-						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
+						WarningGUI g = new WarningGUI();
 						noticeFlag = true;
 					}
 				}

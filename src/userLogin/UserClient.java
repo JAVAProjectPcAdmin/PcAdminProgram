@@ -16,7 +16,8 @@ public class UserClient {
 		return socket;
 	}
 
-	public UserClient(User user) {
+	public UserClient() {
+		this.user= UserLoginGUI.user;
 		try {
 			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("서버랑 연결됬네?!");
