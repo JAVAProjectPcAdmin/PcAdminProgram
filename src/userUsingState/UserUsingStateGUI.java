@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import com.oracle.jrockit.jfr.UseConstantPool;
@@ -129,14 +130,25 @@ public class UserUsingStateGUI extends JFrame {
 
 				try {
 					userclient.getSocket().close();
+<<<<<<< HEAD
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				} finally {
+=======
+					System.out.println("¼­¹ö¿Í ¿¬°á ²÷¾îÁü");
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					JOptionPane.showMessageDialog(null, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.", "·Î±×¾Æ¿ô", 1);
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 					dispose();
 					UserLoginGUI g = new UserLoginGUI();
 				}
 			}
+<<<<<<< HEAD
 
+=======
+>>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
 		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
@@ -148,6 +160,7 @@ public class UserUsingStateGUI extends JFrame {
 
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
+
 		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
