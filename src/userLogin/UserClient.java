@@ -24,9 +24,13 @@ public class UserClient {
 			socket = new Socket("70.12.115.59", 7777);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 			socket = new Socket("70.12.115.54", 7777);
 >>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+=======
+			socket = new Socket("70.12.115.59", 7777);
+>>>>>>> 708d7cd30f5adf9de671e28e92d8743bf7deec8b
 			System.out.println("서버랑 연결됬네?!");
 
 			String ip = socket.getInetAddress() + "";
