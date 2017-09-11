@@ -2,12 +2,9 @@ package userLogin;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 
 import AdminServer.User;
-import sun.net.InetAddressCachePolicy;
-import userUsingState.UserUsingStateGUI;
 
 public class UserClient {
 	Socket socket = null;
@@ -25,9 +22,13 @@ public class UserClient {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 			socket = new Socket("70.12.115.54", 7777);
 >>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+=======
+			socket = new Socket("192.168.43.53", 7777);
+>>>>>>> 31eaf5974df6168bd32b23969792be17f489eb64
 =======
 			socket = new Socket("70.12.115.59", 7777);
 >>>>>>> 708d7cd30f5adf9de671e28e92d8743bf7deec8b

@@ -100,12 +100,16 @@ public class AdminServer {
 =======
 				
 				
+<<<<<<< HEAD
 				removeThread(this);
 >>>>>>> be3ce68c48bdeb86e2fa5b666215df46cc11d144
+=======
+//				removeThread(this);
+>>>>>>> 31eaf5974df6168bd32b23969792be17f489eb64
 				System.out.println("연결이 끊어졋다 !");
 				
 				
-//				e.printStackTrace();
+				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
