@@ -29,8 +29,8 @@ public class AdminServer {
 			while (true) {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 
-//				if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
-				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+				if ((socket.getInetAddress()+"").equals("/70.12.115.53")) {
+//				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
