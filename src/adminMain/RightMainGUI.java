@@ -36,7 +36,6 @@ public class RightMainGUI extends JPanel {
 	private JLabel useTimeL;
 	private JLabel totalPriceL;
 	private JLabel addAmountL;
-	private User user;
 
 	static String SEAT_NUMBER = "1";
 	static int seat_num = Integer.parseInt(SEAT_NUMBER);
@@ -70,10 +69,6 @@ public class RightMainGUI extends JPanel {
 
 	public JLabel getAddAmountL() {
 		return addAmountL;
-	}
-	
-	public User getUser() {
-		return user;
 	}
 
 	public RightMainGUI() {
@@ -133,7 +128,5 @@ public class RightMainGUI extends JPanel {
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
-		this.user = UserLoginGUI.user;
 	}
-
 }
