@@ -22,13 +22,17 @@ public class UserClient {
 	public UserClient(User user) {
 		try {
 <<<<<<< HEAD
+			socket = new Socket("70.12.115.59", 7777);;
+			
+=======
+<<<<<<< HEAD
 //			socket = new Socket("70.12.115.54", 7777);
 			 socket = new Socket("70.12.115.59", 7777);
 =======
 
 			socket = new Socket("70.12.115.54", 7777);
+>>>>>>> 956ec137027ff7fc69e006e422a95ebe9d014e2b
 			// socket = new Socket("70.12.115.59", 7777);
->>>>>>> b8bf3fc9b83ea8c075d1791c98b0ff0b6d80d125
 
 			System.out.println("서버랑 연결됬네?!");
 
