@@ -19,6 +19,10 @@ public class AdminClient {
 	public AdminClient() {
 		try {
 //			socket = new Socket("70.12.115.59", 7777);
+<<<<<<< HEAD
+=======
+//			socket = new Socket("70.12.115.54", 7777);
+>>>>>>> 3c8417b2872dc41e0ed658d9d74930e3e124ff18
 			socket = new Socket("70.12.115.53", 7777);
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
