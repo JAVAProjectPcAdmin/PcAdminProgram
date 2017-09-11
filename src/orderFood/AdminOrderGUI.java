@@ -39,7 +39,6 @@ public class AdminOrderGUI extends JFrame {
 		wholePnl.setBackground(Color.WHITE);
 		add(wholePnl);
 		setSize(300, 260);
-		//setUndecorated(true);
-		setVisible(false);
+		setVisible(true);
 	}
 }
