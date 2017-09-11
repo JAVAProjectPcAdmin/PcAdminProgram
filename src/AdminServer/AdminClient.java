@@ -12,13 +12,12 @@ import flagment.Flagment;
 public class AdminClient {
 
 	Socket socket = null;
-//	BufferedWriter bw = null;
 	public static List<User> userlist=new ArrayList<User>();
 	ObjectInputStream ois = null;
 
 	public AdminClient() {
 		try {
-			socket = new Socket("70.12.115.59", 7777);
+			socket = new Socket("70.12.115.53", 7777);
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
 			User user = null;
@@ -26,7 +25,6 @@ public class AdminClient {
 			thread.start();
 			
 		} catch (IOException e) {   
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -37,7 +35,6 @@ public class AdminClient {
 		Socket socket;
 
 		public AdminclientThread(User user, ObjectInputStream ois, Socket socket) {
-			// TODO Auto-generated constructor stub
 			this.user = user;
 			this.ois = ois;
 			this.socket = socket;
@@ -64,6 +61,7 @@ public class AdminClient {
 						System.out.println("new "+user.getName());
 						user.setStartTime();
 						userlist.add(user);
+						System.out.println(userlist.size());
 						Flagment.UserLoginState[user.getSeatNumber()] = true;
 					}
 				}
@@ -73,7 +71,6 @@ public class AdminClient {
 				
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

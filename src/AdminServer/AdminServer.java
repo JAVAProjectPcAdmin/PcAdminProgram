@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import adminMain.LeftMainGUI;
+
 public class AdminServer {
 	ServerSocket serverSocket = null;
 	List<Socket> clientSocket = new ArrayList<>();
@@ -18,6 +20,8 @@ public class AdminServer {
 	ObjectInputStream clientInStream;
 	ObjectOutputStream adminOutStream = null;
 	private List<UserThread> threadList;
+
+	LeftMainGUI lmGui;
 
 	public AdminServer() {
 		threadList = new ArrayList<>();
@@ -43,7 +47,6 @@ public class AdminServer {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -75,13 +78,37 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
-
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
 				}
-
 				// ¿¬°á ²÷±â
+				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
+				int tempSize = AdminClient.userlist.size();
+				lmGui = new LeftMainGUI();
+				Object[] temp = new Object[4];
+
+				System.out.println(tempSize);
+
+				for (int i = 0; i < tempSize; i++) {
+					if (user.getUserID().equals(AdminClient.userlist.get(i).getUserID())) {
+						temp[0] = AdminClient.userlist.get(i).getName();
+						System.out.println(temp[0]);
+						temp[1] = AdminClient.userlist.get(i).getUserID();
+						System.out.println(temp[1]);
+						temp[2] = AdminClient.userlist.get(i).getSeatNumber();
+						System.out.println(temp[2]);
+						temp[3] = AdminClient.userlist.get(i).getTotalPrice();
+						System.out.println(temp[3]);
+
+						lmGui.finishedModel.insertRow(0, temp);
+						lmGui.finishedTable.updateUI();
+					} else {
+						System.out.println("else");
+					}
+
+				}
+
 				removeThread(this);
 				System.out.println("¿¬°áÀÌ ²÷¾î º´Ù !");
 				e.printStackTrace();

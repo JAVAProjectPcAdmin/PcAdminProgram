@@ -26,7 +26,7 @@ class Server {
 
 	public void talkMsg(String talk, String talk2, String talk3) {
 		// talk 보낸사람
-		// 2 받을사람
+		// 2 받을사
 		// 3 할말
 		for (Guest g : list) {
 			if (g.id.equals(talk2)) {
@@ -105,6 +105,7 @@ class Server {
 			} catch (Exception e) {
 				// e.printStackTrace();
 				System.out.println(e.getMessage() + "겟메시지");
+				System.out.println(id + "님 읽다가 에러남ㅠㅠ");
 
 				// server.removeGuest(this);
 				try {

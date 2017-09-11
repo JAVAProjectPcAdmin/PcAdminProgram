@@ -39,18 +39,21 @@ public class UserChatClient extends Frame implements ActionListener {
 		initNet();
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
-		readMsg();
+		readMsg(); // 상대방 읽어오는 메소드
 	}
 
 	public void initNet() throws Exception {
 		Socket socket = new Socket("localhost", 8877);
+		
 		InputStream is = socket.getInputStream();
 		InputStreamReader isr = new InputStreamReader(is);
 		br = new BufferedReader(isr);
+		
 		OutputStream os = socket.getOutputStream();
 		OutputStreamWriter osw = new OutputStreamWriter(os);
 		bw = new BufferedWriter(osw);
-		sendMsg("enter/" + id);
+		
+		sendMsg("enter/" + id); //아이디 보내는 send
 	}
 
 	public void readMsg() {
@@ -59,6 +62,7 @@ public class UserChatClient extends Frame implements ActionListener {
 				String line = br.readLine();
 				System.out.println(line);
 				String array[] = line.split("/");
+<<<<<<< HEAD
 				switch (array[0]) {
 
 				case "귓속말":
@@ -67,6 +71,10 @@ public class UserChatClient extends Frame implements ActionListener {
 					break;
 
 				}
+=======
+				String arr[] = array[1].split("&");
+				ta.append("[" + arr[1] + "]" + arr[2] + "\n");
+>>>>>>> 6e432b3ac636af95798c15ae2ca4ff7c923e2003
 			}
 		} catch (Exception e) {
 			System.out.println("읽다가오류남~");
