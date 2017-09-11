@@ -43,7 +43,7 @@ public class UserUsingStateGUI extends JFrame {
 	private boolean noticeFlag = false;
 
 	public UserUsingStateGUI(UserClient userclient) {
-		this.user= UserLoginGUI.user;
+		this.user = UserLoginGUI.user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
 		setSize(310, 280);
@@ -198,6 +198,10 @@ public class UserUsingStateGUI extends JFrame {
 				timeLb.updateUI();
 				if (checkTime / 1000 % 60 == 0) {
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
+<<<<<<< HEAD
+					moneyLb.setText(user.getTotalPrice() + "");
+=======
+>>>>>>> 956619794a3e6214e76523945d7410cf5b895170
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 					try {
@@ -206,15 +210,14 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
-				if(flag3) { //주문하면 가격 증가 
+				if (flag3) { // 주문하면 가격 증가
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-				
-				
-				//21:30분이 되면 ! 미성년자들에게 알림 !
-				if(c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
-					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
+
+				// 21:30분이 되면 ! 미성년자들에게 알림 !
+				if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
+					if ((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19) {
 						WarningGUI g = new WarningGUI();
 						noticeFlag = true;
 					}
@@ -223,4 +226,3 @@ public class UserUsingStateGUI extends JFrame {
 		}// while문 종료
 	}
 }
-
