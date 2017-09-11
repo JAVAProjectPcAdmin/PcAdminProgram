@@ -122,21 +122,22 @@ public class UserUsingStateGUI extends JFrame {
 			}
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
-		logoutBt.addActionListener(new ActionListener() {
-
-			// 로그아웃시 left메인에 유저 정보전달
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				try {
-					userclient.getSocket().close();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				dispose();
-				UserLoginGUI g = new UserLoginGUI();
-			}
-		});
+//		logoutBt.addActionListener(new ActionListener() {
+//
+//			// 로그아웃시 left메인에 유저 정보전달
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//
+//				try {
+//					userclient.getSocket().close();
+//				} catch (IOException e1) {
+//					e1.printStackTrace();
+//				} finally {
+//					dispose();
+//					UserLoginGUI g = new UserLoginGUI();
+//				}
+//			}
+//		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);

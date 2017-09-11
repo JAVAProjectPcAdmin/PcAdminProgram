@@ -22,7 +22,7 @@ public class ChatServer {
 
 		Collections.synchronizedMap(clientMap);
 		try {
-			serverSocket = new ServerSocket(8888);
+			serverSocket = new ServerSocket(7777);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
