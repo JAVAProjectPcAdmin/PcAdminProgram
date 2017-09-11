@@ -7,10 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Scanner;
-=======
->>>>>>> e76da9ba87e010fffe022d12cd06b625daa07d46
 
 public class AdminServer {
 	ServerSocket serverSocket = null;
@@ -38,11 +35,6 @@ public class AdminServer {
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
-<<<<<<< HEAD
-					// clientSocket.add(socket);
-=======
-					clientSocket.add(socket);
->>>>>>> e76da9ba87e010fffe022d12cd06b625daa07d46
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
@@ -90,17 +82,8 @@ public class AdminServer {
 
 				// ¿¬°á ²÷±â
 			} catch (IOException e) {
-
 				removeThread(this);
-
-<<<<<<< HEAD
-				removeThread(this);
-				// removeThread(this);
 				System.out.println("¿¬°áÀÌ ²÷¾î º´Ù !");
-
-=======
-				System.out.println("¿¬°áÀÌ ²÷¾î º´Ù !");
->>>>>>> e76da9ba87e010fffe022d12cd06b625daa07d46
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
