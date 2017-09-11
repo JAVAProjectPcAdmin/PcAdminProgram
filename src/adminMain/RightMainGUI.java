@@ -21,6 +21,7 @@ import db.UserDao;
 import db.UserVO;
 import flagment.Flagment;
 import orderFood.AdminOrderGUI;
+import userLogin.UserLoginGUI;
 
 /*
  * by.jaein
@@ -132,7 +133,7 @@ public class RightMainGUI extends JPanel {
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
-		this.user = user;
+		this.user = UserLoginGUI.user;
 	}
 
 }
