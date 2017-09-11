@@ -198,7 +198,10 @@ public class UserUsingStateGUI extends JFrame {
 				timeLb.updateUI();
 				if (checkTime / 1000 % 60 == 0) {
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
+<<<<<<< HEAD
 					moneyLb.setText(user.getTotalPrice() + "");
+=======
+>>>>>>> 59000a4adb874d885d0d5f97d921ad39849355b6
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 					try {
