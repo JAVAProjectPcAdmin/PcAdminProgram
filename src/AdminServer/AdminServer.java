@@ -29,24 +29,14 @@ public class AdminServer {
 			while (true) {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 
-				if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
-				//if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
+//				if ((socket.getInetAddress()+"").equals("/70.12.115.54")) {
+				if ((socket.getInetAddress()+"").equals("/70.12.115.59")) {
 					System.out.println("Admin client 연결");
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
 
-					String ip = socket.getInetAddress() + "";
-
-					// 70.12.115.59
-					if (ip.substring(11).equals("53"))
-						user2.setSeatNumber(2);
-					else if (ip.substring(11).equals("54"))
-						user2.setSeatNumber(3);
-					else if (ip.substring(11).equals("60"))
-						user2.setSeatNumber(1);
-					else if (ip.substring(11).equals("59"))
-						user2.setSeatNumber(10);
+					
 					
 //					clientSocket.add(socket);
 					UserThread t = new UserThread(user2,socket);
@@ -73,12 +63,25 @@ public class AdminServer {
 		@Override
 		public void run() {
 			try {
+				while(true) {
 				clientInStream = new ObjectInputStream(socket.getInputStream());
 				user = (User) clientInStream.readObject();
-			
+				
+				String ip = socket.getInetAddress() + "";
+
+				// 70.12.115.59
+				if (ip.substring(11).equals("53"))
+					user.setSeatNumber(2);
+				else if (ip.substring(11).equals("54"))
+					user.setSeatNumber(3);
+				else if (ip.substring(11).equals("60"))
+					user.setSeatNumber(1);
+				else if (ip.substring(11).equals("59"))
+					user.setSeatNumber(10);
+				
 				adminOutStream.writeObject(user);
 				Thread.sleep(500);
-				
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
