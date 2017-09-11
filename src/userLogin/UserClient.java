@@ -21,8 +21,17 @@ public class UserClient {
 
 	public UserClient(User user) {
 		try {
+<<<<<<< HEAD
 			socket = new Socket("70.12.115.59", 7777);;
 			
+=======
+<<<<<<< HEAD
+//			socket = new Socket("70.12.115.54", 7777);
+			 socket = new Socket("70.12.115.59", 7777);
+=======
+
+			socket = new Socket("70.12.115.54", 7777);
+>>>>>>> 956ec137027ff7fc69e006e422a95ebe9d014e2b
 			// socket = new Socket("70.12.115.59", 7777);
 
 			System.out.println("서버랑 연결됬네?!");
@@ -33,7 +42,8 @@ public class UserClient {
 			oos = new ObjectOutputStream((socket.getOutputStream()));
 
 			oos.writeObject(user);
-			Thread.sleep(500);
+			oos.flush();
+			Thread.sleep(1000);
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

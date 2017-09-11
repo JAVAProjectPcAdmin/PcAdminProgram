@@ -18,7 +18,7 @@ public class UserChatClient {
 
 	public void connect() {
 		try {
-			socket = new Socket("70.12.115.60", 8888);
+			socket = new Socket("70.12.115.54", 7777);
 			System.out.println("¼­¹ö¿¬°áµÊ");
 			out = new DataOutputStream(socket.getOutputStream());
 			in = new DataInputStream(socket.getInputStream());
