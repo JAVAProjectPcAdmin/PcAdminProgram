@@ -64,6 +64,7 @@ public class AdminClient {
 						System.out.println("new "+user.getName());
 						user.setStartTime();
 						userlist.add(user);
+						System.out.println(userlist.size());
 						Flagment.UserLoginState[user.getSeatNumber()] = true;
 					}
 				}
