@@ -35,7 +35,7 @@ public class AdminMainGUI extends JFrame {
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private JPanel rightPanel = new JPanel();
-	UserThread isUserThread;
+	public static UserThread isUserThread;
 	TimerThread timerThread;
 	OrderThread orderThread;
 	int i;
@@ -65,6 +65,14 @@ public class AdminMainGUI extends JFrame {
 		}
 		isUserThread = new UserThread();
 		isUserThread.start();
+<<<<<<< HEAD
+<<<<<<< HEAD
+//		 orderThread = new OrderThread(flag);
+//		 orderThread.start();
+=======
+>>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
+=======
+>>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
 
@@ -81,7 +89,7 @@ public class AdminMainGUI extends JFrame {
 		JMenuItem menuLogout = new JMenuItem("·Î±×¾Æ¿ô");
 		popup.add(menuChat);
 		popup.add(menuLogout);
-		// menuChat.addActionListener(this);
+//		 menuChat.addActionListener(this);
 
 		setLayout(null);
 		setSize(1280, 924);
@@ -175,9 +183,20 @@ public class AdminMainGUI extends JFrame {
 
 	class UserThread extends Thread {
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+		public UserThread(Flagment flag) {
+			this.flag = flag;
+=======
 		public UserThread() {
 			// TODO Auto-generated constructor stub
 			// TODO Auto-generated constructor stub
+>>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
+=======
+		public UserThread() {
+			// TODO Auto-generated constructor stub
+			// TODO Auto-generated constructor stub
+>>>>>>> c875ca4b5751f5aea1e69f36cde3cef333190660
 		}
 
 		@Override
