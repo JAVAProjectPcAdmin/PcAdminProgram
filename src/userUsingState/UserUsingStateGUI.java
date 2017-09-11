@@ -207,7 +207,7 @@ public class UserUsingStateGUI extends JFrame {
 					}
 				}
 				//21:30분이 되면 ! 미성년자들에게 알림 !
-				if(c.get(Calendar.HOUR_OF_DAY) == 21 && c.get(Calendar.MINUTE) == 30 && noticeFlag == false) {
+				if(c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
 					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
 						WarningGUI g = new WarningGUI();
 						noticeFlag = true;
