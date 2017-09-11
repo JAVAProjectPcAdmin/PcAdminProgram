@@ -25,12 +25,12 @@ import javax.swing.table.DefaultTableModel;
 
 import AdminServer.User;
 
-public class ChargeInformationGUI extends JFrame implements ActionListener {
+public class ChargeInformationGUI extends JFrame {
 
-	private JLabel titleLabel, nameLabel, rs_nameLabel, startLabel, rs_startLabel, usingTimeLabel, rs_usingTimeLabel,
-			chargeLabel, rs_chargeLabel, orderChargeLabel, rs_orderChargeLabel, sumLabel, rs_sumLabel;
+	private JLabel titleLabel, nameLabel, rs_nameLabel, startLabel, rs_startLabel, chargeLabel, rs_chargeLabel,
+			orderChargeLabel, rs_orderChargeLabel, sumLabel, rs_sumLabel;
 	private JPanel panel, moneyBagIcon;
-	private JButton exitButton, detailButton;
+	private JButton exitButton;
 	private JTable chargeTable;
 
 	BufferedImage moneybagImg = null;
@@ -65,19 +65,6 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 			}
 		});
 
-		detailButton = new JButton(new ImageIcon("images//detailinformation.png"));
-
-		detailButton.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				if(!UserUsingStateGUI.flag4) {
-					OrderInformationGUI OI = new OrderInformationGUI();
-					UserUsingStateGUI.flag4=true;
-				}
-			}
-		});
 		moneyBagIcon = new moenyBagIcon();
 		titleLabel = new JLabel("¿ä±ÝÁ¤º¸");
 		titleLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
@@ -85,8 +72,6 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		startLabel = new JLabel(" * ½ÃÀÛ½Ã°£");
 		startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		usingTimeLabel = new JLabel(" * »ç¿ë ½Ã°£");
-		usingTimeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		chargeLabel = new JLabel(" * ½Ã°£ »ç¿ë ¿ä±Ý");
 		chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		orderChargeLabel = new JLabel(" * À½½ÄÁÖ¹®±Ý¾×");
@@ -98,14 +83,7 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		rs_nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_startLabel = new JLabel(user.getStartTime());
 		rs_startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-//		this.startTimeCalc = System.currentTimeMillis();
-//
-//		SimpleDateFormat dayTime = new SimpleDateFormat("MM-dd  HH:mm:ss");
-//		this.startTime = dayTime.format(new Date(startTimeCalc));
-		//½ÃÀÛ½Ã°£ - ÇöÀç½Ã°£ ? ¾Æ´Ï¸é rightMain¿¡¼­ ¹Þ¾Æ¿Í¾ß ÇÏ³ª?
-		rs_usingTimeLabel = new JLabel();
-		rs_usingTimeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice()-user.getAddPrice()));
+		rs_chargeLabel = new JLabel(Integer.toString(user.getTotalPrice() - user.getAddPrice()));
 		rs_chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_orderChargeLabel = new JLabel(Integer.toString(user.getAddPrice()));
 		rs_orderChargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
@@ -117,36 +95,30 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		titleLabel.setBounds(120, 13, 200, 50);
 		nameLabel.setBounds(20, 110, 50, 50);
 		startLabel.setBounds(20, 140, 100, 50);
-		usingTimeLabel.setBounds(20, 170, 100, 50);
-		chargeLabel.setBounds(20, 200, 200, 50);
-		orderChargeLabel.setBounds(20, 230, 200, 50);
-		detailButton.setBounds(30, 268, 73, 23);
-		sumLabel.setBounds(20, 280, 80, 50);
+		chargeLabel.setBounds(20, 170, 200, 50);
+		orderChargeLabel.setBounds(20, 200, 200, 50);
+		sumLabel.setBounds(20, 250, 80, 50);
 		///////////////////////////////////////////////////////////////
 		rs_nameLabel.setBounds(250, 110, 50, 50);
 		rs_startLabel.setBounds(191, 140, 100, 50);
-		rs_usingTimeLabel.setBounds(255, 170, 100, 50);
-		rs_chargeLabel.setBounds(240, 200, 200, 50);
-		rs_orderChargeLabel.setBounds(240, 230, 200, 50);
-		rs_sumLabel.setBounds(220, 280, 80, 50);
+		rs_chargeLabel.setBounds(240, 170, 200, 50);
+		rs_orderChargeLabel.setBounds(240, 200, 200, 50);
+		rs_sumLabel.setBounds(220, 250, 80, 50);
 		////////////////////////////////////////////////////////////////
 		panel.add(nameLabel);
 		panel.add(startLabel);
 		panel.add(moneyBagIcon);
 		panel.add(titleLabel);
-		panel.add(usingTimeLabel);
 		panel.add(chargeLabel);
 		panel.add(orderChargeLabel);
 		panel.add(sumLabel);
 		//////////////////////////////////////////////////////////////
 		panel.add(rs_nameLabel);
 		panel.add(rs_startLabel);
-		panel.add(rs_usingTimeLabel);
 		panel.add(rs_chargeLabel);
 		panel.add(rs_orderChargeLabel);
 		panel.add(rs_sumLabel);
 		panel.add(exitButton);
-		panel.add(detailButton);
 		add(panel);
 
 		setVisible(true);
@@ -156,13 +128,6 @@ public class ChargeInformationGUI extends JFrame implements ActionListener {
 		public void paint(Graphics g) {
 			g.drawImage(moneybagImg, 0, 0, null);
 		}
-
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

@@ -7,6 +7,7 @@ import java.net.Socket;
 
 import AdminServer.User;
 import sun.net.InetAddressCachePolicy;
+import userUsingState.UserUsingStateGUI;
 
 public class UserClient {
 	Socket socket = null;
@@ -14,11 +15,20 @@ public class UserClient {
 	public static boolean newOrder = false;
 	User user;
 
+	public Socket getSocket() {
+		return socket;
+	}
 
 	public UserClient(User user) {
 		try {
+<<<<<<< HEAD
 //			socket = new Socket("70.12.115.54", 7777);
 			 socket = new Socket("70.12.115.59", 7777);
+=======
+
+			socket = new Socket("70.12.115.59", 7777);
+			// socket = new Socket("70.12.115.59", 7777);
+>>>>>>> b8bf3fc9b83ea8c075d1791c98b0ff0b6d80d125
 
 			System.out.println("서버랑 연결됬네?!");
 
@@ -29,7 +39,7 @@ public class UserClient {
 
 			oos.writeObject(user);
 			Thread.sleep(500);
-
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

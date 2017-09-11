@@ -12,13 +12,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class AdminChatGUI extends JFrame{
+public class AdminChatClient extends JFrame{
 	private JTextArea textArea = new JTextArea();
 	private JTextField textField = new JTextField();
 	private ChatServer server = new ChatServer();
 
 	////////////////////////////////////////////////////////
-	public AdminChatGUI() {
+	public AdminChatClient() {
 		
 		textArea.setEditable(false);
 		textField.setBackground(Color.PINK);
@@ -53,6 +53,6 @@ public class AdminChatGUI extends JFrame{
 		textArea.append(msg);
 	}
 	public static void main(String[] args) {
-		new AdminChatGUI();
+		new AdminChatClient();
 	}
 }

@@ -159,7 +159,8 @@ public class UserLoginGUI extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
 
-			
+			String name = null;
+			User user = null;
 			UserDao dao = new UserDao();
 
 			if (idTf.getText().length() > 0) {
@@ -167,8 +168,8 @@ public class UserLoginGUI extends JFrame {
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
-					String name=dao.UserNameSelect(idTf.getText());
-					User user = new User(name);
+					name=dao.UserNameSelect(idTf.getText());
+					user = new User(name);
 					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
 					user.setUserID(idTf.getText());
 					UserClient userclient = new UserClient(user);
@@ -185,8 +186,13 @@ public class UserLoginGUI extends JFrame {
 				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
 				if (result == 1) {
 					System.out.println("로그인 성공");
+					name = dao.nonMemberIdSelect(nonMemberTf.getText());
+					user = new User(name);
+					user.setUserNumber(dao.NonMemberNumSelect(nonMemberTf.getText()));
+					user.setUserID(nonMemberTf.getText());
+					UserClient userclient = new UserClient(user);
 					dispose();
-//					UserUsingStateGUI uus = new UserUsingStateGUI();
+					UserUsingStateGUI uus = new UserUsingStateGUI(user, userclient);
 				} else if (result == 0) {
 					System.out.println("사용중인 번호입니다.");
 					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
@@ -195,7 +201,6 @@ public class UserLoginGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "오류", JOptionPane.OK_OPTION);
 				}
 			}
-
 		}
 	}
 
@@ -203,11 +208,9 @@ public class UserLoginGUI extends JFrame {
 		public void paint(Graphics g) {
 			g.drawImage(userLoginImg, 0, 0, null);
 		}
-
 	}
 
 	public static void main(String[] args) {
 		UserLoginGUI a = new UserLoginGUI();
-
 	}
 }

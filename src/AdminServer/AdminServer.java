@@ -84,6 +84,7 @@ public class AdminServer {
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
