@@ -189,13 +189,14 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setUserPanel(user);
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
-						LeftMainGUI.countSeat++;
+
 						TimerThread timerThread = new TimerThread( user, i);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
 						orderThread.start();
 						Flagment.UserLoginState[i] = false;
 					}
+					
 				}
 			}
 		}
