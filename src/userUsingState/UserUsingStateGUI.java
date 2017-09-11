@@ -123,11 +123,6 @@ public class UserUsingStateGUI extends JFrame {
 		});
 		logoutBt.setBounds(200, 20, 63, 51);
 //		logoutBt.addActionListener(new ActionListener() {
-<<<<<<< HEAD
-=======
-//
->>>>>>> b39752982b2892a36db0b54188e602092084fcbe
-
 //			// 로그아웃시 left메인에 유저 정보전달
 //			@Override
 //			public void actionPerformed(ActionEvent e) {
