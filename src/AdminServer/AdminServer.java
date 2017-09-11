@@ -85,12 +85,16 @@ public class AdminServer {
 				adminOutStream.writeObject(user);
 				Thread.sleep(500);
 				}
+				
+				// 연결 끊기
 			} catch (IOException e) {
+				
+				
 				removeThread(this);
-				
-				
 				System.out.println("연결이 끊어졋다 !");
-				e.printStackTrace();
+				
+				
+//				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
