@@ -120,21 +120,27 @@ public class OrderGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String order = "<html>";
+				int price = 0;
 				for(int i=0; i<ramen.length; i++) {
 					if(ramen[i].count > 0) {
-						order += " - " + ramenName[i] + " " + ramen[i].count + "개" + "<br>"; 
+						order += " - " + ramenName[i] + " " + ramen[i].count + "개" + "<br>";
+						price += ramenPrice[i]* ramen[i].count;
 					}
 					if(drink[i].count > 0) {
 						order += " - " + drinkName[i] + " " + drink[i].count + "개" + "<br>"; 
+						price +=drinkPrice[i] * drink[i].count;
 					}
 					if(snack[i].count > 0) {
 						order += " - " + snackName[i] + " " + snack[i].count + "개" + "<br>"; 
+						price +=snackPrice[i] * snack[i].count;
 					}
 				}
 				order += "</html>";
 				System.out.println(order);
 				user.setOrder(order);
+				user.setAddPrice(user.getAddPrice()+price);
 				userclient.setUser(user);
+
 				userclient.orderTOAdmin();
 				System.out.println(user.getOrder());
 				

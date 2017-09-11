@@ -207,6 +207,7 @@ public class UserUsingStateGUI extends JFrame {
 						e.printStackTrace();
 					}
 				}
+<<<<<<< HEAD
 				//21:30분이 되면 ! 미성년자들에게 알림 !
 				if(c.get(Calendar.HOUR_OF_DAY) == 21 && c.get(Calendar.MINUTE) == 30 && noticeFlag == false) {
 					if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
@@ -214,6 +215,21 @@ public class UserUsingStateGUI extends JFrame {
 						noticeFlag = true;
 					}
 				}
+=======
+//				System.out.println(Calendar.HOUR_OF_DAY + "/" + Calendar.MINUTE);
+				// 여기서 만약 시간이 22시이면 ! 하면 되겟지?
+			
+//				if((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19){
+//					//21:30분이 되면 ! 미성년자들에게 알림 !
+//					//이렇게 하면 계속 뜨는데.............? ㅠㅠㅠ flag 해야되나..?
+//					if(Calendar.HOUR_OF_DAY == 21 && Calendar.MINUTE == 30) {
+//						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다!", "종료 알림", 1);
+//					}
+//				}
+//				System.out.println(Calendar.HOUR_OF_DAY);
+//				long curTime = System.currentTimeMillis();
+//				System.out.println(dayTime.format(new Date(curTime))); // 21:30 이후 이면 !
+>>>>>>> e8a8a76ba7179a26f8667003a462205077d18ad0
 			}
 		}// while문 종료
 	}
