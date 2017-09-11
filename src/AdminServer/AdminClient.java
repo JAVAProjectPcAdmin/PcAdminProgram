@@ -18,8 +18,7 @@ public class AdminClient {
 
 	public AdminClient() {
 		try {
-//			socket = new Socket("70.12.115.59", 7777);
-			socket = new Socket("70.12.115.54", 7777);
+			socket = new Socket("70.12.115.59", 7777);
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
 			User user = null;
@@ -55,6 +54,7 @@ public class AdminClient {
 						if(userlist.get(i).getUserNumber().equals(user.getUserNumber())) {// 이전에 있었던 유저면 이번에 order로 넘어온것
 							userlist.set(i, user); //정보 새로 갱신
 							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
+							System.out.println(Flagment.UserOrder[user.getSeatNumber()]+" , "+user.getSeatNumber());
 							set=true;
 							System.out.println(set);
 							break;

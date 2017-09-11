@@ -207,5 +207,6 @@ public class UserUsingStateGUI extends JFrame {
 			}
 		}
 	}
+	
 
 }
