@@ -201,6 +201,26 @@ public class AdminMainGUI extends JFrame {
 					}
 					if (Flagment.UserLogout[i]) {
 						System.out.println("로그아웃 했다요!!");
+						
+						Object[] temp = new Object[4];
+						
+						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+							if (i==AdminServer.userlist.get(i).getSeatNumber()) {
+								temp[0] = AdminServer.userlist.get(i).getName();
+								System.out.println(temp[0]);
+								temp[1] = AdminServer.userlist.get(i).getUserID();
+								System.out.println(temp[1]);
+								temp[2] = AdminServer.userlist.get(i).getSeatNumber();
+								System.out.println(temp[2]);
+								temp[3] = AdminServer.userlist.get(i).getTotalPrice();
+								System.out.println(temp[3]);
+								
+								lmp.finishedModel.insertRow(0, temp);
+								lmp.finishedTable.updateUI();
+								
+								Flagment.UserLoginState[i] = false;
+							}
+						}
 					}
 
 				}

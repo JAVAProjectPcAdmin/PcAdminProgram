@@ -88,6 +88,7 @@ public class AdminServer {
 				
 				Flagment.UserLogout[user.getSeatNumber()]=true;
 //				
+			
 				removeThread(this);
 				System.out.println("adminserver : "+Flagment.UserLogout[user.getSeatNumber()]);
 				System.out.println("adminserver : "+user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
