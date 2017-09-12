@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -42,6 +44,9 @@ public class UserUsingStateGUI extends JFrame {
 	private boolean noticeFlag = false;
 
 	public UserUsingStateGUI(UserClient userclient) {
+		new shutdown();
+		
+		
 		this.user = UserLoginGUI.user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
@@ -187,6 +192,34 @@ public class UserUsingStateGUI extends JFrame {
 			g.drawImage(backgroundImage, 0, 0, null);
 		}
 	}
+	
+	// 셧다운
+	class shutdown {
+
+		public shutdown() {
+
+			Timer timer = new Timer();
+
+			Calendar cal = Calendar.getInstance();
+			
+			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준으로 입력해야 합니다.
+			cal.set(Calendar.MINUTE, 15); // 분
+
+			long day = 1000*60*60*24;
+			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
+
+		}
+
+	}
+
+	class MyTask extends TimerTask {
+
+		public void run() {
+			new WarningGUI();
+			System.out.println("timer task"); // 이미 지난 시간이면 출력 출력이 되네요 .
+		}
+	}
+	
 
 	class TimerThread extends Thread {
 		@Override
@@ -214,17 +247,22 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
+				
+				
 
 				// 21:30분이 되면 ! 미성년자들에게 알림 !
-				c.getInstance();
-				if (c.get(Calendar.HOUR_OF_DAY) == 16 && c.get(Calendar.MINUTE) == 36 && noticeFlag == false) {
-					if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) < 19) {
-						WarningGUI g = new WarningGUI();
-						System.out.println("미성년자 뭐하니");
-//						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
-						noticeFlag = true;
-					}
-				}
+//				c.getInstance();
+//				if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 41 && noticeFlag == false) {
+//					if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) < 19) {
+//						WarningGUI g = new WarningGUI();
+//						System.out.println("미성년자 뭐하니");
+//						// JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
+//						noticeFlag = true;
+//					}
+//				}
+				
+
+				
 			}
 		}// while문 종료
 	}
