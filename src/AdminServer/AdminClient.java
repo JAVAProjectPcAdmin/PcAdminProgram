@@ -52,7 +52,7 @@ public class AdminClient {
 							userlist.set(i, user); //정보 새로 갱신
 							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
 							System.out.println(Flagment.UserOrder[user.getSeatNumber()]+" , "+user.getSeatNumber());
-							System.out.println(set);
+							set=true;
 							break;
 						}
 					}
