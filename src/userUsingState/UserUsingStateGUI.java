@@ -196,7 +196,7 @@ public class UserUsingStateGUI extends JFrame {
 				String useTime =dayTime.format(new Date(checkTime));
 				timeLb.setText(useTime);
 				timeLb.updateUI();
-				if (useTime.substring(6).equals("00")|| !timeflag) {
+				if (useTime.substring(6).equals("00")&& !timeflag) {
 					timeflag=true; //00분에 가격 증가 한번만 실행
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
 					moneyLb.setText(user.getTotalPrice() + "");

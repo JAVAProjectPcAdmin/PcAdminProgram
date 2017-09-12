@@ -225,7 +225,7 @@ public class AdminMainGUI extends JFrame {
 				String useTime = dayTime.format(new Date(checkTime));
 				rightUserPanel[i].getUseTimeL().setText(useTime);
 				rightUserPanel[i].getUseTimeL().updateUI();
-				if(useTime.substring(6).equals("00")|| !timeflag) {
+				if(useTime.substring(6).equals("00") && !timeflag) {
 					timeflag=true; //00분에 가격 증가 한번만 실행
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
 						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
