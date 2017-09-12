@@ -148,7 +148,7 @@ public class OrderGUI extends JFrame {
 				
 				UserUsingStateGUI.flag3 = false;
 				dispose();
-				JOptionPane.showMessageDialog(null, "주문이 완료되었습니다.", "주문 완료", JOptionPane.OK_OPTION);
+				JOptionPane.showMessageDialog(null, "   주문이 완료되었습니다.", "주문 완료", 1);
 			}
 		});
 
