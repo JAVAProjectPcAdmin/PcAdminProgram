@@ -71,7 +71,7 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(0, 0, 600, 400);
 
-		customerNumberLb = new JLabel(user.getSeatNumber() + "");
+		customerNumberLb = new JLabel((user.getSeatNumber()+1) + "");
 		customerNumberLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
 		moneyLb = new JLabel(user.getTotalPrice() + "¿ø");
