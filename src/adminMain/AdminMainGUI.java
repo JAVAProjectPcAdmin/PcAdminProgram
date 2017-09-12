@@ -39,7 +39,7 @@ public class AdminMainGUI extends JFrame {
 	public static UserThread isUserThread;
 	TimerThread timerThread;
 	OrderThread orderThread;
-	List<totalThread> threadlist = new ArrayList<>();
+	List<Thread> threadlist = new ArrayList<>();
 	int i;
 	// private
 
@@ -177,15 +177,7 @@ public class AdminMainGUI extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
-	class totalThread extends Thread{
-		User user = null;
-		int i;
 
-		public int getI() {
-			return i;
-		}
-	}
-	
 	class UserThread extends Thread {
 		User user;
 
@@ -236,13 +228,9 @@ public class AdminMainGUI extends JFrame {
 
 									AdminServer.userlist.remove(j);
 								}
+							
+							
 							Flagment.UserLogout[i] = false;
-						}
-						for(int j=0;j<threadlist.size();j++) {
-							if(threadlist.get(j).getI()==i) {
-								removeThread(threadlist.get(j));
-								System.out.println("remove thread");
-							}
 						}
 					}
 
@@ -252,13 +240,9 @@ public class AdminMainGUI extends JFrame {
 		}
 	}
 
-	class TimerThread extends totalThread {
+	class TimerThread extends Thread {
 		User user = null;
 		int i;
-
-		public int getI() {
-			return i;
-		}
 
 		public TimerThread(User user, int i) {
 			this.user = user;
@@ -294,13 +278,10 @@ public class AdminMainGUI extends JFrame {
 
 	}
 
-	class OrderThread extends totalThread {
+	class OrderThread extends Thread {
 		User user = null;
 		AdminOrderGUI userOrder;
 		int i;
-		public int getI() {
-			return i;
-		}
 
 		public OrderThread(User user, int i) {
 			this.user = user;
@@ -336,8 +317,4 @@ public class AdminMainGUI extends JFrame {
 
 		} // orderThread Á¾·á
 	}
-	
-	public void removeThread(totalThread totalThread) {
-		threadlist.remove(totalThread);
-	}	
 }

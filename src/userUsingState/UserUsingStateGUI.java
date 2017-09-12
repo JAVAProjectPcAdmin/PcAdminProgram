@@ -22,7 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import AdminServer.User;
-import ChattingServer.UserChatClient;
+import ChattingServer.Client;
 import orderFood.OrderGUI;
 import userLogin.UserClient;
 import userLogin.UserLoginGUI;
@@ -90,7 +90,7 @@ public class UserUsingStateGUI extends JFrame {
 				if (!flag) {
 
 					// TalkGUI talk = new TalkGUI();
-					UserChatClient userchat = new UserChatClient(user.getName());
+					Client client = new Client(user.getName());
 					
 					flag = true;
 				}
