@@ -87,17 +87,10 @@ public class UserUsingStateGUI extends JFrame {
 
 				// TODO Auto-generated method stub
 				if (!flag) {
-<<<<<<< HEAD
-//					TalkGUI talk = new TalkGUI();
+
+					// TalkGUI talk = new TalkGUI();
 					UserChatClient userchat = new UserChatClient(user.getName());
-=======
-					try {
-						UserChatClient client = new UserChatClient(user.getName());
-					} catch (Exception e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
->>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
+
 					flag = true;
 				}
 			}
