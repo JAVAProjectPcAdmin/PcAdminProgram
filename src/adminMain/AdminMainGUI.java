@@ -176,7 +176,7 @@ public class AdminMainGUI extends JFrame {
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class UserThread extends Thread {
-
+		User user;
 		public UserThread() {
 		}
 
@@ -185,7 +185,7 @@ public class AdminMainGUI extends JFrame {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
 					if (Flagment.UserLoginState[i]) {
-						User user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
+						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
 																								// user
 						rightUserPanel[i].setUserPanel(user); // 패널에 현재 user로 셋팅
 						rightUserPanel[i].setVisible(true);
@@ -218,6 +218,11 @@ public class AdminMainGUI extends JFrame {
 							lmp.finishedModel.insertRow(0, temp);
 							lmp.finishedTable.updateUI();
 
+							for(int j=0;j<AdminServer.userlist.size();j++) {
+								if(AdminServer.userlist.get(j).getSeatNumber()==user.getSeatNumber())
+									AdminServer.userlist.remove(j);
+							}
+								
 							Flagment.UserLogout[i] = false;
 						}
 					}
