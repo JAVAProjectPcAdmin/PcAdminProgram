@@ -101,11 +101,6 @@ public class Server {
 
 	}
 
-	public void removeGuest(Guest g) {
-		list.remove(g);
-		System.out.println("접속자수:" + list.size());
-	}
-
 	public void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
 
 		StringBuffer buffer = new StringBuffer("guestlist/");
@@ -113,6 +108,11 @@ public class Server {
 			buffer.append(g.id + "/");
 		}
 
+	}
+
+	public void removeGuest(Guest g) {
+		list.remove(g);
+		System.out.println("접속자수:" + list.size());
 	}
 
 	public static void main(String args[]) throws Exception {
