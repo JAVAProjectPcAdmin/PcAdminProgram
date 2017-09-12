@@ -203,7 +203,7 @@ public class UserJoinGUI extends JFrame {
 					user.setEmailAddress(mailTx1.getText() + "@" + mailTx2.getText());
 					user.setAddress(addTx.getText());
 					dao.UserJoinInsert(user);
-					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "회원가입 완료", JOptionPane.OK_OPTION);
+					JOptionPane.showMessageDialog(null, "회원가입이 완료되었습니다.", "회원가입 완료", 1);
 					dispose();
 				}
 			} else if (arg0.getSource() == idCheckBtn) {	//user에 넣기 0908
