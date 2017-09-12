@@ -16,11 +16,11 @@ public class AdminClient {
 
 	public AdminClient() {
 		try {
-			socket = new Socket("70.12.115.53", 7777);
+			socket = new Socket("70.12.115.54", 7777);
 			System.out.println("드디어 연결!!");
 			////////////////////////////////////////////////////////////////////////// 연결됨
-			User user = null;
-			AdminclientThread thread= new AdminclientThread(user, ois, socket);
+
+			AdminclientThread thread= new AdminclientThread(ois, socket);
 			thread.start();
 			
 		} catch (IOException e) {   
@@ -33,8 +33,7 @@ public class AdminClient {
 		ObjectInputStream ois = null;
 		Socket socket;
 
-		public AdminclientThread(User user, ObjectInputStream ois, Socket socket) {
-			this.user = user;
+		public AdminclientThread( ObjectInputStream ois, Socket socket) {
 			this.ois = ois;
 			this.socket = socket;
 		}
@@ -48,6 +47,7 @@ public class AdminClient {
 					user = (User) ois.readObject(); //새로 로그인한  User 객체 받아옴 
 					
 					for(int i=0;i<userlist.size();i++) {
+						System.out.println(userlist.size() + " : adminclient");
 						if(userlist.get(i).getSeatNumber()==user.getSeatNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
 							userlist.set(i, user); //정보 새로 갱신
 							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
@@ -66,8 +66,7 @@ public class AdminClient {
 				}
 			} catch (IOException e) {
 				
-				
-				
+				System.out.println("Adminclient : ");
 				e.printStackTrace();
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
