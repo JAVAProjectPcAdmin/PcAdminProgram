@@ -85,7 +85,7 @@ public class AdminServer {
 				lmGui = new LeftMainGUI();
 				Object[] temp = new Object[4];
 
-				System.out.println(tempSize);
+				System.out.println(AdminClient.userlist.size());
 
 				for (int i = 0; i < tempSize; i++) {
 					if (user.getUserID().equals(AdminClient.userlist.get(i).getUserID())) {
@@ -101,9 +101,7 @@ public class AdminServer {
 						lmGui.finishedModel.insertRow(0, temp);
 						lmGui.finishedTable.updateUI();
 					}
-
 				}
-
 				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
@@ -114,13 +112,11 @@ public class AdminServer {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 		}
+	}
 
-		public void removeThread(UserThread t) {
-			threadList.remove(t);
-		}
-
+	public void removeThread(UserThread t) {
+		threadList.remove(t);
 	}
 
 	public static void main(String[] args) {
