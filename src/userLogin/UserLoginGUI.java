@@ -44,7 +44,6 @@ public class UserLoginGUI extends JFrame {
 	BufferedImage userLoginImg = null;
 	public static User user = null;
 	
-	InetAddress ip = null;
 	
 	public UserLoginGUI() {
 		setSize(1280, 1024);
@@ -163,16 +162,23 @@ public class UserLoginGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-
-			String name = null;
-		
 			UserDao dao = new UserDao();
+
+			InetAddress MyIp = null;
+			String name = null;
+			String myIp = null;
+			
+			//myip
 			try {
-				InetAddress.getLocalHost().getHostAddress();
+				myIp = InetAddress.getLocalHost().getHostAddress();
+				
 			} catch (UnknownHostException e) {
 				e.printStackTrace();
 			}
-
+		
+			
+			
+			
 			if (idTf.getText().length() > 0) {
 
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
@@ -183,6 +189,9 @@ public class UserLoginGUI extends JFrame {
 					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
 					user.setUserID(idTf.getText());
 					user.setBirthYear(dao.UserBirthSelect(idTf.getText()));
+					
+					user.setSeatNumber(dao.SeatNumSelect(myIp));
+					
 					UserClient userclient = new UserClient();
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI(userclient);

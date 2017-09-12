@@ -452,9 +452,27 @@ public class UserDao {
 		return nonNum;
 	}
 
-	public String SeatNumSelect(String MyIp) {
-		String seatNum = null;
-		
+	public int SeatNumSelect(String MyIp) {
+		int seatNum=0;
+		sql = "SELECT SEAT FROM SEATNUM WHERE IP = ?";
+
+		try {
+			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, MyIp);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				seatNum = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+			closeRS();
+		}
+
 		return seatNum;
 
 	}
