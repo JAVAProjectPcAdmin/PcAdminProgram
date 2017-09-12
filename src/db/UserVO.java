@@ -11,6 +11,9 @@ public class UserVO {
 	private String Address;
 	private String registerDate;
 	private String Memo;
+	private String myIp;
+	
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	public int getUserNumber() {
@@ -91,6 +94,14 @@ public class UserVO {
 
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
+	}
+	
+	public String getMyIp() {
+		return myIp;
+	}
+
+	public void setMyIp(String myIp) {
+		this.myIp = myIp;
 	}
 
 }
