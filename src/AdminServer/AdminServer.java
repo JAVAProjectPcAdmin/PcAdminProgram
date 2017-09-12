@@ -36,7 +36,7 @@ public class AdminServer {
 					adminSocket = socket;
 					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
 				} else {
-					UserThread t = new UserThread(user2, socket);
+					UserThread t = new UserThread(socket);
 					threadList.add(t);
 					t.start();
 				}
@@ -51,8 +51,7 @@ public class AdminServer {
 		User user;
 		Socket socket;
 
-		public UserThread(User user, Socket socket) {
-			this.user = user;
+		public UserThread(Socket socket) {
 			this.socket = socket;
 		}
 
@@ -83,6 +82,7 @@ public class AdminServer {
 			} catch (IOException e) {
 				int tempSize = AdminClient.userlist.size();
 				lmGui = new LeftMainGUI();
+				//여기는 서버이고 여기서 새로운 패널을 생성해서 update 해도 원래의 프레임에는 영향 X
 				Object[] temp = new Object[4];
 
 				System.out.println(AdminClient.userlist.size());
