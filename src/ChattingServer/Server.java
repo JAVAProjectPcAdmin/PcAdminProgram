@@ -13,6 +13,7 @@ public class Server {
 		ServerSocket ss = new ServerSocket(8877);
 		while (true) {
 			Socket s = ss.accept();
+			System.out.println("들어옴");
 			Guest g = new Guest(this, s);
 			g.start();
 			addGuest(g);
@@ -82,6 +83,17 @@ public class Server {
 	public void addGuest(Guest g) {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
+		try {
+			UserChatClient client = new UserChatClient("User");
+			client.initNet();
+			client.setBounds(200, 200, 500, 400);
+			client.setVisible(true);
+			client.readMsg();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {

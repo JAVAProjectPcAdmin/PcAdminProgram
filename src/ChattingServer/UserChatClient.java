@@ -1,14 +1,30 @@
 package ChattingServer;
 
-import java.io.*;
-import java.net.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Frame;
+import java.awt.List;
+import java.awt.Panel;
+import java.awt.TextArea;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import javax.swing.*;
 
 public class UserChatClient extends Frame implements ActionListener {
-	TextField tf, tf2;
-	TextArea ta;
-	Button b, b2;
+	JTextField tf;
+	JTextArea ta;
+	JButton b;
 	List list;
 	BufferedReader br;
 	BufferedWriter bw;
@@ -18,13 +34,13 @@ public class UserChatClient extends Frame implements ActionListener {
 		super(id + "님의 채팅창입니다");
 		this.id = id;
 
-		tf = new TextField(15);
-		ta = new TextArea();
-		b = new Button("나가기");
+		tf = new JTextField(15);
+		ta = new JTextArea();
+		b = new JButton("나가기");
 		list = new List();
-		tf2 = new TextField(); // 쪽지보내기 텍필
-		Panel p1 = new Panel();
-		Panel p2 = new Panel();
+
+		JPanel p1 = new JPanel();
+		JPanel p2 = new JPanel();
 		p1.setLayout(new BorderLayout());
 		p2.setLayout(new BorderLayout());
 		p1.add(ta);
@@ -91,7 +107,7 @@ public class UserChatClient extends Frame implements ActionListener {
 		} else if (e.getActionCommand().equals("나가기")) {
 			try {
 				System.exit(0);
-				
+
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
