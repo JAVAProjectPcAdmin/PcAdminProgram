@@ -57,11 +57,10 @@ public class AdminChatClient extends JFrame implements ActionListener {
 		tf.addActionListener(this);
 		b.addActionListener(this);
 
-		initNet();
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
 		readMsg();
-
+		initNet();
 	}
 
 	public void initNet() {
@@ -123,7 +122,7 @@ public class AdminChatClient extends JFrame implements ActionListener {
 			}
 		} else if (e.getActionCommand().equals("³ª°¡±â")) {
 			try {
-				System.exit(0);
+				dispose();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
