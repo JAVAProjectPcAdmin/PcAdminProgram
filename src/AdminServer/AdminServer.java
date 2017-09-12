@@ -117,11 +117,10 @@ public class AdminServer {
 			}
 
 		}
+	}
 
-		public void removeThread(UserThread t) {
-			threadList.remove(t);
-		}
-
+	public void removeThread(UserThread t) {
+		threadList.remove(t);
 	}
 
 	public static void main(String[] args) {
