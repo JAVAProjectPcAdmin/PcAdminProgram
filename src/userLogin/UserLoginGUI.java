@@ -43,6 +43,11 @@ public class UserLoginGUI extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
 	public static User user = null;
+	String myIp = null;
+	int seatNumber;
+	UserDao dao = new UserDao();
+	
+	
 	
 	
 	public UserLoginGUI() {
@@ -71,6 +76,16 @@ public class UserLoginGUI extends JFrame {
 		pcNumPanel.setBackground(Color.WHITE);
 		pcNumPanel.setLayout(null);
 		plzLogin = new PlzLogin();
+		
+		
+		//myip
+		try {
+			myIp = InetAddress.getLocalHost().getHostAddress();
+			
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		seatNumber= dao.SeatNumSelect(myIp);
 
 		pwLabel = new JLabel("Password");
 		pwLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
@@ -78,8 +93,8 @@ public class UserLoginGUI extends JFrame {
 		idLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		nonMembersLabel = new JLabel("ºñÈ¸¿ø");
 		nonMembersLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
-		pcNumLabel = new JLabel("1");
-		pcNumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 140));
+		pcNumLabel = new JLabel(seatNumber+"");
+		pcNumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 150));
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 		nonMemberTf = new JTextField(null);
@@ -103,7 +118,7 @@ public class UserLoginGUI extends JFrame {
 		idLabel.setBounds(200, 100, 50, 50);
 		pwLabel.setBounds(200, 130, 200, 50);
 		nonMembersLabel.setBounds(200, 180, 200, 50);
-		pcNumLabel.setBounds(60, 40, 100, 100);
+		pcNumLabel.setBounds(10, 5, 180, 180);
 		plzLogin.setBounds(250, 40, 328, 50);
 
 		loginButton.setBounds(250, 230, 100, 27);
@@ -162,19 +177,10 @@ public class UserLoginGUI extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Auto-generated method stub
-			UserDao dao = new UserDao();
-
-			InetAddress MyIp = null;
-			String name = null;
-			String myIp = null;
 			
-			//myip
-			try {
-				myIp = InetAddress.getLocalHost().getHostAddress();
-				
-			} catch (UnknownHostException e) {
-				e.printStackTrace();
-			}
+
+			String name = null;
+			
 		
 			
 			
@@ -190,7 +196,7 @@ public class UserLoginGUI extends JFrame {
 					user.setUserID(idTf.getText());
 					user.setBirthYear(dao.UserBirthSelect(idTf.getText()));
 					
-					user.setSeatNumber(dao.SeatNumSelect(myIp));
+					user.setSeatNumber(seatNumber);
 					
 					UserClient userclient = new UserClient();
 					dispose();

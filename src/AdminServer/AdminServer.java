@@ -90,8 +90,11 @@ public class AdminServer {
 //				
 			
 				removeThread(this);
-				System.out.println("adminserver : "+Flagment.UserLogout[user.getSeatNumber()]);
 				System.out.println("adminserver : "+user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
+				for(int j=0;j<userlist.size();j++) {
+					if(userlist.get(j).getSeatNumber()==user.getSeatNumber())
+						userlist.remove(j);
+				}
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
