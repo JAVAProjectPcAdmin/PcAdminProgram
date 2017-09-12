@@ -95,6 +95,7 @@ public class Server {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
 		
+		
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {

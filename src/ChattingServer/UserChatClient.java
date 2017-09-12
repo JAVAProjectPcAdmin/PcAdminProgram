@@ -127,7 +127,7 @@ public class UserChatClient extends JFrame implements ActionListener {
 			}
 		} else if (e.getActionCommand().equals("³ª°¡±â")) {
 			try {
-				System.exit(0);
+				dispose();
 
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
