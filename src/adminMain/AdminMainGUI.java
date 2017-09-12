@@ -209,6 +209,9 @@ public class AdminMainGUI extends JFrame {
 					if (Flagment.UserLogout[i]) {
 						System.out.println("로그아웃 했다요!!");
 						rightUserPanel[i].setVisible(false);
+						LeftMainGUI.countSeat--;
+						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
+						lmp.updateUI();// 인원수 증가
 						Object[] temp = new Object[4];
 
 						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

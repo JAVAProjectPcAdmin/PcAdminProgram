@@ -45,7 +45,17 @@ public class UserUsingStateGUI extends JFrame {
 	private boolean noticeFlag = false;
 
 	public UserUsingStateGUI(UserClient userclient) {
+<<<<<<< HEAD
 		new shutdown();
+=======
+		Calendar c = Calendar.getInstance();
+		int currYear = c.get(Calendar.YEAR);
+
+		// 19세 이하
+		if ((currYear - Integer.parseInt(UserLoginGUI.user.getBirthYear())) < 19) {
+			new shutdown();
+		}
+>>>>>>> 3b32558cc9ee6b8d18a471aef0e305d832e84997
 
 		this.user = UserLoginGUI.user;
 		setLayout(null);
@@ -203,7 +213,7 @@ public class UserUsingStateGUI extends JFrame {
 			Calendar cal = Calendar.getInstance();
 
 			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준
-			cal.set(Calendar.MINUTE, 25); // 분
+			cal.set(Calendar.MINUTE, 40); // 분
 
 			long day = 1000 * 60 * 60 * 24; // 하루마다
 			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
