@@ -83,16 +83,6 @@ public class Server {
 	public void addGuest(Guest g) {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
-		try {
-			UserChatClient client = new UserChatClient("User");
-			client.initNet();
-			client.setBounds(200, 200, 500, 400);
-			client.setVisible(true);
-			client.readMsg();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 	}
 
