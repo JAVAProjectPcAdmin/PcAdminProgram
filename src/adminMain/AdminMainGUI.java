@@ -152,17 +152,7 @@ public class AdminMainGUI extends JFrame {
 
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
-					//long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
-					//SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
-					//long checkTime = (time - rightUserPanel[i].getUser().getStartTimeCalc());
-					//변하지 않는건 user객체에서 가져오고 변하는건 UserUsingStateGUI에서 가져오면 될까?
-					
-					if(rightUserPanel[i].getUser() != null) {
-						System.out.println("User있어");
-					}else {
-						System.out.println("User 비어있어");
-					}
-					
+				
 					String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
 					String totalPriceVal2 = totalPriceVal1.replace("원", "");
 					String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
@@ -176,7 +166,6 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); //사용 PC
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime(), 0, 1); //시작시간
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
-					//lmp.infoModel2.setValueAt(dayTime.format(new Date(checkTime)), 0, 2); //사용시간
 					lmp.infoTable2.updateUI();
 					
 					lmp.infoModel3.setValueAt(Integer.parseInt(totalPriceVal2) - 

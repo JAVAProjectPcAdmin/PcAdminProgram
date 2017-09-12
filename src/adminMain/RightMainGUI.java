@@ -129,10 +129,10 @@ public class RightMainGUI extends JPanel {
 	}
 
 	public void setUserPanel(User user) {
+		this.user = user;
 		userNameL.setText(user.getName());
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
-		this.user = UserLoginGUI.user;
 	}
 }
