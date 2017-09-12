@@ -20,7 +20,7 @@ public class Server {
 		BufferedReader br =null;
 		
 		try {
-			serverSocket= new ServerSocket(7777);
+			serverSocket= new ServerSocket(7788);
 			while(true) {
 				System.out.println("기다리는중....");
 			socket= serverSocket.accept(); //기다림  - 연결되면 socket에 들어감 

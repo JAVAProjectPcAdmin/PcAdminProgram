@@ -28,7 +28,7 @@ public class Client {
 		ClientFrame f =null;
 		try {
 		
-			socket = new Socket("127.0.0.1", 7777);
+			socket = new Socket("127.0.0.1", 7788);
 			System.out.println("서버랑 연결됬네?!");
 			
 			f = new ClientFrame(socket,who);
