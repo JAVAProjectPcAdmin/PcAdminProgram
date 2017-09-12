@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -21,7 +22,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.*;
 
-public class AdminChatClient extends Frame implements ActionListener {
+public class AdminChatClient extends JFrame implements ActionListener {
 	JTextField tf;
 	JTextArea ta;
 	JButton b;
@@ -30,7 +31,7 @@ public class AdminChatClient extends Frame implements ActionListener {
 	BufferedWriter bw;
 	String id;
 
-	public AdminChatClient(String id) throws Exception {
+	public AdminChatClient(String id) {
 		super(id + "님의 채팅창입니다");
 		this.id = id;
 
@@ -39,7 +40,6 @@ public class AdminChatClient extends Frame implements ActionListener {
 		b = new JButton("나가기");
 
 		list = new List();
-		
 
 		JPanel p1 = new JPanel();
 		JPanel p2 = new JPanel();
@@ -64,15 +64,21 @@ public class AdminChatClient extends Frame implements ActionListener {
 
 	}
 
-	public void initNet() throws Exception {
-		Socket socket = new Socket("localhost", 8877);
-		InputStream is = socket.getInputStream();
-		InputStreamReader isr = new InputStreamReader(is);
-		br = new BufferedReader(isr);
-		OutputStream os = socket.getOutputStream();
-		OutputStreamWriter osw = new OutputStreamWriter(os);
-		bw = new BufferedWriter(osw);
-		sendMsg("enter/" + id);
+	public void initNet() {
+		Socket socket;
+		try {
+			socket = new Socket("localhost", 8877);
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			br = new BufferedReader(isr);
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			bw = new BufferedWriter(osw);
+			sendMsg("enter/" + id);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void readMsg() {
@@ -94,9 +100,14 @@ public class AdminChatClient extends Frame implements ActionListener {
 		}
 	}
 
-	public void sendMsg(String msg) throws Exception {
-		bw.write(msg + "\n");
-		bw.flush();
+	public void sendMsg(String msg) {
+		try {
+			bw.write(msg + "\n");
+			bw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -121,7 +132,7 @@ public class AdminChatClient extends Frame implements ActionListener {
 
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[]) {
 		AdminChatClient client = new AdminChatClient("Admin");
 
 	}

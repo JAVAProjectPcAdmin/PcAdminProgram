@@ -87,8 +87,17 @@ public class UserUsingStateGUI extends JFrame {
 
 				// TODO Auto-generated method stub
 				if (!flag) {
+<<<<<<< HEAD
 //					TalkGUI talk = new TalkGUI();
 					UserChatClient userchat = new UserChatClient(user.getName());
+=======
+					try {
+						UserChatClient client = new UserChatClient(user.getName());
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 					flag = true;
 				}
 			}
@@ -191,23 +200,23 @@ public class UserUsingStateGUI extends JFrame {
 		public void run() {
 			Calendar c = Calendar.getInstance();
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
-			boolean timeflag=false;
+			boolean timeflag = false;
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
 				long checkTime = (time - user.getStartTimeCalc());
-				String useTime =dayTime.format(new Date(checkTime));
+				String useTime = dayTime.format(new Date(checkTime));
 				timeLb.setText(useTime);
 				timeLb.updateUI();
-				if (useTime.substring(6).equals("00")&& !timeflag) {
-					timeflag=true; //00분에 가격 증가 한번만 실행
+				if (useTime.substring(6).equals("00") && !timeflag) {
+					timeflag = true; // 00분에 가격 증가 한번만 실행
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
 					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
-					
+
 				}
-				if(useTime.substring(6).equals("01")) {
-					timeflag=false; //00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함 
+				if (useTime.substring(6).equals("01")) {
+					timeflag = false; // 00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함
 				}
 				if (flag3) { // 주문하면 가격 증가
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");

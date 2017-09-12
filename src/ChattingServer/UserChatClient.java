@@ -23,7 +23,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.*;
 
-public class UserChatClient extends Frame implements ActionListener {
+public class UserChatClient extends JFrame implements ActionListener {
 	JTextField tf;
 	JTextArea ta;
 	JButton b;
@@ -60,13 +60,18 @@ public class UserChatClient extends Frame implements ActionListener {
 		readMsg();
 	}
 
+<<<<<<< HEAD
 	public void initNet()  {
+=======
+	public void initNet() {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 		Socket socket;
 		try {
 			socket = new Socket("localhost", 8877);
 			InputStream is = socket.getInputStream();
 			InputStreamReader isr = new InputStreamReader(is);
 			br = new BufferedReader(isr);
+<<<<<<< HEAD
 			
 			OutputStream os = socket.getOutputStream();
 			OutputStreamWriter osw = new OutputStreamWriter(os);
@@ -78,6 +83,16 @@ public class UserChatClient extends Frame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+=======
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			bw = new BufferedWriter(osw);
+			sendMsg("enter/" + id);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -102,7 +117,11 @@ public class UserChatClient extends Frame implements ActionListener {
 		}
 	}
 
+<<<<<<< HEAD
 	public void sendMsg(String msg)  {
+=======
+	public void sendMsg(String msg) {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 		try {
 			bw.write(msg + "\n");
 			bw.flush();
@@ -136,7 +155,16 @@ public class UserChatClient extends Frame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
+<<<<<<< HEAD
 		UserChatClient client = new UserChatClient("User");
+=======
+		try {
+			UserChatClient client = new UserChatClient("User");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 
 	}
 }
