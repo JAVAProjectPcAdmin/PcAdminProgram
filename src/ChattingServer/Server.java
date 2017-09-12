@@ -19,6 +19,7 @@ public class Server {
 				Socket s = ss.accept();
 
 				System.out.println("들어옴");
+				new AdminChatClient("관리자");
 				Guest g = new Guest(this, s);
 				g.start();
 				addGuest(g);
