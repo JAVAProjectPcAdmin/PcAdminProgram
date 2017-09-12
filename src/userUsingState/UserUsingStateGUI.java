@@ -97,7 +97,7 @@ public class UserUsingStateGUI extends JFrame {
 				if (!flag) {
 
 					// TalkGUI talk = new TalkGUI();
-					Client client = new Client(user.getName());
+					Client client = new Client(user.getSeatNumber()+"");
 					
 					flag = true;
 				}
