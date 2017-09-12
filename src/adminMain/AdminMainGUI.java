@@ -201,6 +201,9 @@ public class AdminMainGUI extends JFrame {
 						orderThread.start();
 						Flagment.UserLoginState[i] = false;
 					}
+					if(Flagment.UserLogoutState[i]) {
+						System.out.println("로그아웃 했다요!!");
+					}
 				}
 			}
 		}

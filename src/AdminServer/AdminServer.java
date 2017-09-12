@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import adminMain.LeftMainGUI;
+import flagment.Flagment;
 
 public class AdminServer {
 	ServerSocket serverSocket = null;
@@ -81,6 +82,8 @@ public class AdminServer {
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
 				int tempSize = AdminClient.userlist.size();
+				
+				Flagment.UserLogoutState[user.getSeatNumber()]=true;
 //				lmGui = new LeftMainGUI();
 //				// 서버와 main 프레임은 따로 실행 
 //				//여기는 서버이고 여기서 새로운 패널을 생성해서 update 해도 원래의 프레임에는 영향 X
@@ -104,7 +107,7 @@ public class AdminServer {
 //					}
 //				}
 				removeThread(this);
-				System.out.println(user.getSeatNumber()+" : 연결이 끊어졋다 !");
+				System.out.println(user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
