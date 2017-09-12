@@ -204,7 +204,6 @@ public class UserUsingStateGUI extends JFrame {
 				if (useTime.substring(6).equals("00") && !timeflag) {
 					timeflag = true; // 00분에 가격 증가 한번만 실행
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
-					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 
@@ -218,9 +217,12 @@ public class UserUsingStateGUI extends JFrame {
 				}
 
 				// 21:30분이 되면 ! 미성년자들에게 알림 !
-				if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 55 && noticeFlag == false) {
-					if ((Calendar.YEAR - Integer.parseInt(user.getBirthYear())) < 19) {
+				c.getInstance();
+				if (c.get(Calendar.HOUR_OF_DAY) == 16 && c.get(Calendar.MINUTE) == 36 && noticeFlag == false) {
+					if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) < 19) {
 						WarningGUI g = new WarningGUI();
+						System.out.println("미성년자 뭐하니");
+//						JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
 						noticeFlag = true;
 					}
 				}
