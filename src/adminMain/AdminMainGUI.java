@@ -57,9 +57,7 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
-			rightUserPanel[i].seat_num++;
-			rightUserPanel[i].SEAT_NUMBER = String.valueOf(rightUserPanel[i].seat_num);
-
+			
 			rightUserPanel[i].setVisible(false);
 			rightPanel.add(rightUserPanel[i]);
 		}
@@ -163,15 +161,15 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 2); //이름
 					lmp.infoTable1.updateUI();
 				
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); //사용 PC
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUsePCNumberL(), 0, 0); //사용 PC
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime().substring(7), 0, 1); //시작시간
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2); //사용시간
 					lmp.infoTable2.updateUI();
 					
-					lmp.infoModel3.setValueAt(Integer.parseInt(totalPriceVal2) - 
-							Integer.parseInt(amoutVal2), 0, 0); //PC사용금액
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getAddAmountL().getText(), 0, 1); //음식주문금액
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 2); //총금액
+					lmp.infoModel3.setValueAt((Integer.parseInt(totalPriceVal2) - 
+							Integer.parseInt(amoutVal2)), 0, 0); //PC사용금액
+					lmp.infoModel3.setValueAt(totalPriceVal2, 0, 1); //음식주문금액
+					lmp.infoModel3.setValueAt(totalPriceVal1, 0, 2); //총금액
 					lmp.infoTable3.updateUI();
 				}
 			}
@@ -190,12 +188,13 @@ public class AdminMainGUI extends JFrame {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
 					if (Flagment.UserLoginState[i]) {
-						User user = AdminClient.userlist.get(adminClient.userlist.size() - 1);
-						rightUserPanel[i].setUserPanel(user);
+						User user = AdminClient.userlist.get(adminClient.userlist.size() - 1);//userlist에 가장 최근데 들어온 user
+						rightUserPanel[i].setUserPanel(user);	// 패널에 현재 user로 셋팅
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
+						lmp.updateUI();//인원수 증가
 						TimerThread timerThread = new TimerThread(user, i);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
