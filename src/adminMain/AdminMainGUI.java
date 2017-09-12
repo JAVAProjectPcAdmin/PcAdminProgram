@@ -152,24 +152,26 @@ public class AdminMainGUI extends JFrame {
 
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
-					long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
-					SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm");
-					long checkTime = (time - rightUserPanel[i].getUser().getStartTimeCalc());
+				
+					String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
+					String totalPriceVal2 = totalPriceVal1.replace("원", "");
+					String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
+					String amoutVal2 = amoutVal1.replace("원", "");
 					
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNumberL().getText(), 0, 0); //회원번호
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1); //아이디
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 2); //이름
 					lmp.infoTable1.updateUI();
-					
-					lmp.infoModel2.setValueAt(rightUserPanel[i].SEAT_NUMBER, 0, 0); //사용 PC
+				
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); //사용 PC
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime(), 0, 1); //시작시간
-					lmp.infoModel2.setValueAt(dayTime.format(new Date(checkTime)), 0, 2); //사용시간
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
 					lmp.infoTable2.updateUI();
-
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getUser().getTotalPrice() - 
-							rightUserPanel[i].getUser().getAddPrice(), 0, 0); //PC사용금액
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getUser().getAddPrice(), 0, 1); //음식주문금액
-					lmp.infoModel3.setValueAt(rightUserPanel[i].getUser().getTotalPrice(), 0, 2); //총금액
+					
+					lmp.infoModel3.setValueAt(Integer.parseInt(totalPriceVal2) - 
+							Integer.parseInt(amoutVal2), 0, 0); //PC사용금액
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getAddAmountL().getText(), 0, 1); //음식주문금액
+					lmp.infoModel3.setValueAt(rightUserPanel[i].getTotalPriceL().getText(), 0, 2); //총금액
 					lmp.infoTable3.updateUI();
 				}
 			}
