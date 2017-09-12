@@ -17,7 +17,6 @@ public class AdminOrderGUI extends JFrame {
 	private JLabel orderLbl; 
 
 	public AdminOrderGUI(String order, int seatNum) {
-	
 		
 		seatLbl = new JLabel((seatNum+1) + "번 자리에서 주문이 들어왔습니다.");
 		seatLbl.setFont(new Font("맑은고딕", Font.BOLD, 15));
@@ -42,10 +41,9 @@ public class AdminOrderGUI extends JFrame {
 			}
 		});		
 	
-		
 		setSize(300, 260);
+		setLocation(470, 300);
 		setAlwaysOnTop(true);
 		setVisible(true);
 	}
-		
 }
