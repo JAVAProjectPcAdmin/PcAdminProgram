@@ -204,7 +204,7 @@ public class UserUsingStateGUI extends JFrame {
 			Calendar cal = Calendar.getInstance();
 			
 			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준
-			cal.set(Calendar.MINUTE, 15); // 분
+			cal.set(Calendar.MINUTE, 25); // 분
 
 			long day = 1000*60*60*24; // 하루마다
 			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
