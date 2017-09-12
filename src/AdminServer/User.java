@@ -15,6 +15,9 @@ public class User implements Serializable {
 	private int totalPrice = 0;
 	private int addPrice = 0;
 	private int seatNumber;
+	private String ip;
+
+
 
 	public String getUserID() {
 		return UserID;
@@ -99,6 +102,14 @@ public class User implements Serializable {
 		this.name = name;
 		this.setStartTime();
 
+	}
+	
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 }
