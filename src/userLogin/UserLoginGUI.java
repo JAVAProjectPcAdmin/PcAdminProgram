@@ -93,7 +93,7 @@ public class UserLoginGUI extends JFrame {
 		idLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		nonMembersLabel = new JLabel("ºñÈ¸¿ø");
 		nonMembersLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
-		pcNumLabel = new JLabel(seatNumber+"");
+		pcNumLabel = new JLabel((seatNumber+1)+"");
 		pcNumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 150));
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
