@@ -164,8 +164,8 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoTable1.updateUI();
 				
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); //사용 PC
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime(), 0, 1); //시작시간
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2);
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime().substring(7), 0, 1); //시작시간
+					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2); //사용시간
 					lmp.infoTable2.updateUI();
 					
 					lmp.infoModel3.setValueAt(Integer.parseInt(totalPriceVal2) - 
