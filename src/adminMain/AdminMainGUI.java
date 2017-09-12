@@ -218,29 +218,27 @@ public class AdminMainGUI extends JFrame {
 
 		@Override
 		public void run() {
-			String nowTime;
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
+			boolean timeflag=false;
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * ((60 * 60 * 9));
 				long checkTime = (time - user.getStartTimeCalc());
 				String useTime = dayTime.format(new Date(checkTime));
 				rightUserPanel[i].getUseTimeL().setText(useTime);
 				rightUserPanel[i].getUseTimeL().updateUI();
-				if (checkTime / 1000 % 60 == 0) {
+				if(useTime.substring(6).equals("00")|| !timeflag) {
+					timeflag=true; //00분에 가격 증가 한번만 실행
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
 						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
 							user=AdminClient.userlist.get(j);
 							user.setTotalPrice(user.getTotalPrice() + 20);
 							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
 							rightUserPanel[i].getTotalPriceL().updateUI();
-							try {
-								Thread.sleep(1000);
-							} catch (InterruptedException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
 						}
 					}
+				}
+				if(useTime.substring(6).equals("01")) {
+					timeflag=false; //00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함 
 				}
 			}
 		}
