@@ -218,7 +218,7 @@ public class AdminMainGUI extends JFrame {
 							lmp.finishedModel.insertRow(0, temp);
 							lmp.finishedTable.updateUI();
 
-							Flagment.UserLoginState[i] = false;
+							Flagment.UserLogout[i] = false;
 						}
 					}
 
