@@ -177,6 +177,7 @@ public class AdminMainGUI extends JFrame {
 
 	class UserThread extends Thread {
 		User user;
+
 		public UserThread() {
 		}
 
@@ -186,7 +187,7 @@ public class AdminMainGUI extends JFrame {
 				for (int i = 0; i < 25; i++) {
 					if (Flagment.UserLoginState[i]) {
 						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
-																								// user
+																							// user
 						rightUserPanel[i].setUserPanel(user); // 패널에 현재 user로 셋팅
 						rightUserPanel[i].setVisible(true);
 						rightUserPanel[i].updateUI();
@@ -205,24 +206,24 @@ public class AdminMainGUI extends JFrame {
 						Object[] temp = new Object[4];
 
 						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-						if (i == AdminServer.userlist.get(i).getSeatNumber()) {
-							temp[0] = AdminServer.userlist.get(i).getName();
-							System.out.println(temp[0]);
-							temp[1] = AdminServer.userlist.get(i).getUserID();
-							System.out.println(temp[1]);
-							temp[2] = AdminServer.userlist.get(i).getSeatNumber();
-							System.out.println(temp[2]);
-							temp[3] = AdminServer.userlist.get(i).getTotalPrice();
-							System.out.println(temp[3]);
+						for (int j = 0; j < AdminServer.userlist.size(); j++) {
+								if (i == AdminServer.userlist.get(j).getSeatNumber()) {
+									temp[0] = AdminServer.userlist.get(j).getName();
+									System.out.println(temp[0]);
+									temp[1] = AdminServer.userlist.get(j).getUserID();
+									System.out.println(temp[1]);
+									temp[2] = AdminServer.userlist.get(j).getSeatNumber();
+									System.out.println(temp[2]);
+									temp[3] = AdminServer.userlist.get(j).getTotalPrice();
+									System.out.println(temp[3]);
 
-							lmp.finishedModel.insertRow(0, temp);
-							lmp.finishedTable.updateUI();
+									lmp.finishedModel.insertRow(0, temp);
+									lmp.finishedTable.updateUI();
 
-							for(int j=0;j<AdminServer.userlist.size();j++) {
-								if(AdminServer.userlist.get(j).getSeatNumber()==user.getSeatNumber())
 									AdminServer.userlist.remove(j);
-							}
-								
+								}
+							
+
 							Flagment.UserLogout[i] = false;
 						}
 					}
