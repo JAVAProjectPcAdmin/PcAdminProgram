@@ -201,11 +201,9 @@ public class AdminMainGUI extends JFrame {
 						orderThread.start();
 						Flagment.UserLoginState[i] = false;
 					}
-					
 					if(Flagment.UserLogoutState[i]) {
 						System.out.println("로그아웃 했다요!!");
 					}
-					
 				}
 			}
 		}
@@ -223,7 +221,7 @@ public class AdminMainGUI extends JFrame {
 		@Override
 		public void run() {
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
-			boolean timeflag=true;	//처음 00은 가격 증가X
+			boolean timeflag=false;
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * ((60 * 60 * 9));
 				long checkTime = (time - user.getStartTimeCalc());
@@ -231,10 +229,10 @@ public class AdminMainGUI extends JFrame {
 				rightUserPanel[i].getUseTimeL().setText(useTime);
 				rightUserPanel[i].getUseTimeL().updateUI();
 				if(useTime.substring(6).equals("00")&& !timeflag) {
-					timeflag=true; //00분에 가격 증가 한번만 실행//쓰레드가 1초 이내에도 여러번 실행되는 것을 막기 위함
+					timeflag=true; //00분에 가격 증가 한번만 실행
 					for (int j = 0; j < AdminClient.userlist.size(); j++) {
 						if (AdminClient.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {
-							user=AdminClient.userlist.get(j);	//새로 갱신된 user 객체 받아옴
+							user=AdminClient.userlist.get(j);
 							user.setTotalPrice(user.getTotalPrice() + 20);
 							rightUserPanel[i].getTotalPriceL().setText(user.getTotalPrice() + "원");
 							rightUserPanel[i].getTotalPriceL().updateUI();
