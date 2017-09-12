@@ -100,7 +100,7 @@ public class UserUsingStateGUI extends JFrame {
 				if (!flag) {
 
 					// TalkGUI talk = new TalkGUI();
-					Client client = new Client(user.getSeatNumber() + "");
+					Client client = new Client((user.getSeatNumber()+1) + "");
 
 					flag = true;
 				}
