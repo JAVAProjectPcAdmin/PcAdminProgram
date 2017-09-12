@@ -7,40 +7,35 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import adminMain.LeftMainGUI;
 import flagment.Flagment;
 
 public class AdminServer {
 	ServerSocket serverSocket = null;
-	List<Socket> clientSocket = new ArrayList<>();
 	Socket adminSocket = null;
 
-	User user2;
 	ObjectInputStream clientInStream;
-	ObjectOutputStream adminOutStream = null;
-	private List<UserThread> threadList;
-
+	private List<UserThread> threadList;	//로그인한 유저들의 객체를 받기위해 쓰레드들을 담아놓는 리스트
+	public static List<User> userlist = new ArrayList<User>();	//로그인해서 받아온 유저 객체들을 담아서 관리할 리스트
+	
 	LeftMainGUI lmGui;
 
 	public AdminServer() {
 		threadList = new ArrayList<>();
 		try {
 			serverSocket = new ServerSocket(7777);
-			while (true) {
+				//시작하면  admin 쓰레드 한개 돌림
+			
+			while (true) { // 로그인하는 사람들에게 소켓을 계속 받아오기 위해 반복
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
-				if ((socket.getInetAddress() + "").equals("/70.12.115.54")) {
-					System.out.println("Admin client 연결");
-					adminSocket = socket;
-					adminOutStream = new ObjectOutputStream(adminSocket.getOutputStream());
-				} else {
+				if (!(socket.getInetAddress() + "").equals("/70.12.115.59")) {	
 					UserThread t = new UserThread(socket);
 					threadList.add(t);
 					t.start();
-				}
+				}//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 관리되는 쓰레드 생성
 			}
 
 		} catch (IOException e) {
@@ -49,8 +44,8 @@ public class AdminServer {
 	}
 
 	class UserThread extends Thread {
-		User user;
 		Socket socket;
+		User user;
 
 		public UserThread(Socket socket) {
 			this.socket = socket;
@@ -61,60 +56,45 @@ public class AdminServer {
 			try {
 				while (true) {
 					clientInStream = new ObjectInputStream(socket.getInputStream());
-					user = (User) clientInStream.readObject();
-
+					user = (User) clientInStream.readObject();	//새로운 유저를 받아옴 
 					String ip = socket.getInetAddress() + "";
 					System.out.println(ip);
-					// 70.12.115.59
-					if (ip.substring(11).equals("53"))
-						user.setSeatNumber(2);
-					else if (ip.substring(11).equals("54"))
-						user.setSeatNumber(3);
-					else if (ip.substring(11).equals("60"))
-						user.setSeatNumber(1);
-					else if (ip.substring(11).equals("59"))
-						user.setSeatNumber(10);
 
-					adminOutStream.writeObject(user);
-					Thread.sleep(500);
+					boolean set=false; //새 유저인지 아닌지 구분	
+					
+					for(int i=0;i<userlist.size();i++) {
+						System.out.println(userlist.size() + " : adminclient");
+						if(userlist.get(i).getSeatNumber()==user.getSeatNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
+							userlist.set(i, user); //정보 새로 갱신
+							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
+							System.out.println(Flagment.UserOrder[user.getSeatNumber()]+" , "+user.getSeatNumber());
+							set=true;
+							break;
+						}
+					}
+					
+					if(!set) {//새로운 유저일 경우
+						System.out.println("new "+user.getName());
+						user.setStartTime();
+						userlist.add(user);
+						System.out.println(userlist.size());
+						Flagment.UserLoginState[user.getSeatNumber()] = true;
+					}
 				}
 				// 연결 끊기
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
-				int tempSize = AdminClient.userlist.size();
+				int tempSize = AdminServer.userlist.size();
 				
-				Flagment.UserLogoutState[user.getSeatNumber()]=true;
-//				lmGui = new LeftMainGUI();
-//				// 서버와 main 프레임은 따로 실행 
-//				//여기는 서버이고 여기서 새로운 패널을 생성해서 update 해도 원래의 프레임에는 영향 X
-//				Object[] temp = new Object[4];
-//
-//				System.out.println(AdminClient.userlist.size());
-//
-//				for (int i = 0; i < tempSize; i++) {
-//					if (user.getUserID().equals(AdminClient.userlist.get(i).getUserID())) {
-//						temp[0] = AdminClient.userlist.get(i).getName();
-//						System.out.println(temp[0]);
-//						temp[1] = AdminClient.userlist.get(i).getUserID();
-//						System.out.println(temp[1]);
-//						temp[2] = AdminClient.userlist.get(i).getSeatNumber();
-//						System.out.println(temp[2]);
-//						temp[3] = AdminClient.userlist.get(i).getTotalPrice();
-//						System.out.println(temp[3]);
-//
-//						lmGui.finishedModel.insertRow(0, temp);
-//						lmGui.finishedTable.updateUI();
-//					}
-//				}
+				Flagment.UserLogout[user.getSeatNumber()]=true;
+//				
 				removeThread(this);
-				System.out.println("adminserver : "+Flagment.UserLogoutState[user.getSeatNumber()]);
+				System.out.println("adminserver : "+Flagment.UserLogout[user.getSeatNumber()]);
 				System.out.println("adminserver : "+user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
@@ -122,9 +102,10 @@ public class AdminServer {
 
 	public void removeThread(UserThread t) {
 		threadList.remove(t);
-	}
+	}	//로그아웃하면 쓰레드도 종료
 
 	public static void main(String[] args) {
 		new AdminServer();
 	}
+	
 }
