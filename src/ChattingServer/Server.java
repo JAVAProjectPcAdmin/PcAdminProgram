@@ -4,7 +4,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.io.*;
-
+import javax.swing.*;
 public class Server {
 	ArrayList<Guest> list;
 
@@ -94,7 +94,7 @@ public class Server {
 	public void addGuest(Guest g) {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
-
+		
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {

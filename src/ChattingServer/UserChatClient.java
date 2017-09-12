@@ -54,10 +54,11 @@ public class UserChatClient extends JFrame implements ActionListener {
 		tf.addActionListener(this);
 		b.addActionListener(this);
 
-		initNet();
+		
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
 		readMsg();
+		initNet();
 	}
 
 	public void initNet() {
