@@ -39,7 +39,6 @@ public class AdminServer {
 					UserThread t = new UserThread(user2, socket);
 					threadList.add(t);
 					t.start();
-
 				}
 			}
 
