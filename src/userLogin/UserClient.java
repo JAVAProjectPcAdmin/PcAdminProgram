@@ -19,11 +19,7 @@ public class UserClient {
 	public UserClient() {
 		this.user= UserLoginGUI.user;
 		try {
-<<<<<<< HEAD
 			socket = new Socket("70.12.115.59", 7777);
-=======
-			socket = new Socket("70.12.115.54", 7777);
->>>>>>> 34ed94c4475fcdfb2672372ab70b66180abffeff
 			System.out.println("서버랑 연결됬네?!");
 
 			String ip = socket.getInetAddress() + "";
