@@ -8,15 +8,21 @@ import java.io.*;
 public class Server {
 	ArrayList<Guest> list;
 
-	public void initNet() throws Exception {
+	public void initNet() {
 		list = new ArrayList<Guest>();
-		ServerSocket ss = new ServerSocket(8877);
-		while (true) {
-			Socket s = ss.accept();
-			System.out.println("들어옴");
-			Guest g = new Guest(this, s);
-			g.start();
-			addGuest(g);
+		ServerSocket ss;
+		try {
+			ss = new ServerSocket(8877);
+			while (true) {
+				Socket s = ss.accept();
+				System.out.println("들어옴");
+				Guest g = new Guest(this, s);
+				g.start();
+				addGuest(g);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -27,16 +33,16 @@ public class Server {
 		BufferedReader br;
 		BufferedWriter bw;
 
-		public Guest(Server server, Socket socket) throws Exception {
+		public Guest(Server server, Socket socket) {
 			this.server = server;
 			this.socket = socket;
-			InputStream is = socket.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			br = new BufferedReader(isr);
-
-			OutputStream os = socket.getOutputStream();
-			OutputStreamWriter osw = new OutputStreamWriter(os);
-			bw = new BufferedWriter(osw);
+			try {
+				br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+				bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		public void run() {
@@ -73,9 +79,14 @@ public class Server {
 			}
 		}
 
-		public void sendMsg(String msg) throws Exception {
-			bw.write(msg + "\n");
-			bw.flush();
+		public void sendMsg(String msg) {
+			try {
+				bw.write(msg + "\n");
+				bw.flush();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -83,16 +94,6 @@ public class Server {
 	public void addGuest(Guest g) {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
-		try {
-			UserChatClient client = new UserChatClient("User");
-			client.initNet();
-			client.setBounds(200, 200, 500, 400);
-			client.setVisible(true);
-			client.readMsg();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
 	}
 
@@ -113,7 +114,7 @@ public class Server {
 
 	}
 
-	public void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
+	public void makeGuestlist() { // guestlist/홍길동/김길동/이길동/
 
 		StringBuffer buffer = new StringBuffer("guestlist/");
 		for (Guest g : list) {
@@ -127,7 +128,7 @@ public class Server {
 		System.out.println("접속자수:" + list.size());
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[]) {
 		Server server = new Server();
 		server.initNet();
 	}

@@ -202,6 +202,7 @@ public class AdminMainGUI extends JFrame {
 					if (Flagment.UserLogout[i]) {
 						System.out.println("로그아웃 했다요!!");
 						
+<<<<<<< HEAD
 						Object[] temp = new Object[4];
 						
 						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -221,6 +222,9 @@ public class AdminMainGUI extends JFrame {
 								Flagment.UserLoginState[i] = false;
 							}
 						}
+=======
+						
+>>>>>>> 75647d0ddcc24fb4a4f8bdd4393fa55098bdfecb
 					}
 
 				}

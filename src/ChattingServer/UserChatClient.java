@@ -11,17 +11,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.*;
 
-public class UserChatClient extends Frame implements ActionListener {
+public class UserChatClient extends JFrame implements ActionListener {
 	JTextField tf;
 	JTextArea ta;
 	JButton b;
@@ -30,7 +32,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	BufferedWriter bw;
 	String id;
 
-	public UserChatClient(String id) throws Exception {
+	public UserChatClient(String id)  {
 		super(id + "님의 채팅창입니다");
 		this.id = id;
 
@@ -58,15 +60,42 @@ public class UserChatClient extends Frame implements ActionListener {
 		readMsg();
 	}
 
-	public void initNet() throws Exception {
-		Socket socket = new Socket("localhost", 8877);
-		InputStream is = socket.getInputStream();
-		InputStreamReader isr = new InputStreamReader(is);
-		br = new BufferedReader(isr);
-		OutputStream os = socket.getOutputStream();
-		OutputStreamWriter osw = new OutputStreamWriter(os);
-		bw = new BufferedWriter(osw);
-		sendMsg("enter/" + id);
+<<<<<<< HEAD
+	public void initNet()  {
+=======
+	public void initNet() {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
+		Socket socket;
+		try {
+			socket = new Socket("localhost", 8877);
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			br = new BufferedReader(isr);
+<<<<<<< HEAD
+			
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			bw = new BufferedWriter(osw);
+
+			sendMsg("enter/" + id);
+		
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+=======
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			bw = new BufferedWriter(osw);
+			sendMsg("enter/" + id);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void readMsg() {
@@ -88,9 +117,18 @@ public class UserChatClient extends Frame implements ActionListener {
 		}
 	}
 
-	public void sendMsg(String msg) throws Exception {
-		bw.write(msg + "\n");
-		bw.flush();
+<<<<<<< HEAD
+	public void sendMsg(String msg)  {
+=======
+	public void sendMsg(String msg) {
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
+		try {
+			bw.write(msg + "\n");
+			bw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -116,8 +154,17 @@ public class UserChatClient extends Frame implements ActionListener {
 
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[]) {
+<<<<<<< HEAD
 		UserChatClient client = new UserChatClient("User");
+=======
+		try {
+			UserChatClient client = new UserChatClient("User");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+>>>>>>> 60e404f9b28699f5923ab6220a9e244ebf189990
 
 	}
 }
