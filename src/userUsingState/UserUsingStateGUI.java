@@ -46,8 +46,7 @@ public class UserUsingStateGUI extends JFrame {
 
 	public UserUsingStateGUI(UserClient userclient) {
 		new shutdown();
-		
-		
+
 		this.user = UserLoginGUI.user;
 		setLayout(null);
 		setLocation(950, 50); // 시작위치 설정 메소드
@@ -69,7 +68,7 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setLayout(null);
 		panel.setBounds(0, 0, 600, 400);
 
-		customerNumberLb = new JLabel((user.getSeatNumber()+1) + "");
+		customerNumberLb = new JLabel((user.getSeatNumber() + 1) + "");
 		customerNumberLb.setFont(new Font("맑은 고딕", Font.BOLD, 40));
 		timeLb = new JLabel("00:00");
 		moneyLb = new JLabel(user.getTotalPrice() + "원");
@@ -95,8 +94,8 @@ public class UserUsingStateGUI extends JFrame {
 				if (!flag) {
 
 					// TalkGUI talk = new TalkGUI();
-					Client client = new Client(user.getSeatNumber()+"");
-					
+					Client client = new Client(user.getSeatNumber() + "");
+
 					flag = true;
 				}
 			}
@@ -193,7 +192,7 @@ public class UserUsingStateGUI extends JFrame {
 			g.drawImage(backgroundImage, 0, 0, null);
 		}
 	}
-	
+
 	// 셧다운 알림
 	class shutdown {
 
@@ -202,11 +201,11 @@ public class UserUsingStateGUI extends JFrame {
 			Timer timer = new Timer();
 
 			Calendar cal = Calendar.getInstance();
-			
+
 			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준
 			cal.set(Calendar.MINUTE, 25); // 분
 
-			long day = 1000*60*60*24; // 하루마다
+			long day = 1000 * 60 * 60 * 24; // 하루마다
 			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
 
 		}
@@ -219,8 +218,8 @@ public class UserUsingStateGUI extends JFrame {
 			new WarningGUI();
 		}
 	}
-	
-//
+
+	//
 	class TimerThread extends Thread {
 		@Override
 		public void run() {
@@ -247,22 +246,20 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-				
-				
 
 				// 21:30분이 되면 ! 미성년자들에게 알림 !
-//				c.getInstance();
-//				if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 41 && noticeFlag == false) {
-//					if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) < 19) {
-//						WarningGUI g = new WarningGUI();
-//						System.out.println("미성년자 뭐하니");
-//						// JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
-//						noticeFlag = true;
-//					}
-//				}
-				
+				// c.getInstance();
+				// if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 41 &&
+				// noticeFlag == false) {
+				// if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) <
+				// 19) {
+				// WarningGUI g = new WarningGUI();
+				// System.out.println("미성년자 뭐하니");
+				// // JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
+				// noticeFlag = true;
+				// }
+				// }
 
-				
 			}
 		}// while문 종료
 	}
