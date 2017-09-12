@@ -133,6 +133,6 @@ public class RightMainGUI extends JPanel {
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
-		this.user = UserLoginGUI.user;
+		this.user = user;
 	}
 }
