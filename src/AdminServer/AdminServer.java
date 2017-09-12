@@ -87,13 +87,8 @@ public class AdminServer {
 				int tempSize = AdminServer.userlist.size();
 				
 				Flagment.UserLogout[user.getSeatNumber()]=true;
-//				
 			
 				removeThread(this);
-<<<<<<< HEAD
-				
-=======
->>>>>>> 6861da6f6306ecffb33ecfb31974743380be7aae
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
