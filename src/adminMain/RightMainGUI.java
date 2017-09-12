@@ -38,8 +38,6 @@ public class RightMainGUI extends JPanel {
 	private JLabel addAmountL;
 	private User user;
 
-	static String SEAT_NUMBER = "1";
-	static int seat_num = Integer.parseInt(SEAT_NUMBER);
 	public int userPanelIndex;
 
 	UserDao userDao = new UserDao();
@@ -80,7 +78,7 @@ public class RightMainGUI extends JPanel {
 		setFocusable(true);
 		requestFocus();
 
-		usePCNumberL = new JLabel(SEAT_NUMBER, new ImageIcon("../icon-157349_1280.png"), SwingConstants.CENTER);
+		usePCNumberL = new JLabel();
 
 		userNameL = new JLabel();
 		userNumberL = new JLabel();
@@ -132,7 +130,7 @@ public class RightMainGUI extends JPanel {
 		this.user = user;
 		userNameL.setText(user.getName());
 		userNumberL.setText(user.getUserNumber());
-		addAmountL.setText("");
 		userIDL.setText(user.getUserID());
-	}
+		usePCNumberL.setText(user.getSeatNumber()+1+"");
+	} //패널에 정보 세팅
 }
