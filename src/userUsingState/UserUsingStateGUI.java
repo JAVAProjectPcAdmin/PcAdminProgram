@@ -38,6 +38,7 @@ public class UserUsingStateGUI extends JFrame {
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
 	public static boolean flag4 = false;
+	public static boolean chatflag = false;
 	public JButton logoutBt;
 	User user;
 	UserClient userclient;
@@ -95,7 +96,7 @@ public class UserUsingStateGUI extends JFrame {
 
 					// TalkGUI talk = new TalkGUI();
 					UserChatClient userchat = new UserChatClient(user.getName());
-
+					
 					flag = true;
 				}
 			}

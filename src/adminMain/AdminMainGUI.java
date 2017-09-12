@@ -11,7 +11,9 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -37,6 +39,7 @@ public class AdminMainGUI extends JFrame {
 	public static UserThread isUserThread;
 	TimerThread timerThread;
 	OrderThread orderThread;
+	List<totalThread> threadlist = new ArrayList<>();
 	int i;
 	// private
 
@@ -174,7 +177,15 @@ public class AdminMainGUI extends JFrame {
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
+	class totalThread extends Thread{
+		User user = null;
+		int i;
 
+		public int getI() {
+			return i;
+		}
+	}
+	
 	class UserThread extends Thread {
 		User user;
 
@@ -195,9 +206,12 @@ public class AdminMainGUI extends JFrame {
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 증가
 						TimerThread timerThread = new TimerThread(user, i);
+						threadlist.add(timerThread);
 						timerThread.start();
 						OrderThread orderThread = new OrderThread(user, i);
+						threadlist.add(orderThread);
 						orderThread.start();
+						
 						Flagment.UserLoginState[i] = false;
 					}
 					if (Flagment.UserLogout[i]) {
@@ -222,9 +236,13 @@ public class AdminMainGUI extends JFrame {
 
 									AdminServer.userlist.remove(j);
 								}
-							
-
 							Flagment.UserLogout[i] = false;
+						}
+						for(int j=0;j<threadlist.size();j++) {
+							if(threadlist.get(j).getI()==i) {
+								removeThread(threadlist.get(j));
+								System.out.println("remove thread");
+							}
 						}
 					}
 
@@ -234,9 +252,13 @@ public class AdminMainGUI extends JFrame {
 		}
 	}
 
-	class TimerThread extends Thread {
+	class TimerThread extends totalThread {
 		User user = null;
 		int i;
+
+		public int getI() {
+			return i;
+		}
 
 		public TimerThread(User user, int i) {
 			this.user = user;
@@ -272,10 +294,13 @@ public class AdminMainGUI extends JFrame {
 
 	}
 
-	class OrderThread extends Thread {
+	class OrderThread extends totalThread {
 		User user = null;
 		AdminOrderGUI userOrder;
 		int i;
+		public int getI() {
+			return i;
+		}
 
 		public OrderThread(User user, int i) {
 			this.user = user;
@@ -311,4 +336,8 @@ public class AdminMainGUI extends JFrame {
 
 		} // orderThread 종료
 	}
+	
+	public void removeThread(totalThread totalThread) {
+		threadlist.remove(totalThread);
+	}	
 }
