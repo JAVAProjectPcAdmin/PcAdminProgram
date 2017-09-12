@@ -5,10 +5,10 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.io.*;
 
-class Server {
+public class Server {
 	ArrayList<Guest> list;
 
-	void initNet() throws Exception {
+	public void initNet() throws Exception {
 		list = new ArrayList<Guest>();
 		ServerSocket ss = new ServerSocket(8877);
 		while (true) {
@@ -19,42 +19,6 @@ class Server {
 		}
 	}
 
-	void addGuest(Guest g) {
-		list.add(g);
-		System.out.println("접속자수:" + list.size());
-	}
-
-	public void talkMsg(String talk, String talk2, String talk3) {
-		// talk 보낸사람
-		// 2 받을사람
-		// 3 할말
-		for (Guest g : list) {
-			if (g.id.equals(talk2)) {
-
-				try {
-					g.sendMsg("귓속말/" + talk + "&" + talk2 + "&" + talk3);
-				} catch (Exception e) {
-					System.out.println("게스트에서 귓말보내다가 에러" + e.getMessage());
-				}
-			}
-		}
-
-	}
-
-	void removeGuest(Guest g) {
-		list.remove(g);
-		System.out.println("접속자수:" + list.size());
-	}
-
-	void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
-
-		StringBuffer buffer = new StringBuffer("guestlist/");
-		for (Guest g : list) {
-			buffer.append(g.id + "/");
-		}
-
-	}
-
 	class Guest extends Thread {
 		String id;
 		Server server;
@@ -62,7 +26,7 @@ class Server {
 		BufferedReader br;
 		BufferedWriter bw;
 
-		Guest(Server server, Socket socket) throws Exception {
+		public Guest(Server server, Socket socket) throws Exception {
 			this.server = server;
 			this.socket = socket;
 			InputStream is = socket.getInputStream();
@@ -111,6 +75,42 @@ class Server {
 		public void sendMsg(String msg) throws Exception {
 			bw.write(msg + "\n");
 			bw.flush();
+		}
+
+	}
+
+	public void addGuest(Guest g) {
+		list.add(g);
+		System.out.println("접속자수:" + list.size());
+	}
+
+	public void talkMsg(String talk, String talk2, String talk3) {
+		// talk 보낸사람
+		// 2 받을사람
+		// 3 할말
+		for (Guest g : list) {
+			if (g.id.equals(talk2)) {
+
+				try {
+					g.sendMsg("귓속말/" + talk + "&" + talk2 + "&" + talk3);
+				} catch (Exception e) {
+					System.out.println("게스트에서 귓말보내다가 에러" + e.getMessage());
+				}
+			}
+		}
+
+	}
+
+	public void removeGuest(Guest g) {
+		list.remove(g);
+		System.out.println("접속자수:" + list.size());
+	}
+
+	public void makeGuestlist() throws Exception { // guestlist/홍길동/김길동/이길동/
+
+		StringBuffer buffer = new StringBuffer("guestlist/");
+		for (Guest g : list) {
+			buffer.append(g.id + "/");
 		}
 
 	}
