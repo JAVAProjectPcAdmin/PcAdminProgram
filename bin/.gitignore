@@ -1,8 +1,8 @@
-/ChattingServer/
-/orderFood/
-/userUsingState/
+/adminLogin/
 /adminMain/
-/AdminServer/
-/userLogin/
-/flagment/
 /db/
+/flagment/
+/gui_member/
+/orderFood/
+/userLogin/
+/userUsingState/
