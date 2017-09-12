@@ -107,7 +107,8 @@ public class AdminServer {
 //					}
 //				}
 				removeThread(this);
-				System.out.println(user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
+				System.out.println("adminserver : "+Flagment.UserLogoutState[user.getSeatNumber()]);
+				System.out.println("adminserver : "+user.getSeatNumber()+" : 연결이 끊어졋다 ! : list :"+tempSize);
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
