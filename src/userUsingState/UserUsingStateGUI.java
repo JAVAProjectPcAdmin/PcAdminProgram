@@ -188,22 +188,24 @@ public class UserUsingStateGUI extends JFrame {
 		@Override
 		public void run() {
 			Calendar c = Calendar.getInstance();
+			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
+			boolean timeflag=false;
 			while (true) {
 				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
-				SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
 				long checkTime = (time - user.getStartTimeCalc());
-				timeLb.setText(dayTime.format(new Date(checkTime)));
+				String useTime =dayTime.format(new Date(checkTime));
+				timeLb.setText(useTime);
 				timeLb.updateUI();
-				if (checkTime / 1000 % 60 == 0) {
+				if (useTime.substring(6).equals("00")|| !timeflag) {
+					timeflag=true; //00분에 가격 증가 한번만 실행
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
 					moneyLb.setText(user.getTotalPrice() + "");
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
-					try {
-						Thread.sleep(1000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+					
+				}
+				if(useTime.substring(6).equals("01")) {
+					timeflag=false; //00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함 
 				}
 				if (flag3) { // 주문하면 가격 증가
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
