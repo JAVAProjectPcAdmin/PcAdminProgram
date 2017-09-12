@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.function.LongToIntFunction;
 
 import javax.imageio.ImageIO;
@@ -41,7 +43,9 @@ public class UserLoginGUI extends JFrame {
 	private JPasswordField pwTf;
 	BufferedImage userLoginImg = null;
 	public static User user = null;
-
+	
+	InetAddress ip = null;
+	
 	public UserLoginGUI() {
 		setSize(1280, 1024);
 		setLayout(null);
@@ -163,6 +167,11 @@ public class UserLoginGUI extends JFrame {
 			String name = null;
 		
 			UserDao dao = new UserDao();
+			try {
+				InetAddress.getLocalHost().getHostAddress();
+			} catch (UnknownHostException e) {
+				e.printStackTrace();
+			}
 
 			if (idTf.getText().length() > 0) {
 

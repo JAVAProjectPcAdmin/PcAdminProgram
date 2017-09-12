@@ -338,7 +338,7 @@ public class UserDao {
 		}
 		return userList;
 	}
-	
+
 	public String UserBirthSelect(String id) {
 		String birthYear = null;
 
@@ -352,10 +352,10 @@ public class UserDao {
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) {
-				if(Integer.parseInt(rs.getString(1).substring(6, 7)) == 1 
+				if (Integer.parseInt(rs.getString(1).substring(6, 7)) == 1
 						|| Integer.parseInt(rs.getString(1).substring(6, 7)) == 2) {
 					birthYear = 19 + rs.getString(1).substring(0, 2);
-				} else if(Integer.parseInt(rs.getString(1).substring(6, 7)) == 3 
+				} else if (Integer.parseInt(rs.getString(1).substring(6, 7)) == 3
 						|| Integer.parseInt(rs.getString(1).substring(6, 7)) == 4) {
 					birthYear = 20 + rs.getString(1).substring(0, 2);
 				}
@@ -368,7 +368,7 @@ public class UserDao {
 		}
 		return birthYear;
 	}
-	
+
 	/////////////////////////////////// ºñÈ¸¿øDao
 	public String nonMemberIdSelect(String non_Id) {
 		String non_name = null;
@@ -429,18 +429,18 @@ public class UserDao {
 		}
 		return result;
 	}
-	
+
 	public String NonMemberNumSelect(String non_Id) {
 		String nonNum = null;
 		sql = "SELECT NONMEMBER_NUMBER FROM NONMEMBER WHERE NON_ID = ?";
-	
+
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, non_Id);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				nonNum = rs.getString(1);
 			}
 		} catch (SQLException e) {
@@ -451,9 +451,16 @@ public class UserDao {
 		}
 		return nonNum;
 	}
-	
-///////////////////////////////////////////////////////////
-	
+
+	public String SeatNumSelect(String MyIp) {
+		String seatNum = null;
+		
+		return seatNum;
+
+	}
+
+	///////////////////////////////////////////////////////////
+
 	public void close() {
 		if (pstmt != null) {
 			try {
