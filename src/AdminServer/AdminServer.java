@@ -113,10 +113,6 @@ public class AdminServer {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-<<<<<<< HEAD
-
-=======
->>>>>>> 75ff2503a12a2b1e3f904a0871409420f1d91370
 		}
 	}
 
