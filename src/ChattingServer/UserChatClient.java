@@ -11,11 +11,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 import javax.swing.JButton;
 import javax.swing.JTextArea;
@@ -30,7 +32,7 @@ public class UserChatClient extends Frame implements ActionListener {
 	BufferedWriter bw;
 	String id;
 
-	public UserChatClient(String id) throws Exception {
+	public UserChatClient(String id)  {
 		super(id + "님의 채팅창입니다");
 		this.id = id;
 
@@ -58,15 +60,27 @@ public class UserChatClient extends Frame implements ActionListener {
 		readMsg();
 	}
 
-	public void initNet() throws Exception {
-		Socket socket = new Socket("localhost", 8877);
-		InputStream is = socket.getInputStream();
-		InputStreamReader isr = new InputStreamReader(is);
-		br = new BufferedReader(isr);
-		OutputStream os = socket.getOutputStream();
-		OutputStreamWriter osw = new OutputStreamWriter(os);
-		bw = new BufferedWriter(osw);
-		sendMsg("enter/" + id);
+	public void initNet()  {
+		Socket socket;
+		try {
+			socket = new Socket("localhost", 8877);
+			InputStream is = socket.getInputStream();
+			InputStreamReader isr = new InputStreamReader(is);
+			br = new BufferedReader(isr);
+			
+			OutputStream os = socket.getOutputStream();
+			OutputStreamWriter osw = new OutputStreamWriter(os);
+			bw = new BufferedWriter(osw);
+
+			sendMsg("enter/" + id);
+		
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void readMsg() {
@@ -88,9 +102,14 @@ public class UserChatClient extends Frame implements ActionListener {
 		}
 	}
 
-	public void sendMsg(String msg) throws Exception {
-		bw.write(msg + "\n");
-		bw.flush();
+	public void sendMsg(String msg)  {
+		try {
+			bw.write(msg + "\n");
+			bw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -116,7 +135,7 @@ public class UserChatClient extends Frame implements ActionListener {
 
 	}
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String args[]) {
 		UserChatClient client = new UserChatClient("User");
 
 	}

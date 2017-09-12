@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import AdminServer.User;
+import ChattingServer.UserChatClient;
 import orderFood.OrderGUI;
 import userLogin.UserClient;
 import userLogin.UserLoginGUI;
@@ -86,7 +87,8 @@ public class UserUsingStateGUI extends JFrame {
 
 				// TODO Auto-generated method stub
 				if (!flag) {
-					TalkGUI talk = new TalkGUI();
+//					TalkGUI talk = new TalkGUI();
+					UserChatClient userchat = new UserChatClient(user.getName());
 					flag = true;
 				}
 			}

@@ -201,6 +201,8 @@ public class AdminMainGUI extends JFrame {
 					}
 					if (Flagment.UserLogout[i]) {
 						System.out.println("로그아웃 했다요!!");
+						
+						
 					}
 
 				}
