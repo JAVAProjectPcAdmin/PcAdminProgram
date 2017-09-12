@@ -75,7 +75,7 @@ public class AdminServer {
 						user.setSeatNumber(1);
 					else if (ip.substring(11).equals("59"))
 						user.setSeatNumber(10);
-					
+
 					adminOutStream.writeObject(user);
 					Thread.sleep(500);
 				}
@@ -101,8 +101,6 @@ public class AdminServer {
 
 						lmGui.finishedModel.insertRow(0, temp);
 						lmGui.finishedTable.updateUI();
-					} else {
-						System.out.println("else");
 					}
 
 				}
@@ -110,6 +108,8 @@ public class AdminServer {
 				removeThread(this);
 				System.out.println("연결이 끊어졋다 !");
 				e.printStackTrace();
+
+				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
