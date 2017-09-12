@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.io.*;
 import javax.swing.*;
+
 public class Server {
 	ArrayList<Guest> list;
 
@@ -14,7 +15,9 @@ public class Server {
 		try {
 			ss = new ServerSocket(8877);
 			while (true) {
+
 				Socket s = ss.accept();
+
 				System.out.println("들어옴");
 				Guest g = new Guest(this, s);
 				g.start();
@@ -49,13 +52,18 @@ public class Server {
 			try {
 				while (true) {
 					String line = br.readLine();
+
 					System.out.println(line + "읽음");
 					String array[] = line.split("/"); /// /(슬래쉬)를 기준으로 문자열을 분해해서 배열에 저장.
 					switch (array[0]) {
 					case "enter":
 						id = array[1];
 						server.makeGuestlist();
-
+						if (id.equals("User")) {
+							new AdminChatClient("Admin");
+						} else {
+							
+						}
 						break;
 
 					case "귓속말":
@@ -94,8 +102,7 @@ public class Server {
 	public void addGuest(Guest g) {
 		list.add(g);
 		System.out.println("접속자수:" + list.size());
-		
-		
+
 	}
 
 	public void talkMsg(String talk, String talk2, String talk3) {

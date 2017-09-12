@@ -54,7 +54,6 @@ public class UserChatClient extends JFrame implements ActionListener {
 		tf.addActionListener(this);
 		b.addActionListener(this);
 
-		
 		setBounds(200, 200, 500, 400);
 		setVisible(true);
 		readMsg();
@@ -65,14 +64,8 @@ public class UserChatClient extends JFrame implements ActionListener {
 		Socket socket;
 		try {
 			socket = new Socket("localhost", 8877);
-			InputStream is = socket.getInputStream();
-			InputStreamReader isr = new InputStreamReader(is);
-			br = new BufferedReader(isr);
-
-			OutputStream os = socket.getOutputStream();
-			OutputStreamWriter osw = new OutputStreamWriter(os);
-			bw = new BufferedWriter(osw);
-
+			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 			sendMsg("enter/" + id);
 
 		} catch (UnknownHostException e) {
