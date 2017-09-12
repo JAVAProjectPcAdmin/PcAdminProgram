@@ -194,7 +194,7 @@ public class UserUsingStateGUI extends JFrame {
 		}
 	}
 	
-	// 셧다운
+	// 셧다운 알림
 	class shutdown {
 
 		public shutdown() {
@@ -203,10 +203,10 @@ public class UserUsingStateGUI extends JFrame {
 
 			Calendar cal = Calendar.getInstance();
 			
-			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준으로 입력해야 합니다.
+			cal.set(Calendar.HOUR_OF_DAY, 19); // 시간 : 24 시간 기준
 			cal.set(Calendar.MINUTE, 15); // 분
 
-			long day = 1000*60*60*24;
+			long day = 1000*60*60*24; // 하루마다
 			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
 
 		}
@@ -217,11 +217,10 @@ public class UserUsingStateGUI extends JFrame {
 
 		public void run() {
 			new WarningGUI();
-			System.out.println("timer task"); // 이미 지난 시간이면 출력 출력이 되네요 .
 		}
 	}
 	
-
+//
 	class TimerThread extends Thread {
 		@Override
 		public void run() {
