@@ -154,9 +154,8 @@ public class AdminMainGUI extends JFrame {
 					String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
 					String totalPriceVal2 = totalPriceVal1.replace("원", "");
 					String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
-					System.out.println(amoutVal1);
 					String amoutVal2 = amoutVal1.replace("원", "");
-					System.out.println(amoutVal2);
+					
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNumberL().getText(), 0, 0); //회원번호
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1); //아이디
 					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 2); //이름
