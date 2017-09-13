@@ -46,7 +46,7 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
-			rightUserPanel[i].setVisible(true);
+			//rightUserPanel[i].setVisible(true);
 			rightPanel.add(rightUserPanel[i]);
 		}
 		isUserThread = new UserThread();
@@ -117,26 +117,44 @@ public class AdminMainGUI extends JFrame {
 
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
+					if (rightUserPanel[i].getUserNumberL().getText().equals("")) {
+						lmp.infoModel1.setValueAt("", 0, 0); // 회원번호
+						lmp.infoModel1.setValueAt("", 0, 1); // 아이디
+						lmp.infoModel1.setValueAt("", 0, 2); // 이름
+						lmp.infoTable1.updateUI();
 
-					String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
-					String totalPriceVal2 = totalPriceVal1.replace("원", "");
-					String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
-					String amoutVal2 = amoutVal1.replace("원", "");
+						lmp.infoModel2.setValueAt("", 0, 0); // 사용 PC
+						lmp.infoModel2.setValueAt("", 0, 1); // 시작시간
+						lmp.infoModel2.setValueAt("", 0, 2); // 사용시간
+						lmp.infoTable2.updateUI();
 
-					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNumberL().getText(), 0, 0); // 회원번호
-					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1); // 아이디
-					lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 2); // 이름
-					lmp.infoTable1.updateUI();
+						lmp.infoModel3.setValueAt("", 0, 0); // PC사용금액
+						lmp.infoModel3.setValueAt("", 0, 1); // 음식주문금액
+						lmp.infoModel3.setValueAt("", 0, 2); // 총금액
+						lmp.infoTable3.updateUI();
+					} else {
 
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); // 사용 PC
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime().substring(7), 0, 1); // 시작시간
-					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2); // 사용시간
-					lmp.infoTable2.updateUI();
+						String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
+						String totalPriceVal2 = totalPriceVal1.replace("원", "");
+						String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
+						String amoutVal2 = amoutVal1.replace("원", "");
 
-					lmp.infoModel3.setValueAt((Integer.parseInt(totalPriceVal2) - Integer.parseInt(amoutVal2)) + "원", 0, 0); // PC사용금액
-					lmp.infoModel3.setValueAt(amoutVal1, 0, 1); // 음식주문금액
-					lmp.infoModel3.setValueAt(totalPriceVal1, 0, 2); // 총금액
-					lmp.infoTable3.updateUI();
+						lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNumberL().getText(), 0, 0); // 회원번호
+						lmp.infoModel1.setValueAt(rightUserPanel[i].getUserIDL().getText(), 0, 1); // 아이디
+						lmp.infoModel1.setValueAt(rightUserPanel[i].getUserNameL().getText(), 0, 2); // 이름
+						lmp.infoTable1.updateUI();
+
+						lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getSeatNumber() + 1, 0, 0); // 사용 PC
+						lmp.infoModel2.setValueAt(rightUserPanel[i].getUser().getStartTime().substring(7), 0, 1); // 시작시간
+						lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2); // 사용시간
+						lmp.infoTable2.updateUI();
+
+						lmp.infoModel3.setValueAt(
+								(Integer.parseInt(totalPriceVal2) - Integer.parseInt(amoutVal2)) + "원", 0, 0); // PC사용금액
+						lmp.infoModel3.setValueAt(amoutVal1, 0, 1); // 음식주문금액
+						lmp.infoModel3.setValueAt(totalPriceVal1, 0, 2); // 총금액
+						lmp.infoTable3.updateUI();
+					}
 				}
 			}
 		}
@@ -167,9 +185,11 @@ public class AdminMainGUI extends JFrame {
 						Flagment.UserLoginState[i] = false;	//위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리 
 					}
 					if (Flagment.UserLogout[i]) {	//User가 로그아웃했다고 서버에서 알림
-						//rightUserPanel[i].setVisible(false);
-						rightUserPanel[i] = new RightMainGUI();
-						rightUserPanel[i].setVisible(false);
+
+						//rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
+
+						rightUserPanel[i].setLogoutPanel();
+						rightUserPanel[i].updateUI();
 						
 						LeftMainGUI.countSeat--;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
@@ -236,6 +256,10 @@ public class AdminMainGUI extends JFrame {
 				}
 				if (useTime.substring(6).equals("01")) {
 					timeflag = false; // 00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함
+				}
+				if(Flagment.UserLogout[i]) {
+					System.out.println("로그아웃 : 메인");
+					break;
 				}
 			}
 		}

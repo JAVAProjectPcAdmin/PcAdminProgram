@@ -112,6 +112,8 @@ public class RightMainGUI extends JPanel {
 		add(useTimeL);
 		add(totalPriceL);
 		add(addAmountL);
+		
+		setVisible(true);
 
 	}
 
@@ -124,4 +126,16 @@ public class RightMainGUI extends JPanel {
 		userIDL.setText(user.getUserID());
 		usePCNumberL.setText(user.getSeatNumber()+1+"");
 	} //패널에 정보 세팅
+	
+	public void setLogoutPanel() {
+		this.user = null;
+		userNameL.setText("");
+		userNumberL.setText("");
+		addAmountL.setText("");
+		totalPriceL.setText("");
+		userIDL.setText("");
+		useTimeL.setText("");
+		setBackground(Color.WHITE);
+		setBorder(new TitledBorder(new LineBorder(Color.gray)));
+	}
 }

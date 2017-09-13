@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -170,6 +172,10 @@ public class UserLoginGUI extends JFrame {
 		add(pcNumPanel);
 		add(panel);
 
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image Iconimg = toolkit.getImage("images\\pcIcon.png");
+		setIconImage(Iconimg);
+		
 		getContentPane().setBackground(Color.WHITE);
 		
 		setVisible(true);
