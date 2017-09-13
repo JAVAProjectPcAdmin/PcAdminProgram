@@ -167,13 +167,10 @@ public class AdminMainGUI extends JFrame {
 						Flagment.UserLoginState[i] = false;	//위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리 
 					}
 					if (Flagment.UserLogout[i]) {	//User가 로그아웃했다고 서버에서 알림
-<<<<<<< HEAD
 						//rightUserPanel[i].setVisible(false);
 						rightUserPanel[i] = new RightMainGUI();
-=======
 						rightUserPanel[i].setVisible(false);
 						
->>>>>>> 7334f988a6b34670a72f3ba6444dab65f4b9c4d3
 						LeftMainGUI.countSeat--;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 감소
