@@ -18,7 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ClientFrame extends JFrame {
+public class ServerFrame extends JFrame {
 	// 그래픽 관련 멤버변수
 	private JTextArea textArea = new JTextArea();
 	private JTextField textField = new JTextField();
@@ -28,7 +28,7 @@ public class ClientFrame extends JFrame {
 	String who = "";
 
 	////////////////////////////////////////////////////////
-	public ClientFrame(Socket socket, String who) {
+	public ServerFrame(Socket socket, String who) {
 		// 그래픽 환경 초기화 작업
 		this.socket = socket;
 		this.who = who;
@@ -43,7 +43,7 @@ public class ClientFrame extends JFrame {
 
 		setTitle(who);
 		setSize(300, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 
 		tt t =new tt(socket, textArea); 
