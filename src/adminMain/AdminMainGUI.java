@@ -36,7 +36,6 @@ public class AdminMainGUI extends JFrame {
 	TimerThread timerThread;
 	OrderThread orderThread;
 	int i;
-	// private
 
 	UserDao userDao = new UserDao();
 
@@ -46,7 +45,6 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
-			//rightUserPanel[i].setVisible(true);
 			rightPanel.add(rightUserPanel[i]);
 		}
 		isUserThread = new UserThread();
@@ -73,7 +71,6 @@ public class AdminMainGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
-		
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -93,16 +90,13 @@ public class AdminMainGUI extends JFrame {
 						rightUserPanel[i].setBackground(c);
 						findUser = true;
 					}
-
 				}
 				if (!findUser) {
 					JOptionPane.showMessageDialog(null, "찾으시는 회원이 없습니다.", "자리 검색 결과", JOptionPane.WARNING_MESSAGE);
 					for (int i = 0; i < rightUserPanel.length; i++) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 					}
-
 				}
-
 			}
 		}
 	}
@@ -118,22 +112,15 @@ public class AdminMainGUI extends JFrame {
 			for (int i = 0; i < rightUserPanel.length; i++) {
 				if (rightUserPanel[i] == e.getSource()) {
 					if (rightUserPanel[i].getUserNumberL().getText().equals("")) {
-						lmp.infoModel1.setValueAt("", 0, 0); // 회원번호
-						lmp.infoModel1.setValueAt("", 0, 1); // 아이디
-						lmp.infoModel1.setValueAt("", 0, 2); // 이름
+						for (int j = 0; j < 3; j++) {
+							lmp.infoModel1.setValueAt("", 0, j);
+							lmp.infoModel2.setValueAt("", 0, j);
+							lmp.infoModel3.setValueAt("", 0, j);
+						}
 						lmp.infoTable1.updateUI();
-
-						lmp.infoModel2.setValueAt("", 0, 0); // 사용 PC
-						lmp.infoModel2.setValueAt("", 0, 1); // 시작시간
-						lmp.infoModel2.setValueAt("", 0, 2); // 사용시간
 						lmp.infoTable2.updateUI();
-
-						lmp.infoModel3.setValueAt("", 0, 0); // PC사용금액
-						lmp.infoModel3.setValueAt("", 0, 1); // 음식주문금액
-						lmp.infoModel3.setValueAt("", 0, 2); // 총금액
 						lmp.infoTable3.updateUI();
 					} else {
-
 						String totalPriceVal1 = rightUserPanel[i].getTotalPriceL().getText();
 						String totalPriceVal2 = totalPriceVal1.replace("원", "");
 						String amoutVal1 = rightUserPanel[i].getAddAmountL().getText();
@@ -217,9 +204,7 @@ public class AdminMainGUI extends JFrame {
 							Flagment.UserLogout[i] = false;
 						}
 					}
-
 				}
-
 			}
 		}
 	}
@@ -263,7 +248,6 @@ public class AdminMainGUI extends JFrame {
 				}
 			}
 		}
-
 	}
 
 	class OrderThread extends Thread {
@@ -301,9 +285,6 @@ public class AdminMainGUI extends JFrame {
 					Flagment.UserOrder[i] = false;
 				}
 			}
-
 		} // orderThread 종료
-
 	}
-
 }
