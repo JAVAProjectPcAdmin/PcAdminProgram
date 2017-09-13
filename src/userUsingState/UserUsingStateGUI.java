@@ -32,7 +32,7 @@ import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
 
-	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb , IdLb;
+	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb, IdLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
@@ -83,12 +83,9 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-<<<<<<< HEAD
 
-=======
 		
 		
->>>>>>> cf7e77fe47e6f95026f4fb9397483e472806f936
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
 		IdLb = new JLabel(user.getUserID());
@@ -140,10 +137,7 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// ·Î±×¾Æ¿ô½Ã left¸ÞÀÎ¿¡ À¯Àú Á¤º¸Àü´Þ
 			@Override
-<<<<<<< HEAD
 			// ¾çÅÂÈì
-=======
->>>>>>> cf7e77fe47e6f95026f4fb9397483e472806f936
 			public void actionPerformed(ActionEvent e) {
 				try {
 					userclient.getSocket().close();
@@ -248,7 +242,7 @@ public class UserUsingStateGUI extends JFrame {
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
 			boolean timeflag = false;
 			while (true) {
-				if(logout) {
+				if (logout) {
 					System.out.println("·Î±×¾Æ¿ô : À¯Àú");
 					break;
 				}
@@ -270,8 +264,7 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-			}// while¹® Á¾·á
+			} // while¹® Á¾·á
 		}
 	}
 }
-
