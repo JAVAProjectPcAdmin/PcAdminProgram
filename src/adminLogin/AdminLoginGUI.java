@@ -27,6 +27,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import AdminServer.AdminServer;
+import ChattingServer.Server;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
@@ -132,7 +133,7 @@ public class AdminLoginGUI extends JFrame {
 		
 		setVisible(true);
 		
-		 new AdminServer();
+		new AdminServer();
 	}
 
 	// 관리자 로그인
