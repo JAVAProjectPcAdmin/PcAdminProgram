@@ -29,6 +29,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 	public ID_SearchGUI() {
 		setTitle("ID Search");
+		setUndecorated(true);
 		setLayout(null);
 		setLocation(400, 300);
 		setSize(400, 450);
@@ -103,8 +104,9 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		panel.add(cancleButton);
 		panel.add(checkButton);
 		panel.add(resultLabel);
+		
 		add(panel);
-
+		getContentPane().setBackground(Color.WHITE);
 		setVisible(true);
 	}
 
