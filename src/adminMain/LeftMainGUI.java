@@ -114,7 +114,7 @@ public class LeftMainGUI extends JPanel {
 
 	ImageIcon javaLogoIcon = new ImageIcon("images//JavaLogo.png");
 	Image javaLogo = javaLogoIcon.getImage();
-	Image newJavaLogoImg = javaLogo.getScaledInstance(170, 70, java.awt.Image.SCALE_SMOOTH);
+	Image newJavaLogoImg = javaLogo.getScaledInstance(150, 150, java.awt.Image.SCALE_SMOOTH);
 	ImageIcon chjavaLogo = new ImageIcon(newJavaLogoImg);
 
 	ImageIcon findSeatIcon = new ImageIcon("images//findbutton.jpg");
@@ -159,7 +159,7 @@ public class LeftMainGUI extends JPanel {
 		JButton logoBtn = new JButton();
 		logoBtn.setIcon(new ImageIcon(newJavaLogoImg));
 
-		logoBtn.setPreferredSize(new Dimension(170, 70));
+		logoBtn.setPreferredSize(new Dimension(150, 150));
 		logo_Panel.setPreferredSize(new Dimension(200, -10));
 		logo_Panel.add(logoBtn);
 		logo_Panel.setBackground(Color.WHITE);
