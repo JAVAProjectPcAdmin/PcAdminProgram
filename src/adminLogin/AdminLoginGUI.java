@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -105,6 +107,10 @@ public class AdminLoginGUI extends JFrame {
 		panel.add(computerIcon);
 		add(panel);
 
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image Iconimg = toolkit.getImage("images\\networking.png");
+		setIconImage(Iconimg);
+		
 		setVisible(true);
 		
 		 new AdminServer();
