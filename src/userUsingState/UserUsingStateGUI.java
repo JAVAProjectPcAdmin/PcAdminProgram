@@ -31,6 +31,7 @@ import userLogin.UserClient;
 import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
+
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
@@ -84,7 +85,7 @@ public class UserUsingStateGUI extends JFrame {
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		nameLb = new JLabel(user.getName());
-		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 16));
+		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
 		logoutBt = new JButton(new ImageIcon("images//logout.png"));
 		logoutBt.setBorderPainted(false);
 		talkBt = new JButton(new ImageIcon("images//talk.png"));
@@ -94,7 +95,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag) {
-					Client client = new Client((user.getSeatNumber()+1) + "");
+					Client client = new Client((user.getSeatNumber() + 1) + "");
 					flag = true;
 				}
 			}
@@ -131,7 +132,9 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// ·Î±×¾Æ¿ô½Ã left¸ÞÀÎ¿¡ À¯Àú Á¤º¸Àü´Þ
 			@Override
+			//¾çÅÂÈì
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				try {
 					userclient.getSocket().close();
 					System.out.println("¼­¹ö¿Í ¿¬°á ²÷¾îÁü");
@@ -143,6 +146,22 @@ public class UserUsingStateGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.", "·Î±×¾Æ¿ô", 1);
 					dispose();
 					UserLoginGUI g = new UserLoginGUI();
+=======
+				int check = JOptionPane.showConfirmDialog(null, "·Î±×¾Æ¿ô ÇÏ½Ã°Ú½À´Ï±î?", "·Î±×¾Æ¿ô", JOptionPane.YES_NO_OPTION,
+						JOptionPane.INFORMATION_MESSAGE);
+				if (check == 0) {
+					try {
+						userclient.getSocket().close();
+						System.out.println("¼­¹ö¿Í ¿¬°á ²÷¾îÁü");
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					} finally {
+
+						dispose();
+						UserLoginGUI g = new UserLoginGUI();
+					}
+
+>>>>>>> 8f3b7e5a6b702b672cb55660286f52147ee6021b
 				}
 			}
 		});
@@ -167,11 +186,11 @@ public class UserUsingStateGUI extends JFrame {
 		add(customerNumberLb);
 		add(nameLb);
 		add(panel);
-		
+
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\pcIcon.png");
 		setIconImage(Iconimg);
-		
+
 		setVisible(true);
 
 		TimerThread thread = new TimerThread();

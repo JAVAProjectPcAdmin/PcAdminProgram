@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import db.UserDao;
@@ -32,7 +31,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		setTitle("ID Search");
 		setLayout(null);
 		setLocation(400, 300);
-		setSize(400, 420);
+		setSize(400, 450);
 		setResizable(false);
 		setAlwaysOnTop(true);
 
@@ -40,7 +39,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 			searchImg = ImageIO.read(new File("images//Search.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		checkListener listener = new checkListener();
@@ -52,12 +50,12 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		searchIcon = new SearchIdPw();
 		searchLabel = new JLabel("ID √£±‚");
 		searchLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 30));
-		nameLabel = new JLabel("¿Ã∏ß");
-		nameLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
+		nameLabel = new JLabel("¿Ã ∏ß");
+		nameLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 18));
 		p_numberLabel = new JLabel("»ﬁ¥Î∆˘ π¯»£");
-		p_numberLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
+		p_numberLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 18));
 		emailLabel = new JLabel("¿Ã∏ﬁ¿œ ¡÷º“");
-		emailLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
+		emailLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 18));
 		resultLabel = new JLabel();
 		resultLabel.setFont(new Font("∏º¿∫ ∞ÌµÒ", Font.BOLD, 20));
 
@@ -70,23 +68,27 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		checkButton = new JButton(new ImageIcon("images//ok.png"));
 		checkButton.setFocusPainted(false);
 
-		searchIcon.setBounds(70, 20, 64, 64);
-		searchLabel.setBounds(160, 30, 200, 50);
-		nameLabel.setBounds(30, 140, 50, 50);
-		p_numberLabel.setBounds(30, 190, 200, 50);
-		emailLabel.setBounds(30, 240, 200, 50);
-		nameTf.setBounds(170, 150, 200, 30);
-		p_NumberTf.setBounds(170, 200, 200, 30);
-		emailTf.setBounds(170, 250, 200, 30);
-		cancleButton.setBounds(200, 340, 118, 28);
-		checkButton.setBounds(80, 340, 118, 28);
-		resultLabel.setBounds(80, 270, 300, 50);
+		searchIcon.setBounds(80, 40, 64, 64);
+		searchLabel.setBounds(170, 40, 200, 50);
+		
+		
+		nameLabel.setBounds(40, 147, 50, 30);
+		p_numberLabel.setBounds(40, 192, 200, 30);
+		emailLabel.setBounds(40, 237, 200, 30);
+		
+		nameTf.setBounds(170, 147, 170, 30);
+		p_NumberTf.setBounds(170, 192, 170, 30);
+		emailTf.setBounds(170, 237, 170, 30);
+		
+		checkButton.setBounds(90, 300, 100, 26);
+		cancleButton.setBounds(200, 300, 100, 26);
+		resultLabel.setBounds(70, 340, 300, 50);
+		
 		checkButton.addActionListener(listener);
 		cancleButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
@@ -117,7 +119,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			UserDao dao = new UserDao();
 			String id = dao.IdSearch(nameTf.getText(), emailTf.getText(), p_NumberTf.getText());
 
@@ -132,12 +133,8 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
-	public static void main(String[] args) {
-		new ID_SearchGUI();
-	}
 
 }

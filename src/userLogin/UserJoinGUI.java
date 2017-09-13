@@ -5,8 +5,14 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import db.UserDao;
 import db.UserVO;
@@ -27,12 +33,12 @@ public class UserJoinGUI extends JFrame {
 	private boolean pwCheckFlag = false;
 
 	public UserJoinGUI() {
-		joinLbl = new JLabel("회원가입");
-		idLbl = new JLabel("*  아 이 디");
-		nameLbl = new JLabel("*  이  름");
-		pwLbl = new JLabel("*  비밀번호");
-		pwConfirmLbl = new JLabel("*  비밀번호 확인");
-		regiNumLbl = new JLabel("*  주민번호");
+		joinLbl = new JLabel(new ImageIcon("images//joinuser.png"));
+		idLbl = new JLabel("   아 이 디");
+		nameLbl = new JLabel("   이  름");
+		pwLbl = new JLabel("   비밀번호");
+		pwConfirmLbl = new JLabel("   비밀번호 확인");
+		regiNumLbl = new JLabel("   주민번호");
 		phLbl = new JLabel("    전화번호");
 		mailLbl = new JLabel("    E-Mail");
 		addLbl = new JLabel("    주 소");
@@ -55,9 +61,9 @@ public class UserJoinGUI extends JFrame {
 		mailTx2 = new JTextField();
 		addTx = new JTextField();
 
-		idCheckBtn = new JButton("중복확인");
-		joinBtn = new JButton("회원가입");
-		cancelBtn = new JButton("취      소");
+		idCheckBtn = new JButton(new ImageIcon("images//adminfind.png"));
+		joinBtn = new JButton(new ImageIcon("images//adduser.png"));
+		cancelBtn = new JButton(new ImageIcon("images//usercancel.png"));
 
 		phCombo = new JComboBox();
 		for (int i = 0; i < phNum.length; i++) {
@@ -77,7 +83,7 @@ public class UserJoinGUI extends JFrame {
 
 		pwNoticeLbl.setEnabled(false);
 
-		joinLbl.setBounds(125, 30, 150, 50);
+		joinLbl.setBounds(70, 30, 250, 50);
 
 		// 아이디
 		add(idLbl);
