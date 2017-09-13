@@ -45,9 +45,9 @@ public class AdminMainGUI extends JFrame {
 		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
+			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
-
 			rightUserPanel[i].setVisible(true);
 			rightPanel.add(rightUserPanel[i]);
 		}
