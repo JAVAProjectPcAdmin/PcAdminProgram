@@ -212,7 +212,7 @@ public class AdminMainGUI extends JFrame {
 									System.out.println(temp[0]);
 									temp[1] = AdminServer.userlist.get(j).getUserID();
 									System.out.println(temp[1]);
-									temp[2] = AdminServer.userlist.get(j).getSeatNumber();
+									temp[2] = AdminServer.userlist.get(j).getSeatNumber()+1;
 									System.out.println(temp[2]);
 									temp[3] = AdminServer.userlist.get(j).getTotalPrice();
 									System.out.println(temp[3]);

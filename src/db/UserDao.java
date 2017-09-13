@@ -302,7 +302,6 @@ public class UserDao {
 
 	// 모든 정보
 	public List<UserVO> UserInfoList() {
-
 		ArrayList<UserVO> userList = new ArrayList<>();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
@@ -321,16 +320,12 @@ public class UserDao {
 				result.setPhone(rs.getString(6));
 				result.setEmailAddress(rs.getString(7));
 				result.setAddress(rs.getString(8));
-				result.setRegisterDate(rs.getString(9));
+				result.setRegisterDate(rs.getString(9).substring(0, 10));
 				result.setMemo(rs.getString(10));
 
 				userList.add(result);
-
 			}
-
-		} catch (
-
-		SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
