@@ -19,11 +19,7 @@ public class UserClient {
 	public UserClient() { // 로그인하면 관리자에게 유저의 정보를 전달함
 		this.user = UserLoginGUI.user;
 		try {
-<<<<<<< HEAD
 			socket = new Socket("70.12.115.53", 7777);	//관리자와 연결
-=======
-			socket = new Socket("70.12.115.60", 7777); // 관리자와 연결
->>>>>>> b88b7656577328e031891462b1bdd0d7f1e4b84e
 			System.out.println("서버랑 연결됬네?!");
 
 			oos = new ObjectOutputStream((socket.getOutputStream()));

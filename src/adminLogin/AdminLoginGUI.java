@@ -133,12 +133,8 @@ public class AdminLoginGUI extends JFrame {
 		
 		setVisible(true);
 		
-<<<<<<< HEAD
 		new AdminServer();
-=======
-		 new AdminServer();
 		 
->>>>>>> b88b7656577328e031891462b1bdd0d7f1e4b84e
 	}
 
 	// 관리자 로그인
