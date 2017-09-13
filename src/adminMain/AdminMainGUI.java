@@ -86,16 +86,14 @@ public class AdminMainGUI extends JFrame {
 				boolean findUser = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
-<<<<<<< HEAD
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
-=======
-					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText()) 
-							&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
-						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY,2)));
->>>>>>> 005a0603f7a92b2a66663b397193d00e4938d47b
-						rightUserPanel[i].setBackground(c);
-						findUser = true;
+						if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())
+								&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
+							rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+							rightUserPanel[i].setBackground(c);
+							findUser = true;
+						}
 					}
 				}
 				if (!findUser) {
@@ -164,7 +162,8 @@ public class AdminMainGUI extends JFrame {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
 					if (Flagment.UserLoginState[i]) { // 유저가 로그인했다고 서버에서 알림
-						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온 User 정보
+						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
+																							// User 정보
 						rightUserPanel[i].setUserPanel(user); // 패널에 로그인한 user로 셋팅
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
