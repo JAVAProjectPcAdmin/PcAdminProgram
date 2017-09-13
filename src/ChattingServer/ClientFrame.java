@@ -45,16 +45,12 @@ public class ClientFrame extends JFrame {
 
 		setTitle(who);
 		setSize(300, 400);
-<<<<<<< HEAD
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-=======
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\chatting.png");
 		setIconImage(Iconimg);
 		
->>>>>>> 1e9b811e497d76d6745ba30cda46464a4a4db8f5
 		setVisible(true);
 
 		tt t =new tt(socket, textArea); 
