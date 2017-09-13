@@ -24,6 +24,7 @@ import javax.swing.border.TitledBorder;
 
 import AdminServer.AdminServer;
 import AdminServer.User;
+import ChattingServer.Server;
 import db.UserDao;
 import flagment.Flagment;
 import orderFood.AdminOrderGUI;
@@ -43,7 +44,7 @@ public class AdminMainGUI extends JFrame {
 		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
-			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
+			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i + 1));
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightPanel.add(rightUserPanel[i]);
 		}
@@ -62,11 +63,11 @@ public class AdminMainGUI extends JFrame {
 
 		setLayout(null);
 		setSize(1280, 924);
-		
+
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\networking.png");
 		setIconImage(Iconimg);
-		
+
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
@@ -85,11 +86,14 @@ public class AdminMainGUI extends JFrame {
 				boolean findUser = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
-					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText()) 
-							&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
-						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY,2)));
-						rightUserPanel[i].setBackground(c);
-						findUser = true;
+					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
+						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+						if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())
+								&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
+							rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+							rightUserPanel[i].setBackground(c);
+							findUser = true;
+						}
 					}
 				}
 				if (!findUser) {
@@ -103,7 +107,6 @@ public class AdminMainGUI extends JFrame {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 	class ClickPanelListener extends MouseAdapter {
 
@@ -150,35 +153,36 @@ public class AdminMainGUI extends JFrame {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	class UserThread extends Thread {	//좌석에 패널을 관리함
-										//유저가 로그인을 하거나 로그아웃을 할떄 알림을 받아 실행
+	class UserThread extends Thread { // 좌석에 패널을 관리함
+										// 유저가 로그인을 하거나 로그아웃을 할떄 알림을 받아 실행
 		User user;
 
 		@Override
 		public void run() {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
-					if (Flagment.UserLoginState[i]) {	//유저가 로그인했다고 서버에서 알림 
-						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온 User 정보
+					if (Flagment.UserLoginState[i]) { // 유저가 로그인했다고 서버에서 알림
+						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
+																							// User 정보
 						rightUserPanel[i].setUserPanel(user); // 패널에 로그인한 user로 셋팅
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 증가
 						TimerThread timerThread = new TimerThread(user, i);
-						timerThread.start();	//실시간으로 화면에 초가 올라가는것을 보여주기 위한 쓰레드
+						timerThread.start(); // 실시간으로 화면에 초가 올라가는것을 보여주기 위한 쓰레드
 						OrderThread orderThread = new OrderThread(user, i);
-						orderThread.start();	//유저 컴퓨터에서 주문했을떄 알림 받기 위한 쓰레드 
+						orderThread.start(); // 유저 컴퓨터에서 주문했을떄 알림 받기 위한 쓰레드
 
-						Flagment.UserLoginState[i] = false;	//위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리 
+						Flagment.UserLoginState[i] = false; // 위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리
 					}
-					if (Flagment.UserLogout[i]) {	//User가 로그아웃했다고 서버에서 알림
+					if (Flagment.UserLogout[i]) { // User가 로그아웃했다고 서버에서 알림
 
-						//rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
+						// rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
 
 						rightUserPanel[i].setLogoutPanel();
 						rightUserPanel[i].updateUI();
-						
+
 						LeftMainGUI.countSeat--;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 감소
@@ -241,7 +245,7 @@ public class AdminMainGUI extends JFrame {
 				if (useTime.substring(6).equals("01")) {
 					timeflag = false; // 00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함
 				}
-				if(Flagment.UserLogout[i]) {
+				if (Flagment.UserLogout[i]) {
 					System.out.println("로그아웃 : 메인");
 					break;
 				}
