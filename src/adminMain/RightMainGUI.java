@@ -72,8 +72,8 @@ public class RightMainGUI extends JPanel {
 		userNumberL = new JLabel();
 		userIDL = new JLabel();
 		useTimeL = new JLabel();
-		totalPriceL = new JLabel("0¿ø");
-		addAmountL = new JLabel("0¿ø");
+		totalPriceL = new JLabel();
+		addAmountL = new JLabel();
 
 		setLayout(null);
 		setBorder(new TitledBorder(new LineBorder(Color.black)));
@@ -105,6 +105,7 @@ public class RightMainGUI extends JPanel {
 		addAmountL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
+		setBackground(Color.WHITE);
 		add(userNameL);
 		add(usePCNumberL);
 		add(userNumberL);

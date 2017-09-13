@@ -34,7 +34,7 @@ public class AdminServer {
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
-				if (!(socket.getInetAddress() + "").equals("/70.12.115.54")) {	
+				if (!(socket.getInetAddress() + "").equals("/70.12.115.53")) {	
 					UserThread t = new UserThread(socket);
 					threadList.add(t);
 					t.start();
