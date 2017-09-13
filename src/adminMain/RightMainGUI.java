@@ -104,9 +104,8 @@ public class RightMainGUI extends JPanel {
 		addAmountL.setHorizontalAlignment(JLabel.CENTER);
 		totalPriceL.setFont(new Font("¸¼Àº °íµñ", Font.PLAIN, 15));
 
-		Color background = new Color(253, 255, 223);
-		setBorder(new TitledBorder(new LineBorder(Color.BLACK, 3)));
-		setBackground(background);
+		setBorder(new TitledBorder(new LineBorder(Color.gray)));
+		setBackground(Color.WHITE);
 		add(userNameL);
 		add(usePCNumberL);
 		add(userNumberL);
