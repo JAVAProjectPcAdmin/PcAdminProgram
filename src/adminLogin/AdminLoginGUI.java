@@ -107,8 +107,7 @@ public class AdminLoginGUI extends JFrame {
 
 		setVisible(true);
 		
-		
-
+		 new AdminServer();
 	}
 
 	// 관리자 로그인

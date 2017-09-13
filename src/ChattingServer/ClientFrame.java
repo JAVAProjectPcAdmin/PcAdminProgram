@@ -43,7 +43,7 @@ public class ClientFrame extends JFrame {
 
 		setTitle(who);
 		setSize(300, 400);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setVisible(true);
 
 		tt t =new tt(socket, textArea); 

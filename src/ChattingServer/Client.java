@@ -38,9 +38,7 @@ public class Client {
 			System.out.println("연결이 끊어졌습니다.");
 		}
 	}
-	public static void main(String[] args) {
-		new Client("wodls");
-	}
+
 }   
 //////////////////////////////////////////
   

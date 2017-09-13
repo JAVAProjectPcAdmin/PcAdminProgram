@@ -27,27 +27,23 @@ import flagment.Flagment;
 import orderFood.AdminOrderGUI;
 
 public class AdminMainGUI extends JFrame {
-	private JPopupMenu popup;
 	private LeftMainGUI lmp = new LeftMainGUI(); //
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private JPanel rightPanel = new JPanel();
 	public static UserThread isUserThread;
 	TimerThread timerThread;
 	OrderThread orderThread;
-	List<Thread> threadlist = new ArrayList<>();
 	int i;
 	// private
 
 	UserDao userDao = new UserDao();
 
 	public AdminMainGUI() {
-		System.out.println("메인 생성자 1");
 		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
-			rightUserPanel[i].addMouseListener(new PopupListener());
 			rightUserPanel[i].setVisible(true);
 			rightPanel.add(rightUserPanel[i]);
 		}
@@ -63,14 +59,6 @@ public class AdminMainGUI extends JFrame {
 		add(rightPanel);
 		add(lmp);
 		setResizable(false);
-		///////////////////////////////////////////////////////////////////////////////////////////////////////
-		popup = new JPopupMenu();
-		JMenuItem menuChat = new JMenuItem("대화걸기");
-		JMenuItem menuLogout = new JMenuItem("로그아웃");
-		popup.add(menuChat);
-		popup.add(menuLogout);
-		// menuChat.addActionListener(this);
-		System.out.println("메인 생성자 2");
 
 		setLayout(null);
 		setSize(1280, 924);
@@ -78,8 +66,7 @@ public class AdminMainGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
-		System.out.println("메인 생성자 3");
-
+		
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -91,20 +78,17 @@ public class AdminMainGUI extends JFrame {
 			System.out.println((lmp.getInputSeat_Text()).getText());
 			JButton selected = (JButton) e.getSource();
 			if (selected == lmp.getFindSeatBtn()) {
-				boolean flag = false;
+				boolean findUser = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
-
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY,2)));
-
 						rightUserPanel[i].setBackground(c);
-
-						flag = true;
+						findUser = true;
 					}
 
 				}
-				if (flag == false) {
+				if (!findUser) {
 					JOptionPane.showMessageDialog(null, "찾으시는 회원이 없습니다.", "자리 검색 결과", JOptionPane.WARNING_MESSAGE);
 					for (int i = 0; i < rightUserPanel.length; i++) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
@@ -118,25 +102,6 @@ public class AdminMainGUI extends JFrame {
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	class PopupListener extends MouseAdapter {
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-
-			showPopup(e);
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			showPopup(e);
-		}
-
-		private void showPopup(MouseEvent e) {
-			if (e.isPopupTrigger()) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		}
-	}
 
 	class ClickPanelListener extends MouseAdapter {
 
@@ -172,37 +137,30 @@ public class AdminMainGUI extends JFrame {
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	class UserThread extends Thread {
+	class UserThread extends Thread {	//좌석에 패널을 관리함
+										//유저가 로그인을 하거나 로그아웃을 할떄 알림을 받아 실행
 		User user;
-
-		public UserThread() {
-		}
 
 		@Override
 		public void run() {
 			while (true) {
 				for (int i = 0; i < 25; i++) {
-					if (Flagment.UserLoginState[i]) {
-						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온
-																							// user
-						rightUserPanel[i].setUserPanel(user); // 패널에 현재 user로 셋팅
-						rightUserPanel[i].setVisible(true);
+					if (Flagment.UserLoginState[i]) {	//유저가 로그인했다고 서버에서 알림 
+						user = AdminServer.userlist.get(AdminServer.userlist.size() - 1);// userlist에 가장 최근데 들어온 User 정보
+						rightUserPanel[i].setUserPanel(user); // 패널에 로그인한 user로 셋팅
 						rightUserPanel[i].updateUI();
 						LeftMainGUI.countSeat++;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 증가
 						TimerThread timerThread = new TimerThread(user, i);
-						threadlist.add(timerThread);
-						timerThread.start();
+						timerThread.start();	//실시간으로 화면에 초가 올라가는것을 보여주기 위한 쓰레드
 						OrderThread orderThread = new OrderThread(user, i);
-						threadlist.add(orderThread);
-						orderThread.start();
+						orderThread.start();	//유저 컴퓨터에서 주문했을떄 알림 받기 위한 쓰레드 
 
-						Flagment.UserLoginState[i] = false;
+						Flagment.UserLoginState[i] = false;	//위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리 
 					}
-					if (Flagment.UserLogout[i]) {
-						System.out.println("로그아웃 했다요!!");
-						rightUserPanel[i].setVisible(false);
+					if (Flagment.UserLogout[i]) {	//User가 로그아웃했다고 서버에서 알림
+						rightUserPanel[i].setVisible(false);	
 						LeftMainGUI.countSeat--;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 증가
