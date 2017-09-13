@@ -87,18 +87,18 @@ public class AdminMainGUI extends JFrame {
 	private class FindSeatActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-
+			Color c = new Color(186, 194, 255);
 			System.out.println((lmp.getInputSeat_Text()).getText());
 			JButton selected = (JButton) e.getSource();
 			if (selected == lmp.getFindSeatBtn()) {
 				boolean flag = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
-					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
+					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
 
-						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.RED)));
+						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY,2)));
 
-						rightUserPanel[i].setBackground(Color.orange);
+						rightUserPanel[i].setBackground(c);
 
 						flag = true;
 					}
@@ -107,7 +107,7 @@ public class AdminMainGUI extends JFrame {
 				if (flag == false) {
 					JOptionPane.showMessageDialog(null, "찾으시는 회원이 없습니다.", "자리 검색 결과", JOptionPane.WARNING_MESSAGE);
 					for (int i = 0; i < rightUserPanel.length; i++) {
-						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
+						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 					}
 
 				}
