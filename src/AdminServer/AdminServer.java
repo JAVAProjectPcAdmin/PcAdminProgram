@@ -102,8 +102,7 @@ public class AdminServer {
 		threadList.remove(t);
 	}	//로그아웃하면 쓰레드도 종료
 
-	public static void main(String[] args) {
-		new AdminServer();
-	}
-	
+//	public static void main(String[] args) {
+//		new AdminServer();
+//	}
 }

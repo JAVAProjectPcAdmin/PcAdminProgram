@@ -84,7 +84,7 @@ public class AdminMainGUI extends JFrame {
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
 
-		AdminServer adminServer = new AdminServer();
+		
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -24,6 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
+import AdminServer.AdminServer;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
@@ -122,8 +123,9 @@ public class AdminLoginGUI extends JFrame {
 
 				if (adminId.equals(adminDao.AdminIdSelect(adminDao.AdminIdSelect(adminId)))) {
 					if (adminPw.equals(adminDao.AdminPWSelect(adminId))) {
-						AdminMainGUI adminMain = new AdminMainGUI();
 						dispose();
+						AdminServer adminServer = new AdminServer();
+						AdminMainGUI adminMain = new AdminMainGUI();
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
 					}
