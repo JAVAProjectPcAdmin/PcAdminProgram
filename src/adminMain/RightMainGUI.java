@@ -120,6 +120,7 @@ public class RightMainGUI extends JPanel {
 		userNameL.setText(user.getName());
 		userNumberL.setText(user.getUserNumber());
 		addAmountL.setText("0원");
+		totalPriceL.setText("0원");
 		userIDL.setText(user.getUserID());
 		usePCNumberL.setText(user.getSeatNumber()+1+"");
 	} //패널에 정보 세팅

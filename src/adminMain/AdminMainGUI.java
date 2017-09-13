@@ -2,6 +2,8 @@ package adminMain;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -62,6 +64,11 @@ public class AdminMainGUI extends JFrame {
 
 		setLayout(null);
 		setSize(1280, 924);
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image Iconimg = toolkit.getImage("images\\networking.png");
+		setIconImage(Iconimg);
+		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
@@ -126,7 +133,7 @@ public class AdminMainGUI extends JFrame {
 					lmp.infoModel2.setValueAt(rightUserPanel[i].getUseTimeL().getText(), 0, 2); // 사용시간
 					lmp.infoTable2.updateUI();
 
-					lmp.infoModel3.setValueAt((Integer.parseInt(totalPriceVal2) - Integer.parseInt(amoutVal2)), 0, 0); // PC사용금액
+					lmp.infoModel3.setValueAt((Integer.parseInt(totalPriceVal2) - Integer.parseInt(amoutVal2)) + "원", 0, 0); // PC사용금액
 					lmp.infoModel3.setValueAt(amoutVal1, 0, 1); // 음식주문금액
 					lmp.infoModel3.setValueAt(totalPriceVal1, 0, 2); // 총금액
 					lmp.infoTable3.updateUI();
@@ -160,7 +167,8 @@ public class AdminMainGUI extends JFrame {
 						Flagment.UserLoginState[i] = false;	//위 자리에서 위 작업을 한번만 실행시키기 위해 false 처리 
 					}
 					if (Flagment.UserLogout[i]) {	//User가 로그아웃했다고 서버에서 알림
-						rightUserPanel[i].setVisible(false);	
+						//rightUserPanel[i].setVisible(false);
+						rightUserPanel[i] = new RightMainGUI();
 						LeftMainGUI.countSeat--;
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 증가
