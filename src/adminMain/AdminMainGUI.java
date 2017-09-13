@@ -95,12 +95,11 @@ public class AdminMainGUI extends JFrame {
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
-<<<<<<< HEAD
+
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.RED)));
 
-=======
 						rightUserPanel[i].setBackground(Color.orange);
->>>>>>> dc1a14ae63b7810e6b40d583718008849437591c
+
 						flag = true;
 					}
 
