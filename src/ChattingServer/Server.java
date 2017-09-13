@@ -25,11 +25,10 @@ public class Server {
 				System.out.println("기다리는중....");
 			socket= serverSocket.accept(); //기다림  - 연결되면 socket에 들어감 
 			System.out.println("클라이언트 요청 들어옴 ");
-			ClientFrame c= new ClientFrame(socket,who);
+			new ServerFrame(socket,who);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("연결이 끊어졌습니다.");
 		}
 		
 	}

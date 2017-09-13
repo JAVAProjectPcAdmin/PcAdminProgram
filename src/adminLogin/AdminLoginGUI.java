@@ -106,6 +106,8 @@ public class AdminLoginGUI extends JFrame {
 		add(panel);
 
 		setVisible(true);
+		
+		
 
 	}
 
@@ -174,5 +176,8 @@ public class AdminLoginGUI extends JFrame {
 			g.drawImage(computerImg, 0, 0, null);
 		}
 
+	}
+	public static void main(String[] args) {
+		new AdminLoginGUI();
 	}
 }

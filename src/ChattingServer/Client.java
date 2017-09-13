@@ -28,18 +28,19 @@ public class Client {
 		ClientFrame f =null;
 		try {
 		
-			socket = new Socket("70.12.115.54", 7788);
+			socket = new Socket("70.12.115.59", 7788);
 			System.out.println("서버랑 연결됬네?!");
 			
 			f = new ClientFrame(socket,who);
 			
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("연결이 끊어졌습니다.");
 		}
 	}
-	
+	public static void main(String[] args) {
+		new Client("wodls");
+	}
 }   
 //////////////////////////////////////////
   
