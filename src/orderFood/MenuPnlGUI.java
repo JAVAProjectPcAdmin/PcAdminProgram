@@ -6,14 +6,12 @@ import java.awt.Image;
 
 import javax.swing.*;
 
-//size 200, 260
-
 public class MenuPnlGUI extends JPanel {
 	public JButton upBtn, downBtn;
 	public JLabel countLbl, menuImgLbl;
 	public int count = 0;
 	
-	
+	//size 200, 260
 	public MenuPnlGUI(String menuImg) {
 		Icon upBtnImg = new ImageIcon("images//up.png");
 		Icon downbtnImg = new ImageIcon("images//down.png");
