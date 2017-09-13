@@ -16,18 +16,22 @@ public class UserClient {
 		return socket;
 	}
 
-	public UserClient() {	//로그인하면 관리자에게 유저의 정보를 전달함
-		this.user= UserLoginGUI.user;
+	public UserClient() { // 로그인하면 관리자에게 유저의 정보를 전달함
+		this.user = UserLoginGUI.user;
 		try {
+<<<<<<< HEAD
 			socket = new Socket("70.12.115.53", 7777);	//관리자와 연결
+=======
+			socket = new Socket("70.12.115.60", 7777); // 관리자와 연결
+>>>>>>> b88b7656577328e031891462b1bdd0d7f1e4b84e
 			System.out.println("서버랑 연결됬네?!");
 
 			oos = new ObjectOutputStream((socket.getOutputStream()));
 
 			oos.writeObject(user);
 			oos.flush();
-			Thread.sleep(1000);	//로그인한 유저의 정보를 객체에 통쨰로 담아서 넘김
-			
+			Thread.sleep(1000); // 로그인한 유저의 정보를 객체에 통쨰로 담아서 넘김
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -35,7 +39,7 @@ public class UserClient {
 		}
 	}
 
-	public void orderTOAdmin() {	//주문정보 (새로운정보)를 객체에 담아서 다시 넘김
+	public void orderTOAdmin() { // 주문정보 (새로운정보)를 객체에 담아서 다시 넘김
 		try {
 
 			oos = new ObjectOutputStream((socket.getOutputStream()));
@@ -52,5 +56,5 @@ public class UserClient {
 
 	public void setUser(User user) {
 		this.user = user;
-	}	//외부에서 업데이트 된 새로운 정보를 받아오기 위해 
+	} // 외부에서 업데이트 된 새로운 정보를 받아오기 위해
 }

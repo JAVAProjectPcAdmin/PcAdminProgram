@@ -163,6 +163,7 @@ public class UserJoinGUI extends JFrame {
 		cancelBtn.setBounds(200, 450, 90, 30);
 		cancelBtn.addActionListener(listener);
 
+		setUndecorated(true);
 		getContentPane().setBackground(Color.WHITE);
 		setTitle("회원가입");
 		setSize(400, 560);

@@ -133,7 +133,12 @@ public class AdminLoginGUI extends JFrame {
 		
 		setVisible(true);
 		
+<<<<<<< HEAD
 		new AdminServer();
+=======
+		 new AdminServer();
+		 
+>>>>>>> b88b7656577328e031891462b1bdd0d7f1e4b84e
 	}
 
 	// 관리자 로그인
@@ -152,6 +157,7 @@ public class AdminLoginGUI extends JFrame {
 					if (adminPw.equals(adminDao.AdminPWSelect(adminId))) {
 						dispose();
 						new AdminMainGUI();
+					
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
 					}
