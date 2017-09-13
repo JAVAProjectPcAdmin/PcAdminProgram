@@ -39,6 +39,11 @@ public class AdminLoginGUI extends JFrame {
 	private JTextField idTf;
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
+	
+	ImageIcon exitIcon = new ImageIcon("images//exit.png");
+	Image exitButton = exitIcon.getImage();
+	Image newExitButtonImg = exitButton.getScaledInstance(25, 23, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon chExitButton = new ImageIcon(newExitButtonImg);
 
 	public AdminLoginGUI() {
 		setLocation(350, 350);
@@ -85,13 +90,13 @@ public class AdminLoginGUI extends JFrame {
 		setButton.setFocusPainted(false);
 		setButton.addActionListener(new adminSetPwListener());
 		
-		outButton = new JButton(new ImageIcon("images//cancle.png"));
+		outButton = new JButton(chExitButton);
 		outButton.setFocusPainted(false);
+		outButton.setBorderPainted(false);
 		outButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
@@ -107,7 +112,7 @@ public class AdminLoginGUI extends JFrame {
 		loginButton.setBounds(250, 230, 90, 27);
 		registerButton.setBounds(350, 230, 90, 27);
 		setButton.setBounds(450, 230, 90, 27);
-		outButton.setBounds(450, 260, 90, 24);
+		outButton.setBounds(565, 15, 23, 21);
 		
 		panel.add(outButton);
 		panel.add(loginButton);
