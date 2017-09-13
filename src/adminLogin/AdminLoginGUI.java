@@ -3,8 +3,6 @@ package adminLogin;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -14,7 +12,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,7 +24,6 @@ import javax.swing.border.TitledBorder;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
-import db.UserDao;
 
 public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;

@@ -6,17 +6,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -84,7 +79,8 @@ public class AdminMainGUI extends JFrame {
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
 
-		AdminServer adminServer = new AdminServer();
+		System.out.println("???");
+//		AdminServer adminServer = new AdminServer();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -292,7 +288,6 @@ public class AdminMainGUI extends JFrame {
 				try {
 					Thread.sleep(10);
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if (Flagment.UserOrder[i]) {// 여기 안들어와....
@@ -314,5 +309,7 @@ public class AdminMainGUI extends JFrame {
 			}
 
 		} // orderThread 종료
+		
 	}
+	
 }

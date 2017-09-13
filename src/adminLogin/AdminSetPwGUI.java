@@ -3,7 +3,6 @@ package adminLogin;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -22,11 +21,6 @@ import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import adminLogin.AdminLoginGUI.LoginListener;
-import adminLogin.AdminLoginGUI.adminIcon;
-import adminLogin.AdminLoginGUI.adminSetPwListener;
-import adminLogin.AdminLoginGUI.computerIcon;
-import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
 
