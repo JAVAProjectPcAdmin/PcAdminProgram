@@ -31,6 +31,7 @@ import userLogin.UserClient;
 import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
+	
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;

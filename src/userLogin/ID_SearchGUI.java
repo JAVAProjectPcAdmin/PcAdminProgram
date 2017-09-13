@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import db.UserDao;
@@ -40,7 +39,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 			searchImg = ImageIO.read(new File("images//Search.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		checkListener listener = new checkListener();
@@ -91,7 +89,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
@@ -122,7 +119,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			UserDao dao = new UserDao();
 			String id = dao.IdSearch(nameTf.getText(), emailTf.getText(), p_NumberTf.getText());
 
@@ -137,12 +133,8 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
-	public static void main(String[] args) {
-		new ID_SearchGUI();
-	}
 
 }

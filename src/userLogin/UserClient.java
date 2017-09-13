@@ -29,10 +29,8 @@ public class UserClient {
 			Thread.sleep(1000);	//로그인한 유저의 정보를 객체에 통쨰로 담아서 넘김
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -45,10 +43,8 @@ public class UserClient {
 			Thread.sleep(500);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

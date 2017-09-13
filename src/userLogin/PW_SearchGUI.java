@@ -41,7 +41,6 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 			searchImg = ImageIO.read(new File("images//Search.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		checkListener listener = new checkListener();
@@ -90,7 +89,6 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				dispose();
 			}
 		});
@@ -115,7 +113,6 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 			UserDao dao = new UserDao();
 			String pw = dao.PwSearch(idTf.getText(), residentTf.getText() + new String(residentPf.getPassword()));
 
@@ -137,11 +134,7 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 
-	public static void main(String[] args) {
-		new PW_SearchGUI();
-	}
 }

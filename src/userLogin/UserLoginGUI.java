@@ -3,8 +3,6 @@ package userLogin;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -14,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.function.LongToIntFunction;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -29,14 +26,9 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
-import db.UserDao;
-import db.UserVO;
-
-import userUsingState.UserUsingStateGUI;
-
-import userUsingState.UserUsingStateGUI;
-
 import AdminServer.User;
+import db.UserDao;
+import userUsingState.UserUsingStateGUI;
 
 public class UserLoginGUI extends JFrame {
 	private JPanel panel, pcNumPanel, plzLogin, padIcon;
@@ -49,10 +41,7 @@ public class UserLoginGUI extends JFrame {
 	String myIp = null;
 	int seatNumber;
 	UserDao dao = new UserDao();
-	
-	
-	
-	
+
 	public UserLoginGUI() {
 		setSize(1280, 1024);
 		setLayout(null);
@@ -78,16 +67,15 @@ public class UserLoginGUI extends JFrame {
 		pcNumPanel.setBackground(Color.WHITE);
 		pcNumPanel.setLayout(null);
 		plzLogin = new PlzLogin();
-		
-		
-		//myip
+
+		// myip
 		try {
 			myIp = InetAddress.getLocalHost().getHostAddress();
-			
+
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
 		}
-		seatNumber= dao.SeatNumSelect(myIp);
+		seatNumber = dao.SeatNumSelect(myIp);
 
 		pwLabel = new JLabel("Password");
 		pwLabel.setFont(new Font("맑은 고딕", Font.BOLD, 22));
@@ -95,7 +83,7 @@ public class UserLoginGUI extends JFrame {
 		idLabel.setFont(new Font("맑은 고딕", Font.BOLD, 22));
 		nonMembersLabel = new JLabel("비회원");
 		nonMembersLabel.setFont(new Font("맑은 고딕", Font.BOLD, 22));
-		pcNumLabel = new JLabel((seatNumber+1)+"");
+		pcNumLabel = new JLabel((seatNumber + 1) + "");
 		pcNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		pcNumLabel.setFont(new Font("맑은 고딕", Font.BOLD, 150));
 		idTf = new JTextField();
@@ -130,7 +118,6 @@ public class UserLoginGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				UserJoinGUI join = new UserJoinGUI();
 			}
 		});
@@ -152,7 +139,6 @@ public class UserLoginGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				PW_SearchGUI search = new PW_SearchGUI();
 			}
 		});
@@ -175,9 +161,9 @@ public class UserLoginGUI extends JFrame {
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\pcIcon.png");
 		setIconImage(Iconimg);
-		
+
 		getContentPane().setBackground(Color.WHITE);
-		
+
 		setVisible(true);
 	}
 
@@ -185,27 +171,22 @@ public class UserLoginGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			
 
 			String name = null;
-			
-		
-			
-			
-			
+
 			if (idTf.getText().length() > 0) {
 
 				int result = dao.UserLoginCheck(idTf.getText(), new String(pwTf.getPassword()));
 				if (result == 1) {
 					System.out.println("로그인 성공");
-					name=dao.UserNameSelect(idTf.getText());
+					name = dao.UserNameSelect(idTf.getText());
 					user = new User(name);
-					user.setUserNumber(dao.UserNumberSelect(idTf.getText())+"");
+					user.setUserNumber(dao.UserNumberSelect(idTf.getText()) + "");
 					user.setUserID(idTf.getText());
 					user.setBirthYear(dao.UserBirthSelect(idTf.getText()));
-					
+
 					user.setSeatNumber(seatNumber);
-					
+
 					UserClient userclient = new UserClient();
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI(userclient);
@@ -216,7 +197,7 @@ public class UserLoginGUI extends JFrame {
 					System.out.println("아이디가 없습니다.");
 					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
 				}
-			} else if (nonMemberTf.getText().length() > 0) {	//비회원
+			} else if (nonMemberTf.getText().length() > 0) { // 비회원
 				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
 				if (result == 1) {
 					System.out.println("로그인 성공");
@@ -227,7 +208,7 @@ public class UserLoginGUI extends JFrame {
 					user.setSeatNumber(seatNumber);
 					UserClient userclient = new UserClient();
 					dispose();
-					UserUsingStateGUI uus = new UserUsingStateGUI( userclient);
+					UserUsingStateGUI uus = new UserUsingStateGUI(userclient);
 				} else if (result == 0) {
 					System.out.println("사용중인 번호입니다.");
 					JOptionPane.showMessageDialog(null, "사용중인 번호.", "오류", JOptionPane.OK_OPTION);
