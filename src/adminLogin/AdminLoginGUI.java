@@ -27,6 +27,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import AdminServer.AdminServer;
+import ChattingServer.Server;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
@@ -128,6 +129,7 @@ public class AdminLoginGUI extends JFrame {
 		setVisible(true);
 		
 		 new AdminServer();
+		 
 	}
 
 	// 관리자 로그인
@@ -146,6 +148,7 @@ public class AdminLoginGUI extends JFrame {
 					if (adminPw.equals(adminDao.AdminPWSelect(adminId))) {
 						dispose();
 						new AdminMainGUI();
+					
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
 					}
