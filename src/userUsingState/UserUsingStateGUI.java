@@ -85,7 +85,7 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
 		informationLb = new JLabel("요금정보");
 		informationLb.setFont(new Font("맑은 고딕", Font.BOLD, 13));
-		
+
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("맑은 고딕", Font.BOLD, 19));
 		logoutBt = new JButton(new ImageIcon("images//logout.png"));
@@ -134,10 +134,11 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
-			//양태흠
+			// 양태흠
 			public void actionPerformed(ActionEvent e) {
 				int check = JOptionPane.showConfirmDialog(null, "로그아웃 하시겠습니까?", "로그아웃", JOptionPane.YES_NO_OPTION,
 						JOptionPane.INFORMATION_MESSAGE);
+
 				if (check == 0) {
 					try {
 						userclient.getSocket().close();
