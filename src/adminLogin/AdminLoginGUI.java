@@ -35,18 +35,19 @@ import db.UserDao;
 public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;
 	private JLabel idLabel, pwLabel;
-	private JButton loginButton, setButton, registerButton;
+	private JButton loginButton, setButton, registerButton,outButton;
 	private JTextField idTf;
 	private JPasswordField pwTf;
 	BufferedImage adminLoginImg, computerImg = null;
 
 	public AdminLoginGUI() {
-		setLocation(350, 250);
+		setLocation(350, 350);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setSize(600, 300);
 		setTitle("Admin Login");
+		setUndecorated(true);
 
 		try {
 			adminLoginImg = ImageIO.read(new File("images//adminlogin.png"));
@@ -83,6 +84,17 @@ public class AdminLoginGUI extends JFrame {
 		setButton = new JButton(new ImageIcon("images//adminbt.png"));
 		setButton.setFocusPainted(false);
 		setButton.addActionListener(new adminSetPwListener());
+		
+		outButton = new JButton(new ImageIcon("images//cancle.png"));
+		outButton.setFocusPainted(false);
+		outButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				dispose();
+			}
+		});
 
 		panel.setBounds(0, 0, 600, 300);
 		idTf.setBounds(320, 140, 250, 30);
@@ -91,11 +103,13 @@ public class AdminLoginGUI extends JFrame {
 		pwLabel.setBounds(200, 170, 200, 50);
 		adminIcon.setBounds(180, 60, 328, 50);
 		computerIcon.setBounds(70, 50, 97, 70);
-
+		
 		loginButton.setBounds(250, 230, 90, 27);
 		registerButton.setBounds(350, 230, 90, 27);
 		setButton.setBounds(450, 230, 90, 27);
-
+		outButton.setBounds(450, 260, 90, 24);
+		
+		panel.add(outButton);
 		panel.add(loginButton);
 		panel.add(registerButton);
 		panel.add(setButton);
