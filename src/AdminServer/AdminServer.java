@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import adminLogin.AdminLoginGUI;
 import adminMain.AdminMainGUI;
 import adminMain.LeftMainGUI;
 import flagment.Flagment;
@@ -22,10 +23,6 @@ public class AdminServer {
 	
 	LeftMainGUI lmGui;
 
-	public static void main(String[] args) {
-		new AdminServer();
-	}
-	
 	public AdminServer() {
 		System.out.println("서버 켜짐");
 		threadList = new ArrayList<>();
@@ -107,7 +104,8 @@ public class AdminServer {
 		threadList.remove(t);
 	}	//로그아웃하면 쓰레드도 종료
 
-//	public static void main(String[] args) {
-//		new AdminServer();
-//	}
+	public static void main(String[] args) {
+		new AdminLoginGUI();
+		new AdminServer();
+	}
 }

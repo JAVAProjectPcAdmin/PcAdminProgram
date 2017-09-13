@@ -39,12 +39,8 @@ public class AdminMainGUI extends JFrame {
 	// private
 
 	UserDao userDao = new UserDao();
-
-	public static void main(String[] args) {
-		new AdminMainGUI();
-	}
-	
 	public AdminMainGUI() {
+		System.out.println("메인 생성자 1");
 		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
@@ -73,6 +69,7 @@ public class AdminMainGUI extends JFrame {
 		popup.add(menuChat);
 		popup.add(menuLogout);
 		// menuChat.addActionListener(this);
+		System.out.println("메인 생성자 2");
 
 		setLayout(null);
 		setSize(1280, 924);
@@ -80,8 +77,9 @@ public class AdminMainGUI extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
-
-		AdminServer adminServer = new AdminServer();
+		System.out.println("메인 생성자 3");
+		
+		
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
