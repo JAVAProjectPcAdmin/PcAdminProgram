@@ -67,7 +67,6 @@ public class UserUsingStateGUI extends JFrame {
 		try {
 			panel = new JPanelWithBackground("images//graypanel.png");
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
@@ -137,7 +136,6 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
-			//양태흠
 			public void actionPerformed(ActionEvent e) {
 				try {
 					userclient.getSocket().close();
