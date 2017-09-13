@@ -124,7 +124,7 @@ public class AdminLoginGUI extends JFrame {
 				if (adminId.equals(adminDao.AdminIdSelect(adminDao.AdminIdSelect(adminId)))) {
 					if (adminPw.equals(adminDao.AdminPWSelect(adminId))) {
 						dispose();
-						new AdminMainGUI();
+						AdminMainGUI adminMain = new AdminMainGUI();
 					} else {
 						JOptionPane.showMessageDialog(null, "비밀번호를 다시 확인해주세요.");
 					}
