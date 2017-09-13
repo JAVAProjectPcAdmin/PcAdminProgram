@@ -32,7 +32,7 @@ import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
 
-	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
+	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb , IdLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
@@ -86,8 +86,11 @@ public class UserUsingStateGUI extends JFrame {
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		
+		
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
+		IdLb = new JLabel(user.getUserID());
+		IdLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
 		logoutBt = new JButton(new ImageIcon("images//logout.png"));
 		logoutBt.setBorderPainted(false);
 		talkBt = new JButton(new ImageIcon("images//talk.png"));
@@ -119,6 +122,7 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setBounds(10, 80, 283, 84);
 		customerNumberLb.setBounds(30, 0, 100, 100);
 		nameLb.setBounds(110, 30, 100, 50);
+		IdLb.setBounds(110, 10, 100, 50);
 		talkBt.setBounds(50, 180, 44, 32);
 		orderBt.setBounds(130, 180, 38, 29);
 		orderBt.addActionListener(new ActionListener() {
@@ -164,6 +168,7 @@ public class UserUsingStateGUI extends JFrame {
 		timeLb.setBounds(90, 10, 70, 30);
 		moneyLb.setBounds(90, 45, 700, 30);
 
+		add(IdLb);
 		add(logoutBt);
 		add(talkBt);
 		add(orderBt);
