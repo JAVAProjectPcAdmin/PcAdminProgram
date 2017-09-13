@@ -157,7 +157,6 @@ public class UserUsingStateGUI extends JFrame {
 						dispose();
 						new UserLoginGUI();
 					}
-
 				}
 			}
 		});

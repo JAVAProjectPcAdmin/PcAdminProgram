@@ -66,6 +66,7 @@ public class AdminJoinGUI extends JFrame {
 
 		setLayout(null);
 
+		setUndecorated(true);
 		getContentPane().setBackground(Color.WHITE);
 		setTitle("관리자 등록");
 		setSize(400, 280);

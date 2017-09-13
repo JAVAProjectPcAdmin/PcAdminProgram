@@ -86,8 +86,14 @@ public class AdminMainGUI extends JFrame {
 				boolean findUser = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
+<<<<<<< HEAD
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+=======
+					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText()) 
+							&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
+						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY,2)));
+>>>>>>> 005a0603f7a92b2a66663b397193d00e4938d47b
 						rightUserPanel[i].setBackground(c);
 						findUser = true;
 					}
@@ -182,8 +188,6 @@ public class AdminMainGUI extends JFrame {
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 감소
 						Object[] temp = new Object[4];
-
-						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						for (int j = 0; j < AdminServer.userlist.size(); j++) {
 							if (i == AdminServer.userlist.get(j).getSeatNumber()) {
 								temp[0] = AdminServer.userlist.get(j).getName();

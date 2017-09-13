@@ -42,6 +42,7 @@ public class AdminSetPwGUI extends JFrame {
 		setResizable(false);
 		setSize(600, 300);
 		setTitle("Admin Settings");
+		setUndecorated(true);
 
 		try {
 			adminImg = ImageIO.read(new File("images//adminsettings.png"));
