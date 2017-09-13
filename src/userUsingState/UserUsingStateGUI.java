@@ -31,7 +31,7 @@ import userLogin.UserClient;
 import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
-	
+
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
@@ -96,7 +96,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag) {
-					Client client = new Client((user.getSeatNumber()+1) + "");
+					Client client = new Client((user.getSeatNumber() + 1) + "");
 					flag = true;
 				}
 			}
@@ -133,16 +133,22 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
+			//양태흠
 			public void actionPerformed(ActionEvent e) {
-				try {
-					userclient.getSocket().close();
-					System.out.println("서버와 연결 끊어짐");
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
-					dispose();
-					UserLoginGUI g = new UserLoginGUI();
+				int check = JOptionPane.showConfirmDialog(null, "로그아웃 하시겠습니까?", "로그아웃", JOptionPane.YES_NO_OPTION,
+						JOptionPane.INFORMATION_MESSAGE);
+				if (check == 0) {
+					try {
+						userclient.getSocket().close();
+						System.out.println("서버와 연결 끊어짐");
+					} catch (IOException e1) {
+						e1.printStackTrace();
+					} finally {
+
+						dispose();
+						UserLoginGUI g = new UserLoginGUI();
+					}
+
 				}
 			}
 		});
@@ -167,11 +173,11 @@ public class UserUsingStateGUI extends JFrame {
 		add(customerNumberLb);
 		add(nameLb);
 		add(panel);
-		
+
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\pcIcon.png");
 		setIconImage(Iconimg);
-		
+
 		setVisible(true);
 
 		TimerThread thread = new TimerThread();
