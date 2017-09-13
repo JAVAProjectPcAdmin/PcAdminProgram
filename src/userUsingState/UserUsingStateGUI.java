@@ -44,7 +44,7 @@ public class UserUsingStateGUI extends JFrame {
 	User user;
 	UserClient userclient;
 	private boolean logout = false;
-	
+
 	ImageIcon logoutIcon = new ImageIcon("images//logout.png");
 	Image logoutButton = logoutIcon.getImage();
 	Image newLogoutButtonImg = logoutButton.getScaledInstance(35, 32, java.awt.Image.SCALE_SMOOTH);
@@ -88,18 +88,10 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-		
-		
->>>>>>> cf7e77fe47e6f95026f4fb9397483e472806f936
->>>>>>> 737f0411d0f311c47de64ab52827a413a0db684b
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
+
 		IdLb = new JLabel(user.getUserID());
 		IdLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
 		logoutBt = new JButton(chLogoutButton);
@@ -149,10 +141,6 @@ public class UserUsingStateGUI extends JFrame {
 		logoutBt.addActionListener(new ActionListener() {
 			// ·Î±×¾Æ¿ô½Ã left¸ÞÀÎ¿¡ À¯Àú Á¤º¸Àü´Þ
 			@Override
-<<<<<<< HEAD
-			// ¾çÅÂÈì
-=======
->>>>>>> cf7e77fe47e6f95026f4fb9397483e472806f936
 			public void actionPerformed(ActionEvent e) {
 
 				int check = JOptionPane.showConfirmDialog(null, "·Î±×¾Æ¿ô ÇÏ½Ã°Ú½À´Ï±î?", "·Î±×¾Æ¿ô", JOptionPane.YES_NO_OPTION,
