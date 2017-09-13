@@ -257,6 +257,10 @@ public class AdminMainGUI extends JFrame {
 				if (useTime.substring(6).equals("01")) {
 					timeflag = false; // 00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함
 				}
+				if(Flagment.UserLogout[i]) {
+					System.out.println("로그아웃 : 메인");
+					break;
+				}
 			}
 		}
 
