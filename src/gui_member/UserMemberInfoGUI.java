@@ -58,8 +58,8 @@ public class UserMemberInfoGUI extends JFrame {
 		addTx = new JTextField();
 		memoTx = new JTextField();
 		
-		storeBtn = new JButton("저 장");
-		cancleBtn = new JButton("닫 기");
+		storeBtn = new JButton(new ImageIcon("images//save.png"));
+		cancleBtn = new JButton(new ImageIcon("images//cancelbtn.png"));
 		
 		infoPnl = new JPanel();
 		tablePnl = new JPanel();
@@ -131,10 +131,10 @@ public class UserMemberInfoGUI extends JFrame {
 		//버튼
 		UserInfoListener InfoListener = new UserInfoListener();
 		add(storeBtn);
-		storeBtn.setBounds(100, 480, 70, 30);
+		storeBtn.setBounds(100, 480, 70, 26);
 		storeBtn.addActionListener(InfoListener);
 		add(cancleBtn);
-		cancleBtn.setBounds(200, 480, 70, 30);
+		cancleBtn.setBounds(200, 480, 70, 26);
 		cancleBtn.addActionListener(InfoListener);
 		
 		//////////////////////////////////////////////////// tablePnl
