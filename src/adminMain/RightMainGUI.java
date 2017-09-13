@@ -72,8 +72,8 @@ public class RightMainGUI extends JPanel {
 		userNumberL = new JLabel();
 		userIDL = new JLabel();
 		useTimeL = new JLabel();
-		totalPriceL = new JLabel("0¿ø");
-		addAmountL = new JLabel("0¿ø");
+		totalPriceL = new JLabel();
+		addAmountL = new JLabel();
 
 		setLayout(null);
 
