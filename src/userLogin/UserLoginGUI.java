@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
@@ -61,7 +62,6 @@ public class UserLoginGUI extends JFrame {
 			userLoginImg = ImageIO.read(new File("images//plzlogin.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		LoginListener listener = new LoginListener();
@@ -94,6 +94,7 @@ public class UserLoginGUI extends JFrame {
 		nonMembersLabel = new JLabel("ºñÈ¸¿ø");
 		nonMembersLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		pcNumLabel = new JLabel((seatNumber+1)+"");
+		pcNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		pcNumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 150));
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
@@ -121,8 +122,8 @@ public class UserLoginGUI extends JFrame {
 		pcNumLabel.setBounds(10, 5, 180, 180);
 		plzLogin.setBounds(250, 40, 328, 50);
 
-		loginButton.setBounds(250, 230, 100, 27);
-		signInButton.setBounds(360, 230, 100, 27);
+		loginButton.setBounds(250, 230, 100, 26);
+		signInButton.setBounds(360, 230, 100, 26);
 		signInButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -131,7 +132,7 @@ public class UserLoginGUI extends JFrame {
 				UserJoinGUI join = new UserJoinGUI();
 			}
 		});
-		idSearchButton.setBounds(470, 230, 94, 28);
+		idSearchButton.setBounds(470, 230, 94, 26);
 
 		idSearchButton.addActionListener(new ActionListener() {
 
@@ -143,7 +144,7 @@ public class UserLoginGUI extends JFrame {
 			}
 
 		});
-		pwSearchButton.setBounds(470, 260, 94, 28);
+		pwSearchButton.setBounds(470, 260, 94, 26);
 
 		pwSearchButton.addActionListener(new ActionListener() {
 
@@ -169,6 +170,8 @@ public class UserLoginGUI extends JFrame {
 		add(pcNumPanel);
 		add(panel);
 
+		getContentPane().setBackground(Color.WHITE);
+		
 		setVisible(true);
 	}
 
@@ -176,7 +179,6 @@ public class UserLoginGUI extends JFrame {
 
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
 			
 
 			String name = null;
