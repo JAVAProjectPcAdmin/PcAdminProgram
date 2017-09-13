@@ -36,15 +36,14 @@ public class UserUsingStateGUI extends JFrame {
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
-	public static boolean flag = false;
+	private boolean flag = false;
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
-	public static boolean flag4 = false;
-	public static boolean chatflag = false;
+
 	public JButton logoutBt;
 	User user;
 	UserClient userclient;
-	private boolean noticeFlag = false;
+	private boolean logout = false;
 
 	public UserUsingStateGUI(UserClient userclient) {
 		Calendar c = Calendar.getInstance();
@@ -140,6 +139,17 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			//양태흠
 			public void actionPerformed(ActionEvent e) {
+				try {
+					userclient.getSocket().close();
+					System.out.println("서버와 연결 끊어짐");
+					logout=true;
+					
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				} finally {
+					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
+					dispose();
+					UserLoginGUI g = new UserLoginGUI();
 				int check = JOptionPane.showConfirmDialog(null, "로그아웃 하시겠습니까?", "로그아웃", JOptionPane.YES_NO_OPTION,
 						JOptionPane.INFORMATION_MESSAGE);
 				if (check == 0) {
@@ -149,14 +159,13 @@ public class UserUsingStateGUI extends JFrame {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					} finally {
-
 						dispose();
-						UserLoginGUI g = new UserLoginGUI();
+					 new UserLoginGUI();
 					}
 
 				}
 			}
-		});
+		} });
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
@@ -232,6 +241,10 @@ public class UserUsingStateGUI extends JFrame {
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
 			boolean timeflag = false;
 			while (true) {
+				if(logout) {
+					System.out.println("로그아웃 : 유저");
+					break;
+				}
 				long time = System.currentTimeMillis() - 1000 * 60 * 60 * 9;
 				long checkTime = (time - user.getStartTimeCalc());
 				String useTime = dayTime.format(new Date(checkTime));
@@ -250,7 +263,8 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-			}
-		}// while문 종료
+			}// while문 종료
+		}
 	}
 }
+
