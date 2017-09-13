@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,40 +21,39 @@ public class AdminJoinGUI extends JFrame {
 	private JButton idSearchBtn, okBtn, cancelBtn;
 	private JTextField idTf;
 	private JPasswordField pwf;
-
 	private boolean idcheckFlag = false;
 
 	public AdminJoinGUI() {
-		registerAdminl = new JLabel("관리자 등록");
-		adminIDl = new JLabel("* 관리자 ID");
-		adminPWl = new JLabel("* 비밀번호");
+		registerAdminl = new JLabel(new ImageIcon("images//addadminlabel.png"));
+		adminIDl = new JLabel("관리자 ID");
+		adminPWl = new JLabel("비밀번호");
 
-		idSearchBtn = new JButton("중복확인");
+		idSearchBtn = new JButton(new ImageIcon("images//adminfind.png"));
 		idSearchBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		idSearchBtn.setBounds(295, 93, 82, 30);
+		idSearchBtn.setBounds(285, 100, 82, 30);
 		idSearchBtn.addActionListener(new Listener());
 
-		okBtn = new JButton("등 록");
-		okBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		okBtn.setBounds(115, 190, 70, 30);
+		okBtn = new JButton(new ImageIcon("images//addadmin.png"));
+		okBtn.setFont(new Font("맑은 고딕", Font.BOLD, 10));
+		okBtn.setBounds(120, 200, 70, 26);
 		okBtn.addActionListener(new Listener());
-		cancelBtn = new JButton("취 소");
-		cancelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 12));
-		cancelBtn.setBounds(200, 190, 70, 30);
+		cancelBtn = new JButton(new ImageIcon("images//cancelbtn.png"));
+		cancelBtn.setFont(new Font("맑은 고딕", Font.BOLD, 10));
+		cancelBtn.setBounds(205, 200, 70, 26);
 		cancelBtn.addActionListener(new Listener());
 
 		idTf = new JTextField();
-		idTf.setBounds(150, 93, 120, 30);
+		idTf.setBounds(150, 103, 120, 30);
 		pwf = new JPasswordField();
-		pwf.setBounds(150, 133, 120, 30);
+		pwf.setBounds(150, 143, 120, 30);
 
 		registerAdminl.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		adminIDl.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 		adminPWl.setFont(new Font("맑은 고딕", Font.BOLD, 17));
 
-		registerAdminl.setBounds(115, 20, 200, 50);
-		adminIDl.setBounds(40, 90, 200, 30);
-		adminPWl.setBounds(40, 130, 200, 30);
+		registerAdminl.setBounds(50, -5, 300, 100);
+		adminIDl.setBounds(60, 100, 200, 30);
+		adminPWl.setBounds(60, 140, 200, 30);
 
 		add(idSearchBtn);
 		add(okBtn);
@@ -105,8 +105,8 @@ public class AdminJoinGUI extends JFrame {
 				} else {
 					if (idTf.getText().equals("")) {
 						JOptionPane.showMessageDialog(null, "관리자 ID를 입력해주세요.");
-					}else {
-					JOptionPane.showMessageDialog(null, "아이디 중복을 확인하세요.");
+					} else {
+						JOptionPane.showMessageDialog(null, "아이디 중복을 확인하세요.");
 					}
 				}
 

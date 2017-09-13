@@ -83,9 +83,9 @@ public class AdminLoginGUI extends JFrame {
 		setButton.addActionListener(new adminSetPwListener());
 
 		panel.setBounds(0, 0, 600, 300);
-		idTf.setBounds(320, 150, 250, 30);
+		idTf.setBounds(320, 140, 250, 30);
 		pwTf.setBounds(320, 180, 250, 30);
-		idLabel.setBounds(200, 140, 50, 50);
+		idLabel.setBounds(200, 130, 50, 50);
 		pwLabel.setBounds(200, 170, 200, 50);
 		adminIcon.setBounds(180, 60, 328, 50);
 		computerIcon.setBounds(70, 50, 97, 70);
