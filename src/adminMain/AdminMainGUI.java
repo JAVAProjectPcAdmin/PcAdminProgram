@@ -39,6 +39,7 @@ public class AdminMainGUI extends JFrame {
 	// private
 
 	UserDao userDao = new UserDao();
+
 	public AdminMainGUI() {
 		System.out.println("메인 생성자 1");
 		for (i = 0; i < 25; i++) {
@@ -46,8 +47,11 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].setSize(210, 170);
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightUserPanel[i].addMouseListener(new PopupListener());
+			
 
+			rightPanel.setBorder(new LineBorder(Color.BLACK));
 			rightUserPanel[i].setVisible(false);
+			rightPanel.setBackground(Color.WHITE);
 			rightPanel.add(rightUserPanel[i]);
 		}
 		isUserThread = new UserThread();
@@ -78,8 +82,7 @@ public class AdminMainGUI extends JFrame {
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
 		System.out.println("메인 생성자 3");
-		
-		
+
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -96,6 +99,7 @@ public class AdminMainGUI extends JFrame {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.RED)));
+
 						flag = true;
 					}
 
@@ -193,7 +197,7 @@ public class AdminMainGUI extends JFrame {
 						OrderThread orderThread = new OrderThread(user, i);
 						threadlist.add(orderThread);
 						orderThread.start();
-						
+
 						Flagment.UserLoginState[i] = false;
 					}
 					if (Flagment.UserLogout[i]) {
@@ -206,23 +210,22 @@ public class AdminMainGUI extends JFrame {
 
 						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						for (int j = 0; j < AdminServer.userlist.size(); j++) {
-								if (i == AdminServer.userlist.get(j).getSeatNumber()) {
-									temp[0] = AdminServer.userlist.get(j).getName();
-									System.out.println(temp[0]);
-									temp[1] = AdminServer.userlist.get(j).getUserID();
-									System.out.println(temp[1]);
-									temp[2] = AdminServer.userlist.get(j).getSeatNumber()+1;
-									System.out.println(temp[2]);
-									temp[3] = AdminServer.userlist.get(j).getTotalPrice();
-									System.out.println(temp[3]);
+							if (i == AdminServer.userlist.get(j).getSeatNumber()) {
+								temp[0] = AdminServer.userlist.get(j).getName();
+								System.out.println(temp[0]);
+								temp[1] = AdminServer.userlist.get(j).getUserID();
+								System.out.println(temp[1]);
+								temp[2] = AdminServer.userlist.get(j).getSeatNumber() + 1;
+								System.out.println(temp[2]);
+								temp[3] = AdminServer.userlist.get(j).getTotalPrice();
+								System.out.println(temp[3]);
 
-									lmp.finishedModel.insertRow(0, temp);
-									lmp.finishedTable.updateUI();
+								lmp.finishedModel.insertRow(0, temp);
+								lmp.finishedTable.updateUI();
 
-									AdminServer.userlist.remove(j);
-								}
-							
-							
+								AdminServer.userlist.remove(j);
+							}
+
 							Flagment.UserLogout[i] = false;
 						}
 					}
@@ -308,7 +311,7 @@ public class AdminMainGUI extends JFrame {
 			}
 
 		} // orderThread 종료
-		
+
 	}
-	
+
 }
