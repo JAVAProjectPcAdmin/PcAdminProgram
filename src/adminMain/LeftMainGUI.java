@@ -266,6 +266,7 @@ public class LeftMainGUI extends JPanel {
 		finishedTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		finishedTable.getTableHeader().setReorderingAllowed(false);
 		finishedTable.getTableHeader().setResizingAllowed(false);
+		finishedTable.getColumnModel().getColumn(2).setPreferredWidth(50);
 		JScrollPane finishedSp = new JScrollPane(finishedTable);
 
 		finishedSp.setPreferredSize(new Dimension(220, 280));
