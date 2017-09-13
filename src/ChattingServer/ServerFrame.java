@@ -2,7 +2,9 @@ package ChattingServer;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.TextArea;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -44,6 +46,11 @@ public class ServerFrame extends JFrame {
 		setTitle(who);
 		setSize(300, 400);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		Toolkit toolkit = Toolkit.getDefaultToolkit();
+		Image Iconimg = toolkit.getImage("images\\chatting.png");
+		setIconImage(Iconimg);
+		
 		setVisible(true);
 
 		tt t =new tt(socket, textArea); 
