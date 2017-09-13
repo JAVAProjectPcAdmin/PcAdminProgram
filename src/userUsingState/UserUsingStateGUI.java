@@ -59,7 +59,6 @@ public class UserUsingStateGUI extends JFrame {
 		setSize(310, 280);
 		setResizable(false);
 		setUndecorated(true); // 윈도우창 윗부분 제거 메소드
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setAlwaysOnTop(true);
 		getContentPane().setBackground(Color.WHITE);
 
@@ -92,16 +91,10 @@ public class UserUsingStateGUI extends JFrame {
 		talkBt.setBorderPainted(false);
 
 		talkBt.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
-				// TODO Auto-generated method stub
 				if (!flag) {
-
-					// TalkGUI talk = new TalkGUI();
 					Client client = new Client((user.getSeatNumber()+1) + "");
-
 					flag = true;
 				}
 			}
@@ -111,10 +104,8 @@ public class UserUsingStateGUI extends JFrame {
 		informationBt = new JButton(new ImageIcon("images//information.png"));
 		informationBt.setBorderPainted(false);
 		informationBt.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				if (!flag2) {
 					ChargeInformationGUI ci = new ChargeInformationGUI();
 					flag2 = true;
@@ -128,7 +119,6 @@ public class UserUsingStateGUI extends JFrame {
 		talkBt.setBounds(50, 180, 44, 32);
 		orderBt.setBounds(130, 180, 38, 29);
 		orderBt.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag3) {
@@ -142,7 +132,6 @@ public class UserUsingStateGUI extends JFrame {
 			// 로그아웃시 left메인에 유저 정보전달
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
 				try {
 					userclient.getSocket().close();
 					System.out.println("서버와 연결 끊어짐");
@@ -181,7 +170,6 @@ public class UserUsingStateGUI extends JFrame {
 
 		TimerThread thread = new TimerThread();
 		thread.start();
-
 	}
 
 	class JPanelWithBackground extends JPanel { // 패널에 이미지 채우기가 아닌 이미지를 백그라운드로 쓰기위한 클래스
@@ -194,16 +182,13 @@ public class UserUsingStateGUI extends JFrame {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-
 			g.drawImage(backgroundImage, 0, 0, null);
 		}
 	}
 
 	// 셧다운 알림
 	class shutdown {
-
 		public shutdown() {
-
 			Timer timer = new Timer();
 
 			Calendar cal = Calendar.getInstance();
@@ -213,19 +198,15 @@ public class UserUsingStateGUI extends JFrame {
 
 			long day = 1000 * 60 * 60 * 24; // 하루마다
 			timer.scheduleAtFixedRate(new MyTask(), cal.getTime(), day);
-
 		}
-
 	}
 
 	class MyTask extends TimerTask {
-
 		public void run() {
 			new WarningGUI();
 		}
 	}
 
-	//
 	class TimerThread extends Thread {
 		@Override
 		public void run() {
@@ -243,7 +224,6 @@ public class UserUsingStateGUI extends JFrame {
 					UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + 20);
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
-
 				}
 				if (useTime.substring(6).equals("01")) {
 					timeflag = false; // 00분인 동안 1번만 실행 시키기위해 01분까지 증가문 실행 못시키게 함
@@ -252,20 +232,6 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-
-				// 21:30분이 되면 ! 미성년자들에게 알림 !
-				// c.getInstance();
-				// if (c.get(Calendar.HOUR_OF_DAY) == 17 && c.get(Calendar.MINUTE) == 41 &&
-				// noticeFlag == false) {
-				// if ((Calendar.YEAR - Integer.parseInt(UserLoginGUI.user.getBirthYear())) <
-				// 19) {
-				// WarningGUI g = new WarningGUI();
-				// System.out.println("미성년자 뭐하니");
-				// // JOptionPane.showMessageDialog(null, "미성년자는 밤 10시에 컴퓨터가 종료됩니다.", "알림", 1);
-				// noticeFlag = true;
-				// }
-				// }
-
 			}
 		}// while문 종료
 	}
