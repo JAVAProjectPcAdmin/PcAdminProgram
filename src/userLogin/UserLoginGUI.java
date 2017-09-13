@@ -208,7 +208,7 @@ public class UserLoginGUI extends JFrame {
 					System.out.println("아이디가 없습니다.");
 					JOptionPane.showMessageDialog(null, "아이디가 존재하지 않습니다.", "아이디 없음", JOptionPane.OK_OPTION);
 				}
-			} else if (nonMemberTf.getText().length() > 0) {
+			} else if (nonMemberTf.getText().length() > 0) {	//비회원
 				int result = dao.nonMemberLoginCheck(nonMemberTf.getText());
 				if (result == 1) {
 					System.out.println("로그인 성공");
@@ -216,6 +216,7 @@ public class UserLoginGUI extends JFrame {
 					user = new User(name);
 					user.setUserNumber(dao.NonMemberNumSelect(nonMemberTf.getText()));
 					user.setUserID(nonMemberTf.getText());
+					user.setSeatNumber(seatNumber);
 					UserClient userclient = new UserClient();
 					dispose();
 					UserUsingStateGUI uus = new UserUsingStateGUI( userclient);
