@@ -78,7 +78,7 @@ public class AdminMainGUI extends JFrame {
 	private class FindSeatActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			Color c = new Color(186, 194, 255);
+			Color c = new Color(212, 212, 212);
 			System.out.println((lmp.getInputSeat_Text()).getText());
 			JButton selected = (JButton) e.getSource();
 			if (selected == lmp.getFindSeatBtn()) {
