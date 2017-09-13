@@ -85,6 +85,7 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
+		
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
 		logoutBt = new JButton(new ImageIcon("images//logout.png"));
