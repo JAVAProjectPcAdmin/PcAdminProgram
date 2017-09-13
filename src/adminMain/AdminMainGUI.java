@@ -54,7 +54,7 @@ public class AdminMainGUI extends JFrame {
 
 		lmp.setBounds(0, 80, 220, 850);
 		rightPanel.setLayout(new GridLayout(5, 5));
-		rightPanel.setBounds(230, 90, 1030, 800);
+		rightPanel.setBounds(230, 50, 1030, 800);
 
 		add(rightPanel);
 		add(lmp);
