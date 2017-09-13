@@ -38,7 +38,7 @@ public class AdminServer {
 					UserThread t = new UserThread(socket);
 					threadList.add(t);
 					t.start();
-				}//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 관리되는 쓰레드 생성
+				}//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 유저정보를 받아오는 쓰레드생성
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -62,25 +62,22 @@ public class AdminServer {
 					String ip = socket.getInetAddress() + "";
 					System.out.println(ip);
 
-					boolean set=false; //새 유저인지 아닌지 구분	
+					boolean isNewUser=true; //새 유저인지 아닌지 구분	
 					
 					for(int i=0;i<userlist.size();i++) {
-						System.out.println(userlist.size() + " : adminclient");
 						if(userlist.get(i).getSeatNumber()==user.getSeatNumber()) {// 이전에 있었던 유저면 이번에 order로 넘어온것
+							isNewUser=false;// 새로운 유저가 아님 
 							userlist.set(i, user); //정보 새로 갱신
 							Flagment.UserOrder[user.getSeatNumber()]=true;//메인 gui에 알림 
-							System.out.println(Flagment.UserOrder[user.getSeatNumber()]+" , "+user.getSeatNumber());
-							set=true;
 							break;
 						}
 					}
 					
-					if(!set) {//새로운 유저일 경우
+					if(isNewUser) {//새로운 유저일 경우
 						System.out.println("new "+user.getName());
 						user.setStartTime();
-						userlist.add(user);
-						System.out.println(userlist.size());
-						Flagment.UserLoginState[user.getSeatNumber()] = true;
+						userlist.add(user);		//UserList에 추가
+						Flagment.UserLoginState[user.getSeatNumber()] = true;	//새로운 유저가 로그인했다고 메인gui에 알림 
 					}
 				}
 				// 연결 끊기
@@ -88,9 +85,9 @@ public class AdminServer {
 			} catch (IOException e) {
 				int tempSize = AdminServer.userlist.size();
 				
-				Flagment.UserLogout[user.getSeatNumber()]=true;
+				Flagment.UserLogout[user.getSeatNumber()]=true;	//기존 유저가 로그아웃했다고 메인 gui에 알림
 			
-				removeThread(this);
+				removeThread(this); //로그아웃했으니 쓰레드도 삭제//유저 리스트는 메인에서 써야해서 아직 냄겨둠
 				e.printStackTrace();
 
 				//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,6 +99,6 @@ public class AdminServer {
 
 	public void removeThread(UserThread t) {
 		threadList.remove(t);
-	}	//로그아웃하면 쓰레드도 종료
+	}	
 
 }

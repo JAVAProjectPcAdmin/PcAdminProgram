@@ -16,20 +16,17 @@ public class UserClient {
 		return socket;
 	}
 
-	public UserClient() {
+	public UserClient() {	//로그인하면 관리자에게 유저의 정보를 전달함
 		this.user= UserLoginGUI.user;
 		try {
-			socket = new Socket("70.12.115.53", 7777);
+			socket = new Socket("70.12.115.53", 7777);	//관리자와 연결
 			System.out.println("서버랑 연결됬네?!");
-
-			String ip = socket.getInetAddress() + "";
-			System.out.println(ip);
 
 			oos = new ObjectOutputStream((socket.getOutputStream()));
 
 			oos.writeObject(user);
 			oos.flush();
-			Thread.sleep(1000);
+			Thread.sleep(1000);	//로그인한 유저의 정보를 객체에 통쨰로 담아서 넘김
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,7 +37,7 @@ public class UserClient {
 		}
 	}
 
-	public void orderTOAdmin() {
+	public void orderTOAdmin() {	//주문정보 (새로운정보)를 객체에 담아서 다시 넘김
 		try {
 
 			oos = new ObjectOutputStream((socket.getOutputStream()));
@@ -59,5 +56,5 @@ public class UserClient {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
+	}	//외부에서 업데이트 된 새로운 정보를 받아오기 위해 
 }
