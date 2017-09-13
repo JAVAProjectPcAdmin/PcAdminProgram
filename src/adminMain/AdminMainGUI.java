@@ -40,9 +40,11 @@ public class AdminMainGUI extends JFrame {
 
 	UserDao userDao = new UserDao();
 
-
+	public static void main(String[] args) {
+		new AdminMainGUI();
+	}
+	
 	public AdminMainGUI() {
-
 		for (i = 0; i < 25; i++) {
 			rightUserPanel[i] = new RightMainGUI();
 			rightUserPanel[i].setSize(210, 170);
@@ -79,8 +81,7 @@ public class AdminMainGUI extends JFrame {
 		setTitle("관리자 화면");
 		getContentPane().setBackground(Color.WHITE);
 
-		System.out.println("???");
-//		AdminServer adminServer = new AdminServer();
+		AdminServer adminServer = new AdminServer();
 	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////

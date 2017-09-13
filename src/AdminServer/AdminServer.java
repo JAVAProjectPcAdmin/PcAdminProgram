@@ -8,6 +8,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import adminMain.AdminMainGUI;
 import adminMain.LeftMainGUI;
 import flagment.Flagment;
 
@@ -21,7 +22,12 @@ public class AdminServer {
 	
 	LeftMainGUI lmGui;
 
+	public static void main(String[] args) {
+		new AdminServer();
+	}
+	
 	public AdminServer() {
+		System.out.println("서버 켜짐");
 		threadList = new ArrayList<>();
 		try {
 			serverSocket = new ServerSocket(7777);
@@ -37,7 +43,6 @@ public class AdminServer {
 					t.start();
 				}//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 관리되는 쓰레드 생성
 			}
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
