@@ -32,7 +32,7 @@ import userLogin.UserLoginGUI;
 
 public class UserUsingStateGUI extends JFrame {
 
-	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb , IdLb;
+	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb, IdLb;
 	private JButton talkBt, orderBt, informationBt;
 	private JPanel panel, grayPanel;
 	BufferedImage panelImg = null;
@@ -44,6 +44,11 @@ public class UserUsingStateGUI extends JFrame {
 	User user;
 	UserClient userclient;
 	private boolean logout = false;
+	
+	ImageIcon logoutIcon = new ImageIcon("images//logout.png");
+	Image logoutButton = logoutIcon.getImage();
+	Image newLogoutButtonImg = logoutButton.getScaledInstance(35, 32, java.awt.Image.SCALE_SMOOTH);
+	ImageIcon chLogoutButton = new ImageIcon(newLogoutButtonImg);
 
 	public UserUsingStateGUI(UserClient userclient) {
 		Calendar c = Calendar.getInstance();
@@ -74,7 +79,7 @@ public class UserUsingStateGUI extends JFrame {
 		panel.setBounds(0, 0, 600, 400);
 
 		customerNumberLb = new JLabel((user.getSeatNumber() + 1) + "");
-		customerNumberLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 40));
+		customerNumberLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 50));
 		timeLb = new JLabel("00:00");
 		moneyLb = new JLabel(user.getTotalPrice() + "¿ø");
 		talkLb = new JLabel("¹®ÀÇ");
@@ -83,13 +88,12 @@ public class UserUsingStateGUI extends JFrame {
 		orderLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
 		informationLb = new JLabel("¿ä±ÝÁ¤º¸");
 		informationLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 13));
-		
-		
+
 		nameLb = new JLabel(user.getName());
 		nameLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 19));
 		IdLb = new JLabel(user.getUserID());
 		IdLb.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
-		logoutBt = new JButton(new ImageIcon("images//logout.png"));
+		logoutBt = new JButton(chLogoutButton);
 		logoutBt.setBorderPainted(false);
 		talkBt = new JButton(new ImageIcon("images//talk.png"));
 		talkBt.setBorderPainted(false);
@@ -118,7 +122,7 @@ public class UserUsingStateGUI extends JFrame {
 		});
 
 		panel.setBounds(10, 80, 283, 84);
-		customerNumberLb.setBounds(30, 0, 100, 100);
+		customerNumberLb.setBounds(25, 0, 100, 100);
 		nameLb.setBounds(110, 30, 100, 50);
 		IdLb.setBounds(110, 10, 100, 50);
 		talkBt.setBounds(50, 180, 44, 32);
@@ -132,22 +136,12 @@ public class UserUsingStateGUI extends JFrame {
 				}
 			}
 		});
-		logoutBt.setBounds(200, 20, 63, 51);
+		logoutBt.setBounds(250, 17, 35, 32);
 		logoutBt.addActionListener(new ActionListener() {
 			// ·Î±×¾Æ¿ô½Ã left¸ÞÀÎ¿¡ À¯Àú Á¤º¸Àü´Þ
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					userclient.getSocket().close();
-					System.out.println("¼­¹ö¿Í ¿¬°á ²÷¾îÁü");
-					logout=true;
-					
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				} finally {
-					JOptionPane.showMessageDialog(null, "·Î±×¾Æ¿ô µÇ¾ú½À´Ï´Ù.", "·Î±×¾Æ¿ô", 1);
-					dispose();
-					UserLoginGUI g = new UserLoginGUI();
+
 				int check = JOptionPane.showConfirmDialog(null, "·Î±×¾Æ¿ô ÇÏ½Ã°Ú½À´Ï±î?", "·Î±×¾Æ¿ô", JOptionPane.YES_NO_OPTION,
 						JOptionPane.INFORMATION_MESSAGE);
 				if (check == 0) {
@@ -158,12 +152,12 @@ public class UserUsingStateGUI extends JFrame {
 						e1.printStackTrace();
 					} finally {
 						dispose();
-					 new UserLoginGUI();
+						new UserLoginGUI();
 					}
 
 				}
 			}
-		} });
+		});
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
@@ -239,7 +233,7 @@ public class UserUsingStateGUI extends JFrame {
 			SimpleDateFormat dayTime = new SimpleDateFormat("HH:mm:ss");
 			boolean timeflag = false;
 			while (true) {
-				if(logout) {
+				if (logout) {
 					System.out.println("·Î±×¾Æ¿ô : À¯Àú");
 					break;
 				}
@@ -261,8 +255,7 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-			}// while¹® Á¾·á
+			} // while¹® Á¾·á
 		}
 	}
 }
-
