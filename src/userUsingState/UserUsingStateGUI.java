@@ -39,7 +39,7 @@ public class UserUsingStateGUI extends JFrame {
 	private boolean flag = false;
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
-	
+
 	public JButton logoutBt;
 	User user;
 	UserClient userclient;
@@ -135,7 +135,6 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			//양태흠
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
 				try {
 					userclient.getSocket().close();
 					System.out.println("서버와 연결 끊어짐");
@@ -147,7 +146,6 @@ public class UserUsingStateGUI extends JFrame {
 					JOptionPane.showMessageDialog(null, "로그아웃 되었습니다.", "로그아웃", 1);
 					dispose();
 					UserLoginGUI g = new UserLoginGUI();
-=======
 				int check = JOptionPane.showConfirmDialog(null, "로그아웃 하시겠습니까?", "로그아웃", JOptionPane.YES_NO_OPTION,
 						JOptionPane.INFORMATION_MESSAGE);
 				if (check == 0) {
@@ -157,15 +155,13 @@ public class UserUsingStateGUI extends JFrame {
 					} catch (IOException e1) {
 						e1.printStackTrace();
 					} finally {
-
 						dispose();
-						UserLoginGUI g = new UserLoginGUI();
+					 new UserLoginGUI();
 					}
 
->>>>>>> 8f3b7e5a6b702b672cb55660286f52147ee6021b
 				}
 			}
-		});
+		} });
 		informationBt.setBounds(210, 180, 42, 36);
 		talkLb.setBounds(55, 210, 50, 50);
 		orderLb.setBounds(137, 210, 50, 50);
@@ -262,7 +258,8 @@ public class UserUsingStateGUI extends JFrame {
 					moneyLb.setText(UserLoginGUI.user.getTotalPrice() + "");
 					moneyLb.updateUI();
 				}
-			}
-		}// while문 종료
+			}// while문 종료
+		}
 	}
 }
+
