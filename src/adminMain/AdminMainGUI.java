@@ -45,11 +45,6 @@ public class AdminMainGUI extends JFrame {
 
 	UserDao userDao = new UserDao();
 
-	public static void main(String[] args) {
-
-		AdminMainGUI admin = new AdminMainGUI();
-
-	}
 
 	public AdminMainGUI() {
 
