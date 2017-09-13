@@ -30,6 +30,7 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 	JLabel centerLabel = new JLabel("-");
 
 	public PW_SearchGUI() {
+		setUndecorated(true);
 		setTitle("PW Search");
 		setLayout(null);
 		setLocation(400, 300);
