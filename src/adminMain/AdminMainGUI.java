@@ -93,7 +93,7 @@ public class AdminMainGUI extends JFrame {
 			if (selected == lmp.getFindSeatBtn()) {
 				boolean flag = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
-
+					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.BLACK)));
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
 						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.RED)));
 						flag = true;
