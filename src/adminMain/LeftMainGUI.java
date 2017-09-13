@@ -231,11 +231,16 @@ public class LeftMainGUI extends JPanel {
 		TableColumnModel tcm1 = infoTable1.getColumnModel();
 		TableColumnModel tcm2 = infoTable2.getColumnModel();
 		TableColumnModel tcm3 = infoTable3.getColumnModel();
+		TableColumnModel tcm4 = finishedTable.getColumnModel();
 
 		for (int i = 0; i < tcm1.getColumnCount(); i++) {
 			tcm1.getColumn(i).setCellRenderer(dtcr);
 			tcm2.getColumn(i).setCellRenderer(dtcr);
 			tcm3.getColumn(i).setCellRenderer(dtcr);
+			
+		}
+		for (int i = 0; i < tcm4.getColumnCount(); i++) {
+			tcm4.getColumn(i).setCellRenderer(dtcr);
 		}
 
 		// 열과 행 선택의 동시실행 X

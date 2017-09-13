@@ -182,8 +182,6 @@ public class AdminMainGUI extends JFrame {
 						lmp.countGuest_Label1.setText(LeftMainGUI.countSeat + " / " + "25");
 						lmp.updateUI();// 인원수 감소
 						Object[] temp = new Object[4];
-
-						/////////////////////////// 수정중!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 						for (int j = 0; j < AdminServer.userlist.size(); j++) {
 							if (i == AdminServer.userlist.get(j).getSeatNumber()) {
 								temp[0] = AdminServer.userlist.get(j).getName();
