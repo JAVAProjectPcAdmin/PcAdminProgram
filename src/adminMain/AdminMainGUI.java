@@ -193,6 +193,8 @@ public class AdminMainGUI extends JFrame {
 
 								AdminServer.userlist.remove(j);
 							}
+							JOptionPane.showMessageDialog(null, temp[2] + " 번자리 " + "( 회원ID : " + temp[1] + ",  회원이름 : "
+									+ temp[0] + ",  사용요금 : " + temp[3] + " )에서 사용을 종료합니다.");
 
 							Flagment.UserLogout[i] = false;
 						}
