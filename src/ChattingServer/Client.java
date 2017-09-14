@@ -7,7 +7,6 @@ public class Client {
 	public Client(String who) {
 		Socket socket = null;
 		
-		
 		ChattingFrame f =null;
 		try {
 		
@@ -16,12 +15,10 @@ public class Client {
 			
 			f = new ChattingFrame(socket,who);
 			
-			
 		} catch (IOException e) {
 			System.out.println("연결이 끊어졌습니다.");
 		}
 	}
-
 }   
   
 

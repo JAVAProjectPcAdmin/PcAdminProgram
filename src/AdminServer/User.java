@@ -17,8 +17,6 @@ public class User implements Serializable {
 	private int seatNumber;
 	private String ip;
 
-
-
 	public String getUserID() {
 		return UserID;
 	}

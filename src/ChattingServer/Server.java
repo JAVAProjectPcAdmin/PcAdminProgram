@@ -20,6 +20,5 @@ public class Server {
 		} catch (IOException e) {
 			System.out.println("연결이 끊어졌습니다.");
 		}
-		
 	}
 }

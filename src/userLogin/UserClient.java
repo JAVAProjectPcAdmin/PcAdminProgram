@@ -47,7 +47,6 @@ public class UserClient {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void setUser(User user) {

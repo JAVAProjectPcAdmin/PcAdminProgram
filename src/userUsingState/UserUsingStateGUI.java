@@ -34,21 +34,20 @@ public class UserUsingStateGUI extends JFrame {
 
 	private JLabel nameLb, timeLb, moneyLb, talkLb, orderLb, informationLb, customerNumberLb, IdLb;
 	private JButton talkBt, orderBt, informationBt;
-	private JPanel panel, grayPanel;
-	BufferedImage panelImg = null;
+	private JPanel panel;
+	public JButton logoutBt;
+	private User user;
+	private UserClient userclient;
+	
+	private boolean logout = false;
 	private boolean flag = false;
 	public static boolean flag2 = false;
 	public static boolean flag3 = false;// 창 중복을 막기위한 flag //창을띄우면 true를 반환하고 꺼질때 false를 반환 //false일때 켜지도록 if문
 
-	public JButton logoutBt;
-	User user;
-	UserClient userclient;
-	private boolean logout = false;
-
-	ImageIcon logoutIcon = new ImageIcon("images//logout.png");
-	Image logoutButton = logoutIcon.getImage();
-	Image newLogoutButtonImg = logoutButton.getScaledInstance(35, 32, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon chLogoutButton = new ImageIcon(newLogoutButtonImg);
+	private ImageIcon logoutIcon = new ImageIcon("images//logout.png");
+	private Image logoutButton = logoutIcon.getImage();
+	private Image newLogoutButtonImg = logoutButton.getScaledInstance(35, 32, java.awt.Image.SCALE_SMOOTH);
+	private ImageIcon chLogoutButton = new ImageIcon(newLogoutButtonImg);
 
 	public UserUsingStateGUI(UserClient userclient) {
 		Calendar c = Calendar.getInstance();

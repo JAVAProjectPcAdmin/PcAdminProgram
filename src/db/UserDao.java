@@ -483,11 +483,12 @@ public class UserDao {
 	}
 
 	public void closeRS() {
-		if (rs != null)
+		if (rs != null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
 	}
 }

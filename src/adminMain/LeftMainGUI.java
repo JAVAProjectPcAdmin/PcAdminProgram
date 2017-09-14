@@ -30,7 +30,7 @@ import db.UserVO;
 import gui_member.UserMemberInfoGUI;
 
 public class LeftMainGUI extends JPanel {
-	// 손님 정보 테인블
+	// 손님 정보 테이블
 	private String[] finishedTitle = { "사용자", "회원ID", "사용PC", "총 사용금액" };
 	public String[][] finishedData = new String[20][];
 	private String[] infoTitle1 = { "회원번호", "아이디", "이  름" };
@@ -127,19 +127,6 @@ public class LeftMainGUI extends JPanel {
 	public JTextField getInputSeat_Text() {
 		return inputSeat_Text;
 	}
-
-	public String[][] getInfoData1() {
-		return infoData1;
-	}
-
-	public String[][] getInfoData2() {
-		return infoData2;
-	}
-
-	public String[][] getInfoData3() {
-		return infoData3;
-	}
-
 
 	public LeftMainGUI() {
 		JPanel countGuest_Panel = new JPanel();
@@ -261,7 +248,6 @@ public class LeftMainGUI extends JPanel {
 		infoGuest_Panel.setBackground(Color.WHITE);
 
 		// 하루동안 사용자
-
 		finishedTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		finishedTable.getTableHeader().setReorderingAllowed(false);
 		finishedTable.getTableHeader().setResizingAllowed(false);
@@ -336,12 +322,9 @@ public class LeftMainGUI extends JPanel {
 							}
 						}
 					}
-
 				}
 				flag = false;
-
 			}
 		}
 	}
-
 }

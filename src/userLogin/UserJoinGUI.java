@@ -19,15 +19,15 @@ import db.UserVO;
 
 public class UserJoinGUI extends JFrame {
 
-	private JLabel joinLbl, idLbl, nameLbl, pwLbl, pwConfirmLbl, regiNumLbl, phLbl, mailLbl, addLbl, atLbl, minusLbl1,
-			minusLbl2, minusLbl3, pwNoticeLbl;
+	private JLabel joinLbl, idLbl, nameLbl, pwLbl, pwConfirmLbl, regiNumLbl, phLbl, mailLbl, 
+			addLbl, atLbl, minusLbl1, minusLbl2, minusLbl3, pwNoticeLbl;
 	private JTextField idTx, nameTx, regiNumTx1, phTx1, phTx2, mailTx1, mailTx2, addTx;
 	private JPasswordField pwTx, pwConfirmTx, regiNumTx2;
 	private JButton idCheckBtn, joinBtn, cancelBtn;
 	private JComboBox phCombo;
 
-	private String[] phNum = { "010", "02", "031", "032", "033", "041", "043", "042", "044", "051", "052", "053", "054",
-			"055", "061", "062", "063", "064", "070" };
+	private String[] phNum = { "010", "02", "031", "032", "033", "041", "043", "042", "044", 
+			"051", "052", "053", "054", "055", "061", "062", "063", "064", "070" };
 
 	private boolean idCheckFlag = false; // false이면 아이디 중복확인을 안했거나 중복된 아이디//true 면 회원가입 됨
 	private boolean pwCheckFlag = false;

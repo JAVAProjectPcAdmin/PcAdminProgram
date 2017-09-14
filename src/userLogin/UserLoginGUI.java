@@ -31,16 +31,16 @@ import db.UserDao;
 import userUsingState.UserUsingStateGUI;
 
 public class UserLoginGUI extends JFrame {
-	private JPanel panel, pcNumPanel, plzLogin, padIcon;
+	private JPanel panel, pcNumPanel, plzLogin;
 	private JLabel idLabel, pcNumLabel, pwLabel, nonMembersLabel, gameLabel;
 	private JButton loginButton, signInButton, idSearchButton, pwSearchButton;
 	private JTextField idTf, nonMemberTf;
 	private JPasswordField pwTf;
-	BufferedImage userLoginImg = null;
+	private BufferedImage userLoginImg = null;
 	public static User user = null;
-	String myIp = null;
-	int seatNumber;
-	UserDao dao = new UserDao();
+	private String myIp = null;
+	private int seatNumber;
+	private UserDao dao = new UserDao();
 
 	public UserLoginGUI() {
 		setSize(1280, 1024);

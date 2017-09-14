@@ -24,16 +24,15 @@ public class AdminServer {
 		try {
 			serverSocket = new ServerSocket(7777);
 				//시작하면  admin 쓰레드 한개 돌림
-			
+
 			while (true) { // 로그인하는 사람들에게 소켓을 계속 받아오기 위해 반복
 				Socket socket = serverSocket.accept(); // 기다림 - 연결되면 socket에 들어감
 				System.out.println(socket.getInetAddress());
 
-//				if (!(socket.getInetAddress() + "").equals("/70.12.115.53")) {	
-					UserThread t = new UserThread(socket);
-					threadList.add(t);
-					t.start();
-//				}//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 유저정보를 받아오는 쓰레드생성
+				UserThread t = new UserThread(socket);
+				threadList.add(t);
+				t.start();
+				//사용자들이 각자의 컴퓨터에서 로그인을 하면 컴터마다 유저정보를 받아오는 쓰레드생성
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -89,9 +88,7 @@ public class AdminServer {
 			}
 		}
 	}
-
 	public void removeThread(UserThread t) {
 		threadList.remove(t);
 	}	
-
 }

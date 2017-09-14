@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 import db.UserDao;
 
-public class PW_SearchGUI extends JFrame implements ActionListener {
+public class PW_SearchGUI extends JFrame {
 	private JTextField idTf, residentTf;
 	private JLabel searchLabel, idLabel, residentLabel, resultLabel;
 	private JPanel panel, searchIcon;
@@ -40,7 +40,6 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 
 		try {
 			searchImg = ImageIO.read(new File("images//Search.png"));
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -121,19 +120,11 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 				resultLabel.setText("비밀번호는 *" + pw + "* 입니다.");
 			}
 		}
-
 	}
 
 	class SearchIdPw extends JPanel {
 		public void paint(Graphics g) {
 			g.drawImage(searchImg, 0, 0, null);
 		}
-
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
-
 }

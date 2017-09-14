@@ -19,7 +19,7 @@ import javax.swing.JTextField;
 
 import db.UserDao;
 
-public class ID_SearchGUI extends JFrame implements ActionListener {
+public class ID_SearchGUI extends JFrame {
 	private JTextField nameTf, p_NumberTf, emailTf;
 	private JLabel searchLabel, nameLabel, p_numberLabel, emailLabel, resultLabel;
 	private JPanel panel, searchIcon;
@@ -86,7 +86,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 		checkButton.addActionListener(listener);
 		cancleButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -113,7 +112,6 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		public void paint(Graphics g) {
 			g.drawImage(searchImg, 0, 0, null);
 		}
-
 	}
 
 	class checkListener implements ActionListener {
@@ -129,12 +127,5 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 				resultLabel.setText("아이디는 *" + id + "* 입니다.");
 			}
 		}
-
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-
-	}
-
 }

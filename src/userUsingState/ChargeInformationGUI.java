@@ -26,7 +26,7 @@ public class ChargeInformationGUI extends JFrame {
 	private JButton exitButton;
 	private JTable chargeTable;
 
-	BufferedImage moneybagImg = null;
+	private BufferedImage moneybagImg = null;
 
 	public ChargeInformationGUI() {
 		setTitle("요금정보");
@@ -122,5 +122,4 @@ public class ChargeInformationGUI extends JFrame {
 			g.drawImage(moneybagImg, 0, 0, null);
 		}
 	}
-
 }

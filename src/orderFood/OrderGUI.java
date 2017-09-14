@@ -37,7 +37,6 @@ public class OrderGUI extends JFrame {
 	public OrderGUI(UserClient userclient) {
 
 		wholePnl = new JPanel();
-
 		ramenPnl = new JPanel();
 		drinkPnl = new JPanel();
 		snackPnl = new JPanel();

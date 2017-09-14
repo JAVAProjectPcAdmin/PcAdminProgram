@@ -103,5 +103,4 @@ public class ChattingFrame extends JFrame {
 			}
 		}
 	}
-
 }

@@ -100,5 +100,4 @@ public class UserVO {
 	public void setMyIp(String myIp) {
 		this.myIp = myIp;
 	}
-
 }
