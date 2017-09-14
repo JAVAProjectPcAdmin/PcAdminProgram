@@ -21,7 +21,6 @@ public class AdminServer {
 	private List<UserThread> threadList;	//로그인한 유저들의 객체를 받기위해 쓰레드들을 담아놓는 리스트
 	public static List<User> userlist = new ArrayList<User>();	//로그인해서 받아온 유저 객체들을 담아서 관리할 리스트
 	
-	LeftMainGUI lmGui;
 
 	public AdminServer() {
 		System.out.println("서버 켜짐");
