@@ -4,7 +4,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,16 +23,16 @@ public class AdminOrderGUI extends JFrame {
 		seatLbl = new JLabel((seatNum + 1) + "¹ø ÀÚ¸®¿¡¼­ ÁÖ¹®ÀÌ µé¾î¿Ô½À´Ï´Ù.");
 		seatLbl.setFont(new Font("¸¼Àº°íµñ", Font.BOLD, 15));
 		orderLbl = new JLabel(order);
-		orderLbl.setFont(new Font("¸¼Àº°íµñ", Font.PLAIN, 20));
+		orderLbl.setFont(new Font("¸¼Àº°íµñ", Font.PLAIN, 18));
 		wholePnl = new JPanel();
 		wholePnl.setLayout(null);
 		wholePnl.add(seatLbl);
-		seatLbl.setBounds(30, 7, 300, 50);
+		seatLbl.setBounds(20, 15, 300, 50);
 		wholePnl.add(orderLbl);
-		orderLbl.setBounds(95, 30, 300, 100);
-		okBtn = new JButton("È®ÀÎ");
+		orderLbl.setBounds(90, 50, 300, 200);
+		okBtn = new JButton(new ImageIcon("images//ok.png"));
 		wholePnl.add(okBtn);
-		okBtn.setBounds(110, 170, 60, 30);
+		okBtn.setBounds(110, 230, 60, 26);
 		wholePnl.setBackground(Color.WHITE);
 		add(wholePnl);
 
@@ -41,7 +43,7 @@ public class AdminOrderGUI extends JFrame {
 			}
 		});
 
-		setSize(300, 260);
+		setSize(300, 300);
 		setLocation(470, 300);
 		setAlwaysOnTop(true);
 		setVisible(true);
