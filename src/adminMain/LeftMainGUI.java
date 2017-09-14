@@ -165,7 +165,6 @@ public class LeftMainGUI extends JPanel {
 		findSeatBtn.setFocusPainted(false);
 		findSeatBtn.setFont(f2);
 		findSeatBtn.setBackground(Color.WHITE);
-		findSeatBtn.addActionListener(new FindMemberActionListener());
 
 		findGuest_Panel.add(inputSeat_Label);
 		findGuest_Panel.add(inputSeat_Text);

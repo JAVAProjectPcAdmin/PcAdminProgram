@@ -81,11 +81,12 @@ public class AdminMainGUI extends JFrame {
 				boolean findUser = false;
 				for (int i = 0; i < rightUserPanel.length; i++) {
 					rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
+					rightUserPanel[i].setBackground(Color.WHITE);
 					if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())) {
-						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+						rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 						if ((rightUserPanel[i].getUserNameL()).getText().equals((lmp.getInputSeat_Text()).getText())
 								&& !rightUserPanel[i].getUserNameL().getText().equals("")) {
-							rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY, 2)));
+							rightUserPanel[i].setBorder(new TitledBorder(new LineBorder(Color.GRAY)));
 							rightUserPanel[i].setBackground(c);
 							findUser = true;
 						}
