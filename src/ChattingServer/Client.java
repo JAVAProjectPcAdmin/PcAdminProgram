@@ -20,18 +20,15 @@ import javax.swing.JTextField;
 public class Client {
 	public Client(String who) {
 		Socket socket = null;
-		BufferedWriter bw = null;
-		Scanner s = new Scanner(System.in);
 		
-		BufferedReader br =null;
 		
-		ClientFrame f =null;
+		ChattingFrame f =null;
 		try {
 		
 			socket = new Socket("70.12.115.60", 7788);
 			System.out.println("서버랑 연결됬네?!");
 			
-			f = new ClientFrame(socket,who);
+			f = new ChattingFrame(socket,who);
 			
 			
 		} catch (IOException e) {
