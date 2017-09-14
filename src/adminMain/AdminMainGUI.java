@@ -178,8 +178,6 @@ public class AdminMainGUI extends JFrame {
 					}
 					if (Flagment.UserLogout[i]) { // User가 로그아웃했다고 서버에서 알림
 
-						// rightUserPanel[i].getUsePCNumberL().setText(Integer.toString(i+1));
-
 						rightUserPanel[i].setLogoutPanel();
 						rightUserPanel[i].updateUI();
 
@@ -271,7 +269,7 @@ public class AdminMainGUI extends JFrame {
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
-				if (Flagment.UserOrder[i]) {// 여기 안들어와....
+				if (Flagment.UserOrder[i]) {
 					System.out.println("주문");
 					for (int j = 0; j < AdminServer.userlist.size(); j++) {
 						if (AdminServer.userlist.get(j).getUserNumber().equals(user.getUserNumber())) {

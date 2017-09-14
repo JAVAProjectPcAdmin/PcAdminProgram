@@ -20,7 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class ServerFrame extends JFrame {
+public class ChattingFrame extends JFrame {
 	// 그래픽 관련 멤버변수
 	private JTextArea textArea = new JTextArea();
 	private JTextField textField = new JTextField();
@@ -30,7 +30,7 @@ public class ServerFrame extends JFrame {
 	String who = "";
 
 	////////////////////////////////////////////////////////
-	public ServerFrame(Socket socket, String who) {
+	public ChattingFrame(Socket socket, String who) {
 		// 그래픽 환경 초기화 작업
 		this.socket = socket;
 		this.who = who;
@@ -53,7 +53,7 @@ public class ServerFrame extends JFrame {
 		
 		setVisible(true);
 
-		tt t =new tt(socket, textArea); 
+		readThread t =new readThread(socket, textArea); 
 		t.start();
 	}
 
@@ -78,11 +78,11 @@ public class ServerFrame extends JFrame {
 		}
 	}
 
-	class tt extends Thread {
+	class readThread extends Thread {
 		Socket socket;
 		JTextArea area;
 
-		public tt(Socket socket, JTextArea textArea) {
+		public readThread(Socket socket, JTextArea textArea) {
 			this.socket = socket;
 			this.area = textArea;
 		}

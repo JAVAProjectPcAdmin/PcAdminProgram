@@ -103,7 +103,7 @@ public class UserUsingStateGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (!flag) {
-					Client client = new Client((user.getSeatNumber() + 1) + "");
+					Client client = new Client((user.getSeatNumber() + 1) + "¹øÁÂ¼®");
 					flag = true;
 				}
 			}

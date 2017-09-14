@@ -1,13 +1,10 @@
-/userUsingState/
 /ChattingServer/
-/adminMain/
-/userLogin/
 <<<<<<< HEAD
-/db/
-=======
-/adminLogin/
->>>>>>> 90de45c0524367d1c3b0514a3029b44daaba5868
 /AdminServer/
-/orderFood/
-/flagment/
+/adminMain/
+/userUsingState/
+/userLogin/
+=======
+/db/
 /gui_member/
+>>>>>>> 8f1da4c36f131212c8f12430cc23a848f0b376f9
