@@ -230,7 +230,7 @@ public class UserMemberInfoGUI extends JFrame {
 				JTable jt = (JTable) e.getSource();
 				selectedIndex = jt.getSelectedRow();
 				userNum = (int) memberTbl.getValueAt(selectedIndex, 0); 
-				userList = dao.UserNumSelectList(userNum);
+				userList = dao.UserNumSelect(userNum);
 
 				joinNumTx.setText(Integer.toString(userList.getUserNumber()));
 				nameTx.setText(userList.getName());

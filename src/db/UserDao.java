@@ -270,7 +270,7 @@ public class UserDao {
 	}
 
 	// 회원번호로 검색(테이블 눌렀을 때 필요) -> 등록일자 빼고
-	public UserVO UserNumSelectList(int userNum) {
+	public UserVO UserNumSelect(int userNum) {
 		UserVO user = new UserVO();
 		try {
 			con = DriverManager.getConnection(DB_URL, DB_ID, DB_PW);
