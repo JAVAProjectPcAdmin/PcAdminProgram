@@ -59,7 +59,6 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 		residentLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
 		resultLabel = new JLabel();
 		resultLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 18));
-		
 
 		idTf = new JTextField();
 		residentTf = new JTextField();
@@ -71,16 +70,15 @@ public class PW_SearchGUI extends JFrame implements ActionListener {
 
 		searchIcon.setBounds(70, 20, 64, 64);
 		searchLabel.setBounds(140, 30, 250, 50);
-		
+
 		idLabel.setBounds(50, 120, 100, 30);
 		residentLabel.setBounds(50, 160, 200, 30);
-		
-		
+
 		idTf.setBounds(170, 120, 150, 30);
 		residentTf.setBounds(170, 160, 80, 30);
 		centerLabel.setBounds(257, 160, 80, 30);
 		residentPf.setBounds(272, 160, 80, 30);
-		
+
 		checkButton.setBounds(80, 225, 118, 26);
 		cancleButton.setBounds(200, 225, 118, 26);
 		resultLabel.setBounds(80, 250, 300, 50);

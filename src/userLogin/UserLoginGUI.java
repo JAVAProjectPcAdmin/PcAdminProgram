@@ -86,12 +86,12 @@ public class UserLoginGUI extends JFrame {
 		pcNumLabel = new JLabel((seatNumber + 1) + "");
 		pcNumLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		pcNumLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 150));
-		
+
 		gameLabel = new JLabel(); //
 		gameLabel.setIcon(new ImageIcon("images//game.png"));
 		gameLabel.setBounds(280, 600, 400, 400);
 		add(gameLabel);
-		
+
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 		nonMemberTf = new JTextField(null);

@@ -25,35 +25,37 @@ public class AdminJoinGUI extends JFrame {
 
 	public AdminJoinGUI() {
 		registerAdminl = new JLabel(new ImageIcon("images//addadminlabel.png"));
-		adminIDl = new JLabel("°ü¸®ÀÚ ID");
-		adminPWl = new JLabel("ºñ¹Ð¹øÈ£");
-		idTf = new JTextField();
-		pwf = new JPasswordField();
-		
-		idSearchBtn = new JButton(new ImageIcon("images//adminfind.png"));
-		okBtn = new JButton(new ImageIcon("images//addadmin.png"));
-		cancelBtn = new JButton(new ImageIcon("images//cancelbtn.png"));
-		
-		idSearchBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		okBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 10));
-		cancelBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 10));
-
-		idSearchBtn.addActionListener(new Listener());
-		okBtn.addActionListener(new Listener());
-		cancelBtn.addActionListener(new Listener());
-
 		registerAdminl.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 30));
-		adminIDl.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
-		adminPWl.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
-
-		okBtn.setBounds(120, 200, 70, 26);
-		cancelBtn.setBounds(205, 200, 70, 26);
-		idSearchBtn.setBounds(285, 100, 82, 30);
-		idTf.setBounds(150, 103, 120, 30);
-		pwf.setBounds(150, 143, 120, 30);
 		registerAdminl.setBounds(50, -5, 300, 100);
+
+		adminIDl = new JLabel("°ü¸®ÀÚ ID");
+		adminIDl.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
 		adminIDl.setBounds(60, 100, 200, 30);
+
+		adminPWl = new JLabel("ºñ¹Ð¹øÈ£");
+		adminPWl.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 17));
 		adminPWl.setBounds(60, 140, 200, 30);
+
+		idTf = new JTextField();
+		idTf.setBounds(150, 103, 120, 30);
+
+		pwf = new JPasswordField();
+		pwf.setBounds(150, 143, 120, 30);
+
+		idSearchBtn = new JButton(new ImageIcon("images//adminfind.png"));
+		idSearchBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
+		idSearchBtn.addActionListener(new Listener());
+		idSearchBtn.setBounds(285, 100, 82, 30);
+
+		okBtn = new JButton(new ImageIcon("images//addadmin.png"));
+		okBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 10));
+		okBtn.addActionListener(new Listener());
+		okBtn.setBounds(120, 200, 70, 26);
+
+		cancelBtn = new JButton(new ImageIcon("images//cancelbtn.png"));
+		cancelBtn.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 10));
+		cancelBtn.addActionListener(new Listener());
+		cancelBtn.setBounds(205, 200, 70, 26);
 
 		add(idSearchBtn);
 		add(okBtn);

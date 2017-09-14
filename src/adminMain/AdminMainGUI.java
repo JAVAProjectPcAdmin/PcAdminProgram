@@ -9,22 +9,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import AdminServer.AdminServer;
 import AdminServer.User;
-import ChattingServer.Server;
 import db.UserDao;
 import flagment.Flagment;
 import orderFood.AdminOrderGUI;
@@ -34,11 +29,11 @@ public class AdminMainGUI extends JFrame {
 	private RightMainGUI[] rightUserPanel = new RightMainGUI[25]; //
 	private JPanel rightPanel = new JPanel();
 	public static UserThread isUserThread;
-	TimerThread timerThread;
-	OrderThread orderThread;
-	int i;
+	private TimerThread timerThread;
+	private OrderThread orderThread;
+	private int i;
 
-	UserDao userDao = new UserDao();
+	private UserDao userDao = new UserDao();
 
 	public AdminMainGUI() {
 		for (i = 0; i < 25; i++) {
@@ -48,19 +43,20 @@ public class AdminMainGUI extends JFrame {
 			rightUserPanel[i].addMouseListener(new ClickPanelListener());
 			rightPanel.add(rightUserPanel[i]);
 		}
+
 		isUserThread = new UserThread();
 		isUserThread.start();
 
 		lmp.getFindSeatBtn().addActionListener(new FindSeatActionListener());
-
 		lmp.setBounds(0, 80, 220, 850);
+
 		rightPanel.setLayout(new GridLayout(5, 5));
 		rightPanel.setBounds(230, 50, 1030, 800);
 
 		add(rightPanel);
 		add(lmp);
-		setResizable(false);
 
+		setResizable(false);
 		setLayout(null);
 		setSize(1280, 924);
 
@@ -74,7 +70,6 @@ public class AdminMainGUI extends JFrame {
 		getContentPane().setBackground(Color.WHITE);
 	}
 
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// 회원자리 검색 리스너
 	private class FindSeatActionListener implements ActionListener {
 		@Override
@@ -105,8 +100,6 @@ public class AdminMainGUI extends JFrame {
 			}
 		}
 	}
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class ClickPanelListener extends MouseAdapter {
 
@@ -150,8 +143,6 @@ public class AdminMainGUI extends JFrame {
 			}
 		}
 	}
-
-	////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	class UserThread extends Thread { // 좌석에 패널을 관리함
 										// 유저가 로그인을 하거나 로그아웃을 할떄 알림을 받아 실행

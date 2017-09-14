@@ -30,8 +30,7 @@ public class AdminSetPwGUI extends JFrame {
 	private JButton updateButton, cancelButton;
 	private JTextField IdTxf;
 	private JPasswordField oldPWf, newPWf, comparePWf;
-	BufferedImage adminImg, keyImg = null;
-
+	private BufferedImage adminImg, keyImg = null;
 	private AdminLoginGUI adminLoginGui;
 	private AdminDao dao;
 
@@ -52,8 +51,9 @@ public class AdminSetPwGUI extends JFrame {
 			e.printStackTrace();
 		}
 
-		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "Admin Settings");
+
+		panel = new JPanel();
 		panel.setBorder(tb);
 		panel.setBackground(Color.WHITE);
 		panel.setLayout(null);
@@ -63,10 +63,13 @@ public class AdminSetPwGUI extends JFrame {
 
 		idLabel = new JLabel("°ü¸®ÀÚ ID");
 		idLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		
 		oldLabel = new JLabel("±âÁ¸ ºñ¹Ð¹øÈ£");
 		oldLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		
 		newLabel = new JLabel("»õ·Î¿î ºñ¹Ð¹øÈ£");
 		newLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+		
 		compareLabel = new JLabel("ºñ¹Ð¹øÈ£ È®ÀÎ");
 		compareLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
 

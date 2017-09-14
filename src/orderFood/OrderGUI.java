@@ -2,13 +2,10 @@ package orderFood;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import AdminServer.User;
 import userLogin.UserClient;
 import userLogin.UserLoginGUI;
 import userUsingState.UserUsingStateGUI;
@@ -34,10 +30,10 @@ public class OrderGUI extends JFrame {
 	private int ramenPrice[] = { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1000 };
 	private int drinkPrice[] = { 700, 1000, 1000, 1000, 1000, 1000, 1000, 1000 };
 	private int snackPrice[] = { 1000, 1000, 1000, 1000, 1000, 1000, 1000, 1200 };
-	private String ramenName[] = {"간짬뽕", "너구리", "무파마", "사리곰탕", "새우탕", "신라면", "오징어짬뽕", "육개장"};
-	private String drinkName[] = {"레쓰비", "밀키스", "스프라이트", "조지아", "코카콜라", "파워에이드", "핫식스", "환타 오렌지"};
-	private String snackName[] = {"꼬깔콘", "도리토스", "스윙칩", "오잉", "오징어땅콩", "치토스", "포카칩 오리지널", "포카칩 어니언"};
-	
+	private String ramenName[] = { "간짬뽕", "너구리", "무파마", "사리곰탕", "새우탕", "신라면", "오징어짬뽕", "육개장" };
+	private String drinkName[] = { "레쓰비", "밀키스", "스프라이트", "조지아", "코카콜라", "파워에이드", "핫식스", "환타 오렌지" };
+	private String snackName[] = { "꼬깔콘", "도리토스", "스윙칩", "오잉", "오징어땅콩", "치토스", "포카칩 오리지널", "포카칩 어니언" };
+
 	public OrderGUI(UserClient userclient) {
 
 		wholePnl = new JPanel();
@@ -115,37 +111,36 @@ public class OrderGUI extends JFrame {
 		//////////////////////////////////////////////////////////////////////////////////////////////////
 		// 결제, 취소
 		orderBtn = new JButton("    주  문    ");
-		
-		
+
 		orderBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String order = "<html>";
 				int price = 0;
-				for(int i=0; i<ramen.length; i++) {
-					if(ramen[i].count > 0) {
+				for (int i = 0; i < ramen.length; i++) {
+					if (ramen[i].count > 0) {
 						order += " - " + ramenName[i] + " " + ramen[i].count + "개" + "<br>";
-						price += ramenPrice[i]* ramen[i].count;
+						price += ramenPrice[i] * ramen[i].count;
 					}
-					if(drink[i].count > 0) {
-						order += " - " + drinkName[i] + " " + drink[i].count + "개" + "<br>"; 
-						price +=drinkPrice[i] * drink[i].count;
+					if (drink[i].count > 0) {
+						order += " - " + drinkName[i] + " " + drink[i].count + "개" + "<br>";
+						price += drinkPrice[i] * drink[i].count;
 					}
-					if(snack[i].count > 0) {
-						order += " - " + snackName[i] + " " + snack[i].count + "개" + "<br>"; 
-						price +=snackPrice[i] * snack[i].count;
+					if (snack[i].count > 0) {
+						order += " - " + snackName[i] + " " + snack[i].count + "개" + "<br>";
+						price += snackPrice[i] * snack[i].count;
 					}
 				}
 				order += "</html>";
 				System.out.println(order);
 				UserLoginGUI.user.setOrder(order);
-				UserLoginGUI.user.setAddPrice(UserLoginGUI.user.getAddPrice()+price);
-				UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice()+price);
+				UserLoginGUI.user.setAddPrice(UserLoginGUI.user.getAddPrice() + price);
+				UserLoginGUI.user.setTotalPrice(UserLoginGUI.user.getTotalPrice() + price);
 				userclient.setUser(UserLoginGUI.user);
 
 				userclient.orderTOAdmin();
 				System.out.println(UserLoginGUI.user.getOrder());
-				
+
 				UserUsingStateGUI.flag3 = false;
 				dispose();
 				JOptionPane.showMessageDialog(null, "   주문이 완료되었습니다.", "주문 완료", 1);

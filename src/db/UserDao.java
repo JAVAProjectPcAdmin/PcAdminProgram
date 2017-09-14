@@ -6,8 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class UserDao {
 	PreparedStatement pstmt = null;
@@ -26,13 +27,11 @@ public class UserDao {
 			Class.forName(DB_Driver);
 
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public void UserJoinInsert(UserVO user) {
-		// Date date = new Date();
 
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -58,7 +57,6 @@ public class UserDao {
 			System.out.println("insert : " + result);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			this.close();
@@ -81,7 +79,6 @@ public class UserDao {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -106,7 +103,6 @@ public class UserDao {
 				name = rs.getString(1);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -136,7 +132,6 @@ public class UserDao {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -165,7 +160,6 @@ public class UserDao {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -200,7 +194,6 @@ public class UserDao {
 				result = -1;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -364,7 +357,7 @@ public class UserDao {
 		return birthYear;
 	}
 
-	/////////////////////////////////// 비회원Dao
+	// 비회원Dao
 	public String nonMemberIdSelect(String non_Id) {
 		String non_name = null;
 
@@ -381,7 +374,6 @@ public class UserDao {
 
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -416,7 +408,6 @@ public class UserDao {
 				result = -1;
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			close();
@@ -472,14 +463,12 @@ public class UserDao {
 
 	}
 
-	///////////////////////////////////////////////////////////
 
 	public void close() {
 		if (pstmt != null) {
 			try {
 				pstmt.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -487,7 +476,6 @@ public class UserDao {
 			try {
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				this.close();
 				e.printStackTrace();
 			}
@@ -499,7 +487,6 @@ public class UserDao {
 			try {
 				rs.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}

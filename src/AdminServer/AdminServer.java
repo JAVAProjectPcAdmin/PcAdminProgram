@@ -2,15 +2,11 @@ package AdminServer;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-import adminLogin.AdminLoginGUI;
-import adminMain.AdminMainGUI;
-import adminMain.LeftMainGUI;
 import flagment.Flagment;
 
 public class AdminServer {
@@ -80,7 +76,6 @@ public class AdminServer {
 					}
 				}
 				// 연결 끊기
-				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (IOException e) {
 				int tempSize = AdminServer.userlist.size();
 				
@@ -89,7 +84,6 @@ public class AdminServer {
 				removeThread(this); //로그아웃했으니 쓰레드도 삭제//유저 리스트는 메인에서 써야해서 아직 냄겨둠
 				e.printStackTrace();
 
-				//////////////////////////////////////////////////////////////////////////////////////////////////
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}

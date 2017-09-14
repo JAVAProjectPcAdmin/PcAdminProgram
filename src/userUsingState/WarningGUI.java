@@ -4,13 +4,18 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class WarningGUI extends JFrame{
+public class WarningGUI extends JFrame {
 	private JButton okBtn;
-	private JLabel warningLbl ,imgLbl;
+	private JLabel warningLbl, imgLbl;
 	private JPanel wholePnl;
-	
+
 	public WarningGUI() {
 		okBtn = new JButton("»Æ¿Œ");
 		okBtn.addActionListener(new ActionListener() {

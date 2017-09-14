@@ -71,20 +71,19 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 
 		searchIcon.setBounds(80, 40, 64, 64);
 		searchLabel.setBounds(170, 40, 200, 50);
-		
-		
+
 		nameLabel.setBounds(40, 147, 50, 30);
 		p_numberLabel.setBounds(40, 192, 200, 30);
 		emailLabel.setBounds(40, 237, 200, 30);
-		
+
 		nameTf.setBounds(170, 147, 170, 30);
 		p_NumberTf.setBounds(170, 192, 170, 30);
 		emailTf.setBounds(170, 237, 170, 30);
-		
+
 		checkButton.setBounds(90, 300, 100, 26);
 		cancleButton.setBounds(200, 300, 100, 26);
 		resultLabel.setBounds(70, 340, 300, 50);
-		
+
 		checkButton.addActionListener(listener);
 		cancleButton.addActionListener(new ActionListener() {
 
@@ -104,7 +103,7 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 		panel.add(cancleButton);
 		panel.add(checkButton);
 		panel.add(resultLabel);
-		
+
 		add(panel);
 		getContentPane().setBackground(Color.WHITE);
 		setVisible(true);
@@ -137,6 +136,5 @@ public class ID_SearchGUI extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 	}
-
 
 }

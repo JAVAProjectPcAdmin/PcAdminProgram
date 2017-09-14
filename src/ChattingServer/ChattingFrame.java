@@ -29,7 +29,6 @@ public class ChattingFrame extends JFrame {
 	Socket socket;
 	String who = "";
 
-	////////////////////////////////////////////////////////
 	public ChattingFrame(Socket socket, String who) {
 		// 그래픽 환경 초기화 작업
 		this.socket = socket;
@@ -46,14 +45,14 @@ public class ChattingFrame extends JFrame {
 		setTitle(who);
 		setSize(300, 400);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		
+
 		Toolkit toolkit = Toolkit.getDefaultToolkit();
 		Image Iconimg = toolkit.getImage("images\\chatting.png");
 		setIconImage(Iconimg);
-		
+
 		setVisible(true);
 
-		readThread t =new readThread(socket, textArea); 
+		readThread t = new readThread(socket, textArea);
 		t.start();
 	}
 
@@ -69,7 +68,6 @@ public class ChattingFrame extends JFrame {
 				bw.write(who + ">>" + writeMsg + "\n");
 				bw.flush();
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 
@@ -90,23 +88,20 @@ public class ChattingFrame extends JFrame {
 		@Override
 		public void run() {
 			String receiveMsg;
-				try {
-					br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-					
-					while (socket.isConnected()) {
-						
+			try {
+				br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+				while (socket.isConnected()) {
+
 					receiveMsg = br.readLine();
 
 					textArea.append(receiveMsg + "\n");
 
-					}
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-
-	//////////////////////////////////////////////////////////////////
 
 }

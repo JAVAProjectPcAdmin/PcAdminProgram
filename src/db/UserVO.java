@@ -12,10 +12,7 @@ public class UserVO {
 	private String registerDate;
 	private String Memo;
 	private String myIp;
-	
 
-
-	////////////////////////////////////////////////////////////////////////////////////////////////
 	public int getUserNumber() {
 		return userNumber;
 	}
@@ -95,7 +92,7 @@ public class UserVO {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
-	
+
 	public String getMyIp() {
 		return myIp;
 	}

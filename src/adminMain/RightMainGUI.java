@@ -11,11 +11,6 @@ import javax.swing.border.TitledBorder;
 import AdminServer.User;
 import db.UserDao;
 
-/*
- * by.jaein
- */
-//ÀÌ¸§L :Label
-//Tf : TextField
 public class RightMainGUI extends JPanel {
 	private JLabel usePCNumberL;
 	private JLabel userNameL;

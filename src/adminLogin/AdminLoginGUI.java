@@ -3,8 +3,6 @@ package adminLogin;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -16,7 +14,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -27,11 +24,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 import AdminServer.AdminServer;
-import ChattingServer.Server;
 import adminMain.AdminMainGUI;
 import db.AdminDao;
 import db.AdminVO;
-import db.UserDao;
 
 public class AdminLoginGUI extends JFrame {
 	private JPanel panel, computerIcon, adminIcon;
@@ -39,12 +34,12 @@ public class AdminLoginGUI extends JFrame {
 	private JButton loginButton, setButton, registerButton,outButton;
 	private JTextField idTf;
 	private JPasswordField pwTf;
-	BufferedImage adminLoginImg, computerImg = null;
+	private BufferedImage adminLoginImg, computerImg = null;
 	
-	ImageIcon exitIcon = new ImageIcon("images//exit.png");
-	Image exitButton = exitIcon.getImage();
-	Image newExitButtonImg = exitButton.getScaledInstance(25, 23, java.awt.Image.SCALE_SMOOTH);
-	ImageIcon chExitButton = new ImageIcon(newExitButtonImg);
+	private ImageIcon exitIcon = new ImageIcon("images//exit.png");
+	private Image exitButton = exitIcon.getImage();
+	private Image newExitButtonImg = exitButton.getScaledInstance(25, 23, java.awt.Image.SCALE_SMOOTH);
+	private ImageIcon chExitButton = new ImageIcon(newExitButtonImg);
 
 	public AdminLoginGUI() {
 		setLocation(350, 350);
@@ -63,8 +58,9 @@ public class AdminLoginGUI extends JFrame {
 			e.printStackTrace();
 		}
 
-		panel = new JPanel();
 		TitledBorder tb = new TitledBorder(new LineBorder(Color.BLACK), "Admin Login");
+		
+		panel = new JPanel();
 		panel.setBorder(tb);
 		panel.setBackground(Color.WHITE);
 		panel.setLayout(null);
@@ -76,6 +72,7 @@ public class AdminLoginGUI extends JFrame {
 		pwLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
 		idLabel = new JLabel("ID");
 		idLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 22));
+		
 		idTf = new JTextField();
 		pwTf = new JPasswordField();
 
@@ -103,10 +100,13 @@ public class AdminLoginGUI extends JFrame {
 		});
 
 		panel.setBounds(0, 0, 600, 300);
+		
 		idTf.setBounds(320, 140, 250, 30);
 		pwTf.setBounds(320, 180, 250, 30);
+		
 		idLabel.setBounds(200, 130, 50, 50);
 		pwLabel.setBounds(200, 170, 200, 50);
+		
 		adminIcon.setBounds(180, 60, 328, 50);
 		computerIcon.setBounds(70, 50, 97, 70);
 		

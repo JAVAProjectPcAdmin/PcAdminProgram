@@ -1,8 +1,6 @@
 package userUsingState;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
@@ -10,20 +8,14 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 
-import AdminServer.User;
 import userLogin.UserLoginGUI;
 
 public class ChargeInformationGUI extends JFrame {
@@ -49,7 +41,6 @@ public class ChargeInformationGUI extends JFrame {
 			moneybagImg = ImageIO.read(new File("images//moneybag.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -84,7 +75,8 @@ public class ChargeInformationGUI extends JFrame {
 		rs_nameLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_startLabel = new JLabel(UserLoginGUI.user.getStartTime());
 		rs_startLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
-		rs_chargeLabel = new JLabel(Integer.toString(UserLoginGUI.user.getTotalPrice() - UserLoginGUI.user.getAddPrice()));
+		rs_chargeLabel = new JLabel(
+				Integer.toString(UserLoginGUI.user.getTotalPrice() - UserLoginGUI.user.getAddPrice()));
 		rs_chargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
 		rs_orderChargeLabel = new JLabel(Integer.toString(UserLoginGUI.user.getAddPrice()));
 		rs_orderChargeLabel.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 12));
