@@ -1,5 +1,10 @@
 /ChattingServer/
+<<<<<<< HEAD
 /AdminServer/
 /adminMain/
 /userUsingState/
 /userLogin/
+=======
+/db/
+/gui_member/
+>>>>>>> 8f1da4c36f131212c8f12430cc23a848f0b376f9
