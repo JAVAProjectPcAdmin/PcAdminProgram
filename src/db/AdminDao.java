@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminDao {
-	PreparedStatement pstmt = null;
-	Connection con = null;
-	String sql = null;
-	int result;
-	ResultSet rs;
+	private PreparedStatement pstmt = null;
+	private Connection con = null;
+	private String sql = null;
+	private int result;
+	private ResultSet rs;
 
 	private static final String DB_Driver = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/java";

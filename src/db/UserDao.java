@@ -11,11 +11,11 @@ import java.util.Date;
 import java.util.List;
 
 public class UserDao {
-	PreparedStatement pstmt = null;
-	Connection con = null;
-	String sql = null;
-	int result;
-	ResultSet rs;
+	private PreparedStatement pstmt = null;
+	private Connection con = null;
+	private String sql = null;
+	private int result;
+	private ResultSet rs;
 
 	private static final String DB_Driver = "com.mysql.jdbc.Driver";
 	private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/java";
@@ -77,7 +77,6 @@ public class UserDao {
 			if (rs.next()) {
 				num = rs.getInt(1);
 			}
-
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -85,7 +84,6 @@ public class UserDao {
 			closeRS();
 		}
 		return num;
-
 	}
 
 	public String UserNameSelect(String Id) {
@@ -107,7 +105,6 @@ public class UserDao {
 		} finally {
 			close();
 			closeRS();
-
 		}
 		return name;
 	}
@@ -128,7 +125,6 @@ public class UserDao {
 
 			if (rs.next()) {
 				id = rs.getString(1);
-
 			}
 
 		} catch (SQLException e) {
@@ -136,7 +132,6 @@ public class UserDao {
 		} finally {
 			close();
 			closeRS();
-
 		}
 		return id;
 	}
@@ -156,7 +151,6 @@ public class UserDao {
 
 			if (rs.next()) {
 				pw = rs.getString(1);
-
 			}
 
 		} catch (SQLException e) {
@@ -164,7 +158,6 @@ public class UserDao {
 		} finally {
 			close();
 			closeRS();
-
 		}
 		return pw;
 	}
@@ -189,7 +182,6 @@ public class UserDao {
 				} else {
 					result = 0;
 				}
-
 			} else {
 				result = -1;
 			}
@@ -200,7 +192,6 @@ public class UserDao {
 			closeRS();
 		}
 		return result;
-
 	}
 
 	public void UserUpdate(UserVO user, int userNum) {
@@ -371,17 +362,14 @@ public class UserDao {
 
 			if (rs.next()) {
 				non_name = rs.getString(1);
-
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close();
 			closeRS();
-
 		}
 		return non_name;
-
 	}
 
 	public int nonMemberLoginCheck(String non_Id) {
@@ -458,11 +446,8 @@ public class UserDao {
 			close();
 			closeRS();
 		}
-
 		return seatNum;
-
 	}
-
 
 	public void close() {
 		if (pstmt != null) {
